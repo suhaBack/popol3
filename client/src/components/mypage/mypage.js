@@ -1,9 +1,17 @@
 import React, { useState } from "react";
+import "./mypage.css";
 
 function Mypage() {
- 
+  let [userInfo, setUSerInfo] = useState(
+    {
+      nickName: '왔다가',
+      userName: 'KDT',
+      phoneNumber: '010-1234-5678'
+    }
+  )
+
   return (
-    <div className="maincontent">
+    <div className="maincontent container">
       <div className="mypage_menu">
         <nav>
           <ul>
@@ -24,27 +32,17 @@ function Mypage() {
       </div>
 
       <div className="mypage_info">
-        <div className="reservation_list">
-          <h2>예약 내역이 없습니다.</h2>
-          <p>최저가로 예약 가능한</p>
-           
-            
-             
-              
-          <p>숙소들로 지금 만나세요!</p>
+        <div className="mypage_info_title">내 정보 수정</div>
+        <div className="user_profile">
+          <i class="fa-solid fa-user"></i>
         </div>
         <div className="mylist">
           <form name="form1">
             <section>
-              <strong>내 정보 수정</strong>
               <div className="login_info">
-                <img src="#"></img>
                 <div>
-                  <p>KaKaoTalk 회원으로 로그인</p>
-                </div>
-                <div>
-                  <b>닉네임</b>
-                  <span></span>
+                  <b>닉네임: </b>
+                  <span>{userInfo.nickName}</span>
                 </div>
               </div>
             </section>
@@ -53,28 +51,32 @@ function Mypage() {
             <section>
               <div>
                 <div>
-                  <b>예약자 이름</b>
-                  <span></span>
+                  <b>예약자 이름: </b>
+                  <span>{userInfo.userName}</span>
                 </div>
-              </div> 
+              </div>
             </section>
           </form>
           <form name="form3">
             <section>
               <div>
                 <div>
-                  <b>휴대폰 번호</b>
-                  <span>0101234****</span>
-                  <p>개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.</p>
+                  <b>휴대폰 번호: </b>
+                  <span>{userInfo.phoneNumber}</span>
+                  <div>
+                    개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.
+                  </div>
                 </div>
               </div>
             </section>
           </form>
         </div>
+        <div className='giveUpBox'>
+          <div>여기어때를 이용하고 싶지 않으신가요? 로그아웃 회원탈퇴</div>
+        </div>
       </div>
-
     </div>
-  )
+  );
 }
 
 export default Mypage;
