@@ -7,7 +7,7 @@ import Main from './components/mainPage/main';
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+      <Header/>
       <Routes>
         <Route path="/" element={<Main></Main>}></Route>
       </Routes>
