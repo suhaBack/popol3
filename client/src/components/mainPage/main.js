@@ -1,6 +1,7 @@
 import { Image } from "./imageScroll/image";
 import { Issue } from "./issue/issue";
-import { NewEvent } from "./event/newEvent";
+import { NewEvent } from "./Event/newEvent";
+import Addask from "./addask/addask";
 function Main() {
   // id pwd name email phone kind(0일반회원,1사업자)
   // 모텔 호텔 펜션 게스트하우스 캠핑 해외
