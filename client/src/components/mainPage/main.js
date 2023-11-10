@@ -6,12 +6,6 @@ function Main() {
     <div>
       <Image></Image>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
       </ul>
       <Issue></Issue>
     </div>

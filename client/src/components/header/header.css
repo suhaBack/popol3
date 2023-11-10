@@ -1,0 +1,27 @@
+body{
+  margin: auto;
+}
+
+a{
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+.Main_nav{
+  width: 700px;
+  border: 1px solid #000;
+  
+}
+
+.Main_nav > ul {
+  display: flex;
+  justify-content: right;
+}
+
+.Main_menu_li{
+  
+  padding: 0 5px 0 5px;
+}

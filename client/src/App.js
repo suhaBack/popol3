@@ -9,7 +9,7 @@ import Mypage from './components/mypage/mypage';
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+      <Header/>
       <Routes>
         <Route path="/" element={<Main></Main>}></Route>
         <Route path="/Yea" element={<Yea></Yea>}></Route>
