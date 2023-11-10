@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>지도 생성하기</title>
+    
+</head>
+<body>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:800px;height:550px;"></div>
+<p>
+    <button onclick="panTo()">지도 중심좌표로 부드럽게 이동</button> 
+</p>
+<p>
+    <input type="checkbox" id="traffic" onclick="setOverlayMapTypeId()" /> 교통정보
+    <input type="checkbox" id="roadview" onclick="setOverlayMapTypeId()" /> 로드뷰 도로정보
+    <input type="checkbox" id="terrain" onclick="setOverlayMapTypeId()" /> 지형정보
+</p>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee003fa864d520d13f00dda19663f590"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.06616129484477, 127.08112712333741), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.06616129484477, 127.08112712333741), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도 생성
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.06616129484477, 127.08112712333741), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도 생성
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 마커 위치 및 설명 데이터
+var markerData = [
+    {
+        position: new kakao.maps.LatLng(37.06616129484477, 127.08112712333741),
+        description: "국제대학교 국제관",
+        link: "https://map.kakao.com/link/to/국제대학교 국제관, 37.06616129484477, 127.08112712333741"
+    },
+    {
+        position: new kakao.maps.LatLng(37.06185226412483, 127.08061657313107),
+        description: "국제대학교 컨벤션",
+        link: "https://map.kakao.com/link/to/국제대학교 학생회관, 37.06185226412483, 127.08061657313107"
+    },
+    // ... 추가 마커 데이터
+];
+
+// 마커 생성 및 지도에 추가
+for (var i = 0; i < markerData.length; i++) {
+    var marker = new kakao.maps.Marker({
+        position: markerData[i].position
+    });
+    marker.setMap(map);
+
+    // 인포윈도우 생성 및 설정
+    // a 태그 사이에 [길찾기] 를 넣으면 길찾기 기능이 있음
+    var infowindowContent = '<div style="padding:5px;"><strong>' + markerData[i].description + '</strong><br>' +
+                            '<a href="' + markerData[i].link + '" target="_blank" style="color:blue"></a></div>';
+
+    var infowindow = new kakao.maps.InfoWindow({
+        position: markerData[i].position, 
+        content: infowindowContent
+    });
+    infowindow.open(map, marker);
+}
+
+// 지도 타입 ID 매핑
+var mapTypes = {
+    traffic: kakao.maps.MapTypeId.TRAFFIC,
+    roadview: kakao.maps.MapTypeId.ROADVIEW,
+    terrain: kakao.maps.MapTypeId.TERRAIN
+};
+
+// 체크 박스를 선택하면 호출되는 함수입니다
+function setOverlayMapTypeId() {
+    var 
+        chkTraffic = document.getElementById('traffic'), // 교통정보
+        chkroadview = document.getElementById('roadview'), // 로드뷰 도로정보
+        chkTerrain = document.getElementById('terrain'); // 지형정보
+    
+    // 지도 타입을 제거합니다
+    for (var type in mapTypes) {
+        map.removeOverlayMapTypeId(mapTypes[type]);
+    }
+    
+    // 교통정보 체크박스가 체크되어있으면 지도에 교통정보 지도타입을 추가합니다
+    if (chkTraffic.checked) {
+        map.addOverlayMapTypeId(mapTypes.traffic);    
+    }
+
+    // 로드뷰 도로정보 체크박스가 체크되어있으면 지도에 로드뷰 도로정보 지도타입을 추가합니다
+    if (chkroadview.checked) {
+        map.addOverlayMapTypeId(mapTypes.roadview);    
+    }
+
+    // 지형정보 체크박스가 체크되어있으면 지도에 지형정보 지도타입을 추가합니다
+    if (chkTerrain.checked) {
+        map.addOverlayMapTypeId(mapTypes.terrain);    
+    }
+}
+
+function panTo() {
+    // 이동할 위도 경도 위치를 생성합니다 
+    var moveLatLon = new kakao.maps.LatLng(37.06616129484477, 127.08112712333741);
+    
+    // 지도 중심을 부드럽게 이동시킵니다
+    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+    map.panTo(moveLatLon);            
+}
+// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+var mapTypeControl = new kakao.maps.MapTypeControl();
+// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+</script>
+</body>
+</html>
