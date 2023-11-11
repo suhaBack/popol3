@@ -1,13 +1,12 @@
 .maincontent{
   display: grid;
-  grid-template-columns: 2fr 8fr;
+  grid-template-columns: 1.3fr 8fr;
   padding: 3vw;
 }
 
 .mypage_menu{
-  display: flex;
-  justify-content: center;
   padding: 1vw;
+  background-color: white;
 }
 
 .mypage_menu nav ul{
@@ -28,6 +27,7 @@
 
 .mypage_info{
   padding: 1vw;
+  background-color: white;
 }
 
 .mypage_info_title{

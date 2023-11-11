@@ -1,4 +1,6 @@
 import WorkImg from "../../image/b2b_banner.png"
+import './issue.css'
+
 export function Issue(){
   const bener = [
     {
@@ -12,12 +14,12 @@ export function Issue(){
       content: "왔다가에서 만든 신상품 다운로드 받으세요"
     }]
   return(
-    <div>
-      <h2>왔다가 뉴스</h2>
-      <div>
+    <div  className='issueBox'>
+      <div className='mainTitle'>왔다<span className='ga'>가</span> 뉴스</div>
+      <div className='issueGridBox1'>
         {bener.map(contents =>
-          <div>
-            <img src={contents.ImgURL}></img>
+          <div className='issueGridBox2'>
+            <img src={contents.ImgURL} width='100%' height='100%'></img>
             <span>
               <h3>{contents.Title}</h3>
               <p>{contents.content}</p>
