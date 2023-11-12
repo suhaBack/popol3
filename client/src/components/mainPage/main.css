@@ -3,48 +3,13 @@
   padding-bottom: 1vw;
 }
 
-.mainCategory{
-  margin: 1vw 0;
+section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.mainCategoryGridBox{
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  background-color: white;
-  border-radius: 0.5vw;
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-.mainCategoryGridBox li{
-  margin: 0.5vw;
-  padding: 1.5vw;
-  cursor: pointer;
-  border-radius: 0.5vw;
-  transition: all 0.7s;
-}
-
-.mainCategoryGridBox li:hover{
-  background-color: rgb(94, 94, 253);
-}
-
-.mainCategoryGridBox li img{
-  margin-bottom: 2vw;
-  transition: all 0.5s;
-}
-
-.mainCategoryGridBox li:hover img{
-  transform: rotateY(180deg);
-}
-
-.mainCategoryGridBox p{
-  margin: 0;
-  font-size: 1.5vw;
-}
-
-.mainCategoryGridBox li:hover p{
-  color: white
-}
-
-

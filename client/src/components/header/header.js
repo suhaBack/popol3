@@ -1,5 +1,6 @@
 import "./header.css";
 import logo from "./../image/로고.png"
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -20,7 +21,7 @@ function Header() {
             <a href="??">내 주변</a>
           </li>
           <li className="Main_menu_li">
-            <a href="??">예약내역</a>
+            <Link to="/mypage">예약내역</Link>
           </li>
           <li className="Main_menu_li">
             <a href="??">더 보기</a>
