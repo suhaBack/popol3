@@ -9,6 +9,8 @@ li{
 #Main_Div{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  background-color: white;
+  height: 10vh;
 }
 
 .Main_nav{
