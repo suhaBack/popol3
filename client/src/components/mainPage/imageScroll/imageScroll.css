@@ -15,6 +15,10 @@
   height: 100%;
 }
 
+.slick-slide img{
+  cursor: pointer;
+}
+
 .slick-slide div{
   height: 100%;
 }

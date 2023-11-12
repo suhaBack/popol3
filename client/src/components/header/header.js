@@ -25,7 +25,7 @@ function Header() {
           </li>
           <li className="Main_menu_li">
             <a href="??">더 보기</a>
-            <ul className="drop_menu">
+            <ul className="drop_menu" style={{display: 'none'}}>
               <li>
                 <a href="??">가</a>
               </li>
