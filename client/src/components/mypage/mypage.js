@@ -12,63 +12,58 @@ function Mypage() {
     <div className="backGround">
       <div className="maincontent container">
         <div className="mypage_menu">
-          <nav>
-            <ul>
-              <li>
-                <a href="">예약 내역</a>
-              </li>
-              <li>
-                <a href="">내 정보 관리</a>
-              </li>
-              <li>
-                <a href="">알림</a>
-              </li>
-              <li>
-                <a href="">상품권</a>
-              </li>
-            </ul>
-          </nav>
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <a href="">예약 내역</a>
+                </li>
+                <li>
+                  <a href="">내 정보 관리</a>
+                </li>
+                <li>
+                  <a href="">알림</a>
+                </li>
+                <li>
+                  <a href="">상품권</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
 
         <div className="mypage_info">
-          <div className="mypage_info_title">내 정보 수정</div>
+          <div className="mypage_info_title">내 정보 관리</div>
           <div className="user_profile">
             <i class="fa-solid fa-user"></i>
           </div>
           <div className="mylist">
             <form name="form1">
-              <section>
-                <div className="login_info">
-                  <div>
-                    <b>닉네임: </b>
-                    <span>{userInfo.nickName}</span>
-                  </div>
+              <div className="login_info">
+                <div>
+                  <b>닉네임: </b>
+                  <span>{userInfo.nickName}</span>
                 </div>
-              </section>
+              </div>
             </form>
             <form name="form2">
-              <section>
+              <div>
                 <div>
-                  <div>
-                    <b>예약자 이름: </b>
-                    <span>{userInfo.userName}</span>
-                  </div>
+                  <b>예약자 이름: </b>
+                  <span>{userInfo.userName}</span>
                 </div>
-              </section>
+              </div>
             </form>
             <form name="form3">
-              <section>
+              <div>
                 <div>
+                  <b>휴대폰 번호: </b>
+                  <span>{userInfo.phoneNumber}</span>
                   <div>
-                    <b>휴대폰 번호: </b>
-                    <span>{userInfo.phoneNumber}</span>
-                    <div>
-                      개인 정보 보호를 위해 내 정보는 모두 안전하게
-                      암호화됩니다.
-                    </div>
+                    개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.
                   </div>
                 </div>
-              </section>
+              </div>
             </form>
           </div>
           <div className="giveUpBox">

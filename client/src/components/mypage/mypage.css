@@ -5,8 +5,14 @@
 }
 
 .mypage_menu{
-  padding: 1vw;
   background-color: white;
+  height: 100%;
+  padding: 1.5vw;
+}
+
+.mypage_menu div{
+  height: 100%;
+  border-right: 2px solid black;
 }
 
 .mypage_menu nav ul{
@@ -26,32 +32,34 @@
 
 
 .mypage_info{
-  padding: 1vw;
+  padding: 1.5vw;
   background-color: white;
 }
 
 .mypage_info_title{
-  padding: 1vw;
+  padding: 0 1vw;
+  font-size: 2vw;
 }
 
 .user_profile{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5vw;
-  height: 5vw;
+  width: 8vw;
+  height: 8vw;
   border-radius: 50%;
-  border: 0.5vw solid black;
+  border: 0.4vw solid black;
   margin: 1vw 0 1vw 1vw;
 }
 
 .user_profile i{
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 .mylist{
   margin-bottom: 2vw;
-  padding: 1vw;
+  padding: 0 1vw 1vw 1vw;
+  font-size: 1.5vw;
 }
 
 .giveUpBox{
