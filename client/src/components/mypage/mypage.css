@@ -1,0 +1,63 @@
+.maincontent{
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  padding: 3vw;
+}
+
+.mypage_menu{
+  display: flex;
+  justify-content: center;
+  padding: 1vw;
+}
+
+.mypage_menu nav ul{
+  margin: 0;
+  padding: 0;
+}
+
+.mypage_menu nav ul li{
+  margin-bottom: 1vw;
+}
+
+.mypage_menu nav ul li a{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.mypage_info{
+  padding: 1vw;
+}
+
+.mypage_info_title{
+  padding: 1vw;
+}
+
+.user_profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  border: 0.5vw solid black;
+  margin: 1vw 0 1vw 1vw;
+}
+
+.user_profile i{
+  font-size: 3vw;
+}
+
+.mylist{
+  margin-bottom: 2vw;
+  padding: 1vw;
+}
+
+.giveUpBox{
+  border-top: 0.2vw solid rgba(128, 128, 128, 0.262);
+  padding-top: 1vw;
+}
+
+
+

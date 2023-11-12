@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Main from './components/mainPage/main';
 import Yea from './components/Yea/Yea';
 import Mypage from './components/mypage/mypage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
