@@ -31,12 +31,12 @@
 
 
 
-.mypage_info{
+.menu_info{
   padding: 1.5vw;
   background-color: white;
 }
 
-.mypage_info_title{
+.menu_info_title{
   padding: 0 1vw;
   font-size: 2vw;
 }
@@ -62,10 +62,24 @@
   font-size: 1.5vw;
 }
 
-.giveUpBox{
-  border-top: 0.2vw solid rgba(128, 128, 128, 0.262);
-  padding-top: 1vw;
+.mylist #security {
+  margin-bottom: 2vw;
+  padding-top: 10px;  
+  font-size: 15px;
+  color: rgb(110, 110, 110);
 }
+
+.giveUpBox{
+  border-top: 0.15vw solid rgba(128, 128, 128, 0.262);
+  padding-top: 1vw;
+  font-size: 15px;
+  color: rgb(110, 110, 110);
+}
+.giveUpBox a {
+  text-decoration: none;
+  color: rgb(255, 0, 0);
+  }
+
 
 
 
