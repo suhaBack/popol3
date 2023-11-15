@@ -65,7 +65,7 @@ function Payment() {
                 }}
               ></input>
               {consumerName == "" && (
-                <p style={{ fontSize: "1.2vw", color: "red" }}>
+                <p style={{ fontSize: "1vw", color: "red" }}>
                   *이름를 입력해주세요.
                 </p>
               )}
@@ -87,7 +87,7 @@ function Payment() {
                 }}
               ></input>
               {phoneNumber == "" && (
-                <p style={{ fontSize: "1.2vw", color: "red" }}>
+                <p style={{ fontSize: "1vw", color: "red" }}>
                   *휴대폰 번호를 입력해주세요.
                 </p>
               )}

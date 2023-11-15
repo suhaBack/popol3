@@ -57,13 +57,12 @@
 }
 
 .mylist{
-  margin-bottom: 2vw;
+  height: 100%;
   padding: 0 1vw 1vw 1vw;
   font-size: 1.5vw;
 }
 
 .mylist #security {
-  margin-bottom: 2vw;
   padding-top: 10px;  
   font-size: 15px;
   color: rgb(110, 110, 110);
