@@ -1,0 +1,28 @@
+a{
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+#Main_Div{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: white;
+  height: 10vh;
+}
+
+.Main_nav{
+  border: 1px solid #000;
+}
+
+.Main_nav > ul {
+  display: flex;
+  margin: 0;
+  padding: 0
+}
+
+.Main_menu_li{
+  padding: 0 5px 0 5px;
+}
