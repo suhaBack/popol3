@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NPSfontBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+div{
+  /* border: 1px solid black; */
+  font-family: 'yg-jalnan';
+  box-sizing: border-box;
+}
+
+.mainTitle{
+  font-size: 2.5vw;
+  padding: 1vw 0;
+  color: rgb(94, 94, 253);
+}
+
+.ga{
+  display: inline-block;
+  font-size: 3.3vw;
+  transform: rotate(5deg);
+  color: rgb(36, 36, 251);
+  text-shadow: 1px 1px 2px rgb(36, 36, 251);
+}
+
+li{
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.start{
+  opacity: 0;
+  
+}
+
+.end{
+  opacity: 1;
+  transition: opacity 0.5s;
+}

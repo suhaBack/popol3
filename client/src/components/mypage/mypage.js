@@ -1,76 +1,104 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./mypage.css";
+import InfoManagement from "./infomanagement";
+import InfoEdit from "./infoedit";
+import Coupon from "./coupon";
+import Reservation from "./reservation";
+import Alarm from "./alarm";
 
 function Mypage() {
- 
+  const [menu, setMenu] = useState("내 정보 관리");
+
+  const MenuClick = (selectMenu) => {
+    setMenu(selectMenu);
+  };
+
+  const [end, setEnd] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEnd("end");
+    }, 100);
+    return setEnd("")
+  }, [menu]);
+
+  let [userInfo, setUSerInfo] = useState({
+    nickName: "왔다가",
+    userName: "KDT",
+    phoneNumber: "010-1234-5678",
+  });
+
   return (
-    <div className="maincontent">
-      <div className="mypage_menu">
-        <nav>
-          <ul>
-            <li>
-              <a href="">예약 내역</a>
-            </li>
-            <li>
-              <a href="">내 정보 관리</a>
-            </li>
-            <li>
-              <a href="">알림</a>
-            </li>
-            <li>
-              <a href="">상품권</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <div className="mypage_info">
-        <div className="reservation_list">
-          <h2>예약 내역이 없습니다.</h2>
-          <p>최저가로 예약 가능한</p>
-          <p>숙소들로 지금 만나세요!</p>
+    <div className="backGround">
+      <div className="maincontent container">
+        <div className="mypage_menu">
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <a href="#" onClick={() => MenuClick("내 정보 관리")}>
+                    내 정보 관리
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onClick={() => MenuClick("내 정보 변경")}>
+                    내 정보 수정
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onClick={() => MenuClick("예약 내역")}>
+                    예약 내역
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onClick={() => MenuClick("알림")}>
+                    알림
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onClick={() => MenuClick("쿠폰함")}>
+                    쿠폰함
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div className="mylist">
-          <form name="form1">
-            <section>
-              <strong>내 정보 수정</strong>
-              <div className="login_info">
-                <img src="#"></img>
-                <div>
-                  <p>KaKaoTalk 회원으로 로그인</p>
-                </div>
-                <div>
-                  <b>닉네임</b>
-                  <span></span>
-                </div>
-              </div>
-            </section>
-          </form>
-          <form name="form2">
-            <section>
-              <div>
-                <div>
-                  <b>예약자 이름</b>
-                  <span></span>
-                </div>
-              </div> 
-            </section>
-          </form>
-          <form name="form3">
-            <section>
-              <div>
-                <div>
-                  <b>휴대폰 번호</b>
-                  <span>0101234****</span>
-                  <p>개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.</p>
-                </div>
-              </div>
-            </section>
-          </form>
+
+        <div className="menu_info">
+          {menu === "내 정보 관리" && (
+            <div className={"start " + end}>
+              <InfoManagement menu={menu} userInfo={userInfo}></InfoManagement>
+            </div>
+          )}
+
+          {menu === "내 정보 변경" && (
+            <div className={"start " + end}>
+              <InfoEdit menu={menu} userInfo={userInfo}></InfoEdit>
+            </div>
+          )}
+
+          {menu === "예약 내역" && (
+            <div className={"start " + end}>
+              <Reservation></Reservation>
+            </div>
+          )}
+
+          {menu === "알림" && (
+            <div className={"start " + end}>
+              <Alarm></Alarm>
+            </div>
+          )}
+
+          {menu === "쿠폰함" && (
+            <div className={"start " + end}>
+              <Coupon />
+            </div>
+          )}
         </div>
       </div>
-
     </div>
-  )
+  );
 }
 
 export default Mypage;

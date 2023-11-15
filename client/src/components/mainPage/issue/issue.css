@@ -1,0 +1,29 @@
+.issueBox{
+  margin: 3vw 0;
+}
+
+.issueGridBox1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1vw;
+}
+
+.issueGridBox2{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  background-color: white;
+  cursor: pointer;
+}
+
+.issueGridBox2 span{
+  padding: 2vw 1vw;
+}
+
+.issueGridBox2 span h3{
+  font-size: 2vw;
+}
+
+.issueGridBox2 span p{
+  font-size: 1.2vw;
+  color: rgb(92, 92, 92);
+}

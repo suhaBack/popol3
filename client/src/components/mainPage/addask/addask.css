@@ -1,0 +1,51 @@
+@keyframes 위아래{
+  0% {
+    transform : translateY(0px);
+  }
+  25% {
+    transform : translateY(-20px);
+  }
+  50% {
+    transform : translateY(-10px);
+  }
+  75% {
+    transform : translateY(-20px);
+  }
+  100% {
+    transform : translateY(0px);
+  }
+}
+
+.addAskGridBox1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1vw;
+  margin: 3vw 0;
+}
+
+.addAskGridBox2{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: white;
+  padding: 2vw;
+  cursor: pointer;
+}
+
+.addAskGridBox2:hover .addAskImgBox{
+  animation-name : 위아래;
+  animation-duration : 0.8s;
+}
+
+.addAskContentBox{
+  padding: 1.5vw;
+}
+
+.addAskTitle{
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+
+.addAskContent{
+  font-size: 1.2vw;
+  color: rgb(92, 92, 92);
+}

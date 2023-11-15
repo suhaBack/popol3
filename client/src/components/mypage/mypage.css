@@ -1,0 +1,84 @@
+.maincontent{
+  display: grid;
+  grid-template-columns: 1.3fr 8fr;
+  padding: 3vw;
+}
+
+.mypage_menu{
+  background-color: white;
+  height: 100%;
+  padding: 1.5vw;
+}
+
+.mypage_menu div{
+  height: 100%;
+  border-right: 2px solid black;
+}
+
+.mypage_menu nav ul{
+  margin: 0;
+  padding: 0;
+}
+
+.mypage_menu nav ul li{
+  margin-bottom: 1vw;
+}
+
+.mypage_menu nav ul li a{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.menu_info{
+  padding: 1.5vw;
+  background-color: white;
+}
+
+.menu_info_title{
+  padding: 0 1vw;
+  font-size: 2vw;
+}
+
+.user_profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  border: 0.4vw solid black;
+  margin: 1vw 0 1vw 1vw;
+}
+
+.user_profile i{
+  font-size: 4vw;
+}
+
+.mylist{
+  height: 100%;
+  padding: 0 1vw 1vw 1vw;
+  font-size: 1.5vw;
+}
+
+.mylist #security {
+  padding-top: 10px;  
+  font-size: 15px;
+  color: rgb(110, 110, 110);
+}
+
+.giveUpBox{
+  border-top: 0.15vw solid rgba(128, 128, 128, 0.262);
+  padding-top: 1vw;
+  font-size: 15px;
+  color: rgb(110, 110, 110);
+}
+.giveUpBox a {
+  text-decoration: none;
+  color: rgb(255, 0, 0);
+  }
+
+
+
+

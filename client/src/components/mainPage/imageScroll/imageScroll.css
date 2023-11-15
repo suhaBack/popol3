@@ -1,0 +1,28 @@
+.slick-list{
+  height: 100%;
+}
+
+.slick-slider{
+  height: 40vh;
+  margin-bottom: 3vw;
+}
+
+.slick-track{
+  height: 100%;
+}
+
+.slick-slide{
+  height: 100%;
+}
+
+.slick-slide img{
+  cursor: pointer;
+}
+
+.slick-slide div{
+  height: 100%;
+}
+
+.slick-arrow{
+  display: none !important;
+}
