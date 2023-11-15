@@ -27,10 +27,6 @@ function Mypage() {
         <div className="reservation_list">
           <h2>예약 내역이 없습니다.</h2>
           <p>최저가로 예약 가능한</p>
-           
-            
-             
-              
           <p>숙소들로 지금 만나세요!</p>
         </div>
         <div className="mylist">
