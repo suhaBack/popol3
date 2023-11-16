@@ -1,3 +1,5 @@
+import "./footer.css";
+
 const footer = () => {
   return (
     <div className='footerBox'>
@@ -14,10 +16,16 @@ const footer = () => {
         <div id="footer-address">
           <span>(주)리얼 컴퍼니</span>
           <span>경기도 평택시 서정동 장안웃길 56</span>
-          <br />
+          <br/>
           <span>사업자 등록번호 : 112-050-45895</span>
           <span>전자우편주소 : deeha@gmail.com</span>
           <span>관광사업자 등록번호 : 제 1002-09호</span>
+          <a href="/admin">
+            <button id="adminbutton">
+              관리자 페이지로
+              {/* {오른쪽 아래에 붙여서 작게 만들어주세요} */}
+            </button>
+          </a>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import Mypage from './components/mypage/mypage';
 import ProductHotel from './components/product/hotel/productHotel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Detail from './components/detail/detail';
+import AdminPage from './components/adminPage/adminPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
         <Route path="/detail" element={<Detail></Detail>}></Route>
         <Route path='/hotel' element={<ProductHotel></ProductHotel>}></Route>
+        <Route path='/admin' element={<AdminPage></AdminPage>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
