@@ -3,7 +3,7 @@
 const Sequelize = require("sequelize");
 
 // user_id || email || password || name 
-// contact_number || address || profile_image || role
+// contact_number || role
 
 class User extends Sequelize.Model {
   static initiate(sequelize) {
@@ -59,22 +59,6 @@ class User extends Sequelize.Model {
           }
         },
         comment: "연락처",
-      },
-      address: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          len: {
-            args: [5, 255],
-            msg: "주소는 5자 이상이어야 합니다."
-          }
-        },
-        comment: "주소",
-      },
-      profile_image: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        comment: "프로필 이미지",
       },
       role: {
         type: Sequelize.INTEGER,
