@@ -26,7 +26,6 @@
 
 .mypage_menu nav ul li a{
   text-decoration: none;
-  color: black;
 }
 
 
@@ -79,6 +78,6 @@
   color: rgb(255, 0, 0);
   }
 
-
-
-
+  .selected a{
+    color: blue; /* 또는 다른 스타일을 여기에 추가하세요 */
+  }
