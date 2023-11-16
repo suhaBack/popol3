@@ -1,7 +1,12 @@
 function Alarm(){
   return (
     <div>
-      알림
+      <div>
+
+      </div>
+      <div>
+        
+      </div>
     </div>
   )
 }
