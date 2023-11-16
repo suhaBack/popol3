@@ -7,6 +7,7 @@ import Payment from './components/payment/payment';
 import Mypage from './components/mypage/mypage';
 import ProductHotel from './components/product/hotel/productHotel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Detail from './components/detail/detail';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Main></Main>}></Route>
         <Route path="/payment" element={<Payment></Payment>}></Route>
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
+        <Route path="/detail" element={<Detail></Detail>}></Route>
         <Route path='/hotel' element={<ProductHotel></ProductHotel>}></Route>
       </Routes>
       <Footer></Footer>
