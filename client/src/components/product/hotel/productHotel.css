@@ -1,0 +1,47 @@
+
+/* ------- 섹션1 ------- */
+.section-1 {
+  border-style: solid;
+  border-width: 1px ;
+}
+
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.dropdown-content{
+  display : none;
+  position : absolute;
+  z-index : 1;
+}
+
+.dropdown-content a{
+  display : block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ------- 섹션2 ------- */
+
+.section-2 {
+  width:  50%;
+  float:  left;
+  border-style: solid;
+  border-width: 1px ;
+}
+
+input {
+  margin-top: 0.4rem;
+}
+
+/* ------- 섹션3 ------- */
+
+.section-3 {
+  width:  50%;
+  float:  right;
+  border-style: solid;
+  border-width: 1px ;
+}

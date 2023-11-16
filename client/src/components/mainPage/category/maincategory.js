@@ -18,8 +18,10 @@ function MainCategory(){
               <p>모텔</p>
             </li>
             <li>
-              <img src={호텔} width="100%"></img>
-              <p>호텔/리조트</p>
+              <a href='/hotel'>
+                <img src={호텔} width="100%"></img>
+                <p>호텔/리조트</p>
+              </a>
             </li>
             <li>
               <img src={펜션} width="100%"></img>
