@@ -2,7 +2,7 @@
 
 const Sequelize = require("sequelize");
 
-// lodging_id || name || location || description || price_range || type || amenities
+// lodging_id || name || location || description || price_range || type
 // check_in_time || check_out_time || rating || review_count
 
 class Lodgings extends Sequelize.Model {
@@ -69,17 +69,6 @@ class Lodgings extends Sequelize.Model {
           }
         },
         comment: "유형",
-      },
-      amenities: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-        validate: {
-          min: {
-            args: 5,
-            mag: "최소 5글자 이상 작성하여야합니다."
-          }
-        },
-        comment: "편의시설 안내",
       },
       check_in_time: {
         type: Sequelize.TIME,
