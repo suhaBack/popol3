@@ -1,7 +1,7 @@
 function Information(){
   return(
     <div>
-      
+      숙소정보
     </div>
   )
 }
