@@ -57,7 +57,7 @@ function Mypage() {
                 </li>
                 <li>
                   <a href="#" onClick={() => MenuClick("쿠폰함")}>
-                    쿠폰함
+                    리뷰
                   </a>
                 </li>
               </ul>
