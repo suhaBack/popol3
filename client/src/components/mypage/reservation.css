@@ -1,0 +1,19 @@
+#jsw_maincontainer {
+  margin: 0 auto;
+  padding: 5%;
+}
+#jsw_subcontainer {
+  width: 100%;
+  height: 100%;
+}
+
+.jsw_01 {
+  float: left;
+}
+.jsw_03{
+  clear: both;
+}
+
+.jsw_text{
+  padding: 0 auto;
+}
