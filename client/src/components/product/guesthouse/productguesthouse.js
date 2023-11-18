@@ -1,7 +1,11 @@
 import "./productguesthouse.css";
 
-function Productguesthouse(){
-  
+function ProductGuesthouse(){
+  return (
+    <div>
+      게스트 하우스
+    </div>
+  )
 }
 
-export default Productguesthouse;
+export default ProductGuesthouse;

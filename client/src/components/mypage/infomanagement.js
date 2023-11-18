@@ -1,9 +1,11 @@
+import 프로필 from "./../image/프로필.png"
+
 function InfoManagement(props) {
   return (
     <div>
       <div className="menu_info_title">{props.menu}</div>
       <div className="user_profile">
-        <i className="fa-solid fa-user"></i>
+        <img src={프로필} width="100%"></img>
       </div>
       <div className="mylist">
         {/* 내 정보 관리에 대한 div */}
