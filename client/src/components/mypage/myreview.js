@@ -4,7 +4,7 @@ import img2 from "./image/잠실쿠키.jpg";
 import img3 from "./image/신림 홀리데이.jpg";
 import img4 from "./image/상봉 호텔버스.jpg";
 import img5 from "./image/용전 더휴식 노크인호텔.jpg";
-import img6 from "./image/수원역 썸.jpg";
+import img6 from "./image/히히.jpg";
 import "./myreview.css";
 import 결과없음 from "./../image/결과없음.png";
 
@@ -44,6 +44,13 @@ function Myreview() {
       rating: 0,
       ment: "죽여줘",
       date: "2027-11-13",
+    },
+    {
+      id: 6,
+      img: img6,
+      rating: 5,
+      ment: "아이들이 좋아해요!",
+      date: "2023-69-74",
     },
   ]);
 
