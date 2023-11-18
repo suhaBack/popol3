@@ -1,13 +1,13 @@
 const Sequelize = require("sequelize");
 const User = require("./user");
 const Lodging = require("./lodging");
-const Review = require("./review");
 const Room = require("./room");
 const Booking = require("./booking");
+const Review = require("./review");
 
 const env = process.env.NODE_ENV || 'development';
 
-const config = require('../c\onfig/config.json')[env];
+const config = require('../config/config.json')[env];
 
 const db = {};
 
@@ -17,9 +17,9 @@ db.sequelize = sequelize;
 
 db.User = User;
 db.Lodging = Lodging;
-db.Review = Review;
 db.Room = Room;
 db.Booking = Booking;
+db.Review = Review;
 
 User.initiate(sequelize);
 Lodging.initiate(sequelize);
@@ -27,8 +27,10 @@ Review.initiate(sequelize);
 Room.initiate(sequelize);
 Booking.initiate(sequelize);
 
-Booking.associations(db);
+User.associations(db);
 Lodging.associations(db);
 Room.associations(db);
+Booking.associations(db);
+Review.associations(db);
 
 module.exports = db;
