@@ -84,8 +84,8 @@ class User extends Sequelize.Model {
   }
   
   static associate(db) {
-    db.User.hasMany(db.Booking, { foreignKey: 'User_ID', sourceKey: 'id' });
-    db.User.hasMany(db.Review, { foreignKey: 'User_ID', sourceKey: 'id' });
+    db.User.hasMany(db.Booking, { foreignKey: 'user_id', sourceKey: 'id' });
+    db.User.hasMany(db.Review, { foreignKey: 'user_id', sourceKey: 'id' });
   }
   
 };

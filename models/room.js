@@ -77,8 +77,8 @@ class Room extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Room.belongsTo(db.Lodging, { foreignKey: 'Lodging_ID', sourceKey: 'id' });
-    db.Room.hasMany(db.Booking, { foreignKey: 'Room_ID', sourceKey: 'id' });
+    db.Room.belongsTo(db.Lodging, { foreignKey: 'lodging_id', sourceKey: 'id' });
+    db.Room.hasMany(db.Booking, { foreignKey: 'room_id', sourceKey: 'id' });
   }
   
 };

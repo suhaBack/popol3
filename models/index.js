@@ -27,10 +27,10 @@ Review.initiate(sequelize);
 Room.initiate(sequelize);
 Booking.initiate(sequelize);
 
-User.associations(db);
-Lodging.associations(db);
-Room.associations(db);
-Booking.associations(db);
-Review.associations(db);
+User.associate(db);
+Lodging.associate(db);
+Room.associate(db);
+Booking.associate(db);
+Review.associate(db);
 
 module.exports = db;

@@ -112,8 +112,8 @@ class Lodging extends Sequelize.Model {
     });
   }
   static associate(db) {
-    db.Lodging.hasMany(db.Room, { foreignKey: 'Lodging_ID', sourceKey: 'id'});
-    db.Lodging.hasMany(db.Review, { foreignKey: 'Lodging_ID', sourceKey: 'id'});
+    db.Lodging.hasMany(db.Room, { foreignKey: 'lodging_id', sourceKey: 'id'});
+    db.Lodging.hasMany(db.Review, { foreignKey: 'lodging_id', sourceKey: 'id'});
   }
 };
 
