@@ -18,19 +18,11 @@ class Booking extends Sequelize.Model {
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'User', // User 모델 참조
-          key: 'user_id',  // 참조하는 키
-        },
         comment: "사용자(user) 식별자 ID",
       },
       room_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'Room', // Room 모델 참조
-          key: 'room_id',  // 참조하는 키
-        },
         comment: "객실(room) 식별자 ID",
       },
       start_date: {
@@ -97,6 +89,12 @@ class Booking extends Sequelize.Model {
       collate: 'utf8_general_ci',
     });
   }
+
+  static associate(db) {
+    db.Booking.belongsTo(db.User, { foreignKey: 'User_ID', sourceKey: 'id' });
+    db.Booking.belongsTo(db.Room, { foreignKey: 'Room_ID', sourceKey: 'id' });
+  }
+
 };
 
 module.exports = Booking;

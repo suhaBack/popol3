@@ -82,6 +82,13 @@ class User extends Sequelize.Model {
       collate: 'utf8_general_ci',
     });
   }
+  
+  static associate(db) {
+    db.User.hasMany(db.Booking, { foreignKey: 'User_ID', sourceKey: 'id' });
+    db.User.hasMany(db.Review, { foreignKey: 'User_ID', sourceKey: 'id' });
+  }
+  
 };
+
 
 module.exports = User;

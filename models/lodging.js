@@ -111,6 +111,10 @@ class Lodging extends Sequelize.Model {
       collate: 'utf8_general_ci',
     });
   }
+  static associate(db) {
+    db.Lodging.hasMany(db.Room, { foreignKey: 'Lodging_ID', sourceKey: 'id'});
+    db.Lodging.hasMany(db.Review, { foreignKey: 'Lodging_ID', sourceKey: 'id'});
+  }
 };
 
 module.exports = Lodging;

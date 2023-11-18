@@ -18,11 +18,7 @@ class Room extends Sequelize.Model {
       lodging_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'Lodgings', // Lodgings 모델 참조
-          key: 'lodging_id',  // 참조하는 키
-        },
-        comment: "숙박업소 식별자",
+        comment: "숙박업소(lodging) 식별자 ID",
       },
       type: {
         type: Sequelize.STRING(100),
@@ -79,6 +75,12 @@ class Room extends Sequelize.Model {
       collate: 'utf8_general_ci',
     });
   }
+
+  static associate(db) {
+    db.Room.belongsTo(db.Lodging, { foreignKey: 'Lodging_ID', sourceKey: 'id' });
+    db.Room.hasMany(db.Booking, { foreignKey: 'Room_ID', sourceKey: 'id' });
+  }
+  
 };
 
 module.exports = Room;
