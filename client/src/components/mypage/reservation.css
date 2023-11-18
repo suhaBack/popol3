@@ -1,0 +1,109 @@
+.reservationContentBox{
+  margin-bottom: 2vw;
+}
+
+.reservationComentBox{
+  text-align: center;
+}
+
+.reservationComentBox img{
+  width: 18%;
+}
+
+.reservationComent{
+  font-size: 1.5vw;
+  margin: 1vw 0;
+}
+
+.reservationSubComent{
+  font-size: 1vw;
+  color: gray;
+}
+
+.reservationMoreBtnBox{
+  display: flex;
+  justify-content: center;
+}
+
+.reservationMoreBtnBox div{
+  border: 1px solid rgb(94, 94, 253);
+  margin: 1vw 0;
+  font-size: 1vw;
+  padding: 1vw;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  color:rgb(94, 94, 253);
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.reservationMoreBtnBox div:hover{
+  background-color: rgb(94, 94, 253);
+  color:white;
+}
+
+
+
+
+
+.usepageTitle{
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+
+.usepageGridBox{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5vw;
+}
+
+.jsw_01{
+  display: grid;
+  grid-template-rows: 5fr 4fr;
+  height: 100%;
+}
+
+.usepageGridBox img{
+  width: 100%;
+  height: 100%;
+}
+
+.useCardBox{
+  background-color: rgb(243, 241, 241);
+  padding: 1vw;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.useCardBox p{
+  margin: 0;
+  padding: 0.2vw;
+  font-size: 1vw;
+}
+
+.useCardBox h4{
+  margin: 0;
+  padding: 0.2vw;
+  font-size: 1.5vw;
+}
+
+.rereservationBtnBox{
+  display: flex;
+  justify-content: end;
+  margin-top: 1vw;
+}
+
+.rereservationBtnBox p{
+  background-color: rgb(94, 94, 253);
+  color: white;
+  border-radius: 0.3vw;
+  padding: 0.5vw 1vw;
+  cursor: pointer;
+  font-size: 1vw;
+  transition: background-color 0.3s;
+}
+
+.rereservationBtnBox p:hover{
+  background-color: rgb(66, 66, 255);
+}

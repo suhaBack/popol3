@@ -1,6 +1,9 @@
+/* 참고 페이지 주소
+https://www.goodchoice.kr/product/search/2 */
+
 
 /* ------- 섹션1 ------- */
-.section-1 {
+.high {
   border-style: solid;
   border-width: 1px ;
 }
@@ -26,9 +29,9 @@
 
 /* ------- 섹션2 ------- */
 
-.section-2 {
-  width:  50%;
-  float:  left;
+.section-1 {
+  width:  20%;
+  float: left;
   border-style: solid;
   border-width: 1px ;
 }
@@ -39,9 +42,50 @@ input {
 
 /* ------- 섹션3 ------- */
 
-.section-3 {
-  width:  50%;
-  float:  right;
+.section-2 {
+  width:  35%;
+  float: right;
+  border-style: solid;
+  border-width: 1px ;
+}
+
+.hotel-1 {
+  height: 250px;
+  border-style: solid;
+  border-width: 1px ;
+}
+.hotel-2 {
+  height: 250px;
+  border-style: solid;
+  border-width: 1px ;
+}
+.hotel-3 {
+  height: 250px;
+  border-style: solid;
+  border-width: 1px ;
+}
+.hotel-4 {
+  height: 250px;
+  border-style: solid;
+  border-width: 1px ;
+}
+.hotel-5 {
+  height: 250px;
+  border-style: solid;
+  border-width: 1px ;
+}
+.hotel-6 {
+  height: 250px;
+  border-style: solid;
+  border-width: 1px ;
+}
+.hotel-7 {
+  height: 250px;
+  border-style: solid;
+  border-width: 1px ;
+}
+.hotel-8 {
+  height: 250px;
   border-style: solid;
   border-width: 1px ;
 }

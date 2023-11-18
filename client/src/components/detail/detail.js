@@ -19,7 +19,7 @@ function Detail(){
       return <Reveiw />;
     }
   };
-  
+
 return(
   <div>
     <div className="top">
@@ -39,20 +39,8 @@ return(
       </div>
     </div>
 
-    <div className="sticky-section">
-      <button className={selectedSection === "객실안내/예약" ? "active" : ""}
-            onClick={() => setSelectedSection("객실안내/예약")}> 
-            객실안내/예약
-          </button> {/* 버튼 클릭시 객실안내를 보여줌 */}
-      <button className={selectedSection === "숙소정보" ? "active" : ""}
-            onClick={() => setSelectedSection("숙소정보")}>
-            숙소정보
-      </button> {/* 버튼 클릭시 숙소정보를 보여줌 */}
-      <button className={selectedSection === "리뷰" ? "active" : ""}
-            onClick={() => setSelectedSection("리뷰")}>
-            리뷰
-      </button> {/* 버튼 클릭시 리뷰를 보여줌 */}
-    </div>
+    
+  
   </div>
 )};
 
