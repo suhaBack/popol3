@@ -51,3 +51,7 @@ a {
   opacity: 1;
   transition: opacity 0.5s;
 }
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */

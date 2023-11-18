@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./mypage.css";
 import InfoManagement from "./infomanagement";
 import InfoEdit from "./infoedit";
-import Coupon from "./coupon";
+import Myreview from "./myreview";
 import Reservation from "./reservation";
 import Alarm from "./alarm";
 
 function Mypage() {
-  const [menu, setMenu] = useState("내 정보 관리");
+  const [menu, setMenu] = useState("리뷰");
 
   const MenuClick = (selectMenu) => {
     setMenu(selectMenu);
@@ -19,7 +19,7 @@ function Mypage() {
     setTimeout(() => {
       setEnd("end");
     }, 100);
-    return setEnd("")
+    return setEnd("");
   }, [menu]);
 
   let [userInfo, setUSerInfo] = useState({
@@ -29,34 +29,57 @@ function Mypage() {
   });
 
   return (
-    <div className="backGround">
-      <div className="maincontent container">
+    <div className="mypagebackGround">
+      <div className="mypageTitle">
+        <div>마이페이지</div>
+      </div>
+      <div className="maincontent">
         <div className="mypage_menu">
           <div>
             <nav>
               <ul>
                 <li>
-                  <a href="#" onClick={() => MenuClick("내 정보 관리")}>
+                  <a
+                    href="#"
+                    className={menu === "내 정보 관리" ? "active" : "noactive"}
+                    onClick={() => MenuClick("내 정보 관리")}
+                  >
                     내 정보 관리
                   </a>
                 </li>
                 <li>
-                  <a href="#" onClick={() => MenuClick("내 정보 변경")}>
+                  <a
+                    href="#"
+                    className={menu === "내 정보 변경" ? "active" : "noactive"}
+                    onClick={() => MenuClick("내 정보 변경")}
+                  >
                     내 정보 수정
                   </a>
                 </li>
                 <li>
-                  <a href="#" onClick={() => MenuClick("예약 내역")}>
+                  <a
+                    href="#"
+                    className={menu === "예약 내역" ? "active" : "noactive"}
+                    onClick={() => MenuClick("예약 내역")}
+                  >
                     예약 내역
                   </a>
                 </li>
                 <li>
-                  <a href="#" onClick={() => MenuClick("알림")}>
+                  <a
+                    href="#"
+                    className={menu === "알림" ? "active" : "noactive"}
+                    onClick={() => MenuClick("알림")}
+                  >
                     알림
                   </a>
                 </li>
                 <li>
-                  <a href="#" onClick={() => MenuClick("쿠폰함")}>
+                  <a
+                    href="#"
+                    className={menu === "리뷰" ? "active" : "noactive"}
+                    onClick={() => MenuClick("리뷰")}
+                  >
                     리뷰
                   </a>
                 </li>
@@ -90,9 +113,9 @@ function Mypage() {
             </div>
           )}
 
-          {menu === "쿠폰함" && (
+          {menu === "리뷰" && (
             <div className={"start " + end}>
-              <Coupon />
+              <Myreview />
             </div>
           )}
         </div>
