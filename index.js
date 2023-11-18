@@ -9,11 +9,11 @@ const port = process.env.NODE_ENV || '8080';
 
 const userRouter = require('./routes/User'); //라우터폴더 안에 User.js를 요청하는 상수(이하 동일)
 const roomsRouter = require('./routes/Rooms');
-const reviewsRouter = require('./routes/Riviews');
-const lodgingsRouter = require('./routes/Lodgings');
-const bookingsRouter = require('./routes/Bookings');
+// const reviewsRouter = require('./routes/Riviews');
+// const lodgingsRouter = require('./routes/Lodgings');
+// const bookingsRouter = require('./routes/Bookings');
 
-const { sequelize } = require('./models'); // 라우터 폴터 안에 index.js를 요청하는 상수 (index.js에 있는 상수sequelize만 지정)
+const { sequelize } = require('./models/index'); // 라우터 폴터 안에 index.js를 요청하는 상수 (index.js에 있는 상수sequelize만 지정)
 
 app.set('view engine', 'html'); //보이는 부분이 html
 
@@ -25,27 +25,29 @@ app.use(express.static(path.join(__dirname, 'client/build'))); //express.static=
 
 app.use('/user', userRouter);
 app.use('/rooms', roomsRouter);
-app.use('/reviews', reviewsRouter);
-app.use('/lodgings', lodgingsRouter);
+// app.use('/reviews', reviewsRouter);
+// app.use('/lodgings', lodgingsRouter);
 app.use('/rooms', roomsRouter);
-app.use('/bookings', bookingsRouter);
+// app.use('/bookings', bookingsRouter);
 
 app.use(express.json());
 
 var cors = require('cors');
+
 app.use(cors());
 
 app.get('/', (req,res) => {
   res.sendFile(index)
 });
 
+sequelize.sync({ force: false })
+  .then(() => {
+    console.log("DB연결 성공");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 app.listen(port, function () {
   console.log(`${port}에서 대기중`)
 }); 
-
-//백엔드 부분 해야 할 일 
-// 1. db만들기
-// 1-1 user - 아이디(PK) 비번 이름 회원등급(사업자:0, 일반회원:1(default), 관리자:2) 가입일 
-// 1-2 room - 아이디(PK) 방이름 위치 가격 설명 예약여부 ...
-// 2. 라우터 만들기 
-// 2-1 로그인 회원가입 제품등록 

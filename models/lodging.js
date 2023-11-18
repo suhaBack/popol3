@@ -5,9 +5,9 @@ const Sequelize = require("sequelize");
 // lodging_id || name || location || description || price_range || type
 // check_in_time || check_out_time || rating || review_count
 
-class Lodgings extends Sequelize.Model {
+class Lodging extends Sequelize.Model {
   static initiate(sequelize) {
-    Lodgings.init({
+    Lodging.init({
       lodging_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -113,4 +113,4 @@ class Lodgings extends Sequelize.Model {
   }
 };
 
-module.exports = Lodgings;
+module.exports = Lodging;

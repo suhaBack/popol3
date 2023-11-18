@@ -3,7 +3,6 @@ import 게스트하우스 from "./../../image/게스트하우스.png";
 import 모텔 from "./../../image/모텔.png";
 import 캠핑 from "./../../image/캠핑.png";
 import 펜션 from "./../../image/펜션.png";
-import 해외여행 from "./../../image/해외여행.png";
 import 호텔 from "./../../image/호텔.png";
 
 function MainCategory() {
@@ -41,12 +40,6 @@ function MainCategory() {
           <a href="camping">
             <img src={캠핑} width="100%"></img>
             <p>캠핑/글램핑</p>
-          </a>
-        </li>
-        <li>
-          <a href="travel">
-            <img src={해외여행} width="100%"></img>
-            <p>해외여행</p>
           </a>
         </li>
       </ul>

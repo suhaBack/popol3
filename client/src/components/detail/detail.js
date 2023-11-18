@@ -20,6 +20,7 @@ function Detail(){
     }
   };
 
+
 return(
   <div>
     <div className="top">
@@ -38,9 +39,7 @@ return(
         </div>
       </div>
     </div>
-
     
-  
   </div>
 )};
 

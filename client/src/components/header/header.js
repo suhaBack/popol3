@@ -17,9 +17,6 @@ function Header() {
       <nav className="Main_nav">
         <ul classname="Main_menu_ul">
           <li className="Main_menu_li">
-            <a href="??">내 주변</a>
-          </li>
-          <li className="Main_menu_li">
             <Link to="/mypage">예약내역</Link>
           </li>
           <li className="Main_menu_li">

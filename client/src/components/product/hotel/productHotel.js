@@ -91,10 +91,8 @@ function ProductHotel(){
           <div className="">
             <div className="button-list">
               <button>추천 순</button>
-              <button>거리 순</button>
               <button>가격 낮은 순</button>
               <button>높은 가격 순</button> 
-              &nbsp; <button>지도</button>
             </div>
             <div className="hotel-list">
               <div class="title">
