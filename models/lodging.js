@@ -70,16 +70,6 @@ class Lodging extends Sequelize.Model {
         },
         comment: "유형",
       },
-      check_in_time: {
-        type: Sequelize.TIME,
-        allowNull: false,
-        comment: "체크인 시간",
-      },
-      check_out_time: {
-        type: Sequelize.TIME,
-        allowNull: false,
-        comment: "체크아웃 시간",
-      },
       rating: {
         type: Sequelize.DECIMAL(3, 2),
         allowNull: false,
@@ -112,8 +102,8 @@ class Lodging extends Sequelize.Model {
     });
   }
   static associate(db) {
-    db.Lodging.hasMany(db.Room, { foreignKey: 'lodging_id', sourceKey: 'id'});
-    db.Lodging.hasMany(db.Review, { foreignKey: 'lodging_id', sourceKey: 'id'});
+    db.Lodging.hasMany(db.Room, { foreignKey: 'lodging_id', sourceKey: 'lodging_id'});
+    db.Lodging.hasMany(db.Review, { foreignKey: 'lodging_id', sourceKey: 'lodging_id'});
   }
 };
 

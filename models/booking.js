@@ -91,8 +91,8 @@ class Booking extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Booking.belongsTo(db.User, { foreignKey: 'user_id', sourceKey: 'id' });
-    db.Booking.belongsTo(db.Room, { foreignKey: 'room_id', sourceKey: 'id' });
+    db.Booking.belongsTo(db.User, { foreignKey: 'user_id', targetKey: 'user_id' });
+    db.Booking.belongsTo(db.Room, { foreignKey: 'room_id', targetKey: 'room_id' });
   }
 
 };

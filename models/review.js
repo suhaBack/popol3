@@ -57,8 +57,8 @@ class Review extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Review.belongsTo(db.User, { foreignKey: 'user_id', sourceKey: 'id' });
-    db.Review.belongsTo(db.Lodging, { foreignKey: 'lodging_id', sourceKey: 'id' });
+    db.Review.belongsTo(db.User, { foreignKey: 'user_id', targetKey: 'user_id' });
+    db.Review.belongsTo(db.Lodging, { foreignKey: 'lodging_id', targetKey: 'lodging_id' });
   }
 
 };
