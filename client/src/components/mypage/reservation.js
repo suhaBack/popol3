@@ -1,96 +1,131 @@
-import img1 from "./image/잠실체리.jpg";
-import img2 from "./image/잠실쿠키.jpg";
-import img3 from "./image/신림 홀리데이.jpg";
-import img4 from "./image/상봉 호텔버스.jpg";
-import img5 from "./image/용전 더휴식 노크인호텔.jpg";
-import img6 from "./image/수원역 썸.jpg";
 import "./reservation.css";
 import { useState } from "react";
 import 결과없음 from "./../image/결과없음.png";
+import 예약 from "./../image/예약.png";
 
 function Reservation() {
+  // booking데이터베이스 사용
   let [reservationdata, setReservationdata] = useState([
-    // {
-    //   id: 1,
-    //   img: img1,
-    //   title: "숙소이름1",
-    //   date: "이용날짜1",
-    // },
-    // {
-    //   id: 2,
-    //   img: img2,
-    //   title: "숙소이름2",
-    //   date: "이용날짜2",
-    // },
-    // {
-    //   id: 3,
-    //   img: img3,
-    //   title: "숙소이름3",
-    //   date: "이용날짜3",
-    // },
-  ]);
-
-  let [usedata, setUsedata] = useState([
     {
       id: 1,
-      img: img1,
       title: "숙소이름1",
-      date: "이용날짜1",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
     },
     {
       id: 2,
-      img: img2,
       title: "숙소이름2",
-      date: "이용날짜2",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
     },
     {
       id: 3,
-      img: img3,
       title: "숙소이름3",
-      date: "이용날짜3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
     },
     {
       id: 4,
-      img: img4,
-      title: "숙소이름4",
-      date: "이용날짜4",
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 5,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 6,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 7,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 8,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 9,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 10,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 11,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 12,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 13,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 14,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
     },
   ]);
 
-  let [canceldata, setCanceldata] = useState([
-    // {
-    //   id: 1,
-    //   img: img1,
-    //   title: "숙소이름1",
-    //   date: "이용날짜1",
-    // },
-    // {
-    //   id: 2,
-    //   img: img2,
-    //   title: "숙소이름2",
-    //   date: "이용날짜2",
-    // },
-    // {
-    //   id: 3,
-    //   img: img3,
-    //   title: "숙소이름3",
-    //   date: "이용날짜3",
-    // },
-    // {
-    //   id: 4,
-    //   img: img4,
-    //   title: "숙소이름4",
-    //   date: "이용날짜4",
-    // },
-  ]);
+  const itemsPerPage = 5; // 한 페이지당 표시할 공지사항 수
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 
-  console.log(reservationdata);
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = reservationdata.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(reservationdata.length / itemsPerPage);
+  const maxVisiblePages = 5; // 보이는 페이지 숫자의 최대 개수
+  let startPage = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
+  let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+
+  if (endPage - startPage < maxVisiblePages - 1) {
+    startPage = Math.max(endPage - maxVisiblePages + 1, 1);
+  }
+
+  const pageNumbers = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div id="jsw_maincontainer">
       <div className="reservationContentBox">
         <div className="usepageTitle">
-          <span>예약 내역</span>
+          <img src={예약}></img>
+          <span>
+            예약 내역
+            <span>({reservationdata.length})</span>
+          </span>
         </div>
         {reservationdata == "" ? (
           <div className="reservationComentBox">
@@ -106,102 +141,66 @@ function Reservation() {
             </div>
           </div>
         ) : (
-          <div className="usepageGridBox">
-            {reservationdata.map((a, i) => {
-              return (
-                <div class="jsw_01">
-                  <div>
-                    <img src={a.img}></img>
-                  </div>
-                  <div className="useCardBox">
-                    <div>
-                      <p>예약완료</p>
-                      <h4>{a.title}</h4>
-                      <p>{a.date}</p>
+          <div>
+            <div className="historyListBox">
+              {currentItems.map((a, i) => {
+                return (
+                  <div className="historyList" key={a.id}>
+                    <div className="historyid">{a.id}</div>
+                    <div className="historytitle">{a.title}</div>
+                    <div className="historydate">
+                      {a.startDate} ~ {a.endDate}
                     </div>
-
-                    <div className="rereservationBtnBox">
-                      <p>예약 취소</p>
+                    <div className="historycancel">
+                      <div>예약 취소</div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-
-      <div id="jsw_subcontainer">
-        <div className="usepageTitle">
-          <span>이용 내역</span>
-        </div>
-        {usedata == "" ? (
-          <div className="reservationComentBox">
-            <img src={결과없음}></img>
-            <div className="reservationComent">이용 내역이 없습니다.</div>
-            <div className="reservationSubComent">
-              최저가로 예약
-              <br />
-              숙소들을 지금 만나세요!
+                );
+              })}
             </div>
-            <div className="reservationMoreBtnBox">
-              <div>다양한 숙소 보러가기</div>
-            </div>
-          </div>
-        ) : (
-          <div className="usepageGridBox">
-            {usedata.map((a, i) => {
-              return (
-                <div class="jsw_01">
-                  <div>
-                    <img src={a.img}></img>
-                  </div>
-                  <div className="useCardBox">
-                    <div>
-                      <p>이용완료</p>
-                      <h4>{a.title}</h4>
-                      <p>{a.date}</p>
-                    </div>
-
-                    <div className="rereservationBtnBox">
-                      <p>다시 예약</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            <Pagination
+              itemsPerPage={itemsPerPage}
+              totalItems={reservationdata.length}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              totalPages={totalPages}
+              pageNumbers={pageNumbers}
+            />{" "}
+            {/* 다음 페이지로 이동시켜주는 컴포넌트 영역 */}
           </div>
         )}
       </div>
+    </div>
+  );
+}
 
-      <div className="reservationContentBox">
-        <div className="usepageTitle">
-          <span>취소 내역</span>
-        </div>
-        {canceldata == "" ? (
-          <div className="reservationComentBox">
-            <img src={결과없음}></img>
-            <div className="reservationComent">취소 내역이 없습니다.</div>
-          </div>
-        ) : (
-          <div className="usepageGridBox">
-            {usedata.map((a, i) => {
-              return (
-                <div class="jsw_01">
-                  <div>
-                    <img src={a.img}></img>
-                  </div>
-                  <div className="useCardBox" style={{display: "block"}}>
-                      <p>취소완료</p>
-                      <h4>{a.title}</h4>
-                      <p>{a.date}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
+function Pagination({
+  itemsPerPage,
+  totalItems,
+  currentPage,
+  onPageChange,
+  totalPages,
+  pageNumbers,
+}) {
+  return (
+    <div className="pagination">
+      {" "}
+      {/* 현재 페이지의 위치를 알려주는 컴포넌트 */}
+      {currentPage > 1 && (
+        <span onClick={() => onPageChange(currentPage - 1)}>&laquo;</span>
+      )}
+      {pageNumbers.map((number) => (
+        <span
+          key={number}
+          onClick={() => onPageChange(number)}
+          className={currentPage === number ? "active" : ""}
+        >
+          {number}
+        </span>
+      ))}
+      {currentPage < totalPages && (
+        <span onClick={() => onPageChange(currentPage + 1)}>&raquo;</span>
+      )}
     </div>
   );
 }
