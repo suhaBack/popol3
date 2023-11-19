@@ -16,6 +16,7 @@ import Detail from './components/detail/detail';
 import AdminPage from './components/adminPage/adminPage';
 import Register from './components/register/register';
 import Login from './components/login/login';
+import Seemore from './components/seemore/seemore';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path='/admin' element={<AdminPage></AdminPage>}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/seemore' element={<Seemore/>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
