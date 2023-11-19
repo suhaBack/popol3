@@ -1,0 +1,102 @@
+.seemorebackGround{
+  background-color: white;
+}
+
+.seemoreTitle{
+  padding: 3vw 0;
+  background-color: rgb(94, 94, 253);
+  color: white;
+  font-size: 2.5vw;
+}
+
+.seemoreTitle div{
+  margin: 0 15vw;
+}
+
+.seemore_maincontent{
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  margin: 0 15vw;
+}
+
+.seemore_menu{
+  background-color: white;
+  height: 100%;
+  padding: 1.5vw 0;
+}
+
+.seemore_menu div{
+  height: 100%;
+  border-right: 2px solid black;
+}
+
+.seemore_menu nav ul{
+  margin: 0;
+  padding: 0;
+}
+
+.seemore_menu nav ul li{
+  margin-bottom: 1vw;
+}
+
+.seemore_menu nav ul li a{
+  text-decoration: none;
+  font-size: 1.3vw;
+}
+
+
+
+.see_info{
+  padding: 1.5vw 0 1.5vw 3vw;
+  background-color: white;
+}
+
+.see_info_title{
+  padding: 0 1vw;
+  font-size: 2vw;
+  margin-bottom: 1.5vw;
+}
+
+.user_profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  margin: 1vw 0 1vw 1vw;
+}
+
+.mylist{
+  height: 100%;
+  padding: 0 1vw 1vw 1vw;
+  font-size: 1.5vw;
+}
+
+.mylist #security {
+  padding-top: 10px;  
+  font-size: 15px;
+  color: rgb(110, 110, 110);
+}
+
+.giveUpBox{
+  border-top: 0.15vw solid rgba(128, 128, 128, 0.262);
+  padding-top: 1vw;
+  font-size: 15px;
+  color: rgb(110, 110, 110);
+}
+
+.giveUpBox a {
+  text-decoration: none;
+  color: rgb(255, 0, 0);
+  }
+
+.active{
+  color: rgb(94, 94, 253);
+}
+
+.noactive{
+  color: black
+}
+
+
