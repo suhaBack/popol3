@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./alarm.css";
+import 알람 from "./../image/알람.png";
 
 function Alarm() {
   const [allChecked, setAllChecked] = useState(false);
@@ -30,11 +31,12 @@ function Alarm() {
   };
 
   return (
-    <div>
+    <div className="alarmpage">
       <div className="alarmpageTitle">
+        <img src={알람}></img>
         <span>알림 설정</span>
-        <p>특가, 쿠폰 등 이벤트 정보를 빠르게 알려드릴게요.</p>
       </div>
+      <p>특가, 쿠폰 등 이벤트 정보를 빠르게 알려드릴게요.</p>
 
       <div className="alarmtipBox">
         <i class="fa-solid fa-circle-info"></i>
@@ -43,8 +45,8 @@ function Alarm() {
           가능해요.
         </span>
       </div>
-      
-      <div className='alarmAgreeBigBox'>
+
+      <div className="alarmAgreeBigBox">
         <div className="alarmAgreeBox">
           <input
             className="form-check-input"

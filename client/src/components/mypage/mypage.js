@@ -5,9 +5,10 @@ import InfoEdit from "./infoedit";
 import Myreview from "./myreview";
 import Reservation from "./reservation";
 import Alarm from "./alarm";
+import UsedInfo from './usedinfo';
 
 function Mypage() {
-  const [menu, setMenu] = useState("리뷰");
+  const [menu, setMenu] = useState("예약 내역");
 
   const MenuClick = (selectMenu) => {
     setMenu(selectMenu);
@@ -22,6 +23,7 @@ function Mypage() {
     return setEnd("");
   }, [menu]);
 
+  //user데이터베이스 사용
   let [userInfo, setUSerInfo] = useState({
     nickName: "왔다가",
     userName: "KDT",
@@ -68,6 +70,15 @@ function Mypage() {
                 <li>
                   <a
                     href="#"
+                    className={menu === "이용 내역" ? "active" : "noactive"}
+                    onClick={() => MenuClick("이용 내역")}
+                  >
+                    이용 내역
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
                     className={menu === "알림" ? "active" : "noactive"}
                     onClick={() => MenuClick("알림")}
                   >
@@ -104,6 +115,12 @@ function Mypage() {
           {menu === "예약 내역" && (
             <div className={"start " + end}>
               <Reservation></Reservation>
+            </div>
+          )}
+
+          {menu === "이용 내역" && (
+            <div className={"start " + end}>
+              <UsedInfo></UsedInfo>
             </div>
           )}
 

@@ -1,8 +1,20 @@
+.alarmpageTitle{
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  cursor: default;
+}
+
+.alarmpageTitle img{
+  height: 70%;
+  margin-right: 0.5vw;
+}
+
 .alarmpageTitle span{
   font-size: 2vw;
 }
 
-.alarmpageTitle p{
+.alarmpage p{
   font-size: 1.2vw;
   color: rgb(126, 126, 126);
 }

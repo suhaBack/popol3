@@ -42,6 +42,13 @@ function Register() {
         <form className="registerform" onSubmit={NewUser}>
           <h3>회원가입</h3>
           <div>
+            <label>회원 유형</label>
+            <select id="userType" className="form-control">
+              <option value="customer">고객</option>
+              <option value="admin">관리자</option>
+            </select>
+          </div>
+          <div>
             <label>아이디</label>
             <input
               id="Nid"

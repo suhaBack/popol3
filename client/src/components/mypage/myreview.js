@@ -7,12 +7,15 @@ import img5 from "./image/용전 더휴식 노크인호텔.jpg";
 import img6 from "./image/히히.jpg";
 import "./myreview.css";
 import 결과없음 from "./../image/결과없음.png";
+import 리뷰 from "./../image/리뷰.png";
 
 function Myreview() {
+  //리뷰데이터데이스 사용
   let [myreview, setMyreview] = useState([
     {
       id: 1,
       img: img1,
+
       rating: 0.5,
       ment: "존나 더러워요... 가지마세요;;하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하",
       date: "2023-11-18",
@@ -64,6 +67,7 @@ function Myreview() {
   return (
     <div>
       <div className="myreviewTitle">
+        <img src={리뷰}></img>
         <span>
           작성리뷰 <span>{myreview.length}</span>개
         </span>

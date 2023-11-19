@@ -1,9 +1,19 @@
 .myreviewTitle {
-  margin-bottom: 2vw;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vw;
+  height: 10vh;
+  cursor: default;
+}
+
+.myreviewTitle img{
+  height: 100%;
+  margin-right: 0.7vw;
 }
 
 .myreviewTitle span {
   font-size: 2vw;
+  padding-bottom: 1vw;
 }
 
 .myreviewTitle span span {

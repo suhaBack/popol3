@@ -3,38 +3,15 @@ https://www.goodchoice.kr/product/search/2 */
 
 
 /* ------- 섹션1 ------- */
-.high {
-  border-style: solid;
-  border-width: 1px ;
-}
 
-.dropdown{
-  position : relative;
-  display : inline-block;
-}
 
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 1;
-}
 
-.dropdown-content a{
-  display : block;
-}
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+
 
 /* ------- 섹션2 ------- */
 
-.section-1 {
-  width:  20%;
-  float: left;
-  border-style: solid;
-  border-width: 1px ;
-}
+
 
 input {
   margin-top: 0.4rem;
@@ -43,8 +20,6 @@ input {
 /* ------- 섹션3 ------- */
 
 .section-2 {
-  width:  35%;
-  float: right;
   border-style: solid;
   border-width: 1px ;
 }
@@ -54,38 +29,114 @@ input {
   border-style: solid;
   border-width: 1px ;
 }
+
 .hotel-2 {
   height: 250px;
   border-style: solid;
   border-width: 1px ;
 }
+
 .hotel-3 {
   height: 250px;
   border-style: solid;
   border-width: 1px ;
 }
+
 .hotel-4 {
   height: 250px;
   border-style: solid;
   border-width: 1px ;
 }
+
 .hotel-5 {
   height: 250px;
   border-style: solid;
   border-width: 1px ;
 }
+
 .hotel-6 {
   height: 250px;
   border-style: solid;
   border-width: 1px ;
 }
+
 .hotel-7 {
   height: 250px;
   border-style: solid;
   border-width: 1px ;
 }
+
 .hotel-8 {
   height: 250px;
   border-style: solid;
   border-width: 1px ;
+}
+
+
+
+
+
+
+.productpageTitle{
+  padding: 3vw 0;
+  background-color: rgb(94, 94, 253);
+  color: white;
+  font-size: 2.5vw;
+}
+
+.productpageTitle div{
+  cursor: default;
+}
+
+.dropdown{
+  position : relative;
+  display : block;
+  font-size: 1.5vw;
+}
+
+.dropbtn{
+  background-color: rgb(85, 85, 226);
+  padding: 0.5vw 1vw;
+  margin-top: 0.5vw;
+  border-radius: 0.5vw;
+  display: inline-block;
+  box-shadow: 0.5px 0.5px 1px  inset black;
+}
+
+.dropdown-content{
+  display: none;
+  position : absolute;
+  z-index : 1;
+  background-color: white;
+  width: 10vw;
+  padding: 1vw;
+  border-radius: 0.3vw;
+  box-shadow: 1.5px 2px 2px gray;
+}
+
+.dropdown-content a{
+  text-decoration: none;
+  color: black;
+  font-size: 1.3vw;
+  display : block;
+  margin-bottom: 0.5vw;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.productpageGridBox{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 1.5vw;
+  padding: 2vw 0;
+}
+
+.section-1Box{
+  border-style: solid;
+  border-width: 1px ;
+  padding: 1vw;
+  position: sticky;
+  top: 5vh;
 }
