@@ -1,0 +1,21 @@
+.usedListBox {
+  border-top: 0.3vw solid rgb(66, 66, 255);
+}
+
+.usedList {
+  display: grid;
+  grid-template-columns: 1fr 6fr 2.5fr 1.5fr;
+  padding: 2vw;
+  border-bottom: 0.2vw solid rgb(94, 94, 253);
+  background-color: #ffffff;
+  font-size: 1.1vw;
+}
+
+.usedList div{
+  display: flex;
+  align-items: center;
+}
+
+.useddate{
+  text-align: center;
+}
