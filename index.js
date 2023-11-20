@@ -40,6 +40,10 @@ app.get('/', (req,res) => {
   res.sendFile(index)
 });
 
+app.get('*', (req,res) => {
+  res.sendFile(index)
+});
+
 sequelize.sync({ force: false })
   .then(() => {
     console.log("DB연결 성공");
