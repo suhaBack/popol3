@@ -17,7 +17,7 @@ function Register() {
       if (Npwd === CKpwd) {
         console.log(Nid,Npwd,CKpwd,Nemail,Nname,Nphone);
         const data={id:Nid, pwd:Npwd, name:Nname, email:Nemail, phone:Nphone}
-        await axios.post("/user", data)
+        await axios.post(`${API_URL}/user`, data)
           .then(() => {
             console.log("회원가입");
             navigate("/");

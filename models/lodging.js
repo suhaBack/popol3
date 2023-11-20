@@ -12,6 +12,7 @@ class Lodging extends Sequelize.Model {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
         unique: true,
         comment: "숙박(lodging) 식별자 ID (기본키)",
       },
@@ -53,18 +54,20 @@ class Lodging extends Sequelize.Model {
         allowNull: false,
         validate: {
           isIn: {
-            args: [['모텔', '호텔/리조트', '펜션', '게스트하우스', '캠핑/글램핑', '해외여행']], // 허용되는 유형
+            args: [['0', '1', '2', '3', '4']], // 허용되는 유형
             msg: "유효하지 않은 유형입니다."
           }
         },
-        comment: "유형",
+        comment: "0:모텔, 1:호텔/리조트, 2:펜션, 3:게스트하우스, 4:캠핑/글램핑 ",
       },
       rating: {
         type: Sequelize.DECIMAL(3, 2),
         allowNull: false,
         validate: {
-          min: { args: 0.00, msg: "평점은 0점 이상이어야 합니다." },
-          max: { args: 5.00, msg: "평점은 5점 이하이어야 합니다." }
+          len:{
+            args:[0.00,5.00],
+            msg: "평점은 0에서 5사이여야 합니다"
+          }
         },
         comment: "평점",
       },
@@ -72,8 +75,8 @@ class Lodging extends Sequelize.Model {
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
-          min: {
-            args: 0,
+          len: {
+            args: [0],
             mag: "음수가 될 수 없습니다."
           }
         },
