@@ -3,7 +3,37 @@ const User = require('../models/user');
 const router = express.Router();
 
 
-router.post('/',async (req,res,next)=>{
+router
+.post('/', async (req,res,next)=>{
+  try {
+    // console.log(req);
+    const id = req.body.id;
+    const pwd = req.body.pwd;
+    const email = req.body.email;
+    const name = req.body.name;
+    const phone = req.body.phone;
+
+    const newUser = await User.create({
+      id:id,
+      email: email,
+      password:pwd,
+      name:name,
+      contact_number:phone,
+    })
+    .then(()=>{
+      console.log("성공");
+      res.status(201).end();
+    })
+    .catch((err)=>{
+      console.log("실패");
+      console.error(err);
+      res.status(500).end();
+    })
+  } catch (error) {
+    next(error)
+  }
+})
+.post('/login',async (req,res,next)=>{
   try {
     // console.log('test',req.body.id);
     const id = req.body.id; //사용자가 로그인창에 입력한 id
@@ -25,6 +55,18 @@ router.post('/',async (req,res,next)=>{
     }
   } catch (error) {
     //에러 발생시 어떤일이 일어날지 적는 장소
+  }
+}).get('/', async (req,res,next)=>{
+  try {
+    const user_DB = await User.findAll({
+      where: {
+        id : req.query.user
+      }
+    })
+    console.log('userDB',user_DB);
+    res.status(201).json(user_DB);
+  } catch (error) {
+    next(error);
   }
 })
 

@@ -5,17 +5,18 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <div id="Main_Div">
+      <div id="Main_Div_2">
       <div className="Logo_section">
-        <Link to="/">왔다가</Link>
+        <Link to="/"><img src={logo}></img></Link>
       </div>
       <div className="Search_area">
-        <button type="button" classname="btn_srch_srch_open">
+        <button type="button" className="btn_srch_srch_open">
           <input type="text" placeholder="조금 쉬었다 가야겠는걸..."></input>
           검색
         </button>
       </div>
       <nav className="Main_nav">
-        <ul classname="Main_menu_ul">
+        <ul className="Main_menu_ul">
           <li className="Main_menu_li">
             <Link to="/mypage">예약내역</Link>
           </li>
@@ -41,6 +42,7 @@ function Header() {
           </li>
         </ul>
       </nav>
+      </div>
     </div>
   );
 }

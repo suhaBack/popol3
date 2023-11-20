@@ -48,19 +48,8 @@ class Lodging extends Sequelize.Model {
         },
         comment: "숙박시설 설명",
       },
-      price_range: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-        validate: {
-          is: {
-            args: /^\d+-\d+$/,
-            msg: "가격 범위 형식이 유효하지 않습니다."
-          }
-        },
-        comment: "가격 범위",
-      },
       type: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.INTEGER(5),
         allowNull: false,
         validate: {
           isIn: {

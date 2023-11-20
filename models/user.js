@@ -10,10 +10,15 @@ class User extends Sequelize.Model {
     User.init({
       user_id: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
+        primaryKey: true, //기본키
+        autoIncrement: true, //자동생성
         allowNull: false,
-        unique: true,
         comment: "사용자(user) 식별자 ID (기본키)",
+      },
+      id:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        comment: "이메일",
       },
       email: {
         type: Sequelize.STRING,
@@ -54,7 +59,7 @@ class User extends Sequelize.Model {
         unique: true,
         validate: {
           is: {
-            args: /^(\+\d{1,3}[- ]?)?\d{10}$/,
+            args: /^(\+\d{1,3}[- ]?)?\d{11}$/,
             msg: "유효한 연락처 형식이 아닙니다."
           }
         },
@@ -69,6 +74,7 @@ class User extends Sequelize.Model {
             msg: "유효한 역할이 아닙니다."
           }
         },
+        defaultValue: '1',
         comment: "0(일반회원), 1(사업자회원), 2(관리자)", // 사용자 역할
       },
     }, {
