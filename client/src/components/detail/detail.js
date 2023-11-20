@@ -36,10 +36,10 @@ return(
       <div className="info">
         <h2>호텔 크레센도 서울</h2>
         <p className="adress">서울 강남구 삼성동 113-5</p>
-          <div class="comment">
+          <div className="comment">
             <h4>사장님 한마디</h4>
-            <button>접기</button>
-            <div class>
+              <button>접기</button>
+            <div>
               <p>컴팩트하고 아늑한 객실과 최고급 구스다운 침구, 매트릭스(시몬스) 제공</p>
               <p>"9호선, 분당선 '선정릉역' 3번출구 도보 3분 거리 위치 / 코엑스, 봉은사 도보 이동 가능"</p>
             </div>
