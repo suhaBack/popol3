@@ -26,6 +26,18 @@ router.post('/',async (req,res,next)=>{
   } catch (error) {
     //에러 발생시 어떤일이 일어날지 적는 장소
   }
+}).get('/', async (req,res,next)=>{
+  try {
+    const user_DB = await User.findAll({
+      where: {
+        id : req.query.user
+      }
+    })
+    console.log('userDB',user_DB);
+    res.status(201).json(user_DB);
+  } catch (error) {
+    next(error);
+  }
 })
 
 module.exports = router;
