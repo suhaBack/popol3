@@ -1,22 +1,160 @@
+import { useState } from "react";
 import "./productHotel.css";
+import 싱글 from "./../../image/싱글.png";
+import 더블 from "./../../image/더블.png";
+import 트윈 from "./../../image/트윈.png";
+import product1 from "./../image/product1.jpg";
+import product2 from "./../image/product2.jpg";
+import product3 from "./../image/product3.jpg";
+import product4 from "./../image/product4.jpg";
+import product5 from "./../image/product5.jpg";
 
 function ProductHotel() {
+  let [customer, setCustomer] = useState(2);
+
+  const handleSetCustomer = (value) => {
+    // 최소값과 최댓값 설정
+    const newValue = Math.max(2, Math.min(10, value));
+    setCustomer(newValue);
+  };
+
+  let [productbasedata, setProductbasedata] = useState([
+    {
+      name: "호텔 크레센도 서울",
+      rating: 8.6,
+      review_count: 719,
+      location: "강남구 | 선정릉역 부근",
+      description: "설명",
+      type: 1,
+      img: product1,
+    },
+    {
+      name: "보코서울강남, IHG 호텔",
+      rating: 10.0,
+      review_count: 13,
+      location: "강남구 | 신사역 도보 5분",
+      description: "설명",
+      type: 1,
+      img: product2,
+    },
+    {
+      name: "호텔 선샤인 서울",
+      rating: 9.1,
+      review_count: 1047,
+      location: "강남구 | 압구정역 도보 6분",
+      description: "설명",
+      type: 1,
+      img: product3,
+    },
+    {
+      name: "엘리에나 호텔",
+      rating: 9.8,
+      review_count: 94,
+      location: "강남구",
+      description: "설명",
+      type: 1,
+      img: product4,
+    },
+    {
+      name: "호텔 리베라",
+      rating: 9.1,
+      review_count: 2803,
+      location: "강남구 | 청다멱 도보 5분",
+      description: "설명",
+      type: 1,
+      img: product5,
+    },
+    {
+      name: "호텔 크레센도 서울",
+      rating: 8.6,
+      review_count: 719,
+      location: "강남구 | 선정릉역 부근",
+      description: "설명",
+      type: 1,
+      img: product1,
+    },
+    {
+      name: "보코서울강남, IHG 호텔",
+      rating: 10.0,
+      review_count: 13,
+      location: "강남구 | 신사역 도보 5분",
+      description: "설명",
+      type: 1,
+      img: product2,
+    },
+    {
+      name: "호텔 선샤인 서울",
+      rating: 9.1,
+      review_count: 1047,
+      location: "강남구 | 압구정역 도보 6분",
+      description: "설명",
+      type: 1,
+      img: product3,
+    },
+    {
+      name: "엘리에나 호텔",
+      rating: 9.8,
+      review_count: 94,
+      location: "강남구",
+      description: "설명",
+      type: 1,
+      img: product4,
+    },
+    {
+      name: "호텔 리베라",
+      rating: 9.1,
+      review_count: 2803,
+      location: "강남구 | 청다멱 도보 5분",
+      description: "설명",
+      type: 1,
+      img: product5,
+    },
+  ]);
+
+  const itemsPerPage = 4; // 한 페이지당 표시할 공지사항 수
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = productbasedata.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(productbasedata.length / itemsPerPage);
+  const maxVisiblePages = 5; // 보이는 페이지 숫자의 최대 개수
+  let startPage = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
+  let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+
+  if (endPage - startPage < maxVisiblePages - 1) {
+    startPage = Math.max(endPage - maxVisiblePages + 1, 1);
+  }
+
+  const pageNumbers = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
+
   return (
     <div className="hotel-container">
       <div className="productpageTitle">
         <div className="container">
-          <div>호텔·리조트</div>
-          <div class="dropdown">
-            <span class="dropbtn">
-              지역선택하기 <i class="fa-solid fa-caret-down"></i>
+          <div className="productTitle">호텔·리조트</div>
+          <div>
+            <span class="dropdown">
+              <span className="dropbtn">
+                지역선택하기 <i class="fa-solid fa-caret-down"></i>
+              </span>
+              <div class="dropdown-content" style={{ margin: 0 }}>
+                <a href="#">- 서울</a>
+                <a href="#">- 경기/인천</a>
+                <a href="#">- 강원</a>
+                <a href="#">- 대전</a>
+                <a href="#">- 부산</a>
+              </div>
             </span>
-            <div class="dropdown-content" style={{ margin: 0 }}>
-              <a href="#">- 서울</a>
-              <a href="#">- 경기/인천</a>
-              <a href="#">- 강원</a>
-              <a href="#">- 대전</a>
-              <a href="#">- 부산</a>
-            </div>
           </div>
         </div>
       </div>
@@ -32,14 +170,15 @@ function ProductHotel() {
                   id="date"
                   max="2030-12-31"
                   min="2020-01-01"
-                  value="2023-01-01"
                 ></input>
               </label>
             </div>
             <div className="condition">
               <h3>상세조건</h3>
-              <button>초기화</button>
-              <button>적용</button>
+              <div className="conditionBtnBox">
+                <button className="conditionBtn1">초기화</button>
+                <button className="conditionBtn2">적용</button>
+              </div>
             </div>
             <div className="reserve">
               <ul>
@@ -63,7 +202,7 @@ function ProductHotel() {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="productType">
               <strong>호텔·리조트 유형</strong>
               <ul>
                 <li>
@@ -95,27 +234,42 @@ function ProductHotel() {
                 </li>
               </ul>
             </div>
-            <div>
-              <input
-                type="hidden"
-                id="persons"
-                name="persons"
-                value="2"
-              ></input>
+            <div className="customerCounterBox">
               <strong>인원</strong>
-              <div>
-                <button>-</button>
-                <span>2</span>
-                <button>+</button>
+              <div className="customerCounter">
+                <button
+                  onClick={() => {
+                    handleSetCustomer(customer - 1);
+                  }}
+                >
+                  -
+                </button>
+                <span>{customer}</span>
+                <button
+                  onClick={() => {
+                    handleSetCustomer(customer + 1);
+                  }}
+                >
+                  +
+                </button>
               </div>
             </div>
-            <div>
+            <div className="bedTypeBox">
               <strong>배드 타입</strong>
-              <div>
-                <button>싱글 배드</button>
-                <button>더블 배드</button>
-                <button>트윈 배드</button>
-                <button>온돌</button>
+              <div className="bedTypeGridBox">
+                <div className="bedType1">
+                  <img src={싱글} width="100%"></img>
+                  <div>싱글 배드</div>
+                </div>
+                <div className="bedType">
+                  <img src={더블} width="100%"></img>
+                  <div>더블 배드</div>
+                </div>
+                <div className="bedType3">
+                  <img src={트윈} width="100%"></img>
+                  <div>트윈 배드</div>
+                </div>
+                <div></div>
               </div>
             </div>
           </div>
@@ -123,140 +277,74 @@ function ProductHotel() {
 
         <div className="section-2">
           <div className="">
-            <div className="button-list">
-              <button>추천 순</button>
-              <button>가격 낮은 순</button>
-              <button>높은 가격 순</button>
-              &nbsp; <button>지도</button>
-            </div>
-            <div className="hotel-list">
-              <div class="title">인기추천</div>
-              <div className="hotel-1">
-                <li>
-                  <a href="">
-                    {" "}
-                    {/*div의 a태그 안에 사진이 꽉차게 들어가고 p는 사진위에 올라가야 함*/}
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
-                    </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
+            <div className="product-list">
+              <div className="productPageListTitle">
+                <div>추천 호텔</div>
+                <span className="productpageMapBtn">
+                  <i className="fa-solid fa-map"></i>지도
+                </span>
               </div>
-              <div className="hotel-2">
-                <li>
-                  <a href="">
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
+              <div className="product-list-gridBox">
+                {currentItems.map((a, i) => {
+                  return (
+                    <div className="productBgImg">
+                      <img src={a.img}></img>
+                      <div className="productpagecontect">
+                        <div className="productpagepdtitle">{a.name}</div>
+                        <div className="productpagepdevaluation">
+                          {a.rating} 만족해요 ({a.review_count})
+                        </div>
+                        <div className="productpagepdlocation">
+                          {a.location}
+                        </div>
+                      </div>
                     </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
+                  );
+                })}
               </div>
-              <div className="hotel-3">
-                <li>
-                  <a href="">
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
-                    </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div className="hotel-4">
-                <li>
-                  <a href="">
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
-                    </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div className="hotel-5">
-                <li>
-                  <a href="">
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
-                    </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div className="hotel-6">
-                <li>
-                  <a href="">
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
-                    </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div className="hotel-7">
-                <li>
-                  <a href="">
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
-                    </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div className="hotel-8">
-                <li>
-                  <a href="">
-                    <div class="name">
-                      <p>ㅁ 성급</p>
-                      <p>호텔 이름 넣는곳</p>
-                      <p>평점: 7.5</p>
-                      <p>ㅁㅁ구 | ㅁㅁ역 부근 5분거리</p>
-                    </div>
-                    <div class="price">
-                      <p>ㅁㅁㅁㅁ원</p>
-                    </div>
-                  </a>
-                </li>
-              </div>
+              <Pagination
+              itemsPerPage={itemsPerPage}
+              totalItems={productbasedata.length}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              totalPages={totalPages}
+              pageNumbers={pageNumbers}
+            />{" "}
             </div>
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Pagination({
+  itemsPerPage,
+  totalItems,
+  currentPage,
+  onPageChange,
+  totalPages,
+  pageNumbers,
+}) {
+  return (
+    <div className="pagination">
+      {" "}
+      {/* 현재 페이지의 위치를 알려주는 컴포넌트 */}
+      {currentPage > 1 && (
+        <span onClick={() => onPageChange(currentPage - 1)}>&laquo;</span>
+      )}
+      {pageNumbers.map((number) => (
+        <span
+          key={number}
+          onClick={() => onPageChange(number)}
+          className={currentPage === number ? "active" : ""}
+        >
+          {number}
+        </span>
+      ))}
+      {currentPage < totalPages && (
+        <span onClick={() => onPageChange(currentPage + 1)}>&raquo;</span>
+      )}
     </div>
   );
 }
