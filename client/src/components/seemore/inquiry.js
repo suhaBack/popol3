@@ -26,7 +26,7 @@ function Inquiry(props) {
   );
 }
 function Uicontent(props) {
-  return [<Pushinquiry1/>,<Pushinquiry2/>][props.selcet]
+  return [<Pushinquiry2/>,<Pushinquiry1/>][props.selcet]
 }
 
 export default Inquiry;
