@@ -1,27 +1,23 @@
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "axios"
+import { API_URL } from "../../config/contansts";
 
 function Register() {
   const navigate = useNavigate();
   const NewUser = async (e) => {
     e.preventDefault();
-    const id = e.target.Nid.value;
-    const pwd = e.target.Npwd.value;
+    const Nid = e.target.Nid.value;
+    const Npwd = e.target.Npwd.value;
     const CKpwd = e.target.CKpwd.value;
-    const email = e.target.Nemail.value;
-    const name = e.target.Nname.value;
-    const phone = e.target.Nphone.value;
-    if (
-      id !== "" &&
-      pwd !== "" &&
-      name !== "" &&
-      email !== "" &&
-      phone !== ""
-    ) {
-      if (pwd === CKpwd) {
-        await axios
-          .post(`/user`, { id, pwd, name, email, phone })
+    const Nemail = e.target.Nemail.value;
+    const Nname = e.target.Nname.value;
+    const Nphone = e.target.Nphone.value;
+    if (Nid,Npwd,CKpwd,Nemail,Nname,Nphone != "") {
+      if (Npwd === CKpwd) {
+        console.log(Nid,Npwd,CKpwd,Nemail,Nname,Nphone);
+        const data={id:Nid, pwd:Npwd, name:Nname, email:Nemail, phone:Nphone}
+        await axios.post("/user", data)
           .then(() => {
             console.log("회원가입");
             navigate("/");
