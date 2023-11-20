@@ -17,6 +17,7 @@ const { sequelize } = require('./models/index'); // 라우터 폴터 안에 inde
 
 app.set('view engine', 'html'); //보이는 부분이 html
 
+app.use(express.json());
 
 app.use(morgan('dev')); //미들웨어 사용선언?(app.use = 항상 실행, morgan = log를 상세히 보여줌(dev버전))
 app.use(express.urlencoded({extended:false})); //express자체 서버 설정
@@ -30,13 +31,15 @@ app.use('/rooms', roomsRouter);
 app.use('/rooms', roomsRouter);
 // app.use('/bookings', bookingsRouter);
 
-app.use(express.json());
 
 var cors = require('cors');
-
 app.use(cors());
 
 app.get('/', (req,res) => {
+  res.sendFile(index)
+});
+
+app.get('*', (req,res) => {
   res.sendFile(index)
 });
 
