@@ -44,8 +44,7 @@ function Mypage() {
                   <a
                     href="#"
                     className={menu === "내 정보 관리" ? "active" : "noactive"}
-                    onClick={() => MenuClick("내 정보 관리")}
-                  >
+                    onClick={() => MenuClick("내 정보 관리")}>
                     내 정보 관리
                   </a>
                 </li>
@@ -53,8 +52,7 @@ function Mypage() {
                   <a
                     href="#"
                     className={menu === "내 정보 변경" ? "active" : "noactive"}
-                    onClick={() => MenuClick("내 정보 변경")}
-                  >
+                    onClick={() => MenuClick("내 정보 변경")}>
                     내 정보 수정
                   </a>
                 </li>
@@ -62,8 +60,7 @@ function Mypage() {
                   <a
                     href="#"
                     className={menu === "예약 내역" ? "active" : "noactive"}
-                    onClick={() => MenuClick("예약 내역")}
-                  >
+                    onClick={() => MenuClick("예약 내역")}>
                     예약 내역
                   </a>
                 </li>
@@ -71,8 +68,7 @@ function Mypage() {
                   <a
                     href="#"
                     className={menu === "이용 내역" ? "active" : "noactive"}
-                    onClick={() => MenuClick("이용 내역")}
-                  >
+                    onClick={() => MenuClick("이용 내역")}>
                     이용 내역
                   </a>
                 </li>
