@@ -16,6 +16,7 @@ import AdminPage from './components/adminPage/adminPage';
 import Register from './components/register/register';
 import Login from './components/login/login';
 import Seemore from './components/seemore/seemore';
+import Complet from "./components/payment/complete"
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/seemore' element={<Seemore/>}></Route>
+        <Route path='/payment/complete' element={<Complet/>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
