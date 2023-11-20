@@ -31,17 +31,17 @@ function RoomReservation(){
         {roomdata.map((a, i)=>{
           return (
             <div>
-              <div class="roominfo_img">
-                <img src={aabbcc} alt=""></img>
+              <div className="roominfo_img">
+                <img src={aabbcc} id="roomimg"></img>
               </div>
               <div class="roominfo_text">
                 <h3>{a.title}</h3>
                 <p>{a.price}원</p>
-                <button>
                   <a href="/payment">
-                    <p>예약하기 / {a.price}원</p>
+                    <button>
+                      <p>예약하기 / {a.price}원</p>
+                    </button>
                   </a>
-                </button>
               </div>
             </div>
           )
