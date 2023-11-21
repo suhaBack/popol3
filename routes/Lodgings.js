@@ -1,11 +1,17 @@
 const express = require("express");
-const Lodgings = require("../models/lodgings.js");
+const Lodging = require("../models/lodging.js");
 const router = express.Router();
 
 router
   .get("/", async (req, res, next) => {
     try {
-      // lodgings로 get요청시 어떤걸 실행할지 적는 곳 (대충 데이터베이스에 있는 정보들 배열로 정렬해서 보내주려고 res뭐시기 쓸거같은데 까먹음;;)
+      const getlist = await Lodging.findAll({
+        where:{
+          type:1,
+        }
+      })
+      console.log(getlist);
+      res.status(201).send(getlist);
     } catch (error) {
       console.error(error);
       next(error);
@@ -13,7 +19,7 @@ router
   })
   .post("/", async (req, res, next) => {
     try {
-      const newLodgings = Lodgings.create({
+      const newLodgings = Lodging.create({
         lodging_id: req.body.lodging_id,
         name: req.body.name,
         location: req.body.location,

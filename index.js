@@ -32,7 +32,7 @@ app.use('/',express.static(path.join(__dirname, 'client/build'))); //express.sta
 app.use(`/user`, userRouter);
 app.use(`/rooms`, roomsRouter);
 // app.use('/reviews', reviewsRouter);
-app.use('/lodgings', lodgingsRouter);
+app.use('/lodging', lodgingsRouter);
 // app.use('/bookings', bookingsRouter);
 
 
