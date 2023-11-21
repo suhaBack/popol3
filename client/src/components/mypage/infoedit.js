@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "../config/contansts";
 
 function InfoEdit() {
   const getUser = async () => {
