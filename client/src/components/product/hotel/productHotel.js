@@ -12,9 +12,9 @@ import product4 from "./../image/product4.jpg";
 import product5 from "./../image/product5.jpg";
 
 function ProductHotel() {
-  const [productbasedata, setProductbasedata] = useState([]);
   const [customer, setCustomer] = useState(2);
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+  const [productbasedata, setProductbasedata] = useState([]);
   useEffect(()=>{
     const getList = async () => {
       await axios.get(`${API_URL}/lodging`)
@@ -30,6 +30,7 @@ function ProductHotel() {
     }
     getList();
   },[]);
+  
   console.log('new',productbasedata);
   const handleSetCustomer = (value) => {
     // 최소값과 최댓값 설정
@@ -200,7 +201,7 @@ function ProductHotel() {
             </div>
           </div>
         </div>
-
+{/*                                  */}
         <div className="section-2">
           <div className="">
             <div className="product-list">

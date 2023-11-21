@@ -12,7 +12,7 @@ function AdminPage() {
   return (
     <div className="managercontainer">
       <div className="managermenu">
-        <button onClick={() => MenuClick("대시보드")}>대시보드</button>
+        <button onClick={() => MenuClick("대시보드")}>유저목록</button>
         <button onClick={() => MenuClick("카테고리")}>카테고리</button>
         <button onClick={() => MenuClick("예약내역")}>예약내역</button>
         <button onClick={() => MenuClick("설정")}>설정</button>
@@ -21,7 +21,7 @@ function AdminPage() {
       <div className="board">
           {managermenu === "대시보드" && (
             <div>
-             대시보드
+             유저목록
             </div>
           )}
 
