@@ -32,12 +32,14 @@ function Header() {
             <div>
               <p>{login}님 환영합니다.</p>
               <a onClick={LogOut}>로그아웃</a>
+              <Link to={'/mypage'}>마이페이지</Link>
             </div>
           ): (
             <li className="Main_menu_li">
               <Link to="/login">로그인</Link>
             </li>
           )}
+          
           <li className="Main_menu_li">
             <a href="/seemore">더 보기</a>
             <ul className="drop_menu" style={{ display: "none" }}>

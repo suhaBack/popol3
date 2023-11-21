@@ -4,6 +4,16 @@ const router = express.Router();
 
 
 router
+.get('/admin',async (req,res,next)=>{
+  try {
+    const userData = await User.findAll()
+    // console.log(userData);
+    res.status(201).send(userData);
+  } catch (err) {
+    console.error(err);
+    res.status(501).end();
+  }
+})
 .post('/', async (req,res,next)=>{
   try {
     // console.log(req);
