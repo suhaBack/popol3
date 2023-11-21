@@ -62,154 +62,44 @@ function ProductHotel() {
     pageNumbers.push(i);
   }
 
-
   return (
-    <div className="hotel-container">
-      <div className="productpageTitle">
-        <div className="container">
-          <div className="productTitle">호텔·리조트</div>
-          <div>
-            <span class="dropdown">
-              <span className="dropbtn">
-                지역선택하기 <i class="fa-solid fa-caret-down"></i>
-              </span>
-              <div class="dropdown-content" style={{ margin: 0 }}>
-                <a href="#">- 서울</a>
-                <a href="#">- 경기/인천</a>
-                <a href="#">- 강원</a>
-                <a href="#">- 대전</a>
-                <a href="#">- 부산</a>
-              </div>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className="productpageGridBox container">
-        <div className="section-1">
-          <div className="section-1Box">
-            <div className="select-date">
-              <h3>날짜</h3>
-              <label for="date">
-                <input
-                  type="date"
-                  id="date"
-                  max="2030-12-31"
-                  min="2020-01-01"
-                ></input>
-              </label>
-            </div>
-            <div className="condition">
-              <h3>상세조건</h3>
-              <div className="conditionBtnBox">
-                <button className="conditionBtn1">초기화</button>
-                <button className="conditionBtn2">적용</button>
-              </div>
-            </div>
-            <div className="reserve">
-              <ul>
-                <li>
-                  <input
-                    type="checkbox"
-                    id="reserve"
-                    name="reservebox"
-                    value="reserve"
-                  />
-                  <label for="reserve">예약가능</label>
-                </li>
-                <li>
-                  <input
-                    type="checkbox"
-                    id="promotion"
-                    name="promotionbox"
-                    value="promotion"
-                  />
-                  <label for="promotion">프로모션</label>
-                </li>
-              </ul>
-            </div>
-            <div className="productType">
-              <strong>호텔·리조트 유형</strong>
-              <ul>
-                <li>
-                  <input
-                    type="checkbox"
-                    id="5stars"
-                    name="5starsbox"
-                    value="5stars"
-                  />
-                  <label for="5stars">5성급</label>
-                </li>
-                <li>
-                  <input
-                    type="checkbox"
-                    id="Express1"
-                    name="Express1box"
-                    value="Express1"
-                  />
-                  <label for="Express1">특1급</label>
-                </li>
-                <li>
-                  <input
-                    type="checkbox"
-                    id="Express"
-                    name="Expressbox"
-                    value="Express"
-                  />
-                  <label for="Express">특급</label>
-                </li>
-              </ul>
-            </div>
-            <div className="customerCounterBox">
-              <strong>인원</strong>
-              <div className="customerCounter">
-                <button
-                  onClick={() => {
-                    handleSetCustomer(customer - 1);
-                  }}
-                >
-                  -
-                </button>
-                <span>{customer}</span>
-                <button
-                  onClick={() => {
-                    handleSetCustomer(customer + 1);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-            <div className="bedTypeBox">
-              <strong>배드 타입</strong>
-              <div className="bedTypeGridBox">
-                <div className="bedType1">
-                  <img src={싱글} width="100%"></img>
-                  <div>싱글 배드</div>
-                </div>
-                <div className="bedType">
-                  <img src={더블} width="100%"></img>
-                  <div>더블 배드</div>
-                </div>
-                <div className="bedType3">
-                  <img src={트윈} width="100%"></img>
-                  <div>트윈 배드</div>
-                </div>
-                <div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="section-2">
-          <div className="">
-            <div className="product-list">
-              <div className="productPageListTitle">
-                <div>추천 호텔</div>
-                <span className="productpageMapBtn">
-                  <i className="fa-solid fa-map"></i>지도
+    <div className="backGround">
+      <div className="hotel-container">
+        <div className="productpageTitle">
+          <div className="container">
+            <div className="productTitle">호텔·리조트</div>
+            <div>
+              <span class="dropdown">
+                <span className="dropbtn">
+                  지역선택하기 <i class="fa-solid fa-caret-down"></i>
                 </span>
+                <div class="dropdown-content" style={{ margin: 0 }}>
+                  <a href="#">- 서울</a>
+                  <a href="#">- 경기/인천</a>
+                  <a href="#">- 강원</a>
+                  <a href="#">- 대전</a>
+                  <a href="#">- 부산</a>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="productpageGridBox container">
+          <div className="section-1">
+            <div className="section-1Box">
+              <div className="select-date">
+                <h3>날짜</h3>
+                <label for="date">
+                  <input
+                    type="date"
+                    id="date"
+                    max="2030-12-31"
+                    min="2020-01-01"
+                  ></input>
+                </label>
               </div>
+<<<<<<< Updated upstream
               <div className="product-list-gridBox">
                 {currentItems.map((a) => {
                   return(
@@ -227,15 +117,146 @@ function ProductHotel() {
                   </div>
                 )
                 })}
+=======
+              <div className="condition">
+                <h3>상세조건</h3>
+                <div className="conditionBtnBox">
+                  <button className="conditionBtn1">초기화</button>
+                  <button className="conditionBtn2">적용</button>
+                </div>
               </div>
-              <Pagination
-              itemsPerPage={itemsPerPage}
-              totalItems={productbasedata.length}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-              totalPages={totalPages}
-              pageNumbers={pageNumbers}
-            />{" "}
+              <div className="reserve">
+                <ul>
+                  <li>
+                    <input
+                      type="checkbox"
+                      id="reserve"
+                      name="reservebox"
+                      value="reserve"
+                    />
+                    <label for="reserve">예약가능</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      id="promotion"
+                      name="promotionbox"
+                      value="promotion"
+                    />
+                    <label for="promotion">프로모션</label>
+                  </li>
+                </ul>
+              </div>
+              <div className="productType">
+                <strong>호텔·리조트 유형</strong>
+                <ul>
+                  <li>
+                    <input
+                      type="checkbox"
+                      id="5stars"
+                      name="5starsbox"
+                      value="5stars"
+                    />
+                    <label for="5stars">5성급</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      id="Express1"
+                      name="Express1box"
+                      value="Express1"
+                    />
+                    <label for="Express1">특1급</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      id="Express"
+                      name="Expressbox"
+                      value="Express"
+                    />
+                    <label for="Express">특급</label>
+                  </li>
+                </ul>
+              </div>
+              <div className="customerCounterBox">
+                <strong>인원</strong>
+                <div className="customerCounter">
+                  <button
+                    onClick={() => {
+                      handleSetCustomer(customer - 1);
+                    }}
+                  >
+                    -
+                  </button>
+                  <span>{customer}</span>
+                  <button
+                    onClick={() => {
+                      handleSetCustomer(customer + 1);
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="bedTypeBox">
+                <strong>배드 타입</strong>
+                <div className="bedTypeGridBox">
+                  <div className="bedType1">
+                    <img src={싱글} width="100%"></img>
+                    <div>싱글 배드</div>
+                  </div>
+                  <div className="bedType">
+                    <img src={더블} width="100%"></img>
+                    <div>더블 배드</div>
+                  </div>
+                  <div className="bedType3">
+                    <img src={트윈} width="100%"></img>
+                    <div>트윈 배드</div>
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="section-2">
+            <div className="">
+              <div className="product-list">
+                <div className="productPageListTitle">
+                  <div>추천 호텔</div>
+                  <span className="productpageMapBtn">
+                    <i className="fa-solid fa-map"></i>지도
+                  </span>
+                </div>
+                <div className="product-list-gridBox">
+                  {currentItems.map((a, i) => {
+                    return (
+                      <div className="productBgImg">
+                        <img src={a.img}></img>
+                        <div className="productpagecontect">
+                          <div className="productpagepdtitle">{a.name}</div>
+                          <div className="productpagepdevaluation">
+                            {a.rating} 만족해요 ({a.review_count})
+                          </div>
+                          <div className="productpagepdlocation">
+                            {a.location}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <Pagination
+                  itemsPerPage={itemsPerPage}
+                  totalItems={productbasedata.length}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                  totalPages={totalPages}
+                  pageNumbers={pageNumbers}
+                />{" "}
+>>>>>>> Stashed changes
+              </div>
             </div>
           </div>
         </div>

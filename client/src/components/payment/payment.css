@@ -28,15 +28,16 @@
 }
 
 .paymentTitleBox{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 9fr;
   align-items: center;
-  height: 10vh;
   margin-top: 1vw;
   margin-bottom: 1vw;
 }
 
 .paymentTitleBox img{
   padding-right: 1vw;
+  width: 100%;
 }
 
 .reservationInputBox {
