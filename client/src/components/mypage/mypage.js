@@ -6,6 +6,7 @@ import Myreview from "./myreview";
 import Reservation from "./reservation";
 import Alarm from "./alarm";
 import UsedInfo from './usedinfo';
+import Registration from "./registration";
 
 function Mypage() {
   const [menu, setMenu] = useState("예약 내역");
@@ -76,8 +77,7 @@ function Mypage() {
                   <a
                     href="#"
                     className={menu === "알림" ? "active" : "noactive"}
-                    onClick={() => MenuClick("알림")}
-                  >
+                    onClick={() => MenuClick("알림")}>
                     알림
                   </a>
                 </li>
@@ -85,9 +85,16 @@ function Mypage() {
                   <a
                     href="#"
                     className={menu === "리뷰" ? "active" : "noactive"}
-                    onClick={() => MenuClick("리뷰")}
-                  >
+                    onClick={() => MenuClick("리뷰")}>
                     리뷰
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className={menu === "방 등록하기" ? "active" : "noactive"}
+                    onClick={() => MenuClick("방 등록하기")}>
+                    방 등록하기
                   </a>
                 </li>
               </ul>
@@ -129,6 +136,12 @@ function Mypage() {
           {menu === "리뷰" && (
             <div className={"start " + end}>
               <Myreview />
+            </div>
+          )}
+
+          {menu === "방 등록하기" && (
+            <div className={"start " + end}>
+              <Registration />
             </div>
           )}
         </div>
