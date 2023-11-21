@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import axios from "axios";
+import { API_URL } from "../../../config/contansts";
 import "./productHotel.css";
 import 싱글 from "./../../image/싱글.png";
 import 더블 from "./../../image/더블.png";
@@ -10,109 +12,34 @@ import product4 from "./../image/product4.jpg";
 import product5 from "./../image/product5.jpg";
 
 function ProductHotel() {
-  let [customer, setCustomer] = useState(2);
-
+  const [customer, setCustomer] = useState(2);
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+  const [productbasedata, setProductbasedata] = useState([]);
+  useEffect(()=>{
+    const getList = async () => {
+      await axios.get(`${API_URL}/lodging`)
+      .then((result)=>{
+        const items = result.data
+        console.log("items",items);
+        setProductbasedata(items)
+      })
+      .catch((e)=>{
+        console.log(e);
+      })
+      
+    }
+    getList();
+  },[]);
+  
+  console.log('new',productbasedata);
   const handleSetCustomer = (value) => {
     // 최소값과 최댓값 설정
     const newValue = Math.max(2, Math.min(10, value));
     setCustomer(newValue);
   };
 
-  let [productbasedata, setProductbasedata] = useState([
-    {
-      name: "호텔 크레센도 서울",
-      rating: 8.6,
-      review_count: 719,
-      location: "강남구 | 선정릉역 부근",
-      description: "설명",
-      type: 1,
-      img: product1,
-    },
-    {
-      name: "보코서울강남, IHG 호텔",
-      rating: 10.0,
-      review_count: 13,
-      location: "강남구 | 신사역 도보 5분",
-      description: "설명",
-      type: 1,
-      img: product2,
-    },
-    {
-      name: "호텔 선샤인 서울",
-      rating: 9.1,
-      review_count: 1047,
-      location: "강남구 | 압구정역 도보 6분",
-      description: "설명",
-      type: 1,
-      img: product3,
-    },
-    {
-      name: "엘리에나 호텔",
-      rating: 9.8,
-      review_count: 94,
-      location: "강남구",
-      description: "설명",
-      type: 1,
-      img: product4,
-    },
-    {
-      name: "호텔 리베라",
-      rating: 9.1,
-      review_count: 2803,
-      location: "강남구 | 청다멱 도보 5분",
-      description: "설명",
-      type: 1,
-      img: product5,
-    },
-    {
-      name: "호텔 크레센도 서울",
-      rating: 8.6,
-      review_count: 719,
-      location: "강남구 | 선정릉역 부근",
-      description: "설명",
-      type: 1,
-      img: product1,
-    },
-    {
-      name: "보코서울강남, IHG 호텔",
-      rating: 10.0,
-      review_count: 13,
-      location: "강남구 | 신사역 도보 5분",
-      description: "설명",
-      type: 1,
-      img: product2,
-    },
-    {
-      name: "호텔 선샤인 서울",
-      rating: 9.1,
-      review_count: 1047,
-      location: "강남구 | 압구정역 도보 6분",
-      description: "설명",
-      type: 1,
-      img: product3,
-    },
-    {
-      name: "엘리에나 호텔",
-      rating: 9.8,
-      review_count: 94,
-      location: "강남구",
-      description: "설명",
-      type: 1,
-      img: product4,
-    },
-    {
-      name: "호텔 리베라",
-      rating: 9.1,
-      review_count: 2803,
-      location: "강남구 | 청다멱 도보 5분",
-      description: "설명",
-      type: 1,
-      img: product5,
-    },
-  ]);
 
   const itemsPerPage = 4; // 한 페이지당 표시할 공지사항 수
-  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -274,7 +201,7 @@ function ProductHotel() {
             </div>
           </div>
         </div>
-
+{/*                                  */}
         <div className="section-2">
           <div className="">
             <div className="product-list">
@@ -285,21 +212,21 @@ function ProductHotel() {
                 </span>
               </div>
               <div className="product-list-gridBox">
-                {currentItems.map((a, i) => {
-                  return (
-                    <div className="productBgImg">
-                      <img src={a.img}></img>
-                      <div className="productpagecontect">
-                        <div className="productpagepdtitle">{a.name}</div>
-                        <div className="productpagepdevaluation">
-                          {a.rating} 만족해요 ({a.review_count})
-                        </div>
-                        <div className="productpagepdlocation">
-                          {a.location}
-                        </div>
+                {currentItems.map((a) => {
+                  return(
+                  <div className="productBgImg">
+                    <img src={a.img}></img>
+                    <div className="productpagecontect">
+                      <div className="productpagepdtitle">{a.name}</div>
+                      <div className="productpagepdevaluation">
+                        {a.rating} 만족해요 ({a.review_count})
+                      </div>
+                      <div className="productpagepdlocation">
+                        {a.location}
                       </div>
                     </div>
-                  );
+                  </div>
+                )
                 })}
               </div>
               <Pagination

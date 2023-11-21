@@ -11,7 +11,7 @@ const port = process.env.NODE_ENV || '8080';
 const userRouter = require('./routes/User'); //라우터폴더 안에 User.js를 요청하는 상수(이하 동일)
 const roomsRouter = require('./routes/Rooms');
 // const reviewsRouter = require('./routes/Riviews');
-// const lodgingsRouter = require('./routes/Lodgings');
+const lodgingsRouter = require('./routes/Lodgings');
 // const bookingsRouter = require('./routes/Bookings');
 
 const { sequelize } = require('./models/index'); // 라우터 폴터 안에 index.js를 요청하는 상수 (index.js에 있는 상수sequelize만 지정)
@@ -24,7 +24,7 @@ app.use(morgan('dev')); //미들웨어 사용선언?(app.use = 항상 실행, mo
 app.use(express.urlencoded({extended:false})); //express자체 서버 설정
 
 var cors = require('cors');
-const Lodging = require('./models/lodging');
+
 app.use(cors());
 
 app.use('/',express.static(path.join(__dirname, 'client/build'))); //express.static=기본경로
@@ -32,7 +32,7 @@ app.use('/',express.static(path.join(__dirname, 'client/build'))); //express.sta
 app.use(`/user`, userRouter);
 app.use(`/rooms`, roomsRouter);
 // app.use('/reviews', reviewsRouter);
-// app.use('/lodgings', lodgingsRouter);
+app.use('/lodging', lodgingsRouter);
 // app.use('/bookings', bookingsRouter);
 
 
