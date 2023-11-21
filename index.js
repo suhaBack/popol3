@@ -7,6 +7,7 @@ const fs = require('fs');
 const index = path.join(__dirname, 'client/build/index.html')
 const port = process.env.NODE_ENV || '8080';
 
+
 const userRouter = require('./routes/User'); //라우터폴더 안에 User.js를 요청하는 상수(이하 동일)
 const roomsRouter = require('./routes/Rooms');
 // const reviewsRouter = require('./routes/Riviews');
@@ -22,18 +23,18 @@ app.use(express.json());
 app.use(morgan('dev')); //미들웨어 사용선언?(app.use = 항상 실행, morgan = log를 상세히 보여줌(dev버전))
 app.use(express.urlencoded({extended:false})); //express자체 서버 설정
 
-app.use(express.static(path.join(__dirname, 'client/build'))); //express.static=기본경로
+var cors = require('cors');
+const Lodging = require('./models/lodging');
+app.use(cors());
 
-app.use('/user', userRouter);
-app.use('/rooms', roomsRouter);
+app.use('/',express.static(path.join(__dirname, 'client/build'))); //express.static=기본경로
+
+app.use(`/user`, userRouter);
+app.use(`/rooms`, roomsRouter);
 // app.use('/reviews', reviewsRouter);
 // app.use('/lodgings', lodgingsRouter);
-app.use('/rooms', roomsRouter);
 // app.use('/bookings', bookingsRouter);
 
-
-var cors = require('cors');
-app.use(cors());
 
 app.get('/', (req,res) => {
   res.sendFile(index)

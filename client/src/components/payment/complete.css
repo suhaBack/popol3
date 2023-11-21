@@ -1,0 +1,17 @@
+
+.complete_container {
+  margin: auto;
+  margin-top: 200px;
+  width: 30%;
+  height: 50%;
+  /* border-radius: 1px;
+  border: 1px solid black;  */
+}
+
+.complete_container a {
+  text-decoration: none;
+}
+
+.gotomain{
+  margin-left: 10px;
+}

@@ -1,8 +1,16 @@
 import "./header.css";
 import logo from "./../image/로고.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getCookie, removeCookie } from "../../useCookies";
+import axios from "axios";
 
 function Header() {
+  const navigate = useNavigate();
+  const login = getCookie("login");
+  const LogOut = ()=>{
+    removeCookie("login");
+    navigate('/');
+  }
   return (
     <div id="Main_Div">
       <div id="Main_Div_2">
@@ -17,9 +25,19 @@ function Header() {
       </div>
       <nav className="Main_nav">
         <ul className="Main_menu_ul">
-          <li className="Main_menu_li">
+          {/* <li className="Main_menu_li">
             <Link to="/mypage">예약내역</Link>
-          </li>
+          </li> */}
+          {login ? (
+            <div>
+              <p>{login}님 환영합니다.</p>
+              <a onClick={LogOut}>로그아웃</a>
+            </div>
+          ): (
+            <li className="Main_menu_li">
+              <Link to="/login">로그인</Link>
+            </li>
+          )}
           <li className="Main_menu_li">
             <a href="/seemore">더 보기</a>
             <ul className="drop_menu" style={{ display: "none" }}>
@@ -36,9 +54,6 @@ function Header() {
                 <a href="??">라</a>
               </li>
             </ul>
-          </li>
-          <li className="Main_menu_li">
-            <Link to="/login">로그인</Link>
           </li>
         </ul>
       </nav>

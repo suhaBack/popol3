@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import "./payment.css";
 import 할인 from "./../image/할인.png";
 import 결제수단 from "./../image/결제수단.png";
@@ -234,7 +235,13 @@ function Payment() {
                 </li>
               </ul>
             </div>
-            <div className="paymentBtn">결제하기</div>
+            <div>
+              <Link to="./complete">
+                <button className="paymentBtn">
+                  결제하기
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -139,6 +139,10 @@
   transition: background-color 0.4s;
 }
 
+.paymentBtn a{
+  color: white;
+}
+
 .paymentBtn:hover{
   background-color: rgb(66, 66, 255);
 }

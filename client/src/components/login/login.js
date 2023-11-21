@@ -1,25 +1,39 @@
+import axios from "axios";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../../config/contansts";
+import { setCookie } from "../../useCookies";
+
+const initialIconColors = {
+  emailIcon: "gray",
+  pwdIcon: "gray",
+};
+
+const changeIconColor = (iconId, color) => {
+  const icon = document.getElementById(iconId);
+  if (icon) {
+    icon.style.color = color;
+  }
+};
+
+// 이메일 형식 검사 함수
+function validateEmail(email) {
+  const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  return re.test(email);
+}
+
+// 비밀번호 강도 검사 함수 (6자 이상)
+function validatePassword(pwd) {
+  return pwd.length >= 6;
+}
 
 function Login() {
   const navigate = useNavigate();
-
-  // 이메일 형식 검사 함수
-  function validateEmail(email) {
-    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return re.test(email);
-  }
-
-  // 비밀번호 강도 검사 함수 (6자 이상)
-  function validatePassword(pwd) {
-    return pwd.length >= 6;
-  }
-
+  
   // 로그인 처리 함수
   const handleLogin = async (e) => {
-    let errorMessage = "";
-
     e.preventDefault();
+    let errorMessage = "";
     const email = e.target.Nemail.value;
     const pwd = e.target.Npwd.value;
 
@@ -43,19 +57,18 @@ function Login() {
     if (errorMessage) {
       alert(errorMessage);
     }
+    await axios.post(`${API_URL}/user/login`,{email,pwd})
+    .then((response)=>{
+      console.log('로그인 성공');
+      console.log(response.data);
+      setCookie("login",response.data.id)
+      navigate('/');
+    })
+    .catch((err)=>{
+      console.error(err);
+    })
   };
 
-  const initialIconColors = {
-    emailIcon: "gray",
-    pwdIcon: "gray",
-  };
-
-  const changeIconColor = (iconId, color) => {
-    const icon = document.getElementById(iconId);
-    if (icon) {
-      icon.style.color = color;
-    }
-  };
 
   const resetOtherIconColors = (clickedIconId) => {
     Object.keys(initialIconColors).forEach((iconId) => {
@@ -71,7 +84,7 @@ function Login() {
         <form className="sform" onSubmit={handleLogin}>
           <Link to="/">
             <h3>
-              왔다<spna className="ga">가!</spna>
+              왔다<span className="ga">가!</span>
             </h3>
           </Link>
 
@@ -82,7 +95,7 @@ function Login() {
               resetOtherIconColors("emailIcon");
             }}
           >
-            <i id="emailIcon" class="fa-solid fa-envelope"></i>
+            <i id="emailIcon" className="fa-solid fa-envelope"></i>
             <input id="Nemail" type="email" placeholder="Email" />
           </div>
 
@@ -93,7 +106,7 @@ function Login() {
               resetOtherIconColors("pwdIcon");
             }}
           >
-            <i id="pwdIcon" class="fa-solid fa-lock"></i>
+            <i id="pwdIcon" className="fa-solid fa-lock"></i>
             <input id="Npwd" type="password" placeholder="Password" />
           </div>
 
