@@ -35,6 +35,7 @@ https://www.goodchoice.kr/product/search/2 */
   display: block;
   box-shadow: 0.5px 0.5px 1px inset black;
   width: 13vw;
+  cursor: pointer;
 }
 
 .dropdown-content {
@@ -264,7 +265,7 @@ input[type="checkbox"] {
   transition: filter 0.5s;
 }
 
-.productBgImg img:hover{
+.productBgImg:hover img{
   filter: brightness(85%);
 }
 
