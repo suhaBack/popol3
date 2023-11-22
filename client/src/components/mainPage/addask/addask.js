@@ -2,22 +2,14 @@ import "./addask.css";
 import 광고 from "./../../image/광고.png"
 import 숙소등록 from "./../../image/숙소등록.png"
 
-function advertising(){
+const advertising= ()=>{
   alert("신규 업체 가입 문의는 고객센터 (1234-5678) 로 연락해주세요");
 }
-window.onload = function () {
-
-  var el = document.getElementById("my-div");
-
-  el.onclick =  advertising;
-
-}
-
 
 function Addask() {
   return (
     <div className="addAskGridBox1">
-      <div id="my-div" className="addAskGridBox2" onclick='advertising()'>
+      <div id="my-div" className="addAskGridBox2" onClick={advertising}>
         <div className="addAskContentBox">
           <div className='addAskTitle'>왔다가<br/>광고 신청하기</div>
           <div className='addAskContent'>고정고객 확보,<br/>신규회원 유치 가능합니다.</div>
