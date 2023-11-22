@@ -49,7 +49,6 @@ function Registration() {
       }
     }
 
-
   return (
     <div className="registration_container">
       <div className="categoryType">
@@ -154,4 +153,5 @@ function Registration() {
     </div>
   );
 };
+
 export default Registration;
