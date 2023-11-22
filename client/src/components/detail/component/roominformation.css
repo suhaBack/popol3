@@ -10,3 +10,74 @@
 .seller_info_hidden {
   display: none;
 }
+
+
+.basic_info, .convenient_info, .seller_info{
+  border-bottom: 0.2vw solid gray;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+.basic_info_title div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw;
+}
+
+.convenient_info_title div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw;
+}
+
+.seller_info_title div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw;
+}
+
+.basic_info_title div i{
+  margin-right: 2vw;
+}
+
+.convenient_info_title div i{
+  margin-right: 2vw;
+}
+
+.seller_info_title div i{
+  margin-right: 2vw;
+}
+
+
+.basic_info_visible{
+  background-color: rgb(202, 202, 202);
+  padding: 2vw;
+  font-size: 1.2vw;
+}
+
+.convenient_info_visible{
+  background-color: rgb(202, 202, 202);
+  padding: 2vw;
+  font-size: 1.2vw;
+}
+
+.seller_info_visible{
+  background-color: rgb(202, 202, 202);
+  padding: 2vw;
+  font-size: 1.2vw;
+}
+
+.convenient_info_visible p{
+  margin: 0;
+}
+
+.seller_info_visible p{
+  margin: 0;
+}
+
+.basic_info_visible p{
+  margin: 0;
+}

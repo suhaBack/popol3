@@ -1,13 +1,54 @@
-
-.detail_container {
-  text-align: center ;
+.detailpage{
+  padding: 2vw 0;
+}
+.detailGridBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3vw;
 }
 
-.left {
-  float: left;
+.detailImgdBox img{
+  width: 100%;
 }
 
-
-.tab {
-  padding-top: 500px;
+.detailPageTab{
+  font-size: 1.5vw;
+  margin-top: 4vw;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.336);
 }
+
+.detailPageTab .active{
+  border-bottom: 0.3vw solid rgb(94, 94, 253);
+}
+
+.detailPageTab button{
+  border: none;
+  background-color: white;
+  margin-right: 1vw;
+  padding-bottom: 0.5vw;
+}
+
+.right .info h2{
+  font-size: 2vw;
+}
+
+.adress{
+  font-size: 1.2vw;
+  color: rgb(81, 81, 81);
+}
+
+.comment{
+  padding: 1.5vw;
+  border-radius: 0.3vw;
+  background-color: rgb(238, 236, 236);
+}
+
+.comment h4{
+  font-size: 1.5vw;
+}
+
+.comment div{
+  font-size: 1.1vw;
+  color: rgb(81, 81, 81)
+}
+

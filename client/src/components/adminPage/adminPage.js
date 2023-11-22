@@ -4,14 +4,13 @@ import axios from "axios";
 import { API_URL } from "../config/contansts";
 
 function AdminPage() {
-  const [managermenu, setManagermenu] = useState('유저목록');
+  const [managermenu, setManagermenu] = useState("유저목록");
   const [userList, setUserList] = useState([]);
   const [lodgingList, setLodgingList] = useState([]);
   const [bookingList, setBookingList] = useState([]);
   const MenuClick = (selectMenu) => {
     setManagermenu(selectMenu);
   };
-
   useEffect(()=>{
     const getList = async () => {
       await axios.get(`${API_URL}/user/admin`)
@@ -29,7 +28,6 @@ function AdminPage() {
     }
     getList();
   },[]);
-
   return (
     <div className="managercontainer">
       <div className="managermenu">
@@ -75,7 +73,6 @@ function AdminPage() {
               )})}
            </div>
           )}
-
           {managermenu === "예약내역" && (
             <div>
             예약내역
@@ -94,7 +91,6 @@ function AdminPage() {
               )})}
            </div>
           )}
-
           {managermenu === "설정" && (
             <div>
             설정
@@ -102,7 +98,7 @@ function AdminPage() {
           )}
       </div>
     </div>
-  )
+  );
 }
 
 export default AdminPage;

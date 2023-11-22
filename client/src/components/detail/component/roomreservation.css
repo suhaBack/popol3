@@ -1,11 +1,78 @@
-
-
-
-#roomimg {
-  width: 40%;
-
+.RoomReservation_container{
+  margin-top: 0.5vw;
 }
 
-.roominfo_img {
-  float: left;
+.roominfo_box{
+  display:grid;
+  grid-template-columns: 2fr 3fr;
+  column-gap: 2vw;
+  border-radius: 0.5vw;
+  border: 0.2vw solid rgb(94, 94, 253);
+  padding: 2vw;
+  margin-bottom: 2vw;
+  background-color: white;
+}
+
+.roominfo_img img{
+  width: 100%;
+}
+
+.roominfo_text{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.roominfo_text_flex{
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.roominfo_text_flex h3{
+  font-size: 2vw;
+}
+
+.roominfo_text_flex div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5vw;
+}
+
+.roominfo_reservationBtn{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.roominfo_importent{
+  padding-top: 1vw;
+}
+
+.roominfo_importent div{
+  font-size: 1vw;
+}
+
+.roominfo_reservationBtn a{
+  display: block;
+  width: 100%;
+}
+
+.roominfo_reservationBtn a button{
+  width: 100%;
+  padding: 0.6vw 1vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: rgb(94, 94, 253);
+  transition: background-color 0.3s;
+  color: white;
+}
+
+.roominfo_reservationBtn a button:hover{
+  background-color: rgb(66, 66, 255);
+}
+
+.roominfo_reservationBtn a button p{
+  margin: 0;
+  font-size: 1.2vw;
 }
