@@ -1,4 +1,4 @@
-import "./header.css";
+import "./test.css";
 import logo from "./../image/로고.png";
 import search from "./../image/검색.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ var obj = $('#'+id);
   }
 }
 
-function Header() {
+function Test() {
   const navigate = useNavigate();
   const login = getCookie("login");
   const LogOut = ()=>{
@@ -38,13 +38,24 @@ function Header() {
       <div className="Logo_section">
         <Link to="/"><img src={logo}></img></Link>
       </div>
+
+
+
+
       <div className="Search_area">
-        <button type="button" className="btn_srch_srch_open">
           <input type="text" id="search_place" placeholder="조금 쉬었다 가야겠는걸..." ></input>
-          
-          <img src={search} onClick={display_popLayer('search_place')}></img>
+        
+
+
+        <button type="button" className="btn_srch_srch_open">
+          <input type="image" onClick={display_popLayer('search_place')} src={search} />
         </button>
       </div>
+
+
+
+
+
       <nav className="Main_nav">
         <ul className="Main_menu_ul">
           
@@ -88,4 +99,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Test;
