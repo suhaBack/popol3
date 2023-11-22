@@ -12,7 +12,7 @@ const userRouter = require('./routes/User'); //라우터폴더 안에 User.js를
 const roomsRouter = require('./routes/Rooms');
 // const reviewsRouter = require('./routes/Riviews');
 const lodgingsRouter = require('./routes/Lodgings');
-// const bookingsRouter = require('./routes/Bookings');
+const bookingsRouter = require('./routes/Bookings');
 
 const { sequelize } = require('./models/index'); // 라우터 폴터 안에 index.js를 요청하는 상수 (index.js에 있는 상수sequelize만 지정)
 
@@ -33,7 +33,7 @@ app.use(`/user`, userRouter);
 app.use(`/rooms`, roomsRouter);
 // app.use('/reviews', reviewsRouter);
 app.use('/lodging', lodgingsRouter);
-// app.use('/bookings', bookingsRouter);
+app.use('/bookings', bookingsRouter);
 
 
 app.get('/', (req,res) => {

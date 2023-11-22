@@ -3,6 +3,16 @@ const Lodging = require("../models/lodging.js");
 const router = express.Router();
 
 router
+.get('/admin',async (req,res,next)=>{
+  try {
+    const lodgData = await Lodging.findAll()
+    // console.log(userData);
+    res.status(201).send(lodgData);
+  } catch (err) {
+    console.error(err);
+    res.status(501).end();
+  }
+})
   .get("/", async (req, res, next) => {
     try {
       const getlist = await Lodging.findAll({

@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "../config/contansts";
 import { setCookie } from "../../useCookies";
 
 const initialIconColors = {

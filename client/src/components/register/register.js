@@ -1,7 +1,7 @@
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "../config/contansts";
 
 function Register() {
   const navigate = useNavigate();
