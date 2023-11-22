@@ -62,7 +62,7 @@ class Lodging extends Sequelize.Model {
       },
       rating: {
         type: Sequelize.DECIMAL(3, 2),
-        allowNull: false,
+        allowNull: true,
         validate: {
           len:{
             args:[0.00,5.00],
@@ -73,7 +73,7 @@ class Lodging extends Sequelize.Model {
       },
       review_count: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: {
             args: [0],
