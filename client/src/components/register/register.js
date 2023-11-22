@@ -1,7 +1,7 @@
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "../config/contansts";
 
 function Register() {
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ function Register() {
     const Nemail = e.target.Nemail.value;
     const Nname = e.target.Nname.value;
     const Nphone = e.target.Nphone.value;
+    const Ntype = e.target.userType.value; // 0
     if (Nid,Npwd,CKpwd,Nemail,Nname,Nphone != "") {
       if (Npwd === CKpwd) {
         console.log(Nid,Npwd,CKpwd,Nemail,Nname,Nphone);
@@ -39,8 +40,8 @@ function Register() {
           <h3>회원가입</h3>
           <label>회원 유형</label>
           <select id="userType" className="form-control">
-            <option value="customer">고객</option>
-            <option value="admin">관리자</option>
+            <option value="0">고객</option>
+            <option value="1">관리자</option>
           </select>
           <label>아이디</label>
           <input

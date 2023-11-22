@@ -26,7 +26,7 @@ function App() {
         <Route path="/" element={<Main></Main>}></Route>
         <Route path="/payment" element={<Payment></Payment>}></Route>
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
-        <Route path="/detail" element={<Detail></Detail>}></Route>
+        <Route path="/detail/:id" element={<Detail></Detail>}></Route>
         <Route path='/camping' element={<ProductCamping></ProductCamping>}></Route>
         <Route path='/guesthouse' element={<ProductGuesthouse></ProductGuesthouse>}></Route>
         <Route path='/hotel' element={<ProductHotel></ProductHotel>}></Route>

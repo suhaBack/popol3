@@ -13,6 +13,8 @@ class Room extends Sequelize.Model {
         primaryKey: true,
         allowNull: false,
         unique: true,
+        autoIncrement:true,
+        defaultValue:0,
         comment: "객실(room) 식별자 ID (기본키)",
       },
       lodging_id: {
@@ -21,7 +23,7 @@ class Room extends Sequelize.Model {
         comment: "숙박업소(lodging) 식별자 ID",
       },
       type: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
           len: {
