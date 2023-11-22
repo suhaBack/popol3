@@ -46,21 +46,11 @@ li{
   margin: 0 auto;
 }
 
-.btn_srch_srch_open {
-  margin-top: 3%;
-  background-color: #5252FE;
-  width: 290px;
-  height: 45px;
-  border-radius: 10px;
-}
 
-.btn_srch_srch_open > img {
-  padding-left: 10px;
-}
 
-#search_place{
-  display: none;
-}
+
+
+
 
 .Main_nav{
   width: 150%;
