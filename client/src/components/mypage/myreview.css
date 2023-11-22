@@ -1,0 +1,57 @@
+.myreviewTitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vw;
+  height: 10vh;
+  cursor: default;
+}
+
+.myreviewTitle img{
+  height: 100%;
+  margin-right: 0.7vw;
+}
+
+.myreviewTitle span {
+  font-size: 2vw;
+  padding-bottom: 1vw;
+}
+
+.myreviewTitle span span {
+  color: rgb(94, 94, 253);
+}
+
+.flexCardBox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1vw;
+}
+
+
+.star-ratings {
+  color: #aaa9a9;
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  font-size: 1.5vw;
+}
+
+.star-ratings-fill {
+  color: #fff58c;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+}
+
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}

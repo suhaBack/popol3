@@ -5,13 +5,14 @@ const Sequelize = require("sequelize");
 // lodging_id || name || location || description || price_range || type
 // check_in_time || check_out_time || rating || review_count
 
-class Lodgings extends Sequelize.Model {
+class Lodging extends Sequelize.Model {
   static initiate(sequelize) {
-    Lodgings.init({
+    Lodging.init({
       lodging_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
         unique: true,
         comment: "숙박(lodging) 식별자 ID (기본키)",
       },
@@ -48,44 +49,25 @@ class Lodgings extends Sequelize.Model {
         },
         comment: "숙박시설 설명",
       },
-      price_range: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-        validate: {
-          is: {
-            args: /^\d+-\d+$/,
-            msg: "가격 범위 형식이 유효하지 않습니다."
-          }
-        },
-        comment: "가격 범위",
-      },
       type: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.INTEGER(5),
         allowNull: false,
         validate: {
           isIn: {
-            args: [['모텔', '호텔/리조트', '펜션', '게스트하우스', '캠핑/글램핑', '해외여행']], // 허용되는 유형
+            args: [['0', '1', '2', '3', '4']], // 허용되는 유형
             msg: "유효하지 않은 유형입니다."
           }
         },
-        comment: "유형",
-      },
-      check_in_time: {
-        type: Sequelize.TIME,
-        allowNull: false,
-        comment: "체크인 시간",
-      },
-      check_out_time: {
-        type: Sequelize.TIME,
-        allowNull: false,
-        comment: "체크아웃 시간",
+        comment: "0:모텔, 1:호텔/리조트, 2:펜션, 3:게스트하우스, 4:캠핑/글램핑 ",
       },
       rating: {
         type: Sequelize.DECIMAL(3, 2),
         allowNull: false,
         validate: {
-          min: { args: 0.00, msg: "평점은 0점 이상이어야 합니다." },
-          max: { args: 5.00, msg: "평점은 5점 이하이어야 합니다." }
+          len:{
+            args:[0.00,5.00],
+            msg: "평점은 0에서 5사이여야 합니다"
+          }
         },
         comment: "평점",
       },
@@ -93,8 +75,8 @@ class Lodgings extends Sequelize.Model {
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
-          min: {
-            args: 0,
+          len: {
+            args: [0],
             mag: "음수가 될 수 없습니다."
           }
         },
@@ -111,6 +93,10 @@ class Lodgings extends Sequelize.Model {
       collate: 'utf8_general_ci',
     });
   }
+  static associate(db) {
+    db.Lodging.hasMany(db.Room, { foreignKey: 'lodging_id', sourceKey: 'lodging_id'});
+    db.Lodging.hasMany(db.Review, { foreignKey: 'lodging_id', sourceKey: 'lodging_id'});
+  }
 };
 
-module.exports = Lodgings;
+module.exports = Lodging;

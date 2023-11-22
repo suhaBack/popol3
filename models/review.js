@@ -17,19 +17,11 @@ class Review extends Sequelize.Model {
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'User', // User 모델 참조
-          key: 'user_id',  // 참조하는 키
-        },
         comment: "사용자(user) 식별자 ID",
       },
       lodging_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'Lodging', // Lodging 모델 참조
-          key: 'lodging_id',  // 참조하는 키
-        },
         comment: "숙박시설(lodging) 식별자 ID",
       },
       rating: {
@@ -63,6 +55,12 @@ class Review extends Sequelize.Model {
       collate: 'utf8_general_ci',
     });
   }
+
+  static associate(db) {
+    db.Review.belongsTo(db.User, { foreignKey: 'user_id', targetKey: 'user_id' });
+    db.Review.belongsTo(db.Lodging, { foreignKey: 'lodging_id', targetKey: 'lodging_id' });
+  }
+
 };
 
 module.exports = Review;

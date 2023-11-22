@@ -1,13 +1,29 @@
+.mypagebackGround{
+  background-color: white;
+}
+
+.mypageTitle{
+  padding: 3vw 0;
+  background-color: rgb(94, 94, 253);
+  color: white;
+  font-size: 2.5vw;
+}
+
+.mypageTitle div{
+  margin: 0 15vw;
+  cursor: default;
+}
+
 .maincontent{
   display: grid;
-  grid-template-columns: 1.3fr 8fr;
-  padding: 3vw;
+  grid-template-columns: 2fr 8fr;
+  margin: 0 15vw;
 }
 
 .mypage_menu{
   background-color: white;
   height: 100%;
-  padding: 1.5vw;
+  padding: 1.5vw 0;
 }
 
 .mypage_menu div{
@@ -26,19 +42,21 @@
 
 .mypage_menu nav ul li a{
   text-decoration: none;
-  color: black;
+  font-size: 1.3vw;
 }
 
 
 
 .menu_info{
-  padding: 1.5vw;
+  padding: 1.5vw 0 1.5vw 3vw;
   background-color: white;
 }
 
 .menu_info_title{
   padding: 0 1vw;
   font-size: 2vw;
+  margin-bottom: 1.5vw;
+  cursor: default;
 }
 
 .user_profile{
@@ -48,12 +66,7 @@
   width: 8vw;
   height: 8vw;
   border-radius: 50%;
-  border: 0.4vw solid black;
   margin: 1vw 0 1vw 1vw;
-}
-
-.user_profile i{
-  font-size: 4vw;
 }
 
 .mylist{
@@ -74,11 +87,18 @@
   font-size: 15px;
   color: rgb(110, 110, 110);
 }
+
 .giveUpBox a {
   text-decoration: none;
   color: rgb(255, 0, 0);
   }
 
+.active{
+  color: rgb(94, 94, 253);
+}
 
+.noactive{
+  color: black
+}
 
 

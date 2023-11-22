@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import "./payment.css";
 import 할인 from "./../image/할인.png";
 import 결제수단 from "./../image/결제수단.png";
@@ -36,6 +37,9 @@ function Payment() {
     }
   };
 
+  useEffect(() => {
+    setAllChecked(check1 && check2 && check3);
+  }, [check1, check2, check3]);
   return (
     <div className="backGround" style={{ padding: "4vh 0" }}>
       <div className="container mainTitle" style={{ fontSize: "3vw" }}>
@@ -47,7 +51,7 @@ function Payment() {
       <div id="jsw_container" className="container">
         <div id="Act1">
           <div className="reservationInfoBox">
-            <div className="paymentTitleBox" style={{marginTop: '0'}}>
+            <div className="paymentTitleBox" style={{ marginTop: "0" }}>
               <img src={개인정보} height="100%"></img>
               <h3 style={{ padding: "0 1vw 0 0" }}>예약자 정보</h3>
             </div>
@@ -231,7 +235,13 @@ function Payment() {
                 </li>
               </ul>
             </div>
-            <div className="paymentBtn">결제하기</div>
+            <div>
+              <Link to="./complete">
+                <button className="paymentBtn">
+                  결제하기
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

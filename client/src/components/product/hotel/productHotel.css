@@ -1,47 +1,308 @@
+/* 참고 페이지 주소
+https://www.goodchoice.kr/product/search/2 */
 
-/* ------- 섹션1 ------- */
-.section-1 {
-  border-style: solid;
-  border-width: 1px ;
+.productpageTitle {
+  padding: 3vw 0;
+  background-color: rgb(94, 94, 253);
+  color: white;
+  font-size: 2.5vw;
+  height: 14vw;
 }
 
-.dropdown{
-  position : relative;
-  display : inline-block;
+.productpageTitle div {
+  cursor: default;
 }
 
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 1;
+.dropdown {
+  position: relative;
+  font-size: 1.5vw;
+  float: left;
 }
 
-.dropdown-content a{
-  display : block;
+.productpageMapBtn{
+  float: right;
+  font-size: 1.5vw;
+}
+
+.productTitle {
+  margin-bottom: 1vw;
+}
+
+.dropbtn {
+  background-color: rgb(85, 85, 226);
+  padding: 0.5vw 1vw;
+  border-radius: 0.5vw;
+  display: block;
+  box-shadow: 0.5px 0.5px 1px inset black;
+  width: 13vw;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  padding: 1vw;
+  border-radius: 0.3vw;
+  box-shadow: 1.5px 2px 2px gray;
+  width: 13vw;
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.3vw;
+  display: block;
+  margin-bottom: 0.5vw;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* ------- 섹션2 ------- */
-
-.section-2 {
-  width:  50%;
-  float:  left;
-  border-style: solid;
-  border-width: 1px ;
+.productpageGridBox {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  column-gap: 1.5vw;
+  padding: 2vw 0;
 }
 
-input {
-  margin-top: 0.4rem;
+.section-1Box {
+  border: 3px solid rgb(94, 94, 253);
+  padding: 1vw;
+  position: sticky;
+  top: 3vh;
+  border-radius: 0.2vw;
 }
 
-/* ------- 섹션3 ------- */
+.select-date {
+  padding-bottom: 1vw;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.433);
+}
 
-.section-3 {
-  width:  50%;
-  float:  right;
-  border-style: solid;
-  border-width: 1px ;
+.select-date h3 {
+  font-size: 1.5vw;
+}
+
+.select-date label {
+  width: 100%;
+}
+
+.select-date label input {
+  width: 100%;
+  padding: 0.5vw;
+  border-radius: 0.3vw;
+  font-size: 1.2vw;
+  border-style: none;
+  border: 1px solid gray;
+}
+
+.condition h3 {
+  padding-top: 1vw;
+  font-size: 1.5vw;
+}
+
+.conditionBtnBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.5vw;
+  margin-bottom: 1vw;
+}
+
+.conditionBtnBox button {
+  font-size: 1vw;
+  padding: 0.5vw 0;
+  border-radius: 0.3vw;
+}
+
+.conditionBtn1 {
+  border: solid 1px rgb(94, 94, 253);
+  background-color: white;
+  color: rgb(94, 94, 253);
+}
+
+.conditionBtn2 {
+  border: solid 1px rgb(94, 94, 253);
+  background-color: rgb(94, 94, 253);
+  color: white;
+}
+
+.reserve ul {
+  padding: 0;
+}
+
+.reserve ul li {
+  display: flex;
+  margin-bottom: 0.5vw;
+  font-size: 1.1vw;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  /* 원하는 가로, 세로 크기 설정 */
+  width: 1.5vw;
+  height: 1.5vw;
+  /* 다른 스타일 설정 (옵션) */
+  margin-right: 0.5vw; /* 여백 제거 */
+  padding: 0; /* 내부 여백 제거 */
+}
+
+.productType {
+  font-size: 1.3vw;
+}
+
+.productType strong {
+  display: block;
+  margin-bottom: 0.5vw;
+}
+
+.productType ul {
+  padding: 0;
+}
+
+.productType ul li {
+  display: flex;
+  margin-bottom: 0.5vw;
+  font-size: 1.1vw;
+  align-items: center;
+}
+
+.customerCounterBox {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  font-size: 1.3vw;
+  margin-bottom: 1vw;
+}
+
+.customerCounter {
+  display: flex;
+  justify-content: end;
+}
+
+.customerCounter button {
+  border: none;
+  background-color: white;
+}
+
+.customerCounter span {
+  margin: 0 2vw;
+  color: rgb(94, 94, 253);
+}
+
+.bedTypeBox strong {
+  display: block;
+  margin-bottom: 0.5vw;
+  font-size: 1.3vw;
+}
+
+.bedTypeGridBox{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 1vw;
+  cursor: pointer;
+}
+
+.bedType div, .bedType1 div, .bedType3 div{
+  font-size: 0.8vw;
+  text-align: center;
+  
+}
+
+.bedType1 img{
+  padding: 0.8vw;
+}
+
+.bedType3 img{
+  padding: 0.1vw;
+}
+
+.productPageListTitle{
+  margin-bottom: 1vw;
+  font-size: 2.5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productpageMapBtn{
+  padding: 0.5vw 1vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: rgb(94, 94, 253);
+  transition: background-color 0.3s;
+}
+
+.productpageMapBtn:hover{
+  background-color: rgb(66, 66, 255);
+}
+
+.productPageListTitle span{
+  font-size: 1.8vw;
+  cursor: pointer;
+  color: white;
+}
+
+.productPageListTitle span i{
+  font-size: 1.8vw;
+  margin-right: 0.5vw;
+  cursor: pointer;
+  color: white;
+}
+
+.productBgImg{
+  position: relative;
+  height: 20vw;
+  background-image: url("./../image/product1.jpg");
+  cursor: pointer;
+}
+
+.productBgImg img{
+  filter: brightness(70%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.5s;
+}
+
+.productBgImg:hover img{
+  filter: brightness(85%);
+}
+
+.productpagecontect{
+  position: absolute;
+  bottom: 2vw;
+  left: 2vw;
+  color: white;
+  /* 필터를 상속받지 않도록 따로 스타일 지정 */
+  filter: none;
+}
+
+.productpagecontect div{
+  filter: none;
+}
+
+.productpageprice{
+  position: absolute;
+  bottom: 2vw;
+  right: 2vw;
+  color: white;
+}
+
+.productpagepdtitle{
+  font-size: 2vw;
+}
+
+.productpagepdevaluation{
+  font-size: 1.5vw;
+  color:orange
+}
+
+.productpagepdlocation{
+  font-size: 1.5vw;
+}
+
+.product-list .pagination{
+  font-size: 1.8vw;
+  padding-top: 1vw;
 }

@@ -1,86 +1,208 @@
-import img1 from './image/잠실체리.jpg'
-import img2 from './image/잠실쿠키.jpg'
-import img3 from './image/신림 홀리데이.jpg'
-import img4 from './image/상봉 호텔버스.jpg'
-import img5 from './image/용전 더휴식 노크인호텔.jpg'
-import './reservation.css'
-// import img6 from './image/수원역 썸.jpg'
+import "./reservation.css";
+import { useState } from "react";
+import 결과없음 from "./../image/결과없음.png";
+import 예약 from "./../image/예약.png";
 
+function Reservation() {
+  // booking데이터베이스 사용
+  let [reservationdata, setReservationdata] = useState([
+    {
+      id: 1,
+      title: "숙소이름1",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 2,
+      title: "숙소이름2",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 3,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 4,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 5,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 6,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 7,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 8,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 9,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 10,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 11,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 12,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 13,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+    {
+      id: 14,
+      title: "숙소이름3",
+      startDate: "시작날짜",
+      endDate: "마감날짜",
+    },
+  ]);
 
-function Reservation(){
+  const itemsPerPage = 5; // 한 페이지당 표시할 공지사항 수
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = reservationdata.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(reservationdata.length / itemsPerPage);
+  const maxVisiblePages = 5; // 보이는 페이지 숫자의 최대 개수
+  let startPage = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
+  let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+
+  if (endPage - startPage < maxVisiblePages - 1) {
+    startPage = Math.max(endPage - maxVisiblePages + 1, 1);
+  }
+
+  const pageNumbers = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <div id='jsw_maincontainer'>
-      <div>
-        <span>예약 내역</span>
-      </div>
-      <div id='jsw_subcontainer'>
-        <div>
-          <span>이용 내역</span>
+    <div id="jsw_maincontainer">
+      <div className="reservationContentBox">
+        <div className="usepageTitle">
+          <img src={예약}></img>
+          <span>
+            예약 내역
+            <span>({reservationdata.length})</span>
+          </span>
         </div>
-        <div class="jsw_01">
+        {reservationdata == "" ? (
+          <div className="reservationComentBox">
+            <img src={결과없음}></img>
+            <div className="reservationComent">예약 내역이 없습니다.</div>
+            <div className="reservationSubComent">
+              최저가로 예약
+              <br />
+              숙소들을 지금 만나세요!
+            </div>
+            <div className="reservationMoreBtnBox">
+              <div>다양한 숙소 보러가기</div>
+            </div>
+          </div>
+        ) : (
           <div>
-            <img src={img1}></img>
+            <div className="historyListBox">
+              {currentItems.map((a, i) => {
+                return (
+                  <div className="historyList" key={a.id}>
+                    <div className="historyid">{a.id}</div>
+                    <div className="historytitle">{a.title}</div>
+                    <div className="historydate">
+                      {a.startDate} ~ {a.endDate}
+                    </div>
+                    <div className="historycancel">
+                      <div>예약 취소</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <Pagination
+              itemsPerPage={itemsPerPage}
+              totalItems={reservationdata.length}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              totalPages={totalPages}
+              pageNumbers={pageNumbers}
+            />{" "}
+            {/* 다음 페이지로 이동시켜주는 컴포넌트 영역 */}
           </div>
-          <div>
-            <span>이용완료</span>
-            <h4>잠실체리</h4>
-            <p>06.24 토 - 06.25 일 • 1박</p>
-            <span>다시 예약</span>
-          </div>
-        </div>
-        <div class="jsw_02">
-          <div>
-            <img src={img3}></img>
-          </div>
-          <div class="jsw_text">
-            <span>이용완료</span>
-            <h4>신림 홀리데이</h4>
-            <p>06.05 월 - 06.06 화 • 1박</p>
-            <span>다시 예약</span>
-          </div>
-        </div>
-        <div class="jsw_01">
-          <div>
-            <img src={img4}></img>
-          </div>
-          <div>
-            <span>이용완료</span>
-            <h4>상봉 호텔버스</h4>
-            <p>02.18 토 - 02.19 일 • 1박</p>
-            <span>다시 예약</span>
-          </div>
-        </div>
-        <div class="jsw_02">
-          <div>
-            <img src={img5}></img>
-          </div>
-          <div>
-            <span>이용완료</span>
-            <h4>용전 더휴식 노크인호텔</h4>
-            <p>06.27 월 - 06.28 화 • 1박</p>
-            <span>다시 예약</span>
-          </div>
-        </div>
-      </div>
-
-      <div class='jsw_03'>
-        <div>
-          <span>취소 내역</span>
-        </div>
-        <div>
-          <div>
-            <img src={img2}></img>
-          </div>
-          <div>
-            <span>예약취소</span>
-            <h4>잠실 쿠키</h4>
-            <p>06.24 토 - 06.25 일 • 1박</p>
-            <span>다시 예약</span>
-          </div>
-        </div>
+        )}
       </div>
     </div>
-  )
+  );
+}
+
+function Pagination({
+  itemsPerPage,
+  totalItems,
+  currentPage,
+  onPageChange,
+  totalPages,
+  pageNumbers,
+}) {
+  return (
+    <div className="pagination">
+      {" "}
+      {/* 현재 페이지의 위치를 알려주는 컴포넌트 */}
+      {currentPage > 1 && (
+        <span onClick={() => onPageChange(currentPage - 1)}>&laquo;</span>
+      )}
+      {pageNumbers.map((number) => (
+        <span
+          key={number}
+          onClick={() => onPageChange(number)}
+          className={currentPage === number ? "active" : ""}
+        >
+          {number}
+        </span>
+      ))}
+      {currentPage < totalPages && (
+        <span onClick={() => onPageChange(currentPage + 1)}>&raquo;</span>
+      )}
+    </div>
+  );
 }
 
 export default Reservation;
