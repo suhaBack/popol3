@@ -3,7 +3,7 @@ const Rooms = require("../models/room");
 const router = express.Router();
 
 router
-  .get("/", async (req, res, next) => {
+  .get("/", async (req, res, next) => {//
     try {
       const Roomsdata = Rooms.findAll({
         room_id: req.body.room_id,

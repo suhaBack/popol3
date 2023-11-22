@@ -28,7 +28,7 @@ const DateRangePicker = () => {
             startDate={startDate}
             endDate={endDate}
             dateFormat="yyyy/MM/dd"
-          />
+          />np
         </div>
 
         <div>
