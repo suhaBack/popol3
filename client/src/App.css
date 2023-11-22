@@ -23,6 +23,7 @@ div{
   font-size: 2.5vw;
   padding: 1vw 0;
   color: rgb(94, 94, 253);
+  cursor: default;
 }
 
 .ga{

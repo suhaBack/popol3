@@ -1,0 +1,74 @@
+.reviewpageMainTitle{
+  font-size: 2vw;
+}
+
+.reviewpageMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vw;
+  padding-bottom: 2vw;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.422);
+}
+
+.reviewpagerating{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vw;
+}
+
+.reviewpagerating .space-x-2{
+  font-size: 3vw;
+  margin-right: 1vw;
+}
+
+.reveiwBox .space-x-2{
+  font-size: 2vw;
+  margin-right: 1vw;
+}
+
+.rating{
+  font-size: 2.5vw;
+}
+
+.reviewpagecount{
+  display: flex;
+  font-size: 1.5vw;
+}
+
+.reviewpagecount div{
+  padding:0 1vw;
+}
+
+.reviewpagecount div:first-child{
+  border-right: 0.3vw solid black;
+}
+
+.reveiwBox{
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  column-gap: 1vw;
+  padding: 2vw
+}
+
+.img1 img{
+  width: 100%;
+}
+
+.Title1 h2{
+  margin: 0;
+}
+
+.starBox{
+  display: flex;
+  align-items: center;
+}
+
+.starBox span{
+  font-size: 2vw;
+}
+
+.name1{
+  margin-top: 1vw;
+  color: gray;
+}
