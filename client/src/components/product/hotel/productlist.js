@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 import { API_URL } from "../../config/contansts";
 
-
 function ProductList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productbasedata, setProductbasedata] = useState([]);
