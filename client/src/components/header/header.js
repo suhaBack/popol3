@@ -26,14 +26,17 @@ function Header() {
       </div>
       <nav className="Main_nav">
         <ul className="Main_menu_ul">
-          <li className="Main_menu_li">
-            <Link to="/mypage">예약내역 /</Link>
-          </li>
+          
           {login ? (
-            <div id="LogOut">
-              <p id='logout'>{login}님 환영합니다. <span>/</span></p>
-              <a onClick={LogOut}>로그아웃 /</a>
-            </div>
+            <>
+              <li className="Main_menu_li">
+              <Link to="/mypage">마이페이지 /</Link>
+              </li>
+              <div id="LogOut">
+                <p id='logout'>{login}님 환영합니다. <span>/</span></p>
+                <a onClick={LogOut}>로그아웃 /</a>
+              </div>
+            </>
           ): (
             <li className="Main_menu_li">
               <p id="login">로그인이 필요합니다. <span>/</span></p>
