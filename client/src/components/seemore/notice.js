@@ -15,6 +15,8 @@ function Notice(props) {
               <div>
                 <p>안녕하세요. 여기어떄입니다.</p>
                 <p>여기어때의 포인트 지급 정책이 아래와 같이 변경됩니다.</p>
+                <p><a href="https://docs.google.com/spreadsheets/d/1atbk-TzYL6RfvNrGa66EUzoaySWCMWvypsfH3hKKKsU/edit?usp=sharing">작업진행도 보기</a></p>
+                <p><a href="https://github.com/IkGy/popol3.git">코드 전체보기(GIT)</a></p>
               </div>
               <div>
                 <span>1. 주요 사항</span>

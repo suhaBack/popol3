@@ -11,7 +11,6 @@ function Seemore() {
   const MenuClick = (selectMenu) => {
     setMenu(selectMenu);
   };
-
   const [end, setEnd] = useState("");
 
   useEffect(() => {

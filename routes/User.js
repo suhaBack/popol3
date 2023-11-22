@@ -14,6 +14,7 @@ router
     res.status(501).end();
   }
 })
+//////////////
 .post('/', async (req,res,next)=>{
   try {
     // console.log(req);
@@ -43,6 +44,7 @@ router
     next(error)
   }
 })
+
 .post('/login',async (req,res,next)=>{
   try {
     // console.log('test',req.body.id);
