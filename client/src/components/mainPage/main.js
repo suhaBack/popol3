@@ -8,6 +8,7 @@ import Addask from "./addask/addask";
 import slider1 from "./../image/slider1.png";
 import slider2 from "./../image/slider2.png";
 import slider3 from "./../image/slider3.png";
+import Detailsilde from '../detail/component/detailslide';
 
 function Main() {
   const [sections, setSections] = useState([]);
@@ -37,8 +38,7 @@ function Main() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // 빈 배열을 전달하여 한 번만 실행되도록 설정
 
-  const images = [slider1, slider2, slider3];
-
+  const images = [slider1, slider2, slider3, slider1, slider2, slider3];
   return (
     <div className="backGround">
       <IntroSlider />
