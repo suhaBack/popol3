@@ -17,6 +17,7 @@ import Register from './components/register/register';
 import Login from './components/login/login';
 import Seemore from './components/seemore/seemore';
 import Complet from "./components/payment/complete"
+import Test from './components/header/test';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<Main></Main>}></Route>
+        <Route path="/test" element={<Test></Test>}></Route>
         <Route path="/payment" element={<Payment></Payment>}></Route>
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
         <Route path="/detail/:id" element={<Detail></Detail>}></Route>
