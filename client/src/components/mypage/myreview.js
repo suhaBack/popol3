@@ -48,13 +48,6 @@ function Myreview() {
       ment: "죽여줘",
       date: "2027-11-13",
     },
-    {
-      id: 6,
-      img: img6,
-      rating: 5,
-      ment: "아이들이 좋아해요!",
-      date: "2023-69-74",
-    },
   ]);
 
   const ratingToPercent = (a) => {

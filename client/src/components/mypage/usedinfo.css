@@ -4,18 +4,34 @@
 
 .usedList {
   display: grid;
-  grid-template-columns: 1fr 6fr 2.5fr 1.5fr;
+  grid-template-columns: 1fr 6fr 2fr 2fr 2fr;
   padding: 2vw;
   border-bottom: 0.2vw solid rgb(94, 94, 253);
   background-color: #ffffff;
   font-size: 1.1vw;
 }
 
-.usedList div{
+.usedList div {
   display: flex;
   align-items: center;
 }
 
-.useddate{
+.useddate {
   text-align: center;
 }
+
+.reviewWriteBtn {
+  border-style: none;
+  background-color: rgb(94, 94, 253);
+  color: white;
+  border-radius: 0.3vw;
+  padding: 0.5vw 1vw;
+  cursor: pointer;
+  font-size: 1vw;
+  transition: background-color 0.3s;
+}
+
+.reviewWriteBtn:hover{
+  background-color: rgb(66, 66, 255);
+}
+
