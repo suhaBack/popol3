@@ -13,6 +13,21 @@ router
     res.status(501).end();
   }
 })
+.get("/detail", async (req, res, next) => {
+  try {
+    //0모텔 1호텔 2펜션 3게스트 4글램핑
+    const getlist = await Lodging.findOne({
+      where:{
+        lodging_id:req.query.lodging_id,
+      }
+    })
+    // console.log(getlist);
+    res.status(201).send(getlist);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+})
 .get("/", async (req, res, next) => {
   try {
     //0모텔 1호텔 2펜션 3게스트 4글램핑
