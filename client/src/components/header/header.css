@@ -24,7 +24,7 @@ li{
 
 #Main_Div_2 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.3fr 1.7fr 1fr;
   width: 75%;
   height: 100%;
 
@@ -33,20 +33,14 @@ li{
 
 .Logo_section {
   /* width: 25%; */
-  width: 220px;
+  width: 200px;
   height: 75px;
-
 }
 
-
-
-.Search_area {
-  /* width: 25%; */
-  padding-top: 2%;
-  margin: 0 auto;
+.search_area{
+  margin: 20px;
+  text-align: right;
 }
-
-  
 .search_Bar {
   /* outline: none; */
   /* border: none; */
@@ -135,4 +129,8 @@ li{
 #logout {
   float: left;
   margin-right: 10px;
+}
+
+#SeeMore:hover .drop_menu{
+  display: block;
 }

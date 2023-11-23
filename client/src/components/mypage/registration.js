@@ -77,12 +77,12 @@ function Registration() {
               /></td>
             </tr>
             <tr>
-              <td><label>리뷰</label></td>
+              <td><label>시설설명</label></td>
               <td><input
                 id="review"
                 type="text"
                 className="registration-control"
-                placeholder="리뷰"
+                placeholder="시설을 한 줄로 표현해주세요"
               /></td>
             </tr>
             <tr>
@@ -129,7 +129,7 @@ function Registration() {
             </tr>
             <tr>
               <td></td>
-              <td><button type="submit">등록하기</button></td>
+              <td><button type="submit" className='upload_btn'>등록하기</button></td>
             </tr>
           </table>
         </form>
@@ -172,7 +172,7 @@ function Registration() {
             </tr>
             <tr>
               <td></td>
-              <td><button type="submit">등록하기</button></td>
+              <td><button type="submit" className='upload_btn'>등록하기</button></td>
             </tr>
           </table>
         </form>

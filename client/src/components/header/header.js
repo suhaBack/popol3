@@ -79,19 +79,19 @@ function Header() {
               <Link to="/login">로그인 /</Link>
             </li>
           )}
-          <li className="Main_menu_li">
+          <li className="Main_menu_li" id="SeeMore">
             <a href="/seemore">더 보기</a>
             <ul className="drop_menu" style={{ display: "none" }}>
-              <li>
+              <li className="drop_item">
                 <a href="??">가</a>
               </li>
-              <li>
+              <li className="drop_item">
                 <a href="??">나</a>
               </li>
-              <li>
+              <li className="drop_item">
                 <a href="??">다</a>
               </li>
-              <li>
+              <li className="drop_item">
                 <a href="??">라</a>
               </li>
             </ul>
