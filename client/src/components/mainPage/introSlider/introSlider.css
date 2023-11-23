@@ -67,6 +67,10 @@
   border: 2px solid rgb(36, 36, 251);
 }
 
+#introTitleBtn_link {
+  text-decoration: none;
+}
+
 .slider-item.visible {
   opacity: 1; /* 현재 이미지는 투명하지 않게 설정 */
 }
