@@ -32,12 +32,9 @@ function Header() {
     removeCookie("login");
     navigate('/');
   }
-  const test = async ()=>{
-   await axios.get('/test')
-  }
+  
   return (
     <div id="Main_Div">
-      <button onClick={test}>등록</button>
       <div id="Main_Div_2">
       <div className="Logo_section">
         <Link to="/"><img src={logo}></img></Link>
