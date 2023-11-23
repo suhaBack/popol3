@@ -3,7 +3,13 @@ import "./detail.css";
 import RoomReservation from "./component/roomreservation";
 import RoomInformation from "./component/roominformation";
 import Review from "./component/review";
-import abc from "./image/abc.png";
+import detailslide1 from "./image/detailslide1.jpg";
+import detailslide2 from "./image/detailslide2.jpg";
+import detailslide3 from "./image/detailslide3.jpg";
+import detailslide4 from "./image/detailslide4.jpg";
+import detailslide5 from "./image/detailslide5.jpg";
+import detailslide6 from "./image/detailslide6.jpg";
+import Detailsilde from "./component/detailslide";
 import ReservationCalendar from "./date/date";
 
 function Detail() {
@@ -21,17 +27,33 @@ function Detail() {
     }, 100);
     return setEnd("");
   }, [button]);
+
+  const [images, setImages] = useState([
+    detailslide1,
+    detailslide2,
+    detailslide3,
+    detailslide4,
+    detailslide5,
+    detailslide6,
+  ]);
+
+  const [selectImg, setSelcetImg] = useState(detailslide1);
+
+  console.log(selectImg);
+
   return (
     <div className="backGround">
       <div className="detailpage container">
         <div className="detailGridBox">
           <div className="detailImgdBox">
-            <img src={abc} alt="사진추가예정"></img>
-            <div className="imgslider"></div>
+            <img src={selectImg} alt="선택된 이미지" />
           </div>
           <div className="right">
             <div className="info">
               <h2>호텔 크레센도 서울</h2>
+              <div className="rightrating">
+                <span>8.6</span> 만족해요
+              </div>
               <p className="adress">서울 강남구 삼성동 113-5</p>
               <div className="comment">
                 <h4>사장님 한마디</h4>
@@ -48,6 +70,11 @@ function Detail() {
             </div>
           </div>
         </div>
+        <Detailsilde
+          images={images}
+          setSelcetImg={setSelcetImg}
+          selectImg={selectImg}
+        ></Detailsilde>
 
         <div className="detailPageTab">
           <button
