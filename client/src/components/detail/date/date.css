@@ -5,6 +5,17 @@
 .dateflexBox{
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.dateflexBox2{
+  display: flex;
+  align-items: center;
+}
+
+.dateslash{
+  font-size: 2vw;
+  margin: 0 1vw;
 }
 
 .dateflexBox span{
@@ -16,5 +27,5 @@
   font-size: 1.5vw;
   border-radius: 0.2vw;
   padding:0 0.5vw;
-  margin-right: 1vw;
+  text-align: center;
 }
