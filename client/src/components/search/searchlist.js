@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "./../config/contansts";
 import { Link } from 'react-router-dom';
 
 function ProductList() {

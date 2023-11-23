@@ -65,7 +65,7 @@ function ProductListC() {
               return (
                 <div className="productBgImg">
                   <Link to={`/detail/${a.lodging_id}`}>
-                    <img src={a.img}></img>
+                    <img src={a.imageURL}></img>
                     <div className="productpagecontect">
                       <div className="productpagepdtitle">{a.name}</div>
                       <div className="productpagepdevaluation">

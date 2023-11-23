@@ -29,7 +29,8 @@ function Notice(props) {
             sections.basic ? "basic_info_visible" : "basic_info_hidden"
           }
         >
-          <p>입력 바랍니다.</p>
+          <p><a href="https://docs.google.com/spreadsheets/d/1atbk-TzYL6RfvNrGa66EUzoaySWCMWvypsfH3hKKKsU/edit?usp=sharing">작업진행도</a></p>
+          <p><a href="https://github.com/IkGy/popol3">코드보기(git)</a></p>
         </div>
       </div>
 

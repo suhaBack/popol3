@@ -1,16 +1,15 @@
-
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "../config/contansts";
 import { Link } from 'react-router-dom';
 
-function ProductListG() {
+function Recommened_penstion() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productbasedata, setProductbasedata] = useState([]);
   useEffect(() => {
     const getList = async () => {
       await axios
-        .get(`${API_URL}/lodging`,{ params: { type: 3 }})
+        .get(`${API_URL}/lodging`,{ params: { type: 2 }})
         .then((result) => {
           const items = result.data;
           console.log("items", items);
@@ -53,17 +52,17 @@ function ProductListG() {
       <div className="">
         <div className="product-list">
           <div className="productPageListTitle">
-            <div>추천 : 게스트하우스</div>
-            <span className="productpageMapBtn">
+            <div>[추천] 펜션</div>
+            {/* <span className="productpageMapBtn">
               <i className="fa-solid fa-map"></i>지도
-            </span>
+            </span> */}
           </div>
           <div className="product-list-gridBox">
             {currentItems.map((a) => {
               return (
                 <div className="productBgImg">
                   <Link to={`/detail/${a.lodging_id}`}>
-                    <img src={a.imageURL}></img>
+                    <img src={a.img}></img>
                     <div className="productpagecontect">
                       <div className="productpagepdtitle">{a.name}</div>
                       <div className="productpagepdevaluation">
@@ -121,4 +120,4 @@ function Pagination({
   );
 }
 
-export default ProductListG;
+export default Recommened_penstion;

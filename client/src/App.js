@@ -17,9 +17,9 @@ import Register from "./components/register/register";
 import Login from "./components/login/login";
 import Seemore from "./components/seemore/seemore";
 import Complet from "./components/payment/complete";
-import Test from "./components/header/test";
 import Search from "./components/search/search";
 import ReviewWrite from "./components/review/reviewwrite";
+import Recommened from "./components/recommend/recommend";
 
 function App() {
   return (
@@ -27,7 +27,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main></Main>}></Route>
-        <Route path="/test" element={<Test></Test>}></Route>
         <Route path="/payment" element={<Payment></Payment>}></Route>
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
         <Route path="/detail/:id" element={<Detail></Detail>}></Route>
@@ -52,6 +51,7 @@ function App() {
         <Route path="/payment/complete" element={<Complet />}></Route>
         <Route path="/search" element={<Search />}></Route>
         <Route path="/reviewwrite" element={<ReviewWrite />}></Route>
+        <Route path="/recommend" element={<Recommened />}></Route>
       </Routes>
       <Footer></Footer>
     </div>

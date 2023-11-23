@@ -71,6 +71,7 @@
   border: 2px solid rgb(36, 36, 251);
 }
 
+
 .introTitleBtn:hover a{
   color: rgb(94, 94, 253);
 }
@@ -79,6 +80,10 @@
   text-decoration: none;
   color: white;
   transition: color 0.3s;
+}
+
+#introTitleBtn_link {
+  text-decoration: none;
 }
 
 .slider-item.visible {
