@@ -1,0 +1,33 @@
+.registration_container{
+  display: grid;
+  grid-template-areas: "category_filter .  upload_option";
+  justify-content: space-around;
+}
+
+.sorting tr td{
+  padding-left: 10px;
+}
+.sorting tr:last-child td:last-child{
+  float: right;
+}
+
+
+#img_upload{
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid rgb(77,77,77);
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+  }
+}
+#categoryType_img{
+  display: none;
+}
