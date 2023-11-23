@@ -76,31 +76,12 @@ function Registration() {
               /></td>
             </tr>
             <tr>
-              <td><label>리뷰</label></td>
+              <td><label>시설 설명</label></td>
               <td><input
                 id="review"
                 type="text"
                 className="registration-control"
-                placeholder="리뷰"
-              /></td>
-            </tr>
-            <tr>
-              <td><label>별점 (1~5)</label></td>
-              <td><input
-                id="stars"
-                type="range"
-                className="registration-control"
-                min="1"
-                max="5"
-              /></td>
-            </tr>
-            <tr>
-              <td><label>리뷰 수</label></td>
-              <td><input
-                id="reviewcount"
-                type="number"
-                className="registration-control"
-                placeholder="리뷰 수"
+                placeholder="시설 설명"
               /></td>
             </tr>
             <tr>
