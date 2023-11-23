@@ -43,6 +43,10 @@
   cursor: default;
 }
 
+.introTitleBox a{
+  text-decoration: none;
+}
+
 .introTitle span{
   color: rgb(74, 74, 254);
   -webkit-text-stroke: 0.2px white;
@@ -65,6 +69,16 @@
   background-color: white;
   color: rgb(94, 94, 253);
   border: 2px solid rgb(36, 36, 251);
+}
+
+.introTitleBtn:hover a{
+  color: rgb(94, 94, 253);
+}
+
+.introTitleBtn a{
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
 }
 
 .slider-item.visible {

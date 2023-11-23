@@ -9,6 +9,7 @@ import UsedInfo from './usedinfo';
 import Registration from "./registration";
 import axios from "axios";
 import { getCookie } from "../../useCookies";
+import { API_URL } from '../config/contansts';
 
 function Mypage() {
   const [menu, setMenu] = useState("내 정보 관리");
@@ -16,7 +17,7 @@ function Mypage() {
   const [end, setEnd] = useState("");
   
   useEffect(() => {
-    axios.get('/user',{params: {userID:getCookie('login')}})
+    axios.get(`${API_URL}/user`,{params: {userID:getCookie('login')}})
     .then((res)=>{
       console.log(res.data[0]);
       setUSerInfo(res.data[0]);

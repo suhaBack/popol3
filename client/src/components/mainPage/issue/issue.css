@@ -8,6 +8,11 @@
   column-gap: 1vw;
 }
 
+.issueGridBox1 a{
+  text-decoration: none;
+  color: black;
+}
+
 .issueGridBox2{
   display: grid;
   grid-template-columns: 1fr 3fr;

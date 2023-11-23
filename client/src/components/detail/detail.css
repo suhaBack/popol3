@@ -1,6 +1,7 @@
 .detailpage{
   padding: 2vw 0;
 }
+
 .detailGridBox {
   display: grid;
   grid-template-columns: 1fr 1fr;
