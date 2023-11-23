@@ -29,7 +29,9 @@ const IntroSlider = () => {
           <br />
           편하게 예약하세요!
         </div>
-        <div className='introTitleBtn'>지금 예약하기 &gt;&gt;</div>
+        <a href="/recommend" id='introTitleBtn_link'>
+          <div className='introTitleBtn'>지금 예약하기 &gt;&gt;</div>
+        </a>
       </div>
       {images.map((image, index) => (
         <div
