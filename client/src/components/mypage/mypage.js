@@ -7,29 +7,34 @@ import Reservation from "./reservation";
 import Alarm from "./alarm";
 import UsedInfo from './usedinfo';
 import Registration from "./registration";
+import axios from "axios";
+import { getCookie } from "../../useCookies";
 
 function Mypage() {
-  const [menu, setMenu] = useState("예약 내역");
-
-  const MenuClick = (selectMenu) => {
-    setMenu(selectMenu);
-  };
-
+  const [menu, setMenu] = useState("내 정보 관리");
+  let [userInfo, setUSerInfo] = useState({});
   const [end, setEnd] = useState("");
-
+  
   useEffect(() => {
+    axios.get('/user',{params: {userID:getCookie('login')}})
+    .then((res)=>{
+      console.log(res.data[0]);
+      setUSerInfo(res.data[0]);
+    })
     setTimeout(() => {
       setEnd("end");
     }, 100);
     return setEnd("");
   }, [menu]);
 
+  const MenuClick = (selectMenu) => {
+    setMenu(selectMenu);
+  };
+
+  
+
+
   //user데이터베이스 사용
-  let [userInfo, setUSerInfo] = useState({
-    nickName: "왔다가",
-    userName: "KDT",
-    phoneNumber: "010-1234-5678",
-  });
 
   return (
     <div className="mypagebackGround">

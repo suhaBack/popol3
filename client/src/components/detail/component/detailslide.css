@@ -1,0 +1,26 @@
+.slick-list{
+  width: 100%;
+}
+
+.slick-list img{
+  width: 100%;
+}
+
+.detailpage .slick-slider{
+  width: 50%;
+  height: 10vw;
+  padding: 1.5vw 0;
+}
+
+.detailpage .slick-slider img{
+  border: none;
+  padding: 0px 5px;
+}
+
+.slick-active:focus{
+  border: none;
+}
+
+.slick-prev:before, .slick-next:before{
+  color: rgb(94, 94, 253);
+}

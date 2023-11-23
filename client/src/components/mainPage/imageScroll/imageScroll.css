@@ -23,6 +23,7 @@
   height: 100%;
 }
 
-.slick-arrow{
+section div .slick-arrow{
+  background-color: red;
   display: none !important;
 }

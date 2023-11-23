@@ -2,7 +2,7 @@ import './registration.scss';
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "../config/contansts";
 
 
 
@@ -50,7 +50,6 @@ function Registration() {
         console.error("이미지 업로드 에러:", error);
       }
     }
-
 
   return (
     <div className="registration_container">
@@ -180,4 +179,5 @@ function Registration() {
     </div>
   );
 };
+
 export default Registration;

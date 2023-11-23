@@ -26,7 +26,6 @@ const SlideShow = ({ images }) => {
       ))}
     </Slider>
     </>
-    
   );
 };
 
