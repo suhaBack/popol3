@@ -93,6 +93,7 @@ li{
 .Main_nav{
   width: 150%;
   padding-top: 5%;
+  font-size: 1vw;
 }
 
 .Main_nav > ul {
