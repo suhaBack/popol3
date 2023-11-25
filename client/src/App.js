@@ -1,3 +1,4 @@
+
 import "./App.css";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
@@ -21,6 +22,7 @@ import Search from "./components/search/search";
 import ReviewWrite from "./components/review/reviewwrite";
 import Recommened from "./components/recommend/recommend";
 
+
 function App() {
   return (
     <div className="App">
@@ -30,20 +32,11 @@ function App() {
         <Route path="/payment" element={<Payment></Payment>}></Route>
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
         <Route path="/detail/:id" element={<Detail></Detail>}></Route>
-        <Route
-          path="/camping"
-          element={<ProductCamping></ProductCamping>}
-        ></Route>
-        <Route
-          path="/guesthouse"
-          element={<ProductGuesthouse></ProductGuesthouse>}
-        ></Route>
+        <Route path="/camping" element={<ProductCamping></ProductCamping>}></Route>
+        <Route path="/guesthouse" element={<ProductGuesthouse></ProductGuesthouse>}></Route>
         <Route path="/hotel" element={<ProductHotel></ProductHotel>}></Route>
         <Route path="/motel" element={<ProductMotel></ProductMotel>}></Route>
-        <Route
-          path="/penstion"
-          element={<ProductPenstion></ProductPenstion>}
-        ></Route>
+        <Route path="/penstion" element={<ProductPenstion></ProductPenstion>}></Route>
         <Route path="/admin" element={<AdminPage></AdminPage>}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
