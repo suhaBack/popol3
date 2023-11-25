@@ -5,10 +5,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../useCookies";
 import { useState } from "react";
 import axios from "axios";
-import $ from 'jquery';
+import $ from "jquery";
 
 // 버튼 클릭 시 검색창 표시를 위한 토글 함수 by 준영
+var now_layer_id = "";
+var new_display = "";
+function display_popLayer(id) {
+  $("#" + id).toggle();
 
+  var obj = $("#" + id);
+  if (obj.css("display") == "none") {
+    new_display = "block";
+    now_layer_id = id;
+    console.log("none으로 설정");
+  } else if (obj.css("display") == "block") {
+    new_display = "none";
+    now_layer_id = "";
+    console.log("block으로 설정");
+  }
+}
 
 function Header() {
   // 버튼 클릭 시 검색창 표시를 위한 토글 함수 by 준영
@@ -17,28 +32,25 @@ function Header() {
 
   //검색함수 (제작 예정)
 
-
   //input 창 열기와 검색을 실행하기 위해 합하는 코드
-  function ClickMagnifying(){
-    if(isOn){
+  function ClickMagnifying() {
+    if (isOn) {
       console.log("검색창 열기");
       setIsOn(!isOn);
       console.log(isOn);
-      
-    } else if(!isOn) {
+    } else if (!isOn) {
       console.log(isOn);
       console.log("검색");
     }
   }
 
-  
   const navigate = useNavigate();
   const login = getCookie("login");
-  const LogOut = ()=>{
+  const LogOut = () => {
     removeCookie("login");
-    navigate('/');
-  }
-  
+    navigate("/");
+  };
+
   return (
     <div id="Main_Div">
       <div id="Main_Div_2">
@@ -60,10 +72,20 @@ function Header() {
         )}  
       </div>
 
+          <button onClick={() => ClickMagnifying()} className="search_btn">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
 
-      <nav className="Main_nav">
+          {!isOn && (
+            <button onClick={() => setIsOn(!isOn)} className="close_btn">
+              <i className="fa fa-times"></i>
+            </button>
+          )}
+        </div>
+
+        <nav className="Main_nav">
         <ul className="Main_menu_ul">
-          
+
           {login ? (
             <div>
               <li className="Main_menu_li">

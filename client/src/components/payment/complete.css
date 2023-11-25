@@ -1,17 +1,17 @@
-
-.complete_container {
-  margin: auto;
-  margin-top: 200px;
-  width: 30%;
-  height: 50%;
-  /* border-radius: 1px;
-  border: 1px solid black;  */
+.completepage{
+  text-align: center;
 }
 
-.complete_container a {
+.completepage img{
+  width: 15%;
+  margin: 1vw 0 0.5vw 0;
+}
+
+.completeMessage{
+  font-size: 2vw;
+}
+
+.completepage a{
   text-decoration: none;
-}
-
-.gotomain{
-  margin-left: 10px;
+  color:rgb(94, 94, 253);
 }

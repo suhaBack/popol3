@@ -24,11 +24,20 @@ app.use(morgan('dev')); //미들웨어 사용선언?(app.use = 항상 실행, mo
 
 app.use(express.urlencoded({extended:false})); //express자체 서버 설정
 
+app.use("/upload", express.static("upload"));
+
 var cors = require('cors');
 
 app.use(cors());
 
 app.use('/',express.static(path.join(__dirname, 'client/build'))); //express.static=기본경로
+
+const makeFolder = (dir)=>{
+  if (!fs.existsSync(dir)) {//upload 폴더가 있는지 감지하는 부분
+    fs.mkdirSync(dir)
+  }
+}//현제 폴더에 "upload"폴더가 없는 경우 폴더를 생성해주는 코드
+makeFolder("upload")
 
 app.use(`/user`, userRouter);
 app.use(`/rooms`, roomsRouter);

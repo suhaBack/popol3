@@ -43,7 +43,7 @@ function Register() {
             <option value="0">고객</option>
             <option value="1">관리자</option>
           </select>
-          <label>아이디</label>
+          <label>닉네임</label>
           <input
             id="Nid"
             type="text"
