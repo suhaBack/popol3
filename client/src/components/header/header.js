@@ -13,12 +13,14 @@ import $ from 'jquery';
 function Header() {
   // 버튼 클릭 시 검색창 표시를 위한 토글 함수 by 준영
   //input 창 열고 닫기 위한 코드
+  // 사용 x
   const [isOn, setIsOn] = useState(true);
-
+  
   //검색함수 (제작 예정)
-
-
+  
+  
   //input 창 열기와 검색을 실행하기 위해 합하는 코드
+  // 사용 x
   function ClickMagnifying(){
     if(isOn){
       console.log("검색창 열기");
@@ -48,7 +50,7 @@ function Header() {
       </div>
     
       {/* 검색바 들어갈거임 */}
-      <div className="search_area">
+      {/* <div className="search_area">
         {!isOn && (
           <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
         )}
@@ -61,12 +63,20 @@ function Header() {
           <button onClick={() => setIsOn(!isOn)} className="close_btn"><i className="fa fa-times"></i>
           </button>
         )}  
+      </div> */}
+      <div className="search_area">
+        <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
+        <Link to="/search">
+        <button className="search_btn">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </Link>
       </div>
 
+      
 
       <nav className="Main_nav">
         <ul className="Main_menu_ul">
-          
           {login ? (
             <div>
               <li className="Main_menu_li">

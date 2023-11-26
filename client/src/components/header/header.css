@@ -20,8 +20,6 @@ li{
   border-style: ridge;
 }
 
-
-
 #Main_Div_2 {
   display: grid;
   grid-template-areas: "Logo_section search_area Main_nav";
@@ -35,20 +33,22 @@ li{
   /* width: 25%; */
   width: 200px;
   height: 75px;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
 .search_area{
   padding-top: 20px;
   text-align: right;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 .search_Bar {
-  /* outline: none; */
-  /* border: none; */
-  border-radius: 100px;
+  
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 100px 00px 0px 100px;
   padding: 5px 10px;
-  width: 400px;
+  width: 70%;
   transition: width 0.3s ease;
 }
 
@@ -60,7 +60,7 @@ li{
   width: 40px;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 100px;
+  border-radius: 0px 100px 100px 0px;
   border: none;
   background: #5252FE;
   display: inline;
@@ -93,6 +93,7 @@ li{
 .Main_nav{
   width: 150%;
   padding-top: 5%;
+  font-size: 1vw;
 }
 
 .Main_nav > ul {

@@ -92,12 +92,14 @@ function UsedInfo() {
                     {a.status === "이용" ? (
                       <>
                         <div className="usedstatus">이용 완료</div>
-                        <button
-                          className="reviewWriteBtn"
-                          onClick={() => handleReviewClick(a.id)}
-                        >
-                          리뷰 작성
-                        </button>
+                        <a href="/reviewwrite">
+                          <button
+                            className="reviewWriteBtn"
+                            onClick={() => handleReviewClick(a.id)}
+                          >
+                            리뷰 작성
+                          </button>
+                        </a>
                       </>
                     ) : (
                       <div className="usedstatus">{a.status} 완료</div>
