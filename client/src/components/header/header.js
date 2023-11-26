@@ -28,6 +28,7 @@ function Header() {
     } else if(!isOn) {
       console.log(isOn);
       console.log("검색");
+      
     }
   }
 
@@ -51,9 +52,11 @@ function Header() {
         {!isOn && (
           <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
         )}
-
-        <button onClick={() => ClickMagnifying()} className="search_btn"><i className="fa-solid fa-magnifying-glass"></i></button>
-      
+        <Link to="/search">
+        <button onClick={() => ClickMagnifying()} className="search_btn">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </Link>
         {!isOn && (
           <button onClick={() => setIsOn(!isOn)} className="close_btn"><i className="fa fa-times"></i>
           </button>
