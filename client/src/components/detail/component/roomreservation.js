@@ -1,24 +1,42 @@
 import "./roomreservation.css";
-import aabbcc from "./../image/aabbcc.png";
 import ReservationCalendar from "./../date/date.js";
-import room1 from "./../image/detailslide1.jpg"
-import room2 from "./../image/detailslide2.jpg"
+import room1 from "./../image/detailslide1.jpg";
+import room2 from "./../image/detailslide2.jpg";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API_URL } from "../../config/contansts";
+import { useParams } from "react-router-dom";
 
 function RoomReservation() {
-  let roomdata = [
-    {
-      id: 1,
-      img: room1,
-      title: "부티크 킹 테라스",
-      price: "364,667",
-    },
-    {
-      id: 2,
-      img: room2,
-      title: "파노라믹 스위트",
-      price: "430,667",
-    },
-  ];
+  const [rooms, setRooms] = useState([]);
+  const { id } = useParams();
+  // let roomdata = [
+  //   {
+  //     id: 1,
+  //     img: room1,
+  //     title: "부티크 킹 테라스",
+  //     price: "364,667",
+  //   },
+  //   {
+  //     id: 2,
+  //     img: room2,
+  //     title: "파노라믹 스위트",
+  //     price: "430,667",
+  //   },
+  // ];
+
+  useEffect(() => {
+    const getData = async () => {
+      await axios
+        .get(`${API_URL}/rooms/detail`, { params: { lodging_id: id } })
+        .then((res) => {
+          setRooms(res.data);
+          console.log("res:", res.data);
+        })
+        .catch(console.log("lodging실패"));
+    };
+    getData();
+  }, []);
 
   return (
     <div className="RoomReservation_container">
@@ -26,15 +44,15 @@ function RoomReservation() {
         <ReservationCalendar></ReservationCalendar>
       </div>
       <div className="roominfo">
-        {roomdata.map((a, i) => {
+        {rooms.map((a, i) => {
           return (
             <div className="roominfo_box">
               <div className="roominfo_img">
-                <img src={a.img} id="roomimg"></img>
+                <img src={room1} id="roomimg"></img>
               </div>
               <div class="roominfo_text">
                 <div class="roominfo_text_flex">
-                  <h3>{a.title}</h3>
+                  <h3>{a.type}</h3>
                   <div>
                     <p>가격</p>
                     <p>{a.price}원/1박</p>

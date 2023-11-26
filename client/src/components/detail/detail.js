@@ -29,7 +29,7 @@ function Detail() {
   
   console.log('client',lodginData,roomData);
 
-  const getData = async ()=>{
+  const getData = async () => {
     await axios.get(`${API_URL}/lodging/detail`,{params:{lodging_id:id}})
     .then((res)=>{setLodgingData(res.data)})
     .catch(console.log("lodging실패"));
