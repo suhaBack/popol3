@@ -1,16 +1,20 @@
 import "./roomreservation.css";
 import aabbcc from "./../image/aabbcc.png";
 import ReservationCalendar from "./../date/date.js";
+import room1 from "./../image/detailslide1.jpg"
+import room2 from "./../image/detailslide2.jpg"
 
 function RoomReservation() {
   let roomdata = [
     {
       id: 1,
+      img: room1,
       title: "부티크 킹 테라스",
       price: "364,667",
     },
     {
       id: 2,
+      img: room2,
       title: "파노라믹 스위트",
       price: "430,667",
     },
@@ -26,7 +30,7 @@ function RoomReservation() {
           return (
             <div className="roominfo_box">
               <div className="roominfo_img">
-                <img src={aabbcc} id="roomimg"></img>
+                <img src={a.img} id="roomimg"></img>
               </div>
               <div class="roominfo_text">
                 <div class="roominfo_text_flex">

@@ -3,20 +3,18 @@ const Rooms = require("../models/room");
 const router = express.Router();
 
 router
-  .get("/", async (req, res, next) => {//
+  .get("/detail", async (req, res, next) => {//
     try {
       const Roomsdata = Rooms.findAll({
-        room_id: req.body.room_id,
-        lodging_id: req.body.lodging_id,
-        type: req.body.type,
-        price: req.body.price,
-        capacity: req.body.capacity,
-        description: req.body.description,
+        where:{
+          lodging_id:req.query.lodging_id,
+        }
       });
-      return Roomsdata
+      console.log(Roomsdata);
+      res.status(201).send(Roomsdata);
     } catch (error) {
       console.error(error);
-      next(error);
+      res.status(501).send(error);
     }
   })
   .post("/", async (req, res, next) => {

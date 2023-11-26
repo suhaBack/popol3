@@ -17,6 +17,7 @@ https://www.goodchoice.kr/product/search/2 */
   position: relative;
   font-size: 1.5vw;
   float: left;
+  
 }
 
 .productpageMapBtn{
@@ -29,10 +30,12 @@ https://www.goodchoice.kr/product/search/2 */
 }
 
 .dropbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgb(85, 85, 226);
   padding: 0.5vw 1vw;
   border-radius: 0.5vw;
-  display: block;
   box-shadow: 0.5px 0.5px 1px inset black;
   width: 13vw;
   cursor: pointer;

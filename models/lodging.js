@@ -38,6 +38,16 @@ class Lodging extends Sequelize.Model {
         },
         comment: "주소(위치)",
       },
+      location_info: {
+        type: Sequelize.STRING(500),
+        allowNull: true,
+        comment: "주소(위도,경도)",
+      },
+      imageURL: {
+        type: Sequelize.STRING(500),
+        allowNull: false,
+        comment: "이미지 경로",
+      },
       description: {
         type: Sequelize.TEXT,
         allowNull: false,
@@ -60,9 +70,10 @@ class Lodging extends Sequelize.Model {
         },
         comment: "0:모텔, 1:호텔/리조트, 2:펜션, 3:게스트하우스, 4:캠핑/글램핑 ",
       },
+      
       rating: {
         type: Sequelize.DECIMAL(3, 2),
-        allowNull: false,
+        allowNull: true,
         validate: {
           len:{
             args:[0.00,5.00],
@@ -73,7 +84,7 @@ class Lodging extends Sequelize.Model {
       },
       review_count: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: {
             args: [0],

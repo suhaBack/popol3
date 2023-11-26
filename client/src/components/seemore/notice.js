@@ -24,14 +24,12 @@ function Notice(props) {
             <i class="fa-solid fa-angle-down"></i>
           </div>
         </div>
-        <div
-          className={
-            sections.basic ? "basic_info_visible" : "basic_info_hidden"
-          }
-        > 
+        <div className={sections.basic ? "basic_info_visible" : "basic_info_hidden"}> 
           <p>여행과 여가의 모든 경험을 연결합니다 </p>
           <p>숙박, 항공, 액티비티, 렌터카, 맛집, 모바일 티켓 등 원스톱 여행 플랫폼을 만들고 있어요.</p>
           <p>'왔다가' 는 여행뿐만 아니라 여가의 모든 순간을 책임질 수 있도록 항상 최선을 다하겠습니다.</p>
+          <p><a href="https://docs.google.com/spreadsheets/d/1atbk-TzYL6RfvNrGa66EUzoaySWCMWvypsfH3hKKKsU/edit?usp=sharing">작업진행도</a></p>
+          <p><a href="https://github.com/IkGy/popol3">코드보기(git)</a></p>
         </div>
       </div>
 

@@ -44,7 +44,26 @@ router
     next(error)
   }
 })
-
+.post('/update',async (req,res,next)=>{
+  const user_id = req.body.user_id
+  const editId = req.body.id
+  const editPWD = req.body.pwd
+  console.log('server',user_id,editId,editPWD);
+  await User.update({
+    id:editId,
+    password:editPWD
+  },
+  {
+    where:{user_id:user_id}
+  })
+  .then(()=>{
+    res.status(201).end();
+  })
+  .catch((err)=>{
+    console.error(err);
+    res.status(501).end();
+  })
+})
 .post('/login',async (req,res,next)=>{
   try {
     // console.log('test',req.body.id);
@@ -73,7 +92,7 @@ router
   try {
     const user_DB = await User.findAll({
       where: {
-        id : req.query.user
+        id : req.query.user || req.query.userID
       }
     })
     console.log('userDB',user_DB);

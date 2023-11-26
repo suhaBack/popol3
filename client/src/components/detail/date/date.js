@@ -19,34 +19,38 @@ const DateRangePicker = () => {
   return (
     <div className="dateBox">
       <div className="dateflexBox">
-        <div>
-          <span>체크인: </span>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            dateFormat="yyyy/MM/dd"
-          />np
-        </div>
-
-        <div>
-          <span>체크아웃: </span>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            dateFormat="yyyy/MM/dd"
-          />
+        <div className="dateflexBox2">
+          <div>
+            <span>체크인: </span>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              dateFormat="yyyy/MM/dd"
+            />
+          </div>
+          <sapn className="dateslash">/</sapn>
+          <div>
+            <span>체크아웃: </span>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              dateFormat="yyyy/MM/dd"
+            />
+          </div>
         </div>
 
         <div>
           {startDate && endDate && (
-            <span>{calculateNightStay()}박 {calculateNightStay() + 1}일</span>
+            <span>
+              숙박기간: {calculateNightStay()}박 {calculateNightStay() + 1}일
+            </span>
           )}
         </div>
       </div>

@@ -2,6 +2,7 @@ import "./adminPage.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config/contansts";
+import { Link } from "react-router-dom";
 
 function AdminPage() {
   const [managermenu, setManagermenu] = useState("유저목록");
@@ -11,49 +12,50 @@ function AdminPage() {
   const MenuClick = (selectMenu) => {
     setManagermenu(selectMenu);
   };
-  useEffect(()=>{
+  useEffect(() => {
     const getList = async () => {
-      await axios.get(`${API_URL}/user/admin`)
-      .then((result)=>{
-        const items = result.data
-        setUserList(items)})
-      await axios.get(`${API_URL}/lodging/admin`,{params:{}})
-      .then((result)=>{
-        const items = result.data
-        setLodgingList(items)})
-      await axios.get(`${API_URL}/bookings/admin`)
-      .then((result)=>{
-        const items = result.data
-        setBookingList(items)})
-    }
+      await axios.get(`${API_URL}/user/admin`).then((result) => {
+        const items = result.data;
+        setUserList(items);
+      });
+      await axios.get(`${API_URL}/lodging/admin`).then((result) => {
+        const items = result.data;
+        setLodgingList(items);
+      });
+      await axios.get(`${API_URL}/bookings/admin`).then((result) => {
+        const items = result.data;
+        setBookingList(items);
+      });
+    };
     getList();
-  },[]);
-
+  }, []);
   return (
     <div className="managercontainer">
-      <div className="managermenu">
-        <button onClick={() => MenuClick("유저목록")}>유저목록</button>
-        <button onClick={() => MenuClick("카테고리")}>카테고리</button>
-        <button onClick={() => MenuClick("예약내역")}>예약내역</button>
-        <button onClick={() => MenuClick("설정")}>설정</button>
-      </div>
-      <div className="board">
+      <div className="managergirdbox container">
+        <div className="managermenu">
+          <div>
+            <Link to="/">왔다가</Link>
+            </div>
+          <button onClick={() => MenuClick("유저목록")}>유저목록</button>
+          <button onClick={() => MenuClick("카테고리")}>카테고리</button>
+          <button onClick={() => MenuClick("예약내역")}>예약내역</button>
+          <button onClick={() => MenuClick("설정")}>설정</button>
+        </div>
+        <div className="board">
           {managermenu === "유저목록" && (
             <div>
-             유저목록
-             <ul>
-             {userList.map((a) => {
-              return(
-                <li key={a.user_id}>
-                  <p>
-                    이름: {a.name}, 
-                    아이디: {a.id}, 
-                    비밀번호: {a.password}, 
-                    이메일: {a.email}, 
-                    권한: {a.role}
-                  </p>
-                </li>
-              )})}
+              유저목록
+              <ul>
+                {userList.map((a) => {
+                  return (
+                    <li key={a.user_id}>
+                      <p>
+                        이름: {a.name}, 아이디: {a.id}, 비밀번호: {a.password},
+                        이메일: {a.email}, 권한: {a.role}
+                      </p>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}
@@ -99,6 +101,8 @@ function AdminPage() {
             설정
            </div>
           )}
+          {managermenu === "설정" && <div>설정</div>}
+        </div>
       </div>
     </div>
   );

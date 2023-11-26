@@ -56,11 +56,12 @@ function UsedInfo() {
     pageNumbers.push(i);
   }
 
+  const handleReviewClick = (a) => {};
   return (
     <div id="jsw_maincontainer">
       <div id="jsw_subcontainer">
         <div className="usepageTitle">
-          <img src={체크} style={{height: "65%"}}></img>
+          <img src={체크} style={{ height: "65%" }}></img>
           <span>
             이용 내역<span>({usedata.length})</span>
           </span>
@@ -87,7 +88,22 @@ function UsedInfo() {
                     <div className="usedid">{a.id}</div>
                     <div className="usedtitle">{a.title}</div>
                     <div className="useddate">{a.date}</div>
-                    <div className="usedstatus">{a.status} 완료</div>
+
+                    {a.status === "이용" ? (
+                      <>
+                        <div className="usedstatus">이용 완료</div>
+                        <a href="/reviewwrite">
+                          <button
+                            className="reviewWriteBtn"
+                            onClick={() => handleReviewClick(a.id)}
+                          >
+                            리뷰 작성
+                          </button>
+                        </a>
+                      </>
+                    ) : (
+                      <div className="usedstatus">{a.status} 완료</div>
+                    )}
                   </div>
                 );
               })}

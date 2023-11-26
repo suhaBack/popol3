@@ -3,6 +3,7 @@ import "./introSlider.css"; // 스타일 파일 임포트
 import introslider1 from "./../../image/introslider1.jpg";
 import introslider2 from "./../../image/introslider2.jpg";
 import introslider3 from "./../../image/introslider3.jpg";
+import { Link } from "react-router-dom";
 
 const IntroSlider = () => {
   const images = [introslider1, introslider2, introslider3]; // 이미지 경로 배열
@@ -22,14 +23,14 @@ const IntroSlider = () => {
     <div className="slider-container">
       <div className="introTitleBox">
         <div className="introTitle">
-          <span>
-            왔다가
-          </span>
+          <span>왔다가</span>
           에서
           <br />
           편하게 예약하세요!
         </div>
-        <div className='introTitleBtn'>지금 예약하기 &gt;&gt;</div>
+        <Link href="/recommend" id='introTitleBtn_link'>
+          <div className='introTitleBtn'>지금 예약하기 &gt;&gt;</div>
+        </Link>
       </div>
       {images.map((image, index) => (
         <div

@@ -1,8 +1,14 @@
-import "./productguesthouse.css";
+import { useState } from 'react';
+import "./../hotel/productHotel.css";
 import ProductListG from "./productlistG";
 import StickyMenuG from "./stickymenuG";
 
-function productguesthouse() {
+function Productguesthouse() {
+  const [selectedRegion, setSelectedRegion] = useState("지역선택하기");
+
+  const handleRegionChange = (region) => {
+    setSelectedRegion(region);
+  };
   return (
     <div className="hotel-container">
       <div className="productpageTitle">
@@ -11,14 +17,24 @@ function productguesthouse() {
           <div>
             <span class="dropdown">
               <span className="dropbtn">
-                지역선택하기 <i class="fa-solid fa-caret-down"></i>
+              {selectedRegion} <i class="fa-solid fa-caret-down"></i>
               </span>
               <div class="dropdown-content" style={{ margin: 0 }}>
-                <a href="#">- 서울</a>
-                <a href="#">- 경기/인천</a>
-                <a href="#">- 강원</a>
-                <a href="#">- 대전</a>
-                <a href="#">- 부산</a>
+              <a href="#" onClick={() => handleRegionChange("서울")}>
+                  - 서울
+                </a>
+                <a href="#" onClick={() => handleRegionChange("경기/인천")}>
+                  - 경기/인천
+                </a>
+                <a href="#" onClick={() => handleRegionChange("강원")}>
+                  - 강원
+                </a>
+                <a href="#" onClick={() => handleRegionChange("대전")}>
+                  - 대전
+                </a>
+                <a href="#" onClick={() => handleRegionChange("부산")}>
+                  - 부산
+                </a>
               </div>
             </span>
           </div>
@@ -32,4 +48,4 @@ function productguesthouse() {
   );
 }
 
-export default productguesthouse;
+export default Productguesthouse;

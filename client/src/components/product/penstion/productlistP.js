@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { API_URL } from "../../config/contansts";
+import { Link } from 'react-router-dom';
 
 function ProductListP() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -8,7 +9,7 @@ function ProductListP() {
   useEffect(() => {
     const getList = async () => {
       await axios
-        .get(`${API_URL}/lodging`)
+        .get(`${API_URL}/lodging`,{ params: { type: 2 }})
         .then((result) => {
           const items = result.data;
           console.log("items", items);
@@ -60,14 +61,16 @@ function ProductListP() {
             {currentItems.map((a) => {
               return (
                 <div className="productBgImg">
-                  <img src={a.img}></img>
-                  <div className="productpagecontect">
-                    <div className="productpagepdtitle">{a.name}</div>
-                    <div className="productpagepdevaluation">
-                      {a.rating} 만족해요 ({a.review_count})
+                  <Link to={`/detail/${a.lodging_id}`}>
+                    <img src={a.imageURL}></img>
+                    <div className="productpagecontect">
+                      <div className="productpagepdtitle">{a.name}</div>
+                      <div className="productpagepdevaluation">
+                        {a.rating} 만족해요 ({a.review_count})
+                      </div>
+                      <div className="productpagepdlocation">{a.location}</div>
                     </div>
-                    <div className="productpagepdlocation">{a.location}</div>
-                  </div>
+                  </Link>
                 </div>
               );
             })}

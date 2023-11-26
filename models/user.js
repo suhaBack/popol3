@@ -74,7 +74,7 @@ class User extends Sequelize.Model {
             msg: "유효한 역할이 아닙니다."
           }
         },
-        defaultValue: '1',
+        defaultValue: '0',
         comment: "0(일반회원), 1(사업자회원), 2(관리자)", // 사용자 역할
       },
     }, {
