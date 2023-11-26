@@ -3,7 +3,8 @@ import { useState } from "react";
 import 결과없음 from "./../image/결과없음.png";
 import 예약 from "./../image/예약.png";
 
-function Reservation() {
+function Reservation(props) {
+  console.log(props.bookingList);
   // booking데이터베이스 사용
   let [reservationdata, setReservationdata] = useState([
     {

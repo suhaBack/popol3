@@ -9,47 +9,11 @@ import "./myreview.css";
 import 결과없음 from "./../image/결과없음.png";
 import 리뷰 from "./../image/리뷰.png";
 
-function Myreview() {
+function Myreview(props) {
   //리뷰데이터데이스 사용
-  let [myreview, setMyreview] = useState([
-    {
-      id: 1,
-      img: img1,
-
-      rating: 0.5,
-      ment: "존나 더러워요... 가지마세요;;하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하",
-      date: "2023-11-18",
-    },
-    {
-      id: 2,
-      img: img2,
-      rating: 3.8,
-      ment: "사장님께서 친절하십니다.",
-      date: "2024-10-31",
-    },
-    {
-      id: 3,
-      img: img3,
-      rating: 5,
-      ment: "깨끗하고 넓고 좋습니다!!",
-      date: "2025-07-08",
-    },
-    {
-      id: 4,
-      img: img4,
-      rating: 1,
-      ment: "빈대나옴",
-      date: "2026-01-28",
-    },
-    {
-      id: 5,
-      img: img5,
-      rating: 0,
-      ment: "죽여줘",
-      date: "2027-11-13",
-    },
-  ]);
-
+  console.log('zxc',props.reviewData[0].content);
+  const reviews = props.reviewData
+  console.log(reviews);
   const ratingToPercent = (a) => {
     const restaurant = { averageScore: a };
 
@@ -62,17 +26,17 @@ function Myreview() {
       <div className="myreviewTitle">
         <img src={리뷰}></img>
         <span>
-          작성리뷰 <span>{myreview.length}</span>개
+          작성리뷰 <span>{reviews.length}</span>개
         </span>
       </div>
-      {myreview == "" ? (
+      {reviews == "" ? (
         <div className="reservationComentBox">
           <img src={결과없음}></img>
           <div className="reservationComent">작성된 리뷰가 없습니다.</div>
         </div>
       ) : (
         <div className="usepageGridBox">
-          {myreview.map((a, i) => {
+          {reviews.map((a, i) => {
             return (
               <div class="jsw_01">
                 <div>
