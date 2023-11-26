@@ -14,8 +14,8 @@ import { API_URL } from '../config/contansts';
 function Mypage() {
   const [menu, setMenu] = useState("내 정보 관리");
   let [userInfo, setUSerInfo] = useState({});
-  let [reviewData, setReviewData] = useState({});
-  let [bookingList, setBookingList] = useState({});
+  let [reviewData, setReviewData] = useState([]);
+  let [bookingList, setBookingList] = useState([]);
   const [end, setEnd] = useState("");
 
   useEffect(() => {
@@ -29,13 +29,13 @@ function Mypage() {
         .then((result) => {
           const items = result.data;
         console.log('book',items);
-        setBookingList(items[0]);
+        setBookingList(items);
         });
       await axios.get(`${API_URL}/reviews/mypage`,{params: {userID:5}})
         .then((result) => {
           const items = result.data;
           console.log("review",result.data);
-          setReviewData(items[0]);
+          setReviewData(items);
         });
     };
     getList();

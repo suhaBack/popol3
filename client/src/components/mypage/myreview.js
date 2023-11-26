@@ -11,9 +11,9 @@ import 리뷰 from "./../image/리뷰.png";
 
 function Myreview(props) {
   //리뷰데이터데이스 사용
-  console.log(props.reviewData);
-  let [myreview, setMyreview] = useState([]);
-
+  console.log('zxc',props.reviewData[0].content);
+  const reviews = props.reviewData
+  console.log(reviews);
   const ratingToPercent = (a) => {
     const restaurant = { averageScore: a };
 
@@ -26,17 +26,17 @@ function Myreview(props) {
       <div className="myreviewTitle">
         <img src={리뷰}></img>
         <span>
-          작성리뷰 <span>{myreview.length}</span>개
+          작성리뷰 <span>{reviews.length}</span>개
         </span>
       </div>
-      {myreview == "" ? (
+      {reviews == "" ? (
         <div className="reservationComentBox">
           <img src={결과없음}></img>
           <div className="reservationComent">작성된 리뷰가 없습니다.</div>
         </div>
       ) : (
         <div className="usepageGridBox">
-          {myreview.map((a, i) => {
+          {reviews.map((a, i) => {
             return (
               <div class="jsw_01">
                 <div>
