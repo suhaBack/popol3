@@ -9,7 +9,7 @@ function Pushinquiry2(props) {
       </div>
       <div>
         <div>
-          <span>카테고리유형</span>
+          <span>카테고리유형</span><br></br>
           <select name="language" id="language">
             <option value="main">카테고리유형을 선택하세요</option>
             <option value="1">모텔</option>
@@ -23,7 +23,7 @@ function Pushinquiry2(props) {
           </select>
         </div>
         <div>
-          <span>문의유형</span>
+          <span>문의유형</span><br></br>
           <select name="language" id="language">
             <option value="main">문의유형을 선택하세요</option>
             <option value="1">이벤트</option>

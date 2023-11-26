@@ -54,21 +54,23 @@ function Header() {
   return (
     <div id="Main_Div">
       <div id="Main_Div_2">
-        <div className="Logo_section">
-          <Link to="/">
-            <img src={logo}></img>
-          </Link>
-        </div>
+      <div className="Logo_section">
+        <Link to="/"><img src={logo}></img></Link>
+      </div>
+    
+      {/* 검색바 들어갈거임 */}
+      <div className="search_area">
+        {!isOn && (
+          <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
+        )}
 
-        {/* 검색바 들어갈거임 */}
-        <div className="search_area">
-          {!isOn && (
-            <input
-              className="search_Bar"
-              type="type"
-              placeholder="어디로 갈까?"
-            />
-          )}
+        <button onClick={() => ClickMagnifying()} className="search_btn"><i className="fa-solid fa-magnifying-glass"></i></button>
+      
+        {!isOn && (
+          <button onClick={() => setIsOn(!isOn)} className="close_btn"><i className="fa fa-times"></i>
+          </button>
+        )}  
+      </div>
 
           <button onClick={() => ClickMagnifying()} className="search_btn">
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -100,19 +102,19 @@ function Header() {
               <Link to="/login">로그인 /</Link>
             </li>
           )}
-          <li className="Main_menu_li">
+          <li className="Main_menu_li" id="SeeMore">
             <a href="/seemore">더 보기</a>
             <ul className="drop_menu" style={{ display: "none" }}>
-              <li>
+              <li className="drop_item">
                 <a href="??">가</a>
               </li>
-              <li>
+              <li className="drop_item">
                 <a href="??">나</a>
               </li>
-              <li>
+              <li className="drop_item">
                 <a href="??">다</a>
               </li>
-              <li>
+              <li className="drop_item">
                 <a href="??">라</a>
               </li>
             </ul>
