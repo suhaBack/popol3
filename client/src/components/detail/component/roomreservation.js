@@ -1,5 +1,4 @@
 import "./roomreservation.css";
-import aabbcc from "./../image/aabbcc.png";
 import ReservationCalendar from "./../date/date.js";
 import room1 from "./../image/detailslide1.jpg"
 import room2 from "./../image/detailslide2.jpg"
@@ -32,11 +31,11 @@ function RoomReservation() {
           return (
             <div className="roominfo_box">
               <div className="roominfo_img">
-                <img src={a.img} id="roomimg"></img>
+                <img src={room1} id="roomimg"></img>
               </div>
               <div class="roominfo_text">
                 <div class="roominfo_text_flex">
-                  <h3>{a.title}</h3>
+                  <h3>{a.type}</h3>
                   <div>
                     <p>가격</p>
                     <p>{a.price}원/1박</p>
