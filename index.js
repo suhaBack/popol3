@@ -10,7 +10,7 @@ const port = process.env.NODE_ENV || '8080';
 
 const userRouter = require('./routes/User'); //라우터폴더 안에 User.js를 요청하는 상수(이하 동일)
 const roomsRouter = require('./routes/Rooms');
-// const reviewsRouter = require('./routes/Riviews');
+const reviewsRouter = require('./routes/Reviews');
 const lodgingsRouter = require('./routes/Lodgings');
 const bookingsRouter = require('./routes/Bookings');
 
@@ -41,7 +41,7 @@ makeFolder("upload")
 
 app.use(`/user`, userRouter);
 app.use(`/rooms`, roomsRouter);
-// app.use('/reviews', reviewsRouter);
+app.use('/reviews', reviewsRouter);
 app.use('/lodging', lodgingsRouter);
 app.use('/bookings', bookingsRouter);
 

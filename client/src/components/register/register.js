@@ -12,8 +12,7 @@ function Register() {
     const CKpwd = e.target.CKpwd.value;
     const Nemail = e.target.Nemail.value;
     const Nname = e.target.Nname.value;
-    const Nphone = e.target.Nphone.value;
-    const Ntype = e.target.userType.value; // 0
+    const Nphone = e.target.Nphone.value; // 0
     if (Nid,Npwd,CKpwd,Nemail,Nname,Nphone != "") {
       if (Npwd === CKpwd) {
         console.log(Nid,Npwd,CKpwd,Nemail,Nname,Nphone);

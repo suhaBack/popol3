@@ -20,14 +20,12 @@ function Detail() {
   // console.log(id); // 21
   const [button, setButton] = useState("객실안내/예약");
   const [lodginData, setLodgingData] = useState([]);
-  const [roomData, setRoomData] = useState([]);
   const [end, setEnd] = useState("");
   
   const ButtonClick = (selectButton) => {
     setButton(selectButton);
   };
   
-  console.log('client',lodginData,roomData);
 
   const getData = async ()=>{
     await axios.get(`${API_URL}/lodging/detail`,{params:{lodging_id:id}})
