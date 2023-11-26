@@ -62,36 +62,44 @@ function AdminPage() {
 
           {managermenu === "카테고리" && (
             <div>
-              카테고리
-              {lodgingList.map((a) => {
-                return (
-                  <li key={a.lodging_id}>
-                    <p>
-                      이름: {a.name}, 위치: {a.location}
-                    </p>
-                    <p>설명: {a.description}</p>
-                    <br></br>
-                  </li>
-                );
-              })}
-            </div>
+            카테고리
+            {lodgingList.map((a) => {
+              return(
+                <li key={a.lodging_id}>
+                  <p>
+                    이름: {a.name}, 
+                    위치: {a.location}
+                  </p>
+                  <p>설명: {a.description}</p>
+                  <p>숙박 유형: {a.type}</p>
+                  <br></br>
+                </li>
+                )}
+              )}
+           </div>
           )}
           {managermenu === "예약내역" && (
             <div>
-              예약내역
-              {bookingList.map((a) => {
-                return (
-                  <li key={a.user_id}>
-                    <p>
-                      예약자: {a.user_id}, 시설이름: {a.room_id}, 체크인:{" "}
-                      {a.start_date}, 체크아웃: {a.end_date}, 가격:{" "}
-                      {a.total_price}
-                      상태: {a.status}
-                    </p>
-                  </li>
-                );
-              })}
-            </div>
+            예약내역
+            {bookingList.map((a) => {
+              return(
+                <li key={a.user_id}>
+                  <p>
+                    예약자: {a.user_id},
+                    시설이름: {a.room_id},
+                    체크인: {a.start_date},
+                    체크아웃: {a.end_date},
+                    가격: {a.total_price},
+                    상태: {a.status}
+                  </p>
+                </li>
+              )})}
+           </div>
+          )}
+          {managermenu === "설정" && (
+            <div>
+            설정
+           </div>
           )}
           {managermenu === "설정" && <div>설정</div>}
         </div>

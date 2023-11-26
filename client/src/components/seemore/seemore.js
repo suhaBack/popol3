@@ -63,7 +63,6 @@ function Seemore() {
                     1:1 문의
                   </a>
                 </li>
-                
               </ul>
             </nav>
           </div>
