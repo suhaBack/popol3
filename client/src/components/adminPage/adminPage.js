@@ -17,7 +17,7 @@ function AdminPage() {
       .then((result)=>{
         const items = result.data
         setUserList(items)})
-      await axios.get(`${API_URL}/lodging/admin`)
+      await axios.get(`${API_URL}/lodging/admin`,{params:{}})
       .then((result)=>{
         const items = result.data
         setLodgingList(items)})
@@ -28,6 +28,7 @@ function AdminPage() {
     }
     getList();
   },[]);
+
   return (
     <div className="managercontainer">
       <div className="managermenu">
@@ -68,9 +69,11 @@ function AdminPage() {
                     위치: {a.location}
                   </p>
                   <p>설명: {a.description}</p>
+                  <p>숙박 유형: {a.type}</p>
                   <br></br>
                 </li>
-              )})}
+                )}
+              )}
            </div>
           )}
           {managermenu === "예약내역" && (
@@ -80,11 +83,11 @@ function AdminPage() {
               return(
                 <li key={a.user_id}>
                   <p>
-                    예약자: {a.user_id}, 
-                    시설이름: {a.room_id}, 
-                    체크인: {a.start_date}, 
-                    체크아웃: {a.end_date}, 
-                    가격: {a.total_price}
+                    예약자: {a.user_id},
+                    시설이름: {a.room_id},
+                    체크인: {a.start_date},
+                    체크아웃: {a.end_date},
+                    가격: {a.total_price},
                     상태: {a.status}
                   </p>
                 </li>
