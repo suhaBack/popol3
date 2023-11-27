@@ -11,7 +11,7 @@ import 리뷰 from "./../image/리뷰.png";
 
 function Myreview(props) {
   //리뷰데이터데이스 사용
-  console.log('zxc',props.reviewData[0].content);
+  console.log('zxc',props.reviewData);
   const reviews = props.reviewData
   console.log(reviews);
   const ratingToPercent = (a) => {

@@ -4,6 +4,7 @@ import 결과없음 from "./../image/결과없음.png";
 import 예약 from "./../image/예약.png";
 import axios from "axios";
 import { getCookie } from "../../useCookies";
+import { API_URL } from "../config/contansts";
 
 function Reservation(props) {
   console.log(props.bookingList);
@@ -12,7 +13,7 @@ function Reservation(props) {
 
   useEffect(()=>{
     const getList = async ()=>{
-      await axios.get('/bookings/myUse',{params:{user_id:getCookie('user_Code')}})
+      await axios.get(`${API_URL}/bookings/myUse`,{params:{user_id:getCookie('user_Code')}})
       .then((res)=>{
         console.log('test',res.data);
         setReservationdata(res.data)

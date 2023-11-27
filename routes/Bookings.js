@@ -25,10 +25,11 @@ router
   })
   .get("/myUse", async (req, res, next) => {
     try {
-      // console.log('zxcvasdf',req);
+      console.log('zxcvasdf',req);
       const data = await Booking.findAll({
         where:{user_id:req.query.user_id}
-      });
+      });``
+      console.log(data);
       res.status(201).send(data)
     } catch (error) {
       console.error(error);
