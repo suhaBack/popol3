@@ -21,12 +21,8 @@ import Complet from "./components/payment/complete";
 import Search from "./components/search/search";
 import ReviewWrite from "./components/review/reviewwrite";
 import Recommened from "./components/recommend/recommend";
-<<<<<<< HEAD
 import ScrollToTopButton from './topbtn.js'
-=======
 import Test from "./components/test/test";
-
->>>>>>> fb9b87f7afd95aec6628254b0b76ff367073b2a8
 
 
 function App() {

@@ -1,6 +1,5 @@
 import "./roomreservation.css";
 import ReservationCalendar from "./../date/date.js";
-<<<<<<< HEAD
 import room1 from "./../image/detailslide1.jpg";
 import room2 from "./../image/detailslide2.jpg";
 import { useEffect, useState } from "react";
@@ -38,28 +37,6 @@ function RoomReservation() {
     };
     getData();
   }, []);
-=======
-import room1 from "./../image/detailslide1.jpg"
-import room2 from "./../image/detailslide2.jpg"
-import { useEffect, useState } from "react";
-import { API_URL } from "../../config/contansts.js";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-
-function RoomReservation() {
-  const [roomData, setRoomData] = useState([]);
-  const {id} = useParams()
-  
-  const getData = async ()=>{
-    await axios.get(`${API_URL}/rooms/detail`,{params:{lodging_id:id}})
-    .then((res)=>{console.log(res);})
-    // .catch(console.log("lodging실패"));
-  }
-
-  useEffect(() => {
-    getData()
-  });
->>>>>>> fb9b87f7afd95aec6628254b0b76ff367073b2a8
 
   return (
     <div className="RoomReservation_container">
@@ -67,11 +44,7 @@ function RoomReservation() {
         <ReservationCalendar></ReservationCalendar>
       </div>
       <div className="roominfo">
-<<<<<<< HEAD
         {rooms.map((a, i) => {
-=======
-        {roomData.map((a, i) => {
->>>>>>> fb9b87f7afd95aec6628254b0b76ff367073b2a8
           return (
             <div className="roominfo_box">
               <div className="roominfo_img">
