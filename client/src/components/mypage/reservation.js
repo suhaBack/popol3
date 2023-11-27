@@ -1,96 +1,29 @@
 import "./reservation.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import 결과없음 from "./../image/결과없음.png";
 import 예약 from "./../image/예약.png";
+import axios from "axios";
+import { getCookie } from "../../useCookies";
+import { API_URL } from "../config/contansts";
 
-function Reservation() {
+function Reservation(props) {
+  console.log(props.bookingList);
   // booking데이터베이스 사용
-  let [reservationdata, setReservationdata] = useState([
-    {
-      id: 1,
-      title: "숙소이름1",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 2,
-      title: "숙소이름2",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 3,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 4,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 5,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 6,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 7,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 8,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 9,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 10,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 11,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 12,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 13,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-    {
-      id: 14,
-      title: "숙소이름3",
-      startDate: "시작날짜",
-      endDate: "마감날짜",
-    },
-  ]);
+  let [reservationdata, setReservationdata] = useState([]);
+
+  useEffect(()=>{
+    const getList = async ()=>{
+      await axios.get(`${API_URL}/bookings/myUse`,{params:{user_id:getCookie('user_Code')}})
+      .then((res)=>{
+        console.log('test',res.data);
+        setReservationdata(res.data)
+      })
+      .catch((err)=>{
+        console.error(err);
+      })
+    }
+    getList()
+  },[])
 
   const itemsPerPage = 5; // 한 페이지당 표시할 공지사항 수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지

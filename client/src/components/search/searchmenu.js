@@ -14,7 +14,7 @@ function StickyMenu() {
   return (
     <div className="section-1">
       <div className="section-1Box">
-        <div className="select-date">
+        {/* <div className="select-date">
           <h3>날짜</h3>
           <label for="date">
             <input
@@ -24,7 +24,7 @@ function StickyMenu() {
               min="2020-01-01"
             ></input>
           </label>
-        </div>
+        </div> */}
         <div className="condition">
           <h3>상세조건</h3>
           <div className="conditionBtnBox">
@@ -41,7 +41,7 @@ function StickyMenu() {
                 name="reservebox"
                 value="reserve"
               />
-              <label for="reserve">예약가능</label>
+              <label for="reserve">모텔</label>
             </li>
             <li>
               <input
@@ -50,12 +50,39 @@ function StickyMenu() {
                 name="promotionbox"
                 value="promotion"
               />
-              <label for="promotion">프로모션</label>
+              <label for="promotion">호텔/리조트</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="promotion"
+                name="promotionbox"
+                value="promotion"
+              />
+              <label for="promotion">펜션</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="promotion"
+                name="promotionbox"
+                value="promotion"
+              />
+              <label for="promotion">게스트하우스</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="promotion"
+                name="promotionbox"
+                value="promotion"
+              />
+              <label for="promotion">캠핑/글램핑</label>
             </li>
           </ul>
         </div>
-        <div className="productType">
-          <strong>호텔·리조트 유형</strong>
+        {/* <div className="productType">
+          <strong>펜션</strong>
           <ul>
             <li>
               <input
@@ -85,8 +112,8 @@ function StickyMenu() {
               <label for="Express">특급</label>
             </li>
           </ul>
-        </div>
-        <div className="customerCounterBox">
+        </div> */}
+        {/* <div className="customerCounterBox">
           <strong>인원</strong>
           <div className="customerCounter">
             <button
@@ -105,8 +132,8 @@ function StickyMenu() {
               +
             </button>
           </div>
-        </div>
-        <div className="bedTypeBox">
+        </div> */}
+        {/* <div className="bedTypeBox">
           <strong>배드 타입</strong>
           <div className="bedTypeGridBox">
             <div className="bedType1">
@@ -123,7 +150,7 @@ function StickyMenu() {
             </div>
             <div></div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

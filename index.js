@@ -6,11 +6,12 @@ const fs = require('fs');
 
 const index = path.join(__dirname, 'client/build/index.html')
 const port = process.env.NODE_ENV || '8080';
+const multer = require('multer');
 
 
 const userRouter = require('./routes/User'); //라우터폴더 안에 User.js를 요청하는 상수(이하 동일)
 const roomsRouter = require('./routes/Rooms');
-// const reviewsRouter = require('./routes/Riviews');
+const reviewsRouter = require('./routes/Reviews');
 const lodgingsRouter = require('./routes/Lodgings');
 const bookingsRouter = require('./routes/Bookings');
 
@@ -32,6 +33,19 @@ app.use(cors());
 
 app.use('/',express.static(path.join(__dirname, 'client/build'))); //express.static=기본경로
 
+
+//이미지를 저장하고 불러오기 위한 코드
+const upload = multer({ 
+    storage: multer.diskStorage({ //저장 설정
+        destination: function(req, file, cb) { // 어디에 저장할거냐? upload/
+            cb(null, 'upload/') // upload폴더 밑에
+        },
+        filename: function(req, file, cb){ // 어떤 이름으로 저장할거야?
+            cb(null, file.originalname) // 업로드한 file의 오리지널 이름으로 저장하겠다.
+        }
+    })
+})
+
 const makeFolder = (dir)=>{
   if (!fs.existsSync(dir)) {//upload 폴더가 있는지 감지하는 부분
     fs.mkdirSync(dir)
@@ -39,9 +53,17 @@ const makeFolder = (dir)=>{
 }//현제 폴더에 "upload"폴더가 없는 경우 폴더를 생성해주는 코드
 makeFolder("upload")
 
+app.post('/image', upload.single('image'), (req, res)=>{ 
+  const file = req.file; 
+  console.log("post(/image) file:",file);
+  res.send({ 
+      imageUrl: "http://localhost:8080/"+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
+  })
+})
+
 app.use(`/user`, userRouter);
 app.use(`/rooms`, roomsRouter);
-// app.use('/reviews', reviewsRouter);
+app.use('/reviews', reviewsRouter);
 app.use('/lodging', lodgingsRouter);
 app.use('/bookings', bookingsRouter);
 

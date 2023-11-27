@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function ProductList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productbasedata, setProductbasedata] = useState([]);
-  useEffect(() => {
+  useEffect(() => { // 페이지 로딩 할떄 실행 1번만
     const getList = async () => {
       await axios
         .get(`${API_URL}/lodging`,{ params: { type: 1 }})

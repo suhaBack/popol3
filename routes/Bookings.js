@@ -3,19 +3,34 @@ const Booking = require("../models/booking.js");
 const router = express.Router();
 
 router
-.get('/admin',async (req,res,next)=>{
-  try {
-    const bookData = await Booking.findAll()
-    // console.log(userData);
-    res.status(201).send(bookData);
-  } catch (err) {
-    console.error(err);
-    res.status(501).end();
-  }
-})
   .get("/", async (req, res, next) => {
     try {
-      // Bookings로 get요청시 어떤걸 실행할지 적는 곳 (대충 데이터베이스에 있는 정보들 배열로 정렬해서 보내주려고 res뭐시기 쓸거같은데 까먹음;;)
+      console.log(req.query);
+      const bookData = await Booking.findAll({where:{user_id:req.query.userID}})
+      console.log('book',bookData);
+      res.status(201).send(bookData);
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  })
+  .get("/admin", async (req, res, next) => {
+    try {
+      const data = await Booking.findAll();
+      res.status(201).send(data)
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  })
+  .get("/myUse", async (req, res, next) => {
+    try {
+      console.log('zxcvasdf',req);
+      const data = await Booking.findAll({
+        where:{user_id:req.query.user_id}
+      });``
+      console.log(data);
+      res.status(201).send(data)
     } catch (error) {
       console.error(error);
       next(error);
@@ -30,7 +45,6 @@ router
         start_date: req.body.start_date,
         end_data: req.body.end_data,
         total_price: req.body.total_price,
-        status: req.body.status,
         special_requests: req.body.special_requests,
       });
       console.log(newBookings);

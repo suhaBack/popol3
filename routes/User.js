@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router
-.get('/admin',async (req,res,next)=>{
+.get('/admin',async (req,res,next)=>{ // /user/admin
   try {
     const userData = await User.findAll()
     // console.log(userData);
@@ -15,7 +15,7 @@ router
   }
 })
 //////////////
-.post('/', async (req,res,next)=>{
+.post('/', async (req,res,next)=>{//.post('/user/')
   try {
     // console.log(req);
     const id = req.body.id;
@@ -23,8 +23,8 @@ router
     const email = req.body.email;
     const name = req.body.name;
     const phone = req.body.phone;
-
-    const newUser = await User.create({
+    console.log(id, pwd, email, name, phone);
+    await User.create({
       id:id,
       email: email,
       password:pwd,

@@ -20,12 +20,15 @@ import Complet from "./components/payment/complete";
 import Search from "./components/search/search";
 import ReviewWrite from "./components/review/reviewwrite";
 import Recommened from "./components/recommend/recommend";
+import ScrollToTopButton from './topbtn.js'
+import Test from "./components/test/test";
 
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <ScrollToTopButton></ScrollToTopButton>
       <Routes>
         <Route path="/" element={<Main></Main>}></Route>
         <Route path="/payment" element={<Payment></Payment>}></Route>
@@ -44,6 +47,7 @@ function App() {
         <Route path="/search" element={<Search />}></Route>
         <Route path="/reviewwrite" element={<ReviewWrite />}></Route>
         <Route path="/recommend" element={<Recommened />}></Route>
+        <Route path="/test" element={<Test />}></Route>
       </Routes>
       <Footer></Footer>
     </div>

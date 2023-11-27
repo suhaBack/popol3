@@ -25,28 +25,42 @@ function InfoEdit(props) {
   return (
     <div className="mylist_change">
       <div>내 정보 변경</div>
+      
       <form onSubmit={updateUser}>
-        <div>
-          <b>닉네임: </b>
-          <input id="editID" placeholder={props.userInfo.id}></input>
-        </div>
-        <div>
-          <b>비밀번호: </b>
-          <input id="editPWD" placeholder={props.userInfo.password}></input>
-        </div>
-        <div>
-          <b>예약자 이름: </b>
-          <span>{props.userInfo.name}</span>
-        </div>
-        <div>
-          <b>휴대폰 번호: </b>
-          <span>{props.userInfo.contact_number}</span>
-          <div id="security">
-            개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.
-          </div>
-        </div>
-        <button type="submit">수정하기</button>
+      <table>
+        <tr>
+          <td><b>닉네임: </b></td>
+          <td><input id="editID" placeholder={props.userInfo.id}></input></td>
+        </tr>
+        
+
+        <tr>
+          <td><b>비밀번호: </b></td>
+          <td><input id="editPWD" placeholder={props.userInfo.password}></input></td>
+        </tr>
+        <tr>
+          <td><b>예약자 이름: </b></td>
+          <td><span>{props.userInfo.name}</span></td>
+        </tr>
+        <tr>
+          <td><b>휴대폰 번호: </b></td>
+          <td><span>{props.userInfo.contact_number}</span></td>
+          </tr>
+          <tr>
+            <td colSpan={2}>
+              <div id="security">
+                개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.
+              </div>
+            </td>
+          </tr>          
+          <tr>
+            <td></td>
+            <td><button type="submit">수정하기</button></td>
+          </tr>
+        
+        </table>
       </form>
+      
     </div>
   );
 }

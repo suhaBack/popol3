@@ -2,12 +2,14 @@ import './registration.scss';
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Upload } from "antd";
 import { API_URL } from "../config/contansts";
 
 
 
 function Registration() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   // const navigate = useNavigate();
 
   const uploadimg = (event) => {
@@ -51,6 +53,23 @@ function Registration() {
       }
     }
 
+    const onChangeImage = (info) => {
+      // 파일이 업로드 중일 때
+      console.log("new", info.file);
+      if (info.file.status === "uploading") {
+        console.log("업로드중");
+        return;
+      }
+      // 파일이 업로드 완료 되었을 때
+      if (info.file.status === "done") {
+        console.log("성공");
+        const response = info.file.response;
+        const imageUrl = response.imageUrl;
+        // 받은 이미지경로를 imageUrl에 넣어줌
+        setImageUrl(imageUrl);
+      }
+    };
+
   return (
     <div className="registration_container">
       <div className="category_filter">
@@ -85,25 +104,6 @@ function Registration() {
               /></td>
             </tr>
             <tr>
-              <td><label>별점 (1~5)</label></td>
-              <td><input
-                id="stars"
-                type="range"
-                className="registration-control"
-                min="1"
-                max="5"
-              /></td>
-            </tr>
-            <tr>
-              <td><label>리뷰 수</label></td>
-              <td><input
-                id="reviewcount"
-                type="number"
-                className="registration-control"
-                placeholder="리뷰 수"
-              /></td>
-            </tr>
-            <tr>
               <td><label>방 유형</label></td>
               <td><select id="categoryType" className="registration-control">
                 <option value="0">모텔</option>
@@ -116,15 +116,23 @@ function Registration() {
             <tr>
               <td><label>배경 사진 첨부</label></td>
               <td>
-                <label for="categoryType_img" id='img_upload'>파일 선택</label>
-                <input
-                id="categoryType_img"
-                type="file"
-                className="registration-control"
-                placeholder=""
-                onChange={uploadimg}
-                accept="image/*"
-              /></td>
+              <Upload
+                name="image"
+                action={`${API_URL}/image`}
+                listType="picture"
+                showUploadList={false}
+                onChange={onChangeImage}
+              >
+                {imageUrl ? (
+                  <img src={imageUrl} alt="" width="200px" height="200px" />
+                ) : (
+                  <div id="upload-img-placeholder">
+                    <i class="fa-regular fa-file-image"></i><br/>
+                    <span>포스터를 등록 해주세요.</span>
+                  </div>
+                )}
+              </Upload>
+              </td>
             </tr>
             <tr>
               <td></td>
