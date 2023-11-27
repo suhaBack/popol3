@@ -4,8 +4,6 @@
   - ## 주제 : 숙박업소
   - ## 이름 : 왔다가 !
 
-    <img src="./images/WatDaGa.PNG">
-
 <br />
 
 # 개요
