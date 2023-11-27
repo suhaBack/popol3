@@ -1,40 +1,26 @@
 import "./roomreservation.css";
 import ReservationCalendar from "./../date/date.js";
 import room1 from "./../image/detailslide1.jpg";
-import room2 from "./../image/detailslide2.jpg";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../config/contansts.js";
 import axios from "axios";
-import { API_URL } from "../../config/contansts";
 import { useParams } from "react-router-dom";
 
 function RoomReservation() {
-  const [rooms, setRooms] = useState([]);
+  const [roomData, setRoomData] = useState([]);
   const { id } = useParams();
-  // let roomdata = [
-  //   {
-  //     id: 1,
-  //     img: room1,
-  //     title: "부티크 킹 테라스",
-  //     price: "364,667",
-  //   },
-  //   {
-  //     id: 2,
-  //     img: room2,
-  //     title: "파노라믹 스위트",
-  //     price: "430,667",
-  //   },
-  // ];
+
+  const getData = async () => {
+    await axios
+      .get(`${API_URL}/rooms/detail`, { params: { lodging_id: id } })
+      .then((res) => {
+        console.log(res);
+        setRoomData(res.data)
+      });
+    // .catch(console.log("lodging실패"));
+  };
 
   useEffect(() => {
-    const getData = async () => {
-      await axios
-        .get(`${API_URL}/rooms/detail`, { params: { lodging_id: id } })
-        .then((res) => {
-          setRooms(res.data);
-          console.log("res:", res.data);
-        })
-        .catch(console.log("lodging실패"));
-    };
     getData();
   }, []);
 
@@ -44,7 +30,7 @@ function RoomReservation() {
         <ReservationCalendar></ReservationCalendar>
       </div>
       <div className="roominfo">
-        {rooms.map((a, i) => {
+        {roomData.map((a, i) => {
           return (
             <div className="roominfo_box">
               <div className="roominfo_img">
