@@ -13,13 +13,16 @@ function RoomReservation() {
   
   const getData = async ()=>{
     await axios.get(`${API_URL}/rooms/detail`,{params:{lodging_id:id}})
-    .then((res)=>{console.log(res);})
-    // .catch(console.log("lodging실패"));
+    .then((res)=>{
+      console.log(res);
+      setRoomData(res.data)
+    })
+    .catch(console.log("lodging실패"));
   }
 
   useEffect(() => {
     getData()
-  });
+  },[]);
 
   return (
     <div className="RoomReservation_container">
@@ -60,6 +63,7 @@ function RoomReservation() {
                 </div>
               </div>
             </div>
+            //로그인할때 유저아이디 쿠키적기
           );
         })}
       </div>

@@ -23,6 +23,18 @@ router
       next(error);
     }
   })
+  .get("/myUse", async (req, res, next) => {
+    try {
+      // console.log('zxcvasdf',req);
+      const data = await Booking.findAll({
+        where:{user_id:req.query.user_id}
+      });
+      res.status(201).send(data)
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  })
   .post("/", async (req, res, next) => {
     try {
       const newBookings = Booking.create({

@@ -62,6 +62,7 @@ function Login() {
       console.log('로그인 성공');
       console.log(response.data);
       setCookie("login",response.data.id)
+      setCookie("user_Code",response.data.user_id)
       navigate('/');
     })
     .catch((err)=>{
