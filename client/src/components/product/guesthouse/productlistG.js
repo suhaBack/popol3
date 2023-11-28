@@ -54,9 +54,6 @@ function ProductListG() {
         <div className="product-list">
           <div className="productPageListTitle">
             <div>추천 : 게스트하우스</div>
-            <span className="productpageMapBtn">
-              <i className="fa-solid fa-map"></i>지도
-            </span>
           </div>
           <div className="product-list-gridBox">
             {currentItems.map((a) => {

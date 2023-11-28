@@ -10,7 +10,6 @@ import detailslide4 from "./image/detailslide4.jpg";
 import detailslide5 from "./image/detailslide5.jpg";
 import detailslide6 from "./image/detailslide6.jpg";
 import Detailsilde from "./component/detailslide";
-import ReservationCalendar from "./date/date";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../config/contansts";
 import axios from "axios";
