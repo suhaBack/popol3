@@ -5,6 +5,7 @@ import 할인 from "./../image/할인.png";
 import 결제수단 from "./../image/결제수단.png";
 import 개인정보 from "./../image/개인정보.png";
 import axios from "axios";
+import { API_URL } from "../config/contansts";
 
 function Payment() {
   const [allChecked, setAllChecked] = useState(false);
@@ -22,13 +23,13 @@ function Payment() {
 
   useEffect(()=>{
     const getData = async ()=>{
-      const roomdb = await axios.get('/rooms/payment',{params:{room_id:data.room_id}})
+      const roomdb = await axios.get(`${API_URL}/rooms/payment`,{params:{room_id:data.room_id}})
       .then((res)=>{
         const list = res.data
         console.log('roomdb',list);
         setRoomData(list)
       })
-      const lodgingdb = await axios.get('/lodging/payment',{params:{lodging_id:data.lodging_id}})
+      const lodgingdb = await axios.get(`${API_URL}/lodging/payment`,{params:{lodging_id:data.lodging_id}})
       .then((res)=>{
         const list = res.data
         console.log('lodgingdb',list);
