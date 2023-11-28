@@ -74,7 +74,7 @@ function Registration() {
     <div className="registration_container">
       <div className="category_filter">
         <form onSubmit={upload}>
-          <h3>카테고리</h3>
+          <h3>시설 등록하기</h3>
           <table className='sorting'>
             <tr>
               <td><label>이름</label></td>
