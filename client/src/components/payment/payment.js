@@ -6,6 +6,7 @@ import 결제수단 from "./../image/결제수단.png";
 import 개인정보 from "./../image/개인정보.png";
 import axios from "axios";
 import { API_URL } from "../config/contansts";
+import { getCookie } from '../../useCookies';
 
 function Payment() {
   const [allChecked, setAllChecked] = useState(false);
@@ -20,6 +21,7 @@ function Payment() {
   let [consumerName, setConsumerName] = useState("");
 
   const data = useLocation().state;//{room_id:value, lodging_id:value}
+  console.log(data.startDate);
 
   useEffect(()=>{
     const getData = async ()=>{
@@ -39,7 +41,18 @@ function Payment() {
     getData();
   },[])
 
-  console.log(data);
+  const postData = async (e) => {
+    e.preventDefault()
+    await axios.post(`${API_URL}/bookings`,{start_date: data.startDate, end_date: data.endDate, price: roomData.price, lodging_id:data.lodging_id, user_id: getCookie("user_Code")})
+    .then(()=>{
+      console.log("성공");
+    }).catch((e) => {
+      console.log("에러남");
+      console.error(e);
+    })
+  }
+
+
   const handleAllCheck = () => {
     setAllChecked(!allChecked);
     setCheck1(!allChecked);
@@ -221,6 +234,9 @@ function Payment() {
           </div>
         </div>
 
+
+
+
         <div id="Act2">
           <div className="Act2PositionBox">
             <div className="productInfoBox">
@@ -238,11 +254,11 @@ function Payment() {
               </div>
               <div>
                 <span className="productInfoTitle">체크인</span>
-                <p>11.10 금 15:00</p>
+                <p>{data.startDate.toLocaleDateString()}</p>
               </div>
               <div>
                 <span className="productInfoTitle">체크아웃</span>
-                <p>11.11 토 11:00</p>
+                <p>{data.endDate.toLocaleDateString()}</p>
               </div>
             </div>
 
@@ -263,7 +279,9 @@ function Payment() {
             </div>
             <div>
               <Link to="./complete">
-                <button className="paymentBtn">
+                <button className="paymentBtn" onClick={()=>{
+                  postData();
+                }}>
                   결제하기
                 </button>
               </Link>
