@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const { kakao } = window;
 
-const Location = () => {
+const Location = (props) => {
     const [map, setmap] = useState(null);
 
     // 지도 생성
