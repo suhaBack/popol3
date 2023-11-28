@@ -8,7 +8,6 @@ import { API_URL } from "../config/contansts";
 
 function UsedInfo() {
   let [usedata, setUsedata] = useState([]);
-
   useEffect(() => {
     const getList = async () => {
       await axios
