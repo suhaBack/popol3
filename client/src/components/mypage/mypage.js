@@ -25,13 +25,13 @@ function Mypage() {
           console.log('user',res.data[0]);
           setUSerInfo(res.data[0]);
         })
-      await axios.get(`${API_URL}/bookings`,{params: {userID:2}})
+      await axios.get(`${API_URL}/bookings`,{params: {userID: getCookie('user_Code')}})
         .then((result) => {
           const items = result.data;
         console.log('book',items);
         setBookingList(items);
         });
-      await axios.get(`${API_URL}/reviews/mypage`,{params: {userID:5}})
+      await axios.get(`${API_URL}/reviews/mypage`,{params: {userID: getCookie('user_Code')}})
         .then((result) => {
           const items = result.data;
           console.log("review",result.data);

@@ -6,7 +6,6 @@ import Star_n from "./image/star_n.png";
 
 function Myreview(props) {
   //리뷰데이터데이스 사용
-  console.log('zxc',props.reviewData[0].content);
   const reviews = props.reviewData
   console.log(reviews);
   const ratingToPercent = (a) => {
