@@ -4,13 +4,14 @@ import 결과없음 from "./../image/결과없음.png";
 import 체크 from "./../image/체크.png";
 import axios from "axios";
 import { getCookie } from "../../useCookies";
+import { API_URL } from "../config/contansts";
 
 function UsedInfo() {
   let [usedata, setUsedata] = useState([]);
 
   useEffect(()=>{
     const getList = async ()=>{
-      await axios.get('/bookings/myUse',{params:{user_id:getCookie('user_Code')}})
+      await axios.get(`${API_URL}/bookings/myUse`,{params:{user_id:getCookie('user_Code')}})
       .then((res)=>{
         console.log('test',res.data);
         setUsedata(res.data)
