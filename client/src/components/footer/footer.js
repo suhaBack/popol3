@@ -30,12 +30,6 @@ const footer = () => {
           <br/>
           <br/>
           <span id="copyright">Copyright RA COMPANY Corp. All rights reserved.</span>
-          <a href="/admin">
-            <button id="adminbutton">
-              <p>관리자 페이지로</p>
-              {/* {오른쪽 아래에 붙여서 작게 만들어주세요} */}
-            </button>
-          </a>
         </div>
       </div>
     </div>
