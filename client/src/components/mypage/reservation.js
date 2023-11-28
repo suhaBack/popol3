@@ -79,10 +79,10 @@ function Reservation(props) {
               {currentItems.map((a, i) => {
                 return (
                   <div className="historyList" key={a.id}>
-                    <div className="historyid">{a.id}</div>
-                    <div className="historytitle">{a.title}</div>
+                    <div className="historyid">{a.room_id}</div>
+                    <div className="historytitle">호텔이름</div>
                     <div className="historydate">
-                      {a.startDate} ~ {a.endDate}
+                    {new Date(a.start_date).toISOString().split("T")[0]} ~<br/> {new Date(a.end_date).toISOString().split("T")[0]}
                     </div>
                     <div className="historycancel">
                       <div>예약 취소</div>

@@ -55,3 +55,24 @@
   z-index: 0;
   padding: 0;
 }
+
+/* 마이페이지 리뷰 관련 스타일 */
+
+/* 마이페이지 - 리뷰 전체 */
+.myreview_info {
+  padding: 20px;
+  width: 100%;
+  height: 450px;
+  font-size: 22px;
+  margin-bottom: 30px;
+  border: 1px solid gray;
+}
+
+/* 별점, 작성일자 */
+.star_info, .date_info {
+  margin-bottom: 20px;
+}
+
+.date_info {
+  border-bottom: 1px solid gray;
+}
