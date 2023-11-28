@@ -74,7 +74,7 @@ function Registration() {
     <div className="registration_container">
       <div className="category_filter">
         <form onSubmit={upload}>
-          <h3>카테고리</h3>
+          <h3>시설 등록하기</h3>
           <table className='sorting'>
             <tr>
               <td><label>이름</label></td>
@@ -134,6 +134,30 @@ function Registration() {
               </Upload>
               </td>
             </tr>
+            <h3><br></br>방 등록하기</h3>
+            <tr>
+              <td><label>침대 유형</label></td>
+              <td><select id="bedtype" className="registration-control">
+                <option value="0">싱글 배드</option>
+                <option value="1">더블 배드</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td><label>가격</label></td>
+              <td><input
+                id="price"
+                type="number"
+                className="registration-control"
+                placeholder="가격을 입력해주세요"/> </td>
+            </tr>
+            <tr>
+              <td><label>수용인원</label></td>
+              <td><input
+                id="headcount"
+                type="number"
+                className="registration-control"
+                placeholder="입장 가능 최대 인원"/></td>
+            </tr>
             <tr>
               <td></td>
               <td><button type="submit" className='upload_btn'>등록하기</button></td>
@@ -141,7 +165,7 @@ function Registration() {
           </table>
         </form>
       </div>
-      <div className='upload_option'>
+      {/* <div className='upload_option'>
         <form>
           <h3>방 등록하기</h3>
           <table className='sorting'>
@@ -170,20 +194,12 @@ function Registration() {
                 placeholder="입장 가능 최대 인원"/></td>
             </tr>
             <tr>
-              <td><label>사장님 한마디</label></td>
-              <td><input
-                id="bosscomment"
-                type="text"
-                className="registration-control"
-                placeholder="사장님 한마디에 들어갈 코멘트를 적어주세요"/> </td>
-            </tr>
-            <tr>
               <td></td>
               <td><button type="submit" className='upload_btn'>등록하기</button></td>
             </tr>
           </table>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 };

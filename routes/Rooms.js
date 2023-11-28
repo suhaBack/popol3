@@ -10,7 +10,7 @@ router
     // const Roomsdata = await sequelize.query(`SELECT * FROM innout.rooms where lodging_id=${req.query.lodging_id};`,{ type: QueryTypes.SELECT })
     const Roomsdata = await Room.findOne({
       where:{
-        lodging_id:req.query.room_id,
+        room_id:req.query.room_id,
       }
     })
     console.log('data',Roomsdata);

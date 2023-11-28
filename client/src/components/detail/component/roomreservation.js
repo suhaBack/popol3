@@ -1,7 +1,6 @@
 import "./roomreservation.css";
 import ReservationCalendar from "./../date/date.js";
-import room1 from "./../image/detailslide1.jpg"
-import room2 from "./../image/detailslide2.jpg"
+import room1 from "./../image/detailslide1.jpg";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../config/contansts.js";
 import axios from "axios";

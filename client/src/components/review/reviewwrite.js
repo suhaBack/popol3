@@ -2,17 +2,18 @@ import "./reviewwrite.css";
 import reviewImg from "./../detail/image/detailslide1.jpg";
 import axios from "axios";
 import { API_URL } from "../config/contansts";
+import { getCookie } from '../../useCookies';
 
 function ReviewWrite() {
   const writepost = async (e) => {
     e.preventDefault();
     const star = e.target.rating.value;
-    const reviewcontent = e.target.reviewWritecontent.textContent;
-    console.log(star);
+    const reviewcontent = e.target.reviewWritecontent.value;
+    console.log(reviewcontent);
     axios
       .post(`${API_URL}/reviews`, {
         rooms_id: "방 아이디",
-        user_id: "유저 아이디",
+        user_id: getCookie('user_Code'),
         rating: star,
         content: reviewcontent,
       })
@@ -99,11 +100,11 @@ function ReviewWrite() {
                   </div>
                 </div>
 
-                <textarea
+                <input
                   id="reviewWritecontent"
                   className="reviewFormcontent"
                   placeholder="리뷰 내용"
-                ></textarea>
+                ></input>
 
                 <div className="reviewWriteBtnBox">
                   <button type="submit">작성 완료</button>

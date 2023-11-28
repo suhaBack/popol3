@@ -20,7 +20,7 @@ function Mypage() {
 
   useEffect(() => {
     const getList = async () => {
-      await axios.get(`${API_URL}/user`,{params: {userID:getCookie('login')}})
+      await axios.get(`${API_URL}/user/mypage`,{params: {userID:getCookie('login')}})
         .then((res)=>{
           console.log('user',res.data[0]);
           setUSerInfo(res.data[0]);

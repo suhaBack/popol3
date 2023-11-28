@@ -35,3 +35,7 @@
   background-color: rgb(66, 66, 255);
 }
 
+.usedstatus{
+  display: flex;
+  justify-content: center;
+}
