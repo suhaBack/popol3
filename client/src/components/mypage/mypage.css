@@ -86,12 +86,21 @@
   padding-top: 1vw;
   font-size: 15px;
   color: rgb(110, 110, 110);
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.giveUpBox div{
+  padding-right: 10%;
 }
 
 .giveUpBox a {
   text-decoration: none;
   color: rgb(255, 0, 0);
   }
+  
+
 
 .active{
   color: rgb(94, 94, 253);

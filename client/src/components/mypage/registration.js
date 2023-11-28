@@ -55,7 +55,7 @@ function Registration() {
     <div className="registration_container">
       <div className="category_filter">
         <form onSubmit={upload}>
-          <h3>카테고리</h3>
+          <h3>시설 등록하기</h3>
           <table className='sorting'>
             <tr>
               <td><label>이름</label></td>
@@ -84,25 +84,7 @@ function Registration() {
                 placeholder="시설을 한 줄로 표현해주세요"
               /></td>
             </tr>
-            <tr>
-              <td><label>별점 (1~5)</label></td>
-              <td><input
-                id="stars"
-                type="range"
-                className="registration-control"
-                min="1"
-                max="5"
-              /></td>
-            </tr>
-            <tr>
-              <td><label>리뷰 수</label></td>
-              <td><input
-                id="reviewcount"
-                type="number"
-                className="registration-control"
-                placeholder="리뷰 수"
-              /></td>
-            </tr>
+
             <tr>
               <td><label>방 유형</label></td>
               <td><select id="categoryType" className="registration-control">

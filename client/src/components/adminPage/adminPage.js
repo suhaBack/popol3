@@ -36,64 +36,88 @@ function AdminPage() {
           <div>
             <Link to="/">왔다가</Link>
             </div>
-          <button onClick={() => MenuClick("유저목록")}>유저목록</button>
-          <button onClick={() => MenuClick("카테고리")}>카테고리</button>
-          <button onClick={() => MenuClick("예약내역")}>예약내역</button>
-          <button onClick={() => MenuClick("설정")}>설정</button>
+          <button onClick={() => MenuClick("유저목록")}   className="Side_Btn">유저목록</button>
+          <button onClick={() => MenuClick("카테고리")}   className="Side_Btn">카테고리</button>
+          <button onClick={() => MenuClick("예약내역")}   className="Side_Btn">예약내역</button>
+          <button onClick={() => MenuClick("설정")}       className="Side_Btn">설정</button>
         </div>
         <div className="board">
           {managermenu === "유저목록" && (
-            <div>
-              유저목록
-              <ul>
+            <div className="Table_Div">
+              <h3>유저목록</h3>
+              <table className="User_Table">
+                <tr className="Table_Title">
+                  <td className="User_Name">이름</td>
+                  <td className="User_Id">아이디</td>
+                  <td className="User_PW">비밀번호</td>
+                  <td className="User_Email">이메일</td>
+                  <td className="User_op">권한</td>
+                </tr>
                 {userList.map((a) => {
                   return (
-                    <li key={a.user_id}>
-                      <p>
-                        이름: {a.name}, 아이디: {a.id}, 비밀번호: {a.password},
-                        이메일: {a.email}, 권한: {a.role}
-                      </p>
-                    </li>
+                    <tr key={a.user_id}>
+                      <td className="User_Name">{a.name}</td>
+                      <td className="User_Id">{a.id}</td>
+                      <td className="User_PW">{a.password}</td>
+                      <td className="User_Email">{a.email}</td>
+                      <td className="User_op">{a.role}</td>
+                    </tr>
                   );
                 })}
-              </ul>
+              </table>
             </div>
           )}
 
           {managermenu === "카테고리" && (
-            <div>
-              카테고리
+            <div className="Table_Div">
+              <h3>카테고리</h3>
+              <table className="User_Table">
+                <tr className="Table_Title">
+                  <td className="">숙소명</td>
+                  <td className="Location">위치</td>
+                  <td className="Description">설명</td>
+                </tr>
               {lodgingList.map((a) => {
                 return (
-                  <li key={a.lodging_id}>
-                    <p>
-                      이름: {a.name}, 위치: {a.location}
-                    </p>
-                    <p>설명: {a.description}</p>
-                    <br></br>
-                  </li>
+                  <tr key={a.lodging_id}>
+                    <td className="User_Name">{a.name}</td>
+                    <td className="Location">{a.location}</td>
+                    <td className="Description">{a.description}</td>
+                  </tr>
                 );
               })}
+              </table>
             </div>
           )}
           {managermenu === "예약내역" && (
-            <div>
-              예약내역
-              {bookingList.map((a) => {
-                return (
-                  <li key={a.user_id}>
-                    <p>
-                      예약자: {a.user_id}, 시설이름: {a.room_id}, 체크인:{" "}
-                      {a.start_date}, 체크아웃: {a.end_date}, 가격:{" "}
-                      {a.total_price}
-                      상태: {a.status}
-                    </p>
-                  </li>
-                );
-              })}
+            <div className="Table_Div">
+              <h3>예약내역</h3>              
+              <table className="User_Table">
+                <tr className="Table_Title">
+                  <td className="User_Name">예약자</td>
+                  <td className="Facility">시설이름</td>
+                  <td className="C_IN">체크인</td>
+                  <td className="C_OUT">체크아웃</td>
+                  <td className="Price">가격</td>
+                  <td className="Status">상태</td>
+                </tr>
+
+                {bookingList.map((a) => {
+                return ( 
+                  <tr key={a.user_id}>
+                      <td className="User_Name">{a.user_id}</td>
+                      <td className="Facility">{a.room_id}</td>
+                      <td className="C_IN">{a.start_date}</td>
+                      <td className="C_OUT">{a.end_date}</td>
+                      <td className="Price">{a.total_price}</td>
+                      <td className="Status">{a.status}</td>
+                    </tr>
+                  );
+                })}
+                </table>
             </div>
           )}
-          {managermenu === "설정" && <div>설정</div>}
+          {managermenu === "설정" && <div className="Table_Div"> <h3>설정</h3></div>}
         </div>
       </div>
     </div>
