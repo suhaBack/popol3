@@ -47,13 +47,35 @@ router
     next(error);
   }
 })
+.get("/add", async (req, res, next) => {
+  try {
+    //0모텔 1호텔 2펜션 3게스트 4글램핑
+    const getlist = await Lodging.findOne({
+      where:{
+        name:req.query.name,
+      }
+    })
+    // console.log(getlist);
+    res.status(201).send(getlist);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+})
 .post("/", async (req, res, next) => {
   try {
+    // {
+    //   name: '서정아트2차',
+    //   location: '정암로 55',
+    //   imageUrl: 'http://localhost:8080/upload/ì\x8A¤í\x81¬ë¦°ì\x83· 2023-06-04 163348.png',
+    //   type: '3',
+    //   description: '팀장 집입니다.'
+    // }
+    console.log(req.body);
     const newLodgings = Lodging.create({
       name: req.body.name,
       location: req.body.location,
-      location_info: req.body.location_info,
-      imageURL: req.body.imageURL,
+      imageURL: req.body.imageUrl,
       description: req.body.description,
       type: req.body.type,
     }); //일단 Lodgings에 있는 데이터베이스 테이블을 쭉 나열했는데 몇몇개는 post에 필요한진 좀 의문임

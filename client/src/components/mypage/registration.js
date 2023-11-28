@@ -8,49 +8,49 @@ import { API_URL } from "../config/contansts";
 
 
 function Registration() {
-  const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   // const navigate = useNavigate();
 
-  const uploadimg = (event) => {
-    const file = event.target.files[0];
-    console.log(file);
-    setSelectedImage(file);
-  };
-
   const upload = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const address = e.target.adress.value;
-    const review = e.target.review.value;
-    const stars = e.target.stars.value;
-    const reviewCount = e.target.reviewcount.value;
+    const name = e.target.name.value;//이름
+    const address = e.target.adress.value;//위치
+    const review = e.target.review.value;//시설 설명
     const categoryType = e.target.categoryType.value;
+    const image = imageUrl;
 
-    if (!name || !address || !review || !stars || !reviewCount || !categoryType) {
+    console.log(image);
+    const roomType = e.target.bedtype.value;
+    const roomPrice = e.target.price.value;
+    const roomHeadcount = e.target.headcount.value;
+
+    if (!name || !address || !review || !categoryType) {
       alert("모든 필드를 입력해주세요");
       return;
     }
 
-    if (stars < 1 || stars > 5) {
-      alert("별점은 1부터 5까지의 숫자여야 합니다.");
-      return;
-    }
-
-    if (!selectedImage) {
+    if (!imageUrl) {
       alert("배경 사진을 첨부해주세요");
       return;
     }
-    
-      const formData = new FormData();
-      formData.append("image", selectedImage);
 
-      try {
-        const response = await axios.post(`${API_URL}/upload`, formData);
-        console.log("이미지 업로드 성공:", response.data);
-      } catch (error) {
-        console.error("이미지 업로드 에러:", error);
-      }
+    await axios.post('/lodging',{name:name, location:address, imageUrl:image, type:categoryType, description:review}
+    )
+    .then( async ()=>{
+     const lodgingdb = await axios.get('/lodging/add',{params:{name:name}})
+     .then( async ()=>{
+       console.log('시설아이디',lodgingdb.lodging_id);
+      await axios.post('/rooms',{lodging_id:lodgingdb.lodging_id, type:roomType, price:roomPrice, capacity:roomHeadcount})
+      .then(()=>{
+        console.log("db 시설등록 완료");
+      })
+     })
+    })
+    .catch((err)=>{
+      console.log('시설 등록 오류');
+      console.error(err);
+    })
+
     }
 
     const onChangeImage = (info) => {
@@ -137,10 +137,13 @@ function Registration() {
             <h3><br></br>방 등록하기</h3>
             <tr>
               <td><label>침대 유형</label></td>
-              <td><select id="bedtype" className="registration-control">
-                <option value="0">싱글 배드</option>
-                <option value="1">더블 배드</option>
-              </select></td>
+              <td>
+                <select id="bedtype" className="registration-control">
+                  <option value="싱글">싱글 배드</option>
+                  <option value="더블">더블 배드</option>
+                  <option value="트윈">트윈 배드</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td><label>가격</label></td>
