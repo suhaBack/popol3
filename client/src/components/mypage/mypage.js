@@ -25,21 +25,15 @@ function Mypage() {
           console.log('user',res.data[0]);
           setUSerInfo(res.data[0]);
         })
-<<<<<<< HEAD
+
       await axios.get(`${API_URL}/bookings`,{params: {userID: getCookie('user_Code')}})
-=======
-      await axios.get(`${API_URL}/bookings`,{params: {userID:getCookie('user_Code')}})
->>>>>>> 2f71aeb15eaf40ae45638d683690895970be7bb3
         .then((result) => {
           const items = result.data;
         console.log('book',items);
         setBookingList(items);
         });
-<<<<<<< HEAD
+
       await axios.get(`${API_URL}/reviews/mypage`,{params: {userID: getCookie('user_Code')}})
-=======
-      await axios.get(`${API_URL}/reviews/mypage`,{params: {userID:getCookie('user_Code')}})
->>>>>>> 2f71aeb15eaf40ae45638d683690895970be7bb3
         .then((result) => {
           const items = result.data;
           console.log("review",result.data);
