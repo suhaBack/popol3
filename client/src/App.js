@@ -1,4 +1,3 @@
-
 import "./App.css";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
@@ -46,7 +45,7 @@ function App() {
         <Route path="/seemore" element={<Seemore />}></Route>
         <Route path="/payment/complete" element={<Complet />}></Route>
         <Route path="/search" element={<Search />}></Route>
-        <Route path="/reviewwrite" element={<ReviewWrite />}></Route>
+        <Route path="/reviewwrite/:id" element={<ReviewWrite />}></Route>
         <Route path="/recommend" element={<Recommened />}></Route>
         <Route path="/test" element={<Test />}></Route>
       </Routes>

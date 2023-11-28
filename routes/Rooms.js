@@ -4,22 +4,38 @@ const Room = require("../models/room");
 const router = express.Router();
 
 router
-  .get("/detail", async (req, res, next) => {//
-    try {
-      console.log('test',req.query);
-      // const Roomsdata = await sequelize.query(`SELECT * FROM innout.rooms where lodging_id=${req.query.lodging_id};`,{ type: QueryTypes.SELECT })
-      const Roomsdata = await Room.findAll({
-        where:{
-          lodging_id:req.query.lodging_id,
-        }
-      })
-      console.log('data',Roomsdata);
-      res.status(201).send(Roomsdata);
-    } catch (error) {
-      console.error(error);
-      res.status(501).send(error);
-    }
-  })
+.get("/payment", async (req, res, next) => {//
+  try {
+    console.log('test',req.query);
+    // const Roomsdata = await sequelize.query(`SELECT * FROM innout.rooms where lodging_id=${req.query.lodging_id};`,{ type: QueryTypes.SELECT })
+    const Roomsdata = await Room.findOne({
+      where:{
+        lodging_id:req.query.room_id,
+      }
+    })
+    console.log('data',Roomsdata);
+    res.status(201).send(Roomsdata);
+  } catch (error) {
+    console.error(error);
+    res.status(501).send(error);
+  }
+})
+.get("/detail", async (req, res, next) => {//
+  try {
+    console.log('test',req.query);
+    // const Roomsdata = await sequelize.query(`SELECT * FROM innout.rooms where lodging_id=${req.query.lodging_id};`,{ type: QueryTypes.SELECT })
+    const Roomsdata = await Room.findAll({
+      where:{
+        lodging_id:req.query.lodging_id,
+      }
+    })
+    console.log('data',Roomsdata);
+    res.status(201).send(Roomsdata);
+  } catch (error) {
+    console.error(error);
+    res.status(501).send(error);
+  }
+})
   .post("/", async (req, res, next) => {
     try {
       const newRooms = Room.create({

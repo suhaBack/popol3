@@ -122,6 +122,7 @@ function Detail() {
               <RoomInformation
                 button={button}
                 setButton={setButton}
+                lodginData={lodginData}
               ></RoomInformation>
             </div>
           )}

@@ -4,7 +4,7 @@ import room1 from "./../image/detailslide1.jpg";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../config/contansts.js";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function RoomReservation() {
   const [roomData, setRoomData] = useState([]);
@@ -54,11 +54,11 @@ function RoomReservation() {
                       취소됩니다.
                     </div>
                   </div>
-                  <a href="/payment">
+                  <Link to="/payment" state={{room_id:a.room_id, lodging_id:id}}>
                     <button>
                       <p>예약하기 | {a.price}원 (1박)</p>
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

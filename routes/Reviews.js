@@ -12,7 +12,9 @@ router
       // const userCode = await User.findOne({where:{user_id:user_id}})
       // console.log('test',userCode.dataValues.user_ID);
       // const userID = userCode[0].user_id
-      const getReview = await Review.findAll({where:{user_id:user_id}})
+      const getReview = await Review.findAll({
+        where:{user_id:user_id}
+      })
       console.log("review",getReview);
       res.status(201).send(getReview);
     } catch (error) {
@@ -22,7 +24,7 @@ router
   })
   .post("/", async (req, res, next) => {
     try {
-      console.log(req.body);
+      console.log('server',req.body);
       const newReview = Review.create({
         user_id: req.body.user_id,
         lodging_id: 3,
