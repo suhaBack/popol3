@@ -15,6 +15,8 @@ function RoomInformation(props) {
       [section]: !sections[section],
     });
   };
+  
+  console.log(props.lodginData.location_info);
 
   return (
     <div>
@@ -31,7 +33,9 @@ function RoomInformation(props) {
           }
         >
           {/* 카카오 맵 적용 란 */}
-          <Location />
+          <Location
+            location_info={props.lodginData.location_info}
+          />
         </div>
       </div>
 
