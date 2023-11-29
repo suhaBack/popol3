@@ -4,6 +4,7 @@ import axios from 'axios';
 import { API_URL } from "../config/contansts";
 import { useNavigate } from "react-router-dom";
 import { removeCookie } from "../../useCookies";
+import { Content } from 'antd/es/layout/layout';
 
 function InfoEdit(props) {
   const navigate = useNavigate()
@@ -46,6 +47,98 @@ const tlqkf = (event) => {
 }
 
 
+// '출생 연도' 셀렉트 박스 option 목록 동적 생성
+const birthYearEl = document.querySelector('#birth-year')
+const birthMonthEl = document.querySelector('#birth-month')
+const birthDayEl = document.querySelector('#birth-day')
+// option 목록 생성 여부 확인
+console.log(birthYearEl);
+console.log(birthMonthEl);
+console.log(birthDayEl);
+var isYearOptionExisted = false;
+var isMonthOptionExisted = false;
+var isDayOptionExisted = false;
+
+const YearSelect = (event) =>{
+  // year 목록 생성되지 않았을 때 (최초 클릭 시)
+  if(!isYearOptionExisted) {
+    isYearOptionExisted = true
+    for(var i = 1940; i <= 2023; i++) {
+      // option element 생성
+      const YearOption = document.createElement('option')
+      YearOption.setAttribute('value', i)
+      YearOption.innerText = i
+      // birthYearEl의 자식 요소로 추가
+      birthYearEl.appendChild(YearOption);
+    }
+  }
+  console.log(birthYearEl.value);
+}
+
+const MonthSelect = (event) =>{
+  // month 목록 생성되지 않았을 때 (최초 클릭 시)
+  if(!isMonthOptionExisted) {
+  isMonthOptionExisted = true
+    for(var i = 1; i <= 12; i++) {
+      // option element 생성
+      const MonthOption = document.createElement('option')
+      MonthOption.setAttribute('value', i)
+      MonthOption.innerText = i
+      // birthMonthEl의 자식 요소로 추가
+      birthMonthEl.appendChild(MonthOption);
+    }
+  }
+  console.log(birthMonthEl.value);
+isDayOptionExisted = false;
+birthDayEl.options.length = 1; 
+}
+
+
+const DaySelect = (event) =>{
+  var Vdate = 0; //월에 따라 일 최대치 정하기 위한 함수
+  
+  // day 목록 생성되지 않았을 때 (최초 클릭 시)
+  console.log(birthMonthEl.value,"월");
+  switch (birthMonthEl.value) {
+    case '1':
+    case '3':
+    case '5':
+    case '7':
+    case '8':
+    case '10':
+    case '12':
+      Vdate = 31;
+      console.log("1,3,5,7,8,10,12월 Vdate=",Vdate);
+    break;
+
+      case '4':
+      case '6':
+      case '9':
+      case '11':
+        Vdate = 30;
+      console.log("4,6,9,11월 Vdate=",Vdate);
+    break;
+      case '2':
+        Vdate = 29;
+      console.log("2월 Vdate=",Vdate);
+    break;
+  } 
+    
+if(!isDayOptionExisted) {
+  isDayOptionExisted = true
+    for(var i = 1; i <= Vdate; i++) {
+      // option element 생성
+      const DayOption = document.createElement('option')
+      DayOption.setAttribute('value', i)
+      DayOption.innerText = i
+      // birthDayEl의 자식 요소로 추가
+      birthDayEl.appendChild(DayOption);
+    }
+  }
+  console.log(birthDayEl.value);
+}
+// Month, Day도 동일한 방식으로 구현
+
   
   return (
     <div className="mylist_change">
@@ -55,18 +148,18 @@ const tlqkf = (event) => {
           <tr>
             <td className='td_1'>이메일</td>
             <td className='td_2'>
+              <label className='label_In_td'>
               <input name='Email_domain' placeholder='이메일 입력' className='small_box'></input>
-              <span> @</span>
-              <label>
-                <input className='small_box' id="domain-txt" type="text"  />
-                  <select className='small_box' id="domain-list" onChange={tlqkf}>
-                    <option value="type">직접 입력</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="hanmail.net">hanmail.net</option>
-                    <option value="gmail.com">gmail.com</option>
-                    <option value="kakao.com">kakao.com</option>
-                    <option value="kookje.ac.kr">kookje.ac.kr</option>
-                </select>     
+              <span> @ </span>
+                <input className='small_box' id="domain-txt" type="text" />
+                <select className='small_box' id="domain-list" onChange={tlqkf}>
+                  <option value="type">직접 입력</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="hanmail.net">hanmail.net</option>
+                  <option value="gmail.com">gmail.com</option>
+                  <option value="kakao.com">kakao.com</option>
+                  <option value="kookje.ac.kr">kookje.ac.kr</option>
+              </select>     
               </label>
             </td>
             <td className='td_3'>
@@ -81,7 +174,7 @@ const tlqkf = (event) => {
           </tr>
           <tr>
             <td className='td_1'>비밀번호</td>
-            <td className='td_2'><input id="editPWD" placeholder={props.userInfo.password} type='password'></input></td>
+            <td className='td_2'><input id="editPWD" type='password'></input></td>
             <td className='td_3'></td>
           </tr>
           <tr>
@@ -98,10 +191,10 @@ const tlqkf = (event) => {
             <td className='td_1'>성별</td>
             <td>
               <label className='radio_btn'>
-                <input type='radio' value={'남자'} name='man' checked/>남자
+                <input type='radio' value={'남자'} name='check' checked/>남자
               </label>
               <label className='radio_btn'> 
-                <input type='radio' value={'여자'} name='woman'/>여자
+                <input type='radio' value={'여자'} name='check'/>여자
               </label>
             </td>
             <td></td>
@@ -109,72 +202,42 @@ const tlqkf = (event) => {
           <tr>
             <td className='td_1'>생년월일</td>
             <td className='td_2'>
-              <label>
-              <select class="box" id="birth-year">
+              <label className='label_In_td'>
+              <select class="box" id="birth-year" onClick={YearSelect}>
                 <option disabled selected>출생 연도</option>
               </select>
-              <select class="box" id="birth-month">
+              <span className='span_pad'>년</span>
+              <select class="box" id="birth-month" onClick={MonthSelect}>
                 <option disabled selected>월</option>
               </select>
-              <select class="box" id="birth-day">
+              <span className='span_pad'>월</span>
+              <select class="box" id="birth-day" onClick={DaySelect}>
                 <option disabled selected>일</option>
               </select>
-
-
-
-
-
-
-
-
-
-
-
-                <select name='year'>
-                  <option value={1900}>1900</option>
-                </select>
-                년
-              </label>
-              <label>
-                <select name='month'>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                  <option value={6}>6</option>
-                  <option value={7}>7</option>
-                  <option value={8}>8</option>
-                  <option value={9}>9</option>
-                  <option value={10}>10</option>
-                  <option value={11}>11</option>
-                  <option value={12}>12</option>
-                </select>
-                월
-              </label>
-                <select name='day'></select>
-                일
-              <label>
-
+              <span className='span_pad'>일</span>
               </label>
             </td>
             <td className='td_3'>
               <label className='radio_btn'>
-                <input type='radio' value={'양력'} name='양력' checked/>
+                <input type='radio' value={'양력'} name='check' checked/>
                 양력
               </label>
               <label className='radio_btn'>
-                <input type='radio' value={'음력'} name='음력'/>
+                <input type='radio' value={'음력'} name='check'/>
                 음력
+
             </label>
             </td>
           </tr>
           <tr>
             <td className='td_1'>휴대폰 번호</td>
             <td className='td_2'>
-              <span>
-                {props.userInfo.contact_number}
-              </span>
+
+              <input type='text' className='num_place' placeholder={props.userInfo.contact_number.slice(0,3)}></input> 
+              <span> - </span>
+              <input type='text' className='num_place' placeholder={props.userInfo.contact_number.slice(3,7)}></input>
+              <span> - </span>
+              <input type='text' className='num_place' placeholder={props.userInfo.contact_number.slice(7,11)}></input>
             </td>
             <td className='td_3'></td>
           </tr>
