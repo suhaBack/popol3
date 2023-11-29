@@ -1,7 +1,30 @@
 import "./reviewwrite.css";
 import reviewImg from "./../detail/image/detailslide1.jpg";
+import axios from "axios";
+import { API_URL } from "../config/contansts";
 
 function ReviewWrite() {
+  const writepost = async (e) => {
+    e.preventDefault();
+    const star = e.target.rating.value;
+    const reviewcontent = e.target.reviewWritecontent.textContent;
+    console.log(star);
+    axios
+      .post(`${API_URL}/reviews`, {
+        rooms_id: "방 아이디",
+        user_id: "유저 아이디",
+        rating: star,
+        content: reviewcontent,
+      })
+      .then(() => {
+        console.log("성공");
+      })
+      .catch((e) => {
+        console.log("에러남");
+        console.error(e);
+      });
+  };
+
   return (
     <div className="hotel-container">
       <div className="reviewWritepageTitle">
@@ -17,15 +40,9 @@ function ReviewWrite() {
 
           <div className="reviewWriteinputBox">
             <div className="reviewWriteinput">
-              <div className="reviewproductTtile">호텔이름</div>
-              <form>
+              <form onSubmit={writepost}>
                 <div className="reviewWriteinputGridBox">
-                  <div className="reviewFormTitle">
-                    <input
-                      className="reviewTitleInput"
-                      placeholder="리뷰 제목"
-                    ></input>
-                  </div>
+                  <div className="reviewproductTtile">호텔이름</div>
                   <div className="reviewFormrating">
                     <div class="star-rating space-x-4 mx-auto">
                       <input
@@ -83,16 +100,15 @@ function ReviewWrite() {
                 </div>
 
                 <textarea
+                  id="reviewWritecontent"
                   className="reviewFormcontent"
                   placeholder="리뷰 내용"
                 ></textarea>
-              </form>
-            </div>
 
-            <div className="reviewWriteBtnBox">
-              <a href="/mypage">
-                <div>작성 완료</div>
-              </a>
+                <div className="reviewWriteBtnBox">
+                  <button type="submit">작성 완료</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

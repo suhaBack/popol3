@@ -59,6 +59,7 @@ class Booking extends Sequelize.Model {
       status: {
         type: Sequelize.STRING(50),
         allowNull: false,
+        defaultValue:"예약중",
         validate: {
           isIn: {
             args: [['예약중', '완료', '취소']],

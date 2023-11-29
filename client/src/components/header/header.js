@@ -96,23 +96,23 @@ function Header() {
           )}
           <li className="Main_menu_li" id="SeeMore">
             <a href="/seemore">더 보기</a>
-            <ul className="drop_menu" style={{ display: "none" }}>
-              <li className="drop_item">
-                <a href="??">가</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">나</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">다</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">라</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+              <ul className="drop_menu" style={{ display: "none" }}>
+                <li className="drop_item">
+                  <a href="??">가</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">나</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">다</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">라</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

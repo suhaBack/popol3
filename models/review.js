@@ -11,6 +11,7 @@ class Review extends Sequelize.Model {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
         unique: true,
         comment: "리뷰(review) 식별자 ID (기본키)",
       },
@@ -25,12 +26,8 @@ class Review extends Sequelize.Model {
         comment: "숙박시설(lodging) 식별자 ID",
       },
       rating: {
-        type: Sequelize.DECIMAL(3, 2),
+        type: Sequelize.INTEGER,
         allowNull: false,
-        validate: {
-          min: { args: 0.00, msg: "평점은 0점 이상이어야 합니다." },
-          max: { args: 5.00, msg: "평점은 5점 이하이어야 합니다." }
-        },
         comment: "평점",
       },
       content: {

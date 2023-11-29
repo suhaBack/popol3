@@ -14,7 +14,8 @@ function AdminPage() {
   };
   useEffect(() => {
     const getList = async () => {
-      await axios.get(`${API_URL}/user/admin`).then((result) => {
+      await axios.get(`${API_URL}/user/admin`)
+      .then((result) => {
         const items = result.data;
         setUserList(items);
       });
