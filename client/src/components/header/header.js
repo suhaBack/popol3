@@ -61,44 +61,29 @@ function Header() {
         </button> */}
       </div>
 
-      
-
       <nav className="Main_nav">
-        <ul className="Main_menu_ul">
           {login ? (
-            <div>
-              <li className="Main_menu_li">
-              <Link to="/mypage">마이페이지</Link>
-              </li>
+            <div className="Inner_Div1">
+              <div id="MyPage">
+                <Link to="/mypage">마이페이지</Link>
+                <a className="aTag_header" href="/seemore">더 보기</a>
+              </div>
               <div id="LogOut">
-                <p id='logout'>{login}님 환영합니다. <span>/</span></p>
-                <a onClick={LogOut}>로그아웃</a>
+              <span>{login}님 환영합니다.</span>
+                <a className="aTag_header" onClick={LogOut}>로그아웃</a>
               </div>
             </div>
           ): (
-            <li className="Main_menu_li">
-              <p id="login">로그인이 필요합니다.</p>
-              <Link to="/login">로그인  </Link>
-            </li>
+            <div className="Inner_Div2">
+                <span id="login">로그인이 필요합니다.</span>
+              <div id="LogIn">
+                <Link to="/login">로그인</Link>
+              </div>
+              <div className="SeeMore">
+                <a href="/seemore">더 보기</a>
+              </div>
+            </div>
           )}
-          <li className="Main_menu_li" id="SeeMore">
-            <a href="/seemore">더 보기</a>
-              <ul className="drop_menu" style={{ display: "none" }}>
-                <li className="drop_item">
-                  <a href="??">가</a>
-                </li>
-                <li className="drop_item">
-                  <a href="??">나</a>
-                </li>
-                <li className="drop_item">
-                  <a href="??">다</a>
-                </li>
-                <li className="drop_item">
-                  <a href="??">라</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
         </nav>
       </div>
     </div>
