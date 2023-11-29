@@ -8,7 +8,6 @@ li{
 } */
 
 #Main_Div{
-  position: sticky;
   top: 0px; /* 도달했을때 고정시킬 위치 */
   z-index: 10;
 
@@ -42,7 +41,6 @@ li{
   /* border: 1px solid #000; */
 }
 .search_Bar {
-  
   outline: none;
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

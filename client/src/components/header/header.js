@@ -6,6 +6,7 @@ import { getCookie, removeCookie } from "../../useCookies";
 import { useState } from "react";
 import axios from "axios";
 import $ from 'jquery';
+import { Tab } from "react-bootstrap";
 
 // 버튼 클릭 시 검색창 표시를 위한 토글 함수 by 준영
 
@@ -52,29 +53,12 @@ function Header() {
       <div className="Logo_section">
         <Link to="/"><img src={logo}></img></Link>
       </div>
-      {/* <button onClick={test}>등록</button> */}
-      {/* 검색바 들어갈거임 */}
-      {/* <div className="search_area">
-        {!isOn && (
-          <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
-        )}
-        <Link to="/search">
-        <button onClick={() => ClickMagnifying()} className="search_btn">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </Link>
-        {!isOn && (
-          <button onClick={() => setIsOn(!isOn)} className="close_btn"><i className="fa fa-times"></i>
-          </button>
-        )}  
-      </div> */}
-      <div className="search_area">
-        <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
-        <Link to="/search">
-        <button className="search_btn">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </Link>
+      <div className="Search_area">
+        {/* <button type="button" className="btn_srch_srch_open">
+          <input type="text" id="search_place" placeholder="조금 쉬었다 가야겠는걸..." ></input>
+          
+          <img src={search} onClick={display_popLayer('search_place')}></img>
+        </button> */}
       </div>
 
       
@@ -84,38 +68,38 @@ function Header() {
           {login ? (
             <div>
               <li className="Main_menu_li">
-              <Link to="/mypage">마이페이지 /</Link>
+              <Link to="/mypage">마이페이지</Link>
               </li>
               <div id="LogOut">
                 <p id='logout'>{login}님 환영합니다. <span>/</span></p>
-                <a onClick={LogOut}>로그아웃 /</a>
+                <a onClick={LogOut}>로그아웃</a>
               </div>
             </div>
           ): (
             <li className="Main_menu_li">
-              <p id="login">로그인이 필요합니다. <span>/</span></p>
-              <Link to="/login">로그인 /</Link>
+              <p id="login">로그인이 필요합니다.</p>
+              <Link to="/login">로그인  </Link>
             </li>
           )}
           <li className="Main_menu_li" id="SeeMore">
             <a href="/seemore">더 보기</a>
-            <ul className="drop_menu" style={{ display: "none" }}>
-              <li className="drop_item">
-                <a href="??">가</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">나</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">다</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">라</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+              <ul className="drop_menu" style={{ display: "none" }}>
+                <li className="drop_item">
+                  <a href="??">가</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">나</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">다</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">라</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

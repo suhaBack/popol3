@@ -12,7 +12,6 @@ import ProductGuesthouse from "./components/product/guesthouse/productguesthouse
 import ProductMotel from "./components/product/motel/productMotel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Detail from "./components/detail/detail";
-import AdminPage from "./components/adminPage/adminPage";
 import Register from "./components/register/register";
 import Login from "./components/login/login";
 import Seemore from "./components/seemore/seemore";
@@ -22,7 +21,6 @@ import ReviewWrite from "./components/review/reviewwrite";
 import Recommened from "./components/recommend/recommend";
 import ScrollToTopButton from './topbtn.js'
 import Test from "./components/test/test";
-
 
 function App() {
   return (
@@ -39,7 +37,6 @@ function App() {
         <Route path="/hotel" element={<ProductHotel></ProductHotel>}></Route>
         <Route path="/motel" element={<ProductMotel></ProductMotel>}></Route>
         <Route path="/penstion" element={<ProductPenstion></ProductPenstion>}></Route>
-        <Route path="/admin" element={<AdminPage></AdminPage>}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/seemore" element={<Seemore />}></Route>
