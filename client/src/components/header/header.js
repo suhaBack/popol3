@@ -21,6 +21,10 @@ function Header() {
   
   //input 창 열기와 검색을 실행하기 위해 합하는 코드
   // 사용 x
+
+  // const test = async ()=>{
+  //   await axios.get('/test')
+  // }
   function ClickMagnifying(){
     if(isOn){
       console.log("검색창 열기");
@@ -48,7 +52,7 @@ function Header() {
       <div className="Logo_section">
         <Link to="/"><img src={logo}></img></Link>
       </div>
-    
+      {/* <button onClick={test}>등록</button> */}
       {/* 검색바 들어갈거임 */}
       {/* <div className="search_area">
         {!isOn && (

@@ -28,6 +28,8 @@ app.use(express.urlencoded({extended:false})); //express자체 서버 설정
 app.use("/upload", express.static("upload"));
 
 var cors = require('cors');
+const Lodging = require('./models/lodging');
+const Room = require('./models/room');
 
 app.use(cors());
 
