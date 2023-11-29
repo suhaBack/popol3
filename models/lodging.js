@@ -2,8 +2,8 @@
 
 const Sequelize = require("sequelize");
 
-// lodging_id || name || location || description || price_range || type
-// check_in_time || check_out_time || rating || review_count
+// lodging_id || name | location || location_info
+//  imageURL  ||   description   || type || rating || review_count 
 
 class Lodging extends Sequelize.Model {
   static initiate(sequelize) {
@@ -68,7 +68,7 @@ class Lodging extends Sequelize.Model {
             msg: "유효하지 않은 유형입니다."
           }
         },
-        comment: "0:모텔, 1:호텔/리조트, 2:펜션, 3:게스트하우스, 4:캠핑/글램핑 ",
+        comment: "0:모텔, 1:호텔/리조트, 2:펜션, 3:게스트하우스, 4:캠핑/글램핑 ", // 카테고리 유형
       },
       
       rating: {

@@ -12,6 +12,7 @@ function RoomReservation() {
   const [roomData, setRoomData] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
+  const [몇박, 몇박수정] = useState(1);
   const { id } = useParams();
 
   console.log(startDate);
@@ -31,6 +32,23 @@ function RoomReservation() {
     getData();
   }, []);
 
+  
+  const calculateNightStay = async() => {
+    if (startDate && endDate) {
+      const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+      const nightStay = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      await 몇박수정(`${nightStay}`);
+    }
+  };
+
+  useEffect(() => {
+    calculateNightStay();
+  }, [startDate, endDate]);
+
+  useEffect(() => {
+    console.log(typeof(몇박));;
+  }, [몇박]);
+
   return (
     <div className="RoomReservation_container">
       <div className="Calendar">
@@ -41,7 +59,10 @@ function RoomReservation() {
                 <span>체크인: </span>
                 <DatePicker
                   selected={startDate}
-                  onChange={(date) => setStartDate(date)}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    calculateNightStay();
+                  }}
                   selectsStart
                   startDate={startDate}
                   endDate={endDate}
@@ -53,7 +74,10 @@ function RoomReservation() {
                 <span>체크아웃: </span>
                 <DatePicker
                   selected={endDate}
-                  onChange={(date) => setEndDate(date)}
+                  onChange={(date) => {
+                    setEndDate(date);
+                    calculateNightStay();
+                  }}
                   selectsEnd
                   startDate={startDate}
                   endDate={endDate}
@@ -93,10 +117,19 @@ function RoomReservation() {
                   </div>
                   <Link
                     to="/payment"
-                    state={{ room_id: a.room_id, lodging_id: id, startDate: startDate, endDate: endDate }}
+                    state={{
+                      room_id: a.room_id,
+                      lodging_id: id,
+                      startDate: startDate,
+                      endDate: endDate,
+                      price: a.price * 몇박,
+                      몇박: 몇박,
+                    }}
                   >
                     <button>
-                      <p>예약하기 | {a.price}원 (1박)</p>
+                      <p>
+                        예약하기 | {a.price * 몇박}원 ({몇박}박)
+                      </p>
                     </button>
                   </Link>
                 </div>
