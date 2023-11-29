@@ -56,4 +56,5 @@ function InfoManagement(props) {
   );
 }
 
+
 export default InfoManagement;
