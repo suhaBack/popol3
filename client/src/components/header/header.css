@@ -96,6 +96,7 @@ li{
   padding-top: 2%;
   font-size: 1vw;
 }
+
 .Inner_Div1 {
   display: grid;
   grid-template-areas:
@@ -122,5 +123,6 @@ li{
 }
 .aTag_header{
   padding-left: 3%;
+  text-decoration: none;
 }
 

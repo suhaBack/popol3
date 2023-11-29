@@ -65,20 +65,22 @@ function Header() {
           </button>
         )}  
       </div> */}
-      <div className="search_area">
+      <div></div>
+      {/* <div className="search_area">
         <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
         <Link to="/search">
         <button className="search_btn">
           <i className="fa-solid fa-magnifying-glass"></i>
           </button>
         </Link>
-      </div>
+      </div> */}
 
       <nav className="Main_nav">
           {login ? (
             <div className="Inner_Div1">
               <div id="MyPage">
-                <Link to="/mypage">마이페이지</Link>
+  
+                <Link to="/mypage" className="aTag_header">마이페이지</Link>
                 <a className="aTag_header" href="/seemore">더 보기</a>
               </div>
               <div id="LogOut">
