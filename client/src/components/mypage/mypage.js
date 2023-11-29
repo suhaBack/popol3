@@ -9,23 +9,47 @@ import UsedInfo from './usedinfo';
 import Registration from "./registration";
 import axios from "axios";
 import { getCookie } from "../../useCookies";
+import { API_URL } from '../config/contansts';
 
 function Mypage() {
   const [menu, setMenu] = useState("내 정보 관리");
   let [userInfo, setUSerInfo] = useState({});
+  let [reviewData, setReviewData] = useState([]);
+  let [bookingList, setBookingList] = useState([]);
   const [end, setEnd] = useState("");
+
+  useEffect(() => {
+    const getList = async () => {
+      await axios.get(`${API_URL}/user/mypage`,{params: {userID:getCookie('login')}})
+        .then((res)=>{
+          console.log('user',res.data[0]);
+          setUSerInfo(res.data[0]);
+        })
+
+      await axios.get(`${API_URL}/bookings`,{params: {userID: getCookie('user_Code')}})
+        .then((result) => {
+          const items = result.data;
+        console.log('book',items);
+        setBookingList(items);
+        });
+
+      await axios.get(`${API_URL}/reviews/mypage`,{params: {userID: getCookie('user_Code')}})
+        .then((result) => {
+          const items = result.data;
+          console.log("review",result.data);
+          setReviewData(items);
+        });
+    };
+    getList();
+  }, []);
   
   useEffect(() => {
-    axios.get('/user',{params: {userID:getCookie('login')}})
-    .then((res)=>{
-      console.log(res.data[0]);
-      setUSerInfo(res.data[0]);
-    })
     setTimeout(() => {
       setEnd("end");
     }, 100);
     return setEnd("");
   }, [menu]);
+
 
   const MenuClick = (selectMenu) => {
     setMenu(selectMenu);
@@ -122,7 +146,7 @@ function Mypage() {
 
           {menu === "예약 내역" && (
             <div className={"start " + end}>
-              <Reservation></Reservation>
+              <Reservation bookingList={bookingList}></Reservation>
             </div>
           )}
 
@@ -140,7 +164,7 @@ function Mypage() {
 
           {menu === "리뷰" && (
             <div className={"start " + end}>
-              <Myreview />
+              <Myreview  reviewData={reviewData}/>
             </div>
           )}
 

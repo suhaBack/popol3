@@ -1,11 +1,22 @@
 const express = require("express");
-const Review = require("../models/reviews");
+const Review = require("../models/review");
+const User = require("../models/user");
 const router = express.Router();
 
 router
-  .get("/", async (req, res, next) => {
+  .get("/mypage", async (req, res, next) => {
     try {
-      // reviews로 get요청시 어떤걸 실행할지 적는 곳 (대충 데이터베이스에 있는 정보들 배열로 정렬해서 보내주려고 res뭐시기 쓸거같은데 까먹음;;)
+      // console.log(req.query.userID);
+      const user_id = req.query.userID
+      console.log('ser',user_id);
+      // const userCode = await User.findOne({where:{user_id:user_id}})
+      // console.log('test',userCode.dataValues.user_ID);
+      // const userID = userCode[0].user_id
+      const getReview = await Review.findAll({
+        where:{user_id:user_id}
+      })
+      console.log("review",getReview);
+      res.status(201).send(getReview);
     } catch (error) {
       console.error(error);
       next(error);
@@ -13,10 +24,10 @@ router
   })
   .post("/", async (req, res, next) => {
     try {
+      console.log('server',req.body);
       const newReview = Review.create({
-        review_id: req.body.review_id,
         user_id: req.body.user_id,
-        lodging_id: req.body.lodging_id,
+        lodging_id: 3,
         rating: req.body.rating,
         content: req.body.content,
       });

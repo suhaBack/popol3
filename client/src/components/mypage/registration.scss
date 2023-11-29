@@ -1,0 +1,64 @@
+.registration_container{
+  display: grid;
+  grid-template-areas: "category_filter search_area upload_option";
+  justify-content: space-around;
+}
+
+.sorting tr td{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.sorting tr:last-child td:last-child{
+  float: right;
+}
+
+
+#img_upload{
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid rgb(77,77,77);
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+  }
+}
+#categoryType_img{
+  display: none;
+}
+
+.upload_btn{
+  &-through{
+    transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1); // ease-in-out-quartic;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: var(--btn-bg);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    &:hover {
+      color: white;
+      background: transparent;
+
+      &::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+}

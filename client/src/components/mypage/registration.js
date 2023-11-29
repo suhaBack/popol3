@@ -1,155 +1,208 @@
+import './registration.scss';
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Upload } from "antd";
 import { API_URL } from "../config/contansts";
 
 
-function Registration() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  // const navigate = useNavigate();
 
-  const uploadimg = (event) => {
-    const file = event.target.files[0];
-    console.log(file);
-    setSelectedImage(file);
-  };
+function Registration() {
+  const [imageUrl, setImageUrl] = useState(null);
+  // const navigate = useNavigate();
 
   const upload = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const address = e.target.adress.value;
-    const review = e.target.review.value;
-    const stars = e.target.stars.value;
-    const reviewCount = e.target.reviewcount.value;
+    const name = e.target.name.value;//이름
+    const address = e.target.adress.value;//위치
+    const review = e.target.review.value;//시설 설명
     const categoryType = e.target.categoryType.value;
+    const image = imageUrl;
 
-    if (!name || !address || !review || !stars || !reviewCount || !categoryType) {
+    console.log(image);
+    const roomType = e.target.bedtype.value;
+    const roomPrice = e.target.price.value;
+    const roomHeadcount = e.target.headcount.value;
+
+    if (!name || !address || !review || !categoryType) {
       alert("모든 필드를 입력해주세요");
       return;
     }
 
-    if (stars < 1 || stars > 5) {
-      alert("별점은 1부터 5까지의 숫자여야 합니다.");
-      return;
-    }
-
-    if (!selectedImage) {
+    if (!imageUrl) {
       alert("배경 사진을 첨부해주세요");
       return;
     }
-    
-      const formData = new FormData();
-      formData.append("image", selectedImage);
 
-      try {
-        const response = await axios.post(`${API_URL}/upload`, formData);
-        console.log("이미지 업로드 성공:", response.data);
-      } catch (error) {
-        console.error("이미지 업로드 에러:", error);
-      }
+    await axios.post('/lodging',{name:name, location:address, imageUrl:image, type:categoryType, description:review}
+    )
+    .then( async ()=>{
+     const lodgingdb = await axios.get('/lodging/add',{params:{name:name}})
+     .then( async ()=>{
+       console.log('시설아이디',lodgingdb.lodging_id);
+      await axios.post('/rooms',{lodging_id:lodgingdb.lodging_id, type:roomType, price:roomPrice, capacity:roomHeadcount})
+      .then(()=>{
+        console.log("db 시설등록 완료");
+      })
+     })
+    })
+    .catch((err)=>{
+      console.log('시설 등록 오류');
+      console.error(err);
+    })
+
     }
+
+    const onChangeImage = (info) => {
+      // 파일이 업로드 중일 때
+      console.log("new", info.file);
+      if (info.file.status === "uploading") {
+        console.log("업로드중");
+        return;
+      }
+      // 파일이 업로드 완료 되었을 때
+      if (info.file.status === "done") {
+        console.log("성공");
+        const response = info.file.response;
+        const imageUrl = response.imageUrl;
+        // 받은 이미지경로를 imageUrl에 넣어줌
+        setImageUrl(imageUrl);
+      }
+    };
 
   return (
     <div className="registration_container">
-      <div className="categoryType">
+      <div className="category_filter">
         <form onSubmit={upload}>
-          <h3>카테고리</h3>
-          <label>이름</label>
-          <input
-            id="name"
-            type="text"
-            className="registration-control"
-            placeholder="이름을 입력해주세요"
-          />
-
-          <label>주소</label>
-          <input
-            id="adress"
-            type="text"
-            className="registration-control"
-            placeholder="주소를 입력해주세요"
-          />
-
-          <label>리뷰</label>
-          <input
-            id="review"
-            type="text"
-            className="registration-control"
-            placeholder="리뷰"
-          />
-
-          <label>별점 (1~5)</label>
-          <input
-            id="stars"
-            type="range"
-            className="registration-control"
-            min="1"
-            max="5"
-          />
-
-          <label>리뷰 수</label>
-          <input
-            id="reviewcount"
-            type="number"
-            className="registration-control"
-            placeholder="리뷰 수"
-          />
-
-          <label>방 유형</label>
-          <select id="categoryType" className="registration-control">
-            <option value="0">모텔</option>
-            <option value="1">호텔/리조트</option>
-            <option value="2">펜션</option>
-            <option value="3">게스트하우스</option>
-            <option value="4">캠핑/글램핑</option>
-          </select>
-          <label>배경 사진 첨부</label>
-          <input
-            id="categoryType_img"
-            type="file"
-            className="registration-control"
-            placeholder="리뷰 수"
-            onChange={uploadimg}
-            accept="image/*"
-          />
-
-          <button type="submit">등록하기</button>
-        </form>
-      </div>
-      <div>
-        <form>
-          <h3>방 등록하기</h3>
-          <label>침대 유형</label>
-            <select id="bedtype" className="registration-control">
-              <option value="0">싱글 배드</option>
-              <option value="1">더블 배드</option>
-              <option value="2">트윈 배드</option>
-            </select>
-
-            <label>가격</label>
-            <input
-              id="price"
-              type="number"
-              className="registration-control"
-              placeholder="가격을 입력해주세요"/> 
-
-            <label>수용인원</label>
-            <input
-              id="headcount"
-              type="number"
-              className="registration-control"
-              placeholder="입장 가능 최대 인원"/>
-              
-            <label>사장님 한마디</label>
-            <input
-              id="bosscomment"
+          <h3>시설 등록하기</h3>
+          <table className='sorting'>
+            <tr>
+              <td><label>이름</label></td>
+              <td><input
+                id="name"
+                type="text"
+                className="registration-control"
+                placeholder="이름을 입력해주세요"
+              /></td>
+            </tr>
+            <tr>
+              <td><label>주소</label></td>
+              <td><input
+              id="adress"
               type="text"
               className="registration-control"
-              placeholder="사장님 한마디에 들어갈 코멘트를 적어주세요"/> 
-
-            <button type="submit">등록하기</button>
+              placeholder="주소를 입력해주세요"
+              /></td>
+            </tr>
+            <tr>
+              <td><label>시설설명</label></td>
+              <td><input
+                id="review"
+                type="text"
+                className="registration-control"
+                placeholder="시설을 한 줄로 표현해주세요"
+              /></td>
+            </tr>
+            <tr>
+              <td><label>방 유형</label></td>
+              <td><select id="categoryType" className="registration-control">
+                <option value="0">모텔</option>
+                <option value="1">호텔/리조트</option>
+                <option value="2">펜션</option>
+                <option value="3">게스트하우스</option>
+                <option value="4">캠핑/글램핑</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td><label>배경 사진 첨부</label></td>
+              <td>
+              <Upload
+                name="image"
+                action={`${API_URL}/image`}
+                listType="picture"
+                showUploadList={false}
+                onChange={onChangeImage}
+              >
+                {imageUrl ? (
+                  <img src={imageUrl} alt="" width="200px" height="200px" />
+                ) : (
+                  <div id="upload-img-placeholder">
+                    <i class="fa-regular fa-file-image"></i><br/>
+                    <span>포스터를 등록 해주세요.</span>
+                  </div>
+                )}
+              </Upload>
+              </td>
+            </tr>
+            <h3><br></br>방 등록하기</h3>
+            <tr>
+              <td><label>침대 유형</label></td>
+              <td>
+                <select id="bedtype" className="registration-control">
+                  <option value="싱글">싱글 배드</option>
+                  <option value="더블">더블 배드</option>
+                  <option value="트윈">트윈 배드</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><label>가격</label></td>
+              <td><input
+                id="price"
+                type="number"
+                className="registration-control"
+                placeholder="가격을 입력해주세요"/> </td>
+            </tr>
+            <tr>
+              <td><label>수용인원</label></td>
+              <td><input
+                id="headcount"
+                type="number"
+                className="registration-control"
+                placeholder="입장 가능 최대 인원"/></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button type="submit" className='upload_btn'>등록하기</button></td>
+            </tr>
+          </table>
         </form>
       </div>
+      {/* <div className='upload_option'>
+        <form>
+          <h3>방 등록하기</h3>
+          <table className='sorting'>
+            <tr>
+              <td><label>침대 유형</label></td>
+              <td><select id="bedtype" className="registration-control">
+                <option value="0">싱글 배드</option>
+                <option value="1">더블 배드</option>
+                <option value="2">트윈 배드</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td><label>가격</label></td>
+              <td><input
+                id="price"
+                type="number"
+                className="registration-control"
+                placeholder="가격을 입력해주세요"/> </td>
+            </tr>
+            <tr>
+              <td><label>수용인원</label></td>
+              <td><input
+                id="headcount"
+                type="number"
+                className="registration-control"
+                placeholder="입장 가능 최대 인원"/></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button type="submit" className='upload_btn'>등록하기</button></td>
+            </tr>
+          </table>
+        </form>
+      </div> */}
     </div>
   );
 };

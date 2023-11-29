@@ -10,7 +10,6 @@ import detailslide4 from "./image/detailslide4.jpg";
 import detailslide5 from "./image/detailslide5.jpg";
 import detailslide6 from "./image/detailslide6.jpg";
 import Detailsilde from "./component/detailslide";
-import ReservationCalendar from "./date/date";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../config/contansts";
 import axios from "axios";
@@ -20,16 +19,14 @@ function Detail() {
   // console.log(id); // 21
   const [button, setButton] = useState("객실안내/예약");
   const [lodginData, setLodgingData] = useState([]);
-  const [roomData, setRoomData] = useState([]);
   const [end, setEnd] = useState("");
   
   const ButtonClick = (selectButton) => {
     setButton(selectButton);
   };
   
-  console.log('client',lodginData,roomData);
 
-  const getData = async ()=>{
+  const getData = async () => {
     await axios.get(`${API_URL}/lodging/detail`,{params:{lodging_id:id}})
     .then((res)=>{setLodgingData(res.data)})
     .catch(console.log("lodging실패"));
@@ -124,6 +121,7 @@ function Detail() {
               <RoomInformation
                 button={button}
                 setButton={setButton}
+                lodginData={lodginData}
               ></RoomInformation>
             </div>
           )}

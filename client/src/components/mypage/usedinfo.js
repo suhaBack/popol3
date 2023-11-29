@@ -1,35 +1,30 @@
 import "./usedinfo.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import 결과없음 from "./../image/결과없음.png";
 import 체크 from "./../image/체크.png";
+import axios from "axios";
+import { getCookie } from "../../useCookies";
+import { API_URL } from "../config/contansts";
 
 function UsedInfo() {
-  let [usedata, setUsedata] = useState([
-    {
-      id: 1,
-      status: "이용",
-      title: "숙소이름1",
-      date: "완료일자1",
-    },
-    {
-      id: 2,
-      status: "취소",
-      title: "숙소이름2",
-      date: "완료일자2",
-    },
-    {
-      id: 3,
-      status: "취소",
-      title: "숙소이름3",
-      date: "완료일자3",
-    },
-    {
-      id: 4,
-      status: "이용",
-      title: "숙소이름4",
-      date: "완료일자4",
-    },
-  ]);
+  let [usedata, setUsedata] = useState([]);
+  useEffect(() => {
+    const getList = async () => {
+      await axios
+        .get(`${API_URL}/bookings/myUse`, {
+          params: { user_id: getCookie("user_Code") },
+        })
+        .then((res) => {
+          console.log("test", res.data);
+          setUsedata(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+          console.log("에러남");
+        });
+    };
+    getList();
+  }, []);
 
   const itemsPerPage = 5; // 한 페이지당 표시할 공지사항 수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
@@ -85,22 +80,25 @@ function UsedInfo() {
               {currentItems.map((a, i) => {
                 return (
                   <div className="usedList" key={a.id}>
-                    <div className="usedid">{a.id}</div>
-                    <div className="usedtitle">{a.title}</div>
-                    <div className="useddate">{a.date}</div>
-
-                    {a.status === "이용" ? (
+                    <div className="usedid">{a.room_id}</div>
+                    <div className="usedtitle">호텔 이름</div>
+                    <div className="useddate">
+                      {new Date(a.start_date).toISOString().split("T")[0]}
+                    </div>
+                    {a.status === "예약완료" ? (
                       <>
                         <div className="usedstatus">이용 완료</div>
-                        <button
-                          className="reviewWriteBtn"
-                          onClick={() => handleReviewClick(a.id)}
-                        >
-                          리뷰 작성
-                        </button>
+                        <a href="/reviewwrite">
+                          <button
+                            className="reviewWriteBtn"
+                            onClick={() => handleReviewClick(a.id)}
+                          >
+                            리뷰 작성
+                          </button>
+                        </a>
                       </>
                     ) : (
-                      <div className="usedstatus">{a.status} 완료</div>
+                      <div className="usedstatus">{a.status}</div>
                     )}
                   </div>
                 );

@@ -1,112 +1,87 @@
-import { useState } from "react";
-import img1 from "./image/잠실체리.jpg";
-import img2 from "./image/잠실쿠키.jpg";
-import img3 from "./image/신림 홀리데이.jpg";
-import img4 from "./image/상봉 호텔버스.jpg";
-import img5 from "./image/용전 더휴식 노크인호텔.jpg";
-import img6 from "./image/히히.jpg";
 import "./myreview.css";
 import 결과없음 from "./../image/결과없음.png";
 import 리뷰 from "./../image/리뷰.png";
+import Star_y from "./image/star_y.png";
+import Star_n from "./image/star_n.png";
 
-function Myreview() {
+function Myreview(props) {
   //리뷰데이터데이스 사용
-  let [myreview, setMyreview] = useState([
-    {
-      id: 1,
-      img: img1,
-
-      rating: 0.5,
-      ment: "존나 더러워요... 가지마세요;;하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하",
-      date: "2023-11-18",
-    },
-    {
-      id: 2,
-      img: img2,
-      rating: 3.8,
-      ment: "사장님께서 친절하십니다.",
-      date: "2024-10-31",
-    },
-    {
-      id: 3,
-      img: img3,
-      rating: 5,
-      ment: "깨끗하고 넓고 좋습니다!!",
-      date: "2025-07-08",
-    },
-    {
-      id: 4,
-      img: img4,
-      rating: 1,
-      ment: "빈대나옴",
-      date: "2026-01-28",
-    },
-    {
-      id: 5,
-      img: img5,
-      rating: 0,
-      ment: "죽여줘",
-      date: "2027-11-13",
-    },
-  ]);
-
+  const reviews = props.reviewData
+  console.log(reviews);
   const ratingToPercent = (a) => {
     const restaurant = { averageScore: a };
-
     const score = +restaurant.averageScore * 20;
     return score + 1.5;
   };
+
+
+function StarRating({ rating }) {
+  const totalStars = 5;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      {[...Array(totalStars)].map((_, i) => (
+        <span key={i}>
+          <StarIcon filled={i < rating} />
+        </span>
+      ))}
+    </div>
+  );
+}
+
+const StarIcon = ({ filled }) => (
+  <img
+    src={filled ? Star_y : Star_n}
+    alt={filled ? "색칠된 별" : "색칠되지 않은 별"}
+    style={{
+      marginRight: '2px',
+      width: '40px',
+      height: '40px',
+      display: 'block'
+    }}/>
+);
+
+function format(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleString('ko-KR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
 
   return (
     <div>
       <div className="myreviewTitle">
         <img src={리뷰}></img>
         <span>
-          작성리뷰 <span>{myreview.length}</span>개
+          작성리뷰 <span>{reviews.length}</span>개
         </span>
       </div>
-      {myreview == "" ? (
+      {reviews == "" ? (
         <div className="reservationComentBox">
           <img src={결과없음}></img>
           <div className="reservationComent">작성된 리뷰가 없습니다.</div>
         </div>
       ) : (
         <div className="usepageGridBox">
-          {myreview.map((a, i) => {
+          {reviews.map((a, i) => {
             return (
-              <div class="jsw_01">
-                <div>
-                  <img src={a.img}></img>
-                </div>
-                <div className="useCardBox">
-                  <div>
-                    <div className='flexCardBox'>
-                      <div class="star-ratings">
-                        <div
-                          className="star-ratings-fill space-x-2 text-lg"
-                          style={{ width: ratingToPercent(a.rating) + "%" }}
-                        >
-                          <span>★</span>
-                          <span>★</span>
-                          <span>★</span>
-                          <span>★</span>
-                          <span>★</span>
-                        </div>
-                        <div class="star-ratings-base space-x-2 text-lg">
-                          <span>★</span>
-                          <span>★</span>
-                          <span>★</span>
-                          <span>★</span>
-                          <span>★</span>
-                        </div>
-                      </div>
-                      <div>{a.date}</div>
-                    </div>
-                    <div>{a.ment}</div>
+              <div>
+                {/* 마이페이지 - 리뷰 전체 */}
+                <div className="myreview_info">
+                  {/* 별점 */}
+                  <div className="star_info">
+                    <StarRating rating={a.rating} />
                   </div>
-
-                  <div className="rereservationBtnBox">
-                    <p>리뷰 삭제</p>
+                  {/* 작성일자 */}
+                  <div className="date_info">
+                    작성일자 : {format(a.createdAt)}
+                  </div>
+                  {/* 리뷰 내용 관련 */}
+                  <div className="content_info">
+                    {a.content}
                   </div>
                 </div>
               </div>

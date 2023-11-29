@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function ProductList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productbasedata, setProductbasedata] = useState([]);
-  useEffect(() => {
+  useEffect(() => { // 페이지 로딩 할떄 실행 1번만
     const getList = async () => {
       await axios
         .get(`${API_URL}/lodging`,{ params: { type: 1 }})
@@ -53,16 +53,13 @@ function ProductList() {
         <div className="product-list">
           <div className="productPageListTitle">
             <div>추천 호텔</div>
-            <span className="productpageMapBtn">
-              <i className="fa-solid fa-map"></i>지도
-            </span>
           </div>
           <div className="product-list-gridBox">
             {currentItems.map((a) => {
               return (
                 <div className="productBgImg">
                   <Link to={`/detail/${a.lodging_id}`}>
-                    <img src={a.img}></img>
+                    <img src={a.imageURL}></img>
                     <div className="productpagecontect">
                       <div className="productpagepdtitle">{a.name}</div>
                       <div className="productpagepdevaluation">

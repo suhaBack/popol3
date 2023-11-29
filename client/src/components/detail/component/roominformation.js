@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Location from "./location/map"
 import "./roominformation.css";
 
 function RoomInformation(props) {
@@ -14,6 +15,8 @@ function RoomInformation(props) {
       [section]: !sections[section],
     });
   };
+  
+  console.log(props.lodginData.location_info);
 
   return (
     <div>
@@ -29,7 +32,10 @@ function RoomInformation(props) {
             sections.basic ? "basic_info_visible" : "basic_info_hidden"
           }
         >
-          <p>기본 정보 입력란 입니다.</p>
+          {/* 카카오 맵 적용 란 */}
+          <Location
+            location_info={props.lodginData.location_info}
+          />
         </div>
       </div>
 
