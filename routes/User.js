@@ -88,11 +88,12 @@ router
   } catch (error) {
     //에러 발생시 어떤일이 일어날지 적는 장소
   }
-}).get('/', async (req,res,next)=>{
+})
+.get('/mypage', async (req,res,next)=>{
   try {
     const user_DB = await User.findAll({
       where: {
-        id : req.query.user || req.query.userID
+        id : req.query.userID
       }
     })
     console.log('userDB',user_DB);

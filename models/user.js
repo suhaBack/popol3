@@ -2,8 +2,8 @@
 
 const Sequelize = require("sequelize");
 
-// user_id || email || password || name 
-// contact_number || role
+// user_id ||   id  || email || password
+//  name   || contant_number ||   role
 
 class User extends Sequelize.Model {
   static initiate(sequelize) {
@@ -18,7 +18,7 @@ class User extends Sequelize.Model {
       id:{
         type: Sequelize.STRING,
         allowNull: false,
-        comment: "이메일",
+        comment: "닉네임",
       },
       email: {
         type: Sequelize.STRING,
