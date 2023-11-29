@@ -1,33 +1,69 @@
 import "./roomreservation.css";
-import ReservationCalendar from "./../date/date.js";
-import room1 from "./../image/detailslide1.jpg"
-import room2 from "./../image/detailslide2.jpg"
+import room1 from "./../image/detailslide1.jpg";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../config/contansts.js";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./date.css";
 
 function RoomReservation() {
   const [roomData, setRoomData] = useState([]);
-  const {id} = useParams()
-  
-  const getData = async ()=>{
-    await axios.get(`${API_URL}/rooms/detail`,{params:{lodging_id:id}})
-    .then((res)=>{
-      console.log(res);
-      setRoomData(res.data)
-    })
-    .catch(console.log("lodging실패"));
-  }
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  const { id } = useParams();
+
+  console.log(startDate);
+  console.log(endDate);
+
+  const getData = async () => {
+    await axios
+      .get(`${API_URL}/rooms/detail`, { params: { lodging_id: id } })
+      .then((res) => {
+        console.log(res);
+        setRoomData(res.data);
+      })
+      .catch(console.log("lodging실패"));
+  };
 
   useEffect(() => {
-    getData()
-  },[]);
+    getData();
+  }, []);
 
   return (
     <div className="RoomReservation_container">
       <div className="Calendar">
-        <ReservationCalendar></ReservationCalendar>
+        <div className="dateBox">
+          <div className="dateflexBox">
+            <div className="dateflexBox2">
+              <div>
+                <span>체크인: </span>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  dateFormat="yyyy/MM/dd"
+                />
+              </div>
+              <span className="dateslash">/</span>
+              <div>
+                <span>체크아웃: </span>
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  dateFormat="yyyy/MM/dd"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="roominfo">
         {roomData.map((a, i) => {
@@ -55,11 +91,14 @@ function RoomReservation() {
                       취소됩니다.
                     </div>
                   </div>
-                  <a href="/payment">
+                  <Link
+                    to="/payment"
+                    state={{ room_id: a.room_id, lodging_id: id, startDate: startDate, endDate: endDate }}
+                  >
                     <button>
                       <p>예약하기 | {a.price}원 (1박)</p>
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

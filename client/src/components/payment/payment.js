@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import "./payment.css";
 import 할인 from "./../image/할인.png";
 import 결제수단 from "./../image/결제수단.png";
 import 개인정보 from "./../image/개인정보.png";
+import axios from "axios";
+import { API_URL } from "../config/contansts";
+import { getCookie } from '../../useCookies';
 
 function Payment() {
   const [allChecked, setAllChecked] = useState(false);
@@ -11,8 +14,44 @@ function Payment() {
   const [check2, setCheck2] = useState(false);
   const [check3, setCheck3] = useState(false);
 
+  const [roomData, setRoomData] = useState({});
+  const [lodgingData, setLodgingData] = useState({});
+  
   let [phoneNumber, setPhoneNumber] = useState("");
   let [consumerName, setConsumerName] = useState("");
+
+  const data = useLocation().state;//{room_id:value, lodging_id:value}
+  console.log(data.startDate);
+
+  useEffect(()=>{
+    const getData = async ()=>{
+      const roomdb = await axios.get(`${API_URL}/rooms/payment`,{params:{room_id:data.room_id}})
+      .then((res)=>{
+        const list = res.data
+        console.log('roomdb',list);
+        setRoomData(list)
+      })
+      const lodgingdb = await axios.get(`${API_URL}/lodging/payment`,{params:{lodging_id:data.lodging_id}})
+      .then((res)=>{
+        const list = res.data
+        console.log('lodgingdb',list);
+        setLodgingData(list)
+      })
+    }
+    getData();
+  },[])
+
+  const postData = async (e) => {
+    e.preventDefault()
+    await axios.post(`${API_URL}/bookings`,{start_date: data.startDate, end_date: data.endDate, price: roomData.price, lodging_id:data.lodging_id, user_id: getCookie("user_Code")})
+    .then(()=>{
+      console.log("성공");
+    }).catch((e) => {
+      console.log("에러남");
+      console.error(e);
+    })
+  }
+
 
   const handleAllCheck = () => {
     setAllChecked(!allChecked);
@@ -195,28 +234,31 @@ function Payment() {
           </div>
         </div>
 
+
+
+
         <div id="Act2">
           <div className="Act2PositionBox">
             <div className="productInfoBox">
               <div>
                 <span className="productInfoTitle">숙소이름</span>
-                <p>인터컨티넨탈 서울 코엑스</p>
+                <p>{lodgingData.name}</p>
               </div>
               <div>
                 <span className="productInfoTitle">객실타입/기간</span>
                 <p>
                   [블랙프라이데이] ★조식 2인★
                   <br />
-                  클래식 킹 / 1박
+                  {roomData.type} / 1박
                 </p>
               </div>
               <div>
                 <span className="productInfoTitle">체크인</span>
-                <p>11.10 금 15:00</p>
+                <p>{data.startDate.toLocaleDateString()}</p>
               </div>
               <div>
                 <span className="productInfoTitle">체크아웃</span>
-                <p>11.11 토 11:00</p>
+                <p>{data.endDate.toLocaleDateString()}</p>
               </div>
             </div>
 
@@ -225,7 +267,7 @@ function Payment() {
                 총 결제 금액 <span>(VAT포함)</span>
               </p>
               <p className="productprice" style={{ fontSize: "2vw" }}>
-                409,000원
+                {roomData.price}원
               </p>
               <ul>
                 <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -237,7 +279,9 @@ function Payment() {
             </div>
             <div>
               <Link to="./complete">
-                <button className="paymentBtn">
+                <button className="paymentBtn" onClick={()=>{
+                  postData();
+                }}>
                   결제하기
                 </button>
               </Link>

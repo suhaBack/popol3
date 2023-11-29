@@ -20,18 +20,20 @@ function Mypage() {
 
   useEffect(() => {
     const getList = async () => {
-      await axios.get(`${API_URL}/user`,{params: {userID:getCookie('login')}})
+      await axios.get(`${API_URL}/user/mypage`,{params: {userID:getCookie('login')}})
         .then((res)=>{
           console.log('user',res.data[0]);
           setUSerInfo(res.data[0]);
         })
-      await axios.get(`${API_URL}/bookings`,{params: {userID:getCookie('user_Code')}})
+
+      await axios.get(`${API_URL}/bookings`,{params: {userID: getCookie('user_Code')}})
         .then((result) => {
           const items = result.data;
         console.log('book',items);
         setBookingList(items);
         });
-      await axios.get(`${API_URL}/reviews/mypage`,{params: {userID:getCookie('user_Code')}})
+
+      await axios.get(`${API_URL}/reviews/mypage`,{params: {userID: getCookie('user_Code')}})
         .then((result) => {
           const items = result.data;
           console.log("review",result.data);
