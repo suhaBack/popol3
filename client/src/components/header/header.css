@@ -10,11 +10,8 @@ li{
 #Main_Div{
   top: 0px; /* 도달했을때 고정시킬 위치 */
   z-index: 10;
-
   background-color: white;
   width: 100%;
-  height: 75px;
-
   /* border-bottom: 1px solid #000; */
   border-style: ridge;
 }
@@ -22,17 +19,16 @@ li{
 #Main_Div_2 {
   display: grid;
   grid-template-areas: "Logo_section search_area Main_nav";
-  grid-template-columns: 0.3fr 1.7fr 1fr;
+  grid-template-columns: 1fr 1.7fr 1fr;
   width: 80%;
   height: 100%;
   margin: 0 auto;
 }
 
 .Logo_section {
-  /* width: 25%; */
-  width: 200px;
-  height: 75px;
-  /* border: 1px solid #000; */
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
 .search_area{

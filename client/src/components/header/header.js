@@ -51,7 +51,7 @@ function Header() {
     <div id="Main_Div">
       <div id="Main_Div_2">
       <div className="Logo_section">
-        <Link to="/"><img src={logo}></img></Link>
+        <Link to="/"><img src={logo} width="60%" height="100%"></img></Link>
       </div>
       <div className="Search_area">
         {/* <button type="button" className="btn_srch_srch_open">
