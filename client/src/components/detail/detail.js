@@ -58,7 +58,7 @@ function Detail() {
       <div className="detailpage container">
         <div className="detailGridBox">
           <div className="detailImgdBox">
-            <img src={selectImg} alt="선택된 이미지" />
+            <img src={lodginData.imageURL} alt="선택된 이미지" />
           </div>
           <div className="right">
             <div className="info">

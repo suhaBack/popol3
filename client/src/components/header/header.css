@@ -14,6 +14,7 @@ li{
   width: 100%;
   /* border-bottom: 1px solid #000; */
   border-style: ridge;
+  padding: 0.5vw 0;
 }
 
 #Main_Div_2 {
@@ -99,14 +100,12 @@ li{
   ". ."
   ;
   text-align: right;  
+  height: 100%;
 }
 .Inner_Div2 {
-  padding-top: 3%;
-  padding-left: 20%;
-  display: grid;
-  grid-template-areas:
-  ". . ."
-  ;
+  display: flex;
+  align-items: center;
+  height: 100%;
   gap: 10px;
   text-align: right;
 }
@@ -120,3 +119,22 @@ li{
   padding-left: 3%;
 }
 
+#LogOut{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+#LogOut span{
+  font-size: 1.3vw;
+}
+
+#MyPage{
+  height: 100%;
+}
+
+.LogOutspan2 a{
+  text-decoration: none;
+  color: rgb(94, 94, 253)
+}
