@@ -57,7 +57,7 @@ function Login() {
     if (errorMessage) {
       alert(errorMessage);
     }
-    await axios.post(`${API_URL}/user/login`,{email,pwd})
+    await axios.post(`${API_URL}/user/login`,{email:email,pwd:pwd})
     .then((response)=>{
       console.log('로그인 성공');
       console.log(response.data);

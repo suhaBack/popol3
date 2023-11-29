@@ -43,7 +43,7 @@ function Payment() {
 
   const postData = async (e) => {
     e.preventDefault()
-    await axios.post(`${API_URL}/bookings`,{start_date: data.startDate, end_date: data.endDate, price: roomData.price, lodging_id:data.lodging_id, user_id: getCookie("user_Code")})
+    await axios.post(`${API_URL}/bookings/newBook`,{start_date: data.startDate, end_date: data.endDate, price: roomData.price, lodging_id:data.lodging_id, user_id: getCookie("user_Code")})
     .then(()=>{
       console.log("성공");
     }).catch((e) => {
