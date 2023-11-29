@@ -48,29 +48,12 @@ function Header() {
       <div className="Logo_section">
         <Link to="/"><img src={logo}></img></Link>
       </div>
-    
-      {/* 검색바 들어갈거임 */}
-      {/* <div className="search_area">
-        {!isOn && (
-          <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
-        )}
-        <Link to="/search">
-        <button onClick={() => ClickMagnifying()} className="search_btn">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </Link>
-        {!isOn && (
-          <button onClick={() => setIsOn(!isOn)} className="close_btn"><i className="fa fa-times"></i>
-          </button>
-        )}  
-      </div> */}
-      <div className="search_area">
-        <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
-        <Link to="/search">
-        <button className="search_btn">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </Link>
+      <div className="Search_area">
+        {/* <button type="button" className="btn_srch_srch_open">
+          <input type="text" id="search_place" placeholder="조금 쉬었다 가야겠는걸..." ></input>
+          
+          <img src={search} onClick={display_popLayer('search_place')}></img>
+        </button> */}
       </div>
 
       
