@@ -3,32 +3,49 @@ import React from "react";
 import axios from 'axios';
 import { API_URL } from "../config/contansts";
 import { useNavigate } from "react-router-dom";
-import { removeCookie } from "../../useCookies";
+import { getCookie, removeCookie } from "../../useCookies";
 import { Content } from 'antd/es/layout/layout';
 
 function InfoEdit(props) {
   const navigate = useNavigate()
+  const domainListEl = document.querySelector('#domain_list')
+  const domainInputEl = document.querySelector('#domain_txt')
+  // console.log('list', domainListEl);
+  // console.log('input',domainInputEl);
 
   const updateUser = async (e)=>{
     e.preventDefault()
-    const user_id = props.userInfo.user_id
-    const id = e.target.editID.value
-    const pwd = e.target.editPWD.value
-  // console.log('client',user_id,id,pwd);
-  axios.post('/user/update',{user_id,id,pwd})
-    .then(
-      alert('다시로그인해주세요'),
-      removeCookie('login'),
-      navigate('/login')
-    )
+
+    const user_id = getCookie('user_Code');
+    const id = e.target.editID.value || props.userInfo.id;
+    const pwd = e.target.editPWD.value || props.userInfo.password;
+    const CK_pwd = e.target.editPWD_check.value || props.userInfo.password;
+    const newEmail = CK_email(e.target.domain_name.value,e.target.domain_txt.value);
+    const email = newEmail || props.userInfo.email;
+  
+    
+
+  console.log('client',user_id,id,pwd,email);
+    if (pwd == CK_pwd) {
+      axios.post(`${API_URL}/user/update`,{user_id:user_id,id:id,password:pwd,email:email})
+        .then(
+          console.log('수정')
+          // alert('다시로그인해주세요'),
+          // removeCookie('login'),
+          // removeCookie('user_Code'),
+          // navigate('/login')
+        )
+    }
   }
 
-  // 도메인 직접 입력 or domain option 선택
-  const domainListEl = document.querySelector('#domain-list')
-  const domainInputEl = document.querySelector('#domain-txt')
-  // console.log('list', domainListEl);
-  // console.log('input',domainInputEl);
-  
+  const CK_email = (name, txt)=>{
+    // console.log('client',name, txt);
+    if (!name || !txt) {
+      if (!name && !txt) {
+        return null
+      }else return alert('이메일을 완성해주세요');
+    }else return name+"@"+txt
+  }
 
 const tlqkf = (event) => {
   console.log("domainInputEl : " , domainInputEl);
@@ -149,9 +166,9 @@ if(!isDayOptionExisted) {
             <td className='td_1'>이메일</td>
             <td className='td_2'>
               <label className='label_In_td'>
-              <input name='Email_domain' placeholder='이메일 입력' className='small_box'></input>
+              <input id='domain_name' name='Email_domain' placeholder='이메일 입력' className='small_box'></input>
               <span> @ </span>
-                <input className='small_box' id="domain-txt" type="text" />
+                <input className='small_box' id="domain_txt" type="text" />
                 <select className='small_box' id="domain-list" onChange={tlqkf}>
                   <option value="type">직접 입력</option>
                   <option value="naver.com">naver.com</option>
@@ -184,17 +201,17 @@ if(!isDayOptionExisted) {
           </tr>
           <tr>
             <td className='td_1'>이름</td>
-            <td className='td_2'><input placeholder={props.userInfo.name}></input></td>
+            <td className='td_2'><input disabled placeholder={props.userInfo.name}></input></td>
             <td className='td_3'></td>
           </tr>
           <tr>
             <td className='td_1'>성별</td>
             <td>
               <label className='radio_btn'>
-                <input type='radio' value={'남자'} name='check' checked/>남자
+                <input type='radio' value={'남자'} name='checkS' checked/>남자
               </label>
               <label className='radio_btn'> 
-                <input type='radio' value={'여자'} name='check'/>여자
+                <input type='radio' value={'여자'} name='checkS'/>여자
               </label>
             </td>
             <td></td>
@@ -233,11 +250,11 @@ if(!isDayOptionExisted) {
             <td className='td_1'>휴대폰 번호</td>
             <td className='td_2'>
 
-              <input type='text' className='num_place' placeholder={props.userInfo.contact_number.slice(0,3)}></input> 
+              <input type='text' disabled className='num_place' placeholder={props.userInfo.contact_number.slice(0,3)}></input> 
               <span> - </span>
-              <input type='text' className='num_place' placeholder={props.userInfo.contact_number.slice(3,7)}></input>
+              <input type='text' disabled className='num_place' placeholder={props.userInfo.contact_number.slice(3,7)}></input>
               <span> - </span>
-              <input type='text' className='num_place' placeholder={props.userInfo.contact_number.slice(7,11)}></input>
+              <input type='text' disabled className='num_place' placeholder={props.userInfo.contact_number.slice(7,11)}></input>
             </td>
             <td className='td_3'></td>
           </tr>

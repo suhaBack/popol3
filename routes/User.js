@@ -45,24 +45,27 @@ router
   }
 })
 .post('/update',async (req,res,next)=>{
+  console.log(req.body);
   const user_id = req.body.user_id
   const editId = req.body.id
-  const editPWD = req.body.pwd
+  const editPWD = req.body.password
+  const editEmail = req.body.email
   console.log('server',user_id,editId,editPWD);
   await User.update({
     id:editId,
-    password:editPWD
-  },
-  {
+    password:editPWD,
+    email:editEmail
+    },
+    {
     where:{user_id:user_id}
-  })
-  .then(()=>{
-    res.status(201).end();
-  })
-  .catch((err)=>{
-    console.error(err);
-    res.status(501).end();
-  })
+    })
+    .then(()=>{
+      res.status(201).end();
+    })
+    .catch((err)=>{
+      console.error(err);
+      res.status(501).end();
+    })
 })
 .post('/login',async (req,res,next)=>{
   try {
