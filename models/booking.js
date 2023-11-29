@@ -2,8 +2,8 @@
 
 const Sequelize = require("sequelize");
 
-// booking_id || user_id || room_id || start_date || end_date
-// total_price || status || special_requests
+// booking_id  || user_id || room_id || start_date || end_date
+// total_price ||  status || special_requests
 
 class Booking extends Sequelize.Model {
   static initiate(sequelize) {
@@ -67,7 +67,7 @@ class Booking extends Sequelize.Model {
             msg: "유효하지 않은 상태입니다."
           }
         },
-        comment: "상태",
+        comment: "예약 상태",
       },
       special_requests: {
         type: Sequelize.TEXT,

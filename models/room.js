@@ -2,8 +2,8 @@
 
 const Sequelize = require("sequelize");
 
-// room_id || lodging_id || type || price 
-// capacity || description
+// room_id || lodging_id || type
+//  price  || capacity
 
 class Room extends Sequelize.Model {
   static initiate(sequelize) {
