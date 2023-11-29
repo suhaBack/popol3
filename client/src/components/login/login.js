@@ -117,7 +117,9 @@ function Login() {
             </div>
           </div>
           <div className="hr-sect">또는</div>
-          <div className="kakaologin">카카오톡 로그인</div>
+          <div className="kakaologin">
+            <i class="fa-solid fa-comment"></i>
+            　카카오계정으로 로그인</div>
           <p className="loginhelp">
             계정이 없으신가요? <Link to="/register">회원가입</Link>
           </p>
