@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 import "./payment.css";
 import 할인 from "./../image/할인.png";
 import 결제수단 from "./../image/결제수단.png";
 import 개인정보 from "./../image/개인정보.png";
 import axios from "axios";
 import { API_URL } from "../config/contansts";
-import { getCookie } from '../../useCookies';
+import { getCookie } from "../../useCookies";
 
 function Payment() {
   const [allChecked, setAllChecked] = useState(false);
@@ -16,42 +16,52 @@ function Payment() {
 
   const [roomData, setRoomData] = useState({});
   const [lodgingData, setLodgingData] = useState({});
-  
+
   let [phoneNumber, setPhoneNumber] = useState("");
   let [consumerName, setConsumerName] = useState("");
 
-  const data = useLocation().state;//{room_id:value, lodging_id:value}
+  const data = useLocation().state; //{room_id:value, lodging_id:value}
   console.log(data.startDate);
 
-  useEffect(()=>{
-    const getData = async ()=>{
-      const roomdb = await axios.get(`${API_URL}/rooms/payment`,{params:{room_id:data.room_id}})
-      .then((res)=>{
-        const list = res.data
-        console.log('roomdb',list);
-        setRoomData(list)
-      })
-      const lodgingdb = await axios.get(`${API_URL}/lodging/payment`,{params:{lodging_id:data.lodging_id}})
-      .then((res)=>{
-        const list = res.data
-        console.log('lodgingdb',list);
-        setLodgingData(list)
-      })
-    }
+  useEffect(() => {
+    const getData = async () => {
+      const roomdb = await axios
+        .get(`${API_URL}/rooms/payment`, { params: { room_id: data.room_id } })
+        .then((res) => {
+          const list = res.data;
+          console.log("roomdb", list);
+          setRoomData(list);
+        });
+      const lodgingdb = await axios
+        .get(`${API_URL}/lodging/payment`, {
+          params: { lodging_id: data.lodging_id },
+        })
+        .then((res) => {
+          const list = res.data;
+          console.log("lodgingdb", list);
+          setLodgingData(list);
+        });
+    };
     getData();
-  },[])
+  }, []);
 
-  const postData = async (e) => {
-    e.preventDefault()
-    await axios.post(`${API_URL}/bookings`,{start_date: data.startDate, end_date: data.endDate, price: roomData.price, lodging_id:data.lodging_id, user_id: getCookie("user_Code")})
-    .then(()=>{
-      console.log("성공");
-    }).catch((e) => {
-      console.log("에러남");
-      console.error(e);
-    })
-  }
-
+  const postData = async () => {
+    await axios
+      .post(`${API_URL}/bookings/newBook`, {
+        start_date: data.startDate,
+        end_date: data.endDate,
+        price: roomData.price,
+        room_id: data.room_id,
+        user_id: getCookie("user_Code"),
+      })
+      .then(() => {
+        console.log("성공");
+      })
+      .catch((e) => {
+        console.log("에러남");
+        console.error(e);
+      });
+  };
 
   const handleAllCheck = () => {
     setAllChecked(!allChecked);
@@ -145,7 +155,7 @@ function Payment() {
 
             <div className="saleGirdBox">
               <p>구매총액</p>
-              <p>409,000원</p>
+              <p>{data.price}원</p>
             </div>
             <div className="saleGirdBox">
               <button>사용 가능 쿠폰 0장</button>
@@ -234,9 +244,6 @@ function Payment() {
           </div>
         </div>
 
-
-
-
         <div id="Act2">
           <div className="Act2PositionBox">
             <div className="productInfoBox">
@@ -249,7 +256,7 @@ function Payment() {
                 <p>
                   [블랙프라이데이] ★조식 2인★
                   <br />
-                  {roomData.type} / 1박
+                  {roomData.type} / {data.몇박}박
                 </p>
               </div>
               <div>
@@ -267,7 +274,7 @@ function Payment() {
                 총 결제 금액 <span>(VAT포함)</span>
               </p>
               <p className="productprice" style={{ fontSize: "2vw" }}>
-                {roomData.price}원
+                {data.price}원
               </p>
               <ul>
                 <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -279,9 +286,12 @@ function Payment() {
             </div>
             <div>
               <Link to="./complete">
-                <button className="paymentBtn" onClick={()=>{
-                  postData();
-                }}>
+                <button
+                  className="paymentBtn"
+                  onClick={() => {
+                    postData();
+                  }}
+                >
                   결제하기
                 </button>
               </Link>

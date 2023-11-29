@@ -46,7 +46,7 @@ function Header() {
     <div id="Main_Div">
       <div id="Main_Div_2">
       <div className="Logo_section">
-        <Link to="/"><img src={logo}></img></Link>
+        <Link to="/"><img src={logo} width="60%" height="100%"></img></Link>
       </div>
     
       {/* 검색바 들어갈거임 */}
