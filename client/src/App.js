@@ -19,6 +19,7 @@ import Seemore from './components/seemore/seemore';
 import Complet from "./components/payment/complete"
 import Test from './components/header/test';
 import Recommened from './components/recommend/recommend';
+import Searchpage from './components/searchpage/searchpage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path='/seemore' element={<Seemore/>}></Route>
         <Route path='/payment/complete' element={<Complet/>}></Route>
         <Route path='/recommend' element={<Recommened/>}></Route>
+        <Route path='/searchpage' element={<Searchpage/>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

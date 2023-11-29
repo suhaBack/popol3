@@ -40,11 +40,11 @@ function Header() {
         <Link to="/"><img src={logo}></img></Link>
       </div>
       <div className="Search_area">
-        <button type="button" className="btn_srch_srch_open">
+        {/* <button type="button" className="btn_srch_srch_open">
           <input type="text" id="search_place" placeholder="조금 쉬었다 가야겠는걸..." ></input>
           
           <img src={search} onClick={display_popLayer('search_place')}></img>
-        </button>
+        </button> */}
       </div>
       <nav className="Main_nav">
         <ul className="Main_menu_ul">
