@@ -41,7 +41,7 @@ function Alarm() {
       <div className="alarmtipBox">
         <i class="fa-solid fa-circle-info"></i>
         <span>
-          앱 잠금, 최근 본 상품 저장, 앱 푸시, 접근 권한 설정은 여기어때 앱에서
+          앱 잠금, 최근 본 상품 저장, 앱 푸시, 접근 권한 설정은 왔다가 앱에서
           가능해요.
         </span>
       </div>

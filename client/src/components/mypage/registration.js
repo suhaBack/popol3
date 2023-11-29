@@ -37,14 +37,14 @@ function Registration() {
     await axios.post('/lodging',{name:name, location:address, imageUrl:image, type:categoryType, description:review}
     )
     .then( async ()=>{
-     const lodgingdb = await axios.get('/lodging/add',{params:{name:name}})
-     .then( async ()=>{
-       console.log('시설아이디',lodgingdb.lodging_id);
-      await axios.post('/rooms',{lodging_id:lodgingdb.lodging_id, type:roomType, price:roomPrice, capacity:roomHeadcount})
-      .then(()=>{
-        console.log("db 시설등록 완료");
+      const lodgingdb = await axios.get('/lodging/add',{params:{name:name}})
+      .then( async ()=>{
+        console.log('시설아이디',lodgingdb.lodging_id);
+        await axios.post('/rooms',{lodging_id:lodgingdb.lodging_id, type:roomType, price:roomPrice, capacity:roomHeadcount})
+        .then(()=>{
+          console.log("db 시설등록 완료");
+        })
       })
-     })
     })
     .catch((err)=>{
       console.log('시설 등록 오류');

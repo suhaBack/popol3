@@ -6,6 +6,7 @@ import { getCookie, removeCookie } from "../../useCookies";
 import { useState } from "react";
 import axios from "axios";
 import $ from 'jquery';
+import { Tab } from "react-bootstrap";
 
 // 버튼 클릭 시 검색창 표시를 위한 토글 함수 by 준영
 
@@ -63,38 +64,38 @@ function Header() {
           {login ? (
             <div>
               <li className="Main_menu_li">
-              <Link to="/mypage">마이페이지 /</Link>
+              <Link to="/mypage">마이페이지</Link>
               </li>
               <div id="LogOut">
                 <p id='logout'>{login}님 환영합니다. <span>/</span></p>
-                <a onClick={LogOut}>로그아웃 /</a>
+                <a onClick={LogOut}>로그아웃</a>
               </div>
             </div>
           ): (
             <li className="Main_menu_li">
-              <p id="login">로그인이 필요합니다. <span>/</span></p>
-              <Link to="/login">로그인 /</Link>
+              <p id="login">로그인이 필요합니다.</p>
+              <Link to="/login">로그인  </Link>
             </li>
           )}
           <li className="Main_menu_li" id="SeeMore">
             <a href="/seemore">더 보기</a>
-            <ul className="drop_menu" style={{ display: "none" }}>
-              <li className="drop_item">
-                <a href="??">가</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">나</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">다</a>
-              </li>
-              <li className="drop_item">
-                <a href="??">라</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+              <ul className="drop_menu" style={{ display: "none" }}>
+                <li className="drop_item">
+                  <a href="??">가</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">나</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">다</a>
+                </li>
+                <li className="drop_item">
+                  <a href="??">라</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

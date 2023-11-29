@@ -46,10 +46,11 @@ function InfoManagement(props) {
         </form>
       </div>
       <div className="giveUpBox">
-        <div>
-          여기어때를 이용하고 싶지 않으신가요?
-          <a onClick={logOut}> 로그아웃</a> <a href=""> 회원탈퇴</a>
-        </div>
+          왔다가를 이용하고 싶지 않으신가요?
+          <div>
+            <a onClick={logOut}> 로그아웃</a> <a href=""> 회원탈퇴</a>
+          </div>
+
       </div>
     </div>
   );

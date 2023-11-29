@@ -1,0 +1,56 @@
+.managercontainer {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+  width: 100%;
+  min-height: 70vh;
+  border: 1px solid #000;
+}
+
+.managergirdbox{
+  column-gap: 1vw;
+  background-color: teal;
+  border: 1px solid #000;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  
+}
+
+.managermenu{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  background-color:slategray;
+
+}
+
+.Side_Btn{
+  outline: none;
+  height: 50px;
+  color: #5252FE;
+  background-color: #fff;
+}
+
+.Table_Div{
+background-color: blueviolet;
+}
+
+.Table_Title{
+  text-align: center;
+}
+
+.User_Table{
+  width: 100%;
+  border: 1px solid #000;
+  word-break: keep-all;
+}
+.User_Table td{
+  border: 1px solid #000;
+  padding: 2px 5px 0px 5px;
+}
+
+.User_op{
+  width: 5%;
+  text-align: center;
+}
