@@ -256,7 +256,6 @@ input[type="checkbox"] {
 .productBgImg{
   position: relative;
   height: 20vw;
-  background-image: url("./../image/product1.jpg");
   cursor: pointer;
 }
 
