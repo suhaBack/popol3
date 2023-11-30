@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function ProductHotel() {
   const [selectedRegion, setSelectedRegion] = useState("지역선택하기");
+  const [bedtype, setBedtype] = useState("")
 
   const handleRegionChange = (region) => {
     setSelectedRegion(region);
@@ -41,8 +42,8 @@ function ProductHotel() {
         </div>
       </div>
       <div className="productpageGridBox container">
-        <StickyMenu></StickyMenu>
-        <ProductList></ProductList>
+        <StickyMenu bedtype={bedtype} setBedtype={setBedtype}></StickyMenu>
+        <ProductList bedtype={bedtype}></ProductList>
       </div>
     </div>
   );
