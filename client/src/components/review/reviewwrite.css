@@ -67,6 +67,10 @@
   justify-content: end;
 }
 
+.reviewWriteBtnBox button{
+  margin-top: 2vw;
+}
+
 .reviewWriteBtnBox a{
   text-decoration: none;
 }
