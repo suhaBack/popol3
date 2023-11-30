@@ -42,7 +42,6 @@ function Header() {
     navigate("/");
   };
 
-  
   return (
     <div id="Main_Div">
       <div id="Main_Div_2">
@@ -64,7 +63,7 @@ function Header() {
               <div id="MyPage">
                 <div id="LogOut">
                   <span>{login}님 환영합니다.</span>
-                  <span className='LogOutspan2'>
+                  <span className="LogOutspan2">
                     <Link to="/mypage">마이페이지</Link>
                     <a className="aTag_header" href="/seemore">
                       더 보기
@@ -77,15 +76,15 @@ function Header() {
               </div>
             </div>
           ) : (
-            <div className="Inner_Div2">
-              <span id="login">로그인이 필요합니다.</span>
-              <div id="LogIn">
-                <Link to="/login">로그인</Link>
+              <div className="Inner_Div2">
+                <span id="login">로그인이 필요합니다.</span>
+                <div id="LogIn">
+                  <Link to="/login">로그인</Link>
+                </div>
+                <div className="SeeMore">
+                  <a href="/seemore">더 보기</a>
+                </div>
               </div>
-              <div className="SeeMore">
-                <a href="/seemore">더 보기</a>
-              </div>
-            </div>
           )}
         </nav>
       </div>
