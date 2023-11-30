@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./../hotel/productHotel.css";
-import axios from "axios";
-import { API_URL } from "../../config/contansts";
 import StickyMenuM from "./stickymenuM";
 import ProductListM from "./productlistM";
 
 function ProductMotel() {
   const [selectedRegion, setSelectedRegion] = useState("지역선택하기");
+  const [bedtype, setBedtype] = useState("");
+  
 
   const handleRegionChange = (region) => {
     setSelectedRegion(region);
@@ -19,10 +19,10 @@ function ProductMotel() {
           <div>
             <span class="dropdown">
               <span className="dropbtn">
-              {selectedRegion} <i class="fa-solid fa-caret-down"></i>
+                {selectedRegion} <i class="fa-solid fa-caret-down"></i>
               </span>
               <div class="dropdown-content" style={{ margin: 0 }}>
-              <a href="#" onClick={() => handleRegionChange("서울")}>
+                <a href="#" onClick={() => handleRegionChange("서울")}>
                   - 서울
                 </a>
                 <a href="#" onClick={() => handleRegionChange("경기/인천")}>
@@ -43,12 +43,11 @@ function ProductMotel() {
         </div>
       </div>
       <div className="productpageGridBox container">
-        <StickyMenuM></StickyMenuM>
-        <ProductListM></ProductListM>
+        <StickyMenuM bedtype={bedtype} setBedtype={setBedtype}></StickyMenuM>
+        <ProductListM bedtype={bedtype}></ProductListM>
       </div>
     </div>
   );
 }
-
 
 export default ProductMotel;

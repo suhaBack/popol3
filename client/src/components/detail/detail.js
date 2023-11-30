@@ -15,25 +15,28 @@ import { API_URL } from "../config/contansts";
 import axios from "axios";
 
 function Detail() {
-  const {id} = useParams()
+  const { id } = useParams();
   // console.log(id); // 21
   const [button, setButton] = useState("객실안내/예약");
   const [lodginData, setLodgingData] = useState([]);
   const [end, setEnd] = useState("");
-  
+
   const ButtonClick = (selectButton) => {
     setButton(selectButton);
   };
-  
 
   const getData = async () => {
-    await axios.get(`${API_URL}/lodging/detail`,{params:{lodging_id:id}})
-    .then((res)=>{setLodgingData(res.data)})
-    .catch(console.log("lodging실패"));
-  }
+    await axios
+      .get(`${API_URL}/lodging/detail`, { params: { lodging_id: id } })
+      .then((res) => {
+        setLodgingData(res.data);
+        console.log("res.data: ", res.data);
+      })
+      .catch(console.log("lodging실패"));
+  };
 
   useEffect(() => {
-    getData()
+    getData();
     setTimeout(() => {
       setEnd("end");
     }, 100);
@@ -70,9 +73,7 @@ function Detail() {
               <div className="comment">
                 <h4>사장님 한마디</h4>
                 <div>
-                  <div>
-                    {lodginData.description}
-                  </div>
+                  <div>{lodginData.description}</div>
                 </div>
               </div>
             </div>

@@ -1,10 +1,11 @@
 import ProductListP from "./productlistP";
 import "./../hotel/productHotel.css";
 import StickyMenuP from "./stickymenuP";
-import { useState } from 'react';
+import { useState } from "react";
 
 function ProductPenstion() {
   const [selectedRegion, setSelectedRegion] = useState("지역선택하기");
+  const [bedtype, setBedtype] = useState("");
 
   const handleRegionChange = (region) => {
     setSelectedRegion(region);
@@ -21,7 +22,7 @@ function ProductPenstion() {
                 <i class="fa-solid fa-caret-down"></i>
               </div>
               <div class="dropdown-content" style={{ margin: 0 }}>
-              <a href="#" onClick={() => handleRegionChange("서울")}>
+                <a href="#" onClick={() => handleRegionChange("서울")}>
                   - 서울
                 </a>
                 <a href="#" onClick={() => handleRegionChange("경기/인천")}>
@@ -42,8 +43,8 @@ function ProductPenstion() {
         </div>
       </div>
       <div className="productpageGridBox container">
-        <StickyMenuP></StickyMenuP>
-        <ProductListP></ProductListP>
+        <StickyMenuP bedtype={bedtype} setBedtype={setBedtype}></StickyMenuP>
+        <ProductListP bedtype={bedtype}></ProductListP>
       </div>
     </div>
   );

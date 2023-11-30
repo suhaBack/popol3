@@ -5,6 +5,7 @@ import StickyMenuC from "./stickymenuC";
 
 function ProductCamping() {
   const [selectedRegion, setSelectedRegion] = useState("지역선택하기");
+  const [bedtype, setBedtype] = useState("");
 
   const handleRegionChange = (region) => {
     setSelectedRegion(region);
@@ -42,8 +43,8 @@ function ProductCamping() {
         </div>
       </div>
       <div className="productpageGridBox container">
-        <StickyMenuC></StickyMenuC>
-        <ProductListC></ProductListC>
+        <StickyMenuC bedtype={bedtype} setBedtype={setBedtype}></StickyMenuC>
+        <ProductListC bedtype={bedtype}></ProductListC>
       </div>
     </div>
   );
