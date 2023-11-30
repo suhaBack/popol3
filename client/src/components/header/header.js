@@ -42,6 +42,7 @@ function Header() {
     navigate("/");
   };
 
+  
   return (
     <div id="Main_Div">
       <div id="Main_Div_2">
