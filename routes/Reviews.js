@@ -1,17 +1,16 @@
 const express = require("express");
 const Review = require("../models/review");
-const User = require("../models/user");
+const express = require("express");
+const { sequelize } = require("../models");
+const Review = require("../models/review");
 const router = express.Router();
 
 router
+
   .get("/mypage", async (req, res, next) => {
     try {
-      // console.log(req.query.userID);
       const user_id = req.query.userID
       console.log('ser',user_id);
-      // const userCode = await User.findOne({where:{user_id:user_id}})
-      // console.log('test',userCode.dataValues.user_ID);
-      // const userID = userCode[0].user_id
       const getReview = await Review.findAll({
         where:{user_id:user_id}
       })
@@ -22,6 +21,23 @@ router
       next(error);
     }
   })
+
+  .get("/detail", async (req, res, next) => {
+    try {
+      console.log('ser',user_id);
+      const ReviewData = await Review.findAll({
+        where:{
+          rating:req.query.rating
+        }
+      })
+      console.log("review",ReviewData);
+      res.status(201).send(ReviewData);
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  })
+
   .post("/", async (req, res, next) => {
     try {
       console.log('server',req.body);
@@ -37,6 +53,6 @@ router
       console.error(error);
       res.status(500).end();
     }
-  });
+  })
 
 module.exports = router;

@@ -1,8 +1,30 @@
 import "./review.css";
 import 프로필 from "./../../image/프로필.png";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_URL } from "../../config/contansts";
 
-function Review() {
+function Review(props) {
+
+  const [review, setReview] = useState([]);
+
+  const fetchReviewData = async () => {
+    try {
+        const res = await axios.get(`${API_URL}/detail/`,{params:{id:props.lodging}});
+        setReview(res.data);
+        console.log('해당 데이터를 불러왔습니다')
+        console.log(res.data);
+    } catch (err) {
+        console.error('해당 공지사항 데이터를 가져오지 못하였습니다')
+        console.error(err);
+    }
+  };
+  useEffect(() => {
+    fetchReviewData();
+  }, []);
+
   const ratingToPercent = (a) => {
+    
     const restaurant = { averageScore: a };
 
     const score = +restaurant.averageScore * 20;
