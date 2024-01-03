@@ -24,8 +24,8 @@ function InfoEdit(props) {
   }
 
   // 도메인 직접 입력 or domain option 선택
-  const domainListEl = document.querySelector('#domain-list')
-  const domainInputEl = document.querySelector('#domain-txt')
+  const domainListEl = document.querySelector('#domain_list')
+  const domainInputEl = document.querySelector('#domain_txt')
   // console.log('list', domainListEl);
   // console.log('input',domainInputEl);
   
@@ -48,9 +48,9 @@ const tlqkf = (event) => {
 
 
 // '출생 연도' 셀렉트 박스 option 목록 동적 생성
-const birthYearEl = document.querySelector('#birth-year')
-const birthMonthEl = document.querySelector('#birth-month')
-const birthDayEl = document.querySelector('#birth-day')
+const birthYearEl = document.querySelector('#birth_year')
+const birthMonthEl = document.querySelector('#birth_month')
+const birthDayEl = document.querySelector('#birth_day')
 // option 목록 생성 여부 확인
 console.log(birthYearEl);
 console.log(birthMonthEl);
@@ -151,8 +151,8 @@ if(!isDayOptionExisted) {
               <label className='label_In_td'>
               <input name='Email_domain' placeholder='이메일 입력' className='small_box'></input>
               <span> @ </span>
-                <input className='small_box' id="domain-txt" type="text" />
-                <select className='small_box' id="domain-list" onChange={tlqkf}>
+                <input className='small_box' id="domain_txt" type="text" />
+                <select className='small_box' id="domain_list" onChange={tlqkf}>
                   <option value="type">직접 입력</option>
                   <option value="naver.com">naver.com</option>
                   <option value="hanmail.net">hanmail.net</option>
@@ -191,10 +191,10 @@ if(!isDayOptionExisted) {
             <td className='td_1'>성별</td>
             <td>
               <label className='radio_btn'>
-                <input type='radio' value={'남자'} name='check' checked/>남자
+                <input type='radio' value={'남자'} name='checks' checked/>남자
               </label>
               <label className='radio_btn'> 
-                <input type='radio' value={'여자'} name='check'/>여자
+                <input type='radio' value={'여자'} name='checks'/>여자
               </label>
             </td>
             <td></td>
@@ -203,15 +203,15 @@ if(!isDayOptionExisted) {
             <td className='td_1'>생년월일</td>
             <td className='td_2'>
               <label className='label_In_td'>
-              <select class="box" id="birth-year" onClick={YearSelect}>
+              <select class="box" id="birth_year" onClick={YearSelect}>
                 <option disabled selected>출생 연도</option>
               </select>
               <span className='span_pad'>년</span>
-              <select class="box" id="birth-month" onClick={MonthSelect}>
+              <select class="box" id="birth_month" onClick={MonthSelect}>
                 <option disabled selected>월</option>
               </select>
               <span className='span_pad'>월</span>
-              <select class="box" id="birth-day" onClick={DaySelect}>
+              <select class="box" id="birth_day" onClick={DaySelect}>
                 <option disabled selected>일</option>
               </select>
               <span className='span_pad'>일</span>

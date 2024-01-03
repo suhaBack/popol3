@@ -45,7 +45,6 @@ function Header() {
   return (
     <div id="Main_Div">
       <div id="Main_Div_2">
-<<<<<<< HEAD
       <div className="Logo_section">
         <Link to="/"><img src={logo}></img></Link>
       </div>
@@ -74,7 +73,6 @@ function Header() {
           </button>
         </Link>
       </div> */}
-=======
         <div className="Logo_section">
           <Link to="/">
             <img src={logo} width="60%" height="100%"></img>
@@ -87,21 +85,11 @@ function Header() {
           <img src={search} onClick={display_popLayer('search_place')}></img>
         </button> */}
         </div>
->>>>>>> 0fea05701daacc4d0a5efa782a94b211ab5e7617
 
         <nav className="Main_nav">
           {login ? (
             <div className="Inner_Div1">
               <div id="MyPage">
-<<<<<<< HEAD
-  
-                <Link to="/mypage" className="aTag_header">마이페이지</Link>
-                <a className="aTag_header" href="/seemore">더 보기</a>
-              </div>
-              <div id="LogOut">
-              <span>{login}님 환영합니다.</span>
-                <a className="aTag_header" onClick={LogOut}>로그아웃</a>
-=======
                 <div id="LogOut">
                   <span>{login}님 환영합니다.</span>
                   <span className='LogOutspan2'>
@@ -114,7 +102,6 @@ function Header() {
                     </a>
                   </span>
                 </div>
->>>>>>> 0fea05701daacc4d0a5efa782a94b211ab5e7617
               </div>
             </div>
           ) : (
