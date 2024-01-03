@@ -130,7 +130,7 @@ function Detail() {
         <div className="review">
           {button === "리뷰" && (
             <div className={"start " + end}>
-              <Review button={button} setButton={setButton}></Review>
+              <Review button={button} lodging={id} setButton={setButton}></Review>
             </div>
           )}
         </div>
