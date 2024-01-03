@@ -6,7 +6,7 @@ import Star_n from "./image/star_n.png";
 
 function Myreview(props) {
   //리뷰데이터데이스 사용
-  const reviews = props.reviewData
+  const reviews = props.reviewData;
   console.log(reviews);
   const ratingToPercent = (a) => {
     const restaurant = { averageScore: a };
@@ -14,42 +14,42 @@ function Myreview(props) {
     return score + 1.5;
   };
 
+  function StarRating({ rating }) {
+    const totalStars = 5;
+    return (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {[...Array(totalStars)].map((_, i) => (
+          <span key={i}>
+            <StarIcon filled={i < rating} />
+          </span>
+        ))}
+      </div>
+    );
+  }
 
-function StarRating({ rating }) {
-  const totalStars = 5;
-  return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      {[...Array(totalStars)].map((_, i) => (
-        <span key={i}>
-          <StarIcon filled={i < rating} />
-        </span>
-      ))}
-    </div>
+  const StarIcon = ({ filled }) => (
+    <img
+      src={filled ? Star_y : Star_n}
+      alt={filled ? "색칠된 별" : "색칠되지 않은 별"}
+      style={{
+        marginRight: "2px",
+        width: "40px",
+        height: "40px",
+        display: "block",
+      }}
+    />
   );
-}
 
-const StarIcon = ({ filled }) => (
-  <img
-    src={filled ? Star_y : Star_n}
-    alt={filled ? "색칠된 별" : "색칠되지 않은 별"}
-    style={{
-      marginRight: '2px',
-      width: '40px',
-      height: '40px',
-      display: 'block'
-    }}/>
-);
-
-function format(dateString) {
-  const date = new Date(dateString);
-  return date.toLocaleString('ko-KR', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-}
+  function format(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleString("ko-KR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
 
   return (
     <div>
@@ -80,9 +80,7 @@ function format(dateString) {
                     작성일자 : {format(a.createdAt)}
                   </div>
                   {/* 리뷰 내용 관련 */}
-                  <div className="content_info">
-                    {a.content}
-                  </div>
+                  <div className="content_info">{a.content}</div>
                 </div>
               </div>
             );

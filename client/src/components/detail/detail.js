@@ -34,7 +34,7 @@ function Detail() {
       })
       .catch(console.log("lodging실패"));
   };
-
+  
   useEffect(() => {
     getData();
     setTimeout(() => {

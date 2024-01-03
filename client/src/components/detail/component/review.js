@@ -8,6 +8,7 @@ function Review() {
     const score = +restaurant.averageScore * 20;
     return score + 1.5;
   };
+
   return (
     <div className="reviewpage">
       <div className="reviewpageMain">
