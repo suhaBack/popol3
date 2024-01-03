@@ -1,27 +1,28 @@
 import "./review.css";
 import 프로필 from "./../../image/프로필.png";
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { API_URL } from "../../config/contansts";
 
 function Review(props) {
-
   const [review, setReview] = useState([]);
-
+  console.log("props.lodging: ", props.lodging);
   const fetchReviewData = async () => {
     try {
-        const res = await axios.get(`${API_URL}/detail/`,{params:{id:props.lodging}});
-        setReview(res.data);
-        console.log('해당 데이터를 불러왔습니다')
-        console.log(res.data);
+      const res = await axios.get(`${API_URL}/reviews/detail`, {
+        params: { id: props.lodging },
+      });
+      setReview(res.data);
+      console.log("해당 데이터를 불러왔습니다");
+      console.log("res.data: ", res.data);
     } catch (err) {
-        console.error('해당 공지사항 데이터를 가져오지 못하였습니다')
-        console.error(err);
+      console.error("해당 공지사항 데이터를 가져오지 못하였습니다");
+      console.error(err);
     }
   };
   useEffect(() => {
     fetchReviewData();
-  }, );
+  }, []);
 
   const ratingToPercent = (a) => {
     const restaurant = { averageScore: a };
@@ -71,7 +72,7 @@ function Review(props) {
           <div className="Title1">
             <h2>여기 너무 좋아요</h2>
           </div>
-          <div className='starBox'>
+          <div className="starBox">
             <div class="star-ratings">
               <div
                 className="star-ratings-fill space-x-2 text-lg"
