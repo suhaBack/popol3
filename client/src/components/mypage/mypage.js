@@ -55,9 +55,6 @@ function Mypage() {
     setMenu(selectMenu);
   };
 
-  
-
-
   //user데이터베이스 사용
 
   return (

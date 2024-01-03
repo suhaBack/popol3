@@ -1,8 +1,28 @@
 const express = require("express");
 const Lodging = require("../models/lodging.js");
+const { sequelize } = require("../models/index.js");
+const { QueryTypes } = require("sequelize");
 const router = express.Router();
 
 router
+.get('/Sltype', async (req,res,next)=>{
+  try {
+    console.log('type',req.query);
+    const query = "SELECT A.lodging_id, A.name, A.rating, A.review_count,A.image_u_r_l AS imageURL, A.location, B.type FROM lodgings A INNER JOIN rooms B ON A.lodging_id = B.lodging_id WHERE B.type = ? AND A.type = ?;"
+    const result = await sequelize.query(
+      query, 
+      {
+        type:QueryTypes.SELECT,
+          replacements:[req.query.type, req.query.loging_type]
+      }
+    )
+    console.log("성공");
+    res.status(201).send(result);
+  } catch (error) {
+    console.error(error);
+    res.status(501).end();
+  }
+})
 .get("/payment", async (req, res, next) => {
   try {
     //0모텔 1호텔 2펜션 3게스트 4글램핑
@@ -25,7 +45,7 @@ router
         lodging_id:req.query.lodging_id,
       }
     })
-    // console.log(getlist);
+    console.log('lodging',getlist);
     res.status(201).send(getlist);
   } catch (error) {
     console.error(error);

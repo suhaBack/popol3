@@ -73,7 +73,7 @@ https://www.goodchoice.kr/product/search/2 */
 
 .section-1Box {
   border: 3px solid rgb(94, 94, 253);
-  padding: 1vw;
+  padding: 1vw 1vw 1vw 0;
   position: sticky;
   top: 3vh;
   border-radius: 0.2vw;
@@ -196,24 +196,25 @@ input[type="checkbox"] {
 .bedTypeBox strong {
   display: block;
   margin-bottom: 0.5vw;
-  font-size: 1.3vw;
+  font-size: 1.7vw;
+  padding-left: 1vw;
 }
 
 .bedTypeGridBox{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   column-gap: 1vw;
   cursor: pointer;
 }
 
 .bedType div, .bedType1 div, .bedType3 div{
-  font-size: 0.8vw;
+  font-size: 1vw;
   text-align: center;
   
 }
 
 .bedType1 img{
-  padding: 0.8vw;
+  padding: 1.2vw;
 }
 
 .bedType3 img{
@@ -241,9 +242,9 @@ input[type="checkbox"] {
 }
 
 .productPageListTitle span{
-  font-size: 1.8vw;
+  font-size: 2vw;
   cursor: pointer;
-  color: white;
+  color:rgb(94, 94, 253);
 }
 
 .productPageListTitle span i{

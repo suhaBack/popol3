@@ -53,6 +53,21 @@ router
       console.error(error);
       res.status(500).end();
     }
+  })
+  .post('/newBook', (req,res,next)=>{
+    try {
+      console.log('newBook',req.body);
+      Booking.create({
+        user_id:req.body.user_id,
+        room_id:req.body.room_id,
+        start_date:req.body.start_date,
+        end_date:req.body.end_date,
+        total_price:req.body.price
+      })
+      res.status(201).end();
+    } catch (error) {
+      
+    }
   });
 
 module.exports = router;

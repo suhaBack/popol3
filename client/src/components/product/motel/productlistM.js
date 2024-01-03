@@ -1,26 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../../config/contansts";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-function ProductListM() {
+function ProductListM(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productbasedata, setProductbasedata] = useState([]);
   useEffect(() => {
-    const getList = async () => {
-      await axios
-        .get(`${API_URL}/lodging`,{ params: { type: 0 } })
-        .then((result) => {
-          const items = result.data;
-          console.log("items", items);
-          setProductbasedata(items);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    };
-    getList();
-  }, []);
+    // 페이지 로딩 할떄 실행 1번만
+    if (props.bedtype == "") {
+      const getList = async () => {
+        await axios
+          .get(`${API_URL}/lodging`, { params: { type: 0 } })
+          .then((result) => {
+            const items = result.data;
+            setProductbasedata(items);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      };
+      getList();
+    } else {
+      const getData = async () => {
+        await axios
+          .get(`${API_URL}/lodging/Sltype`, {
+            params: { type: props.bedtype, loging_type: 0 },
+          })
+          .then((res) => {
+            setProductbasedata(res.data);
+            console.log("res", res.data);
+          })
+          .catch((e) => {
+            console.log("lodging실패");
+            console.error(e);
+          });
+      };
+      getData();
+    }
+  }, [props.bedtype]);
 
   console.log("new", productbasedata);
 
@@ -52,7 +70,7 @@ function ProductListM() {
       <div className="">
         <div className="product-list">
           <div className="productPageListTitle">
-            <div>추천 모텔</div>
+            <div>추천 모텔 <span>{props.bedtype === "" ? "" : "("+props.bedtype+")"}</span></div>
           </div>
           <div className="product-list-gridBox">
             {currentItems.map((a) => {
@@ -117,4 +135,4 @@ function Pagination({
   );
 }
 
-export default ProductListM ;
+export default ProductListM;

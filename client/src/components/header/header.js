@@ -45,34 +45,6 @@ function Header() {
   return (
     <div id="Main_Div">
       <div id="Main_Div_2">
-      <div className="Logo_section">
-        <Link to="/"><img src={logo}></img></Link>
-      </div>
-    
-      {/* 검색바 들어갈거임 */}
-      {/* <div className="search_area">
-        {!isOn && (
-          <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
-        )}
-        <Link to="/search">
-        <button onClick={() => ClickMagnifying()} className="search_btn">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </Link>
-        {!isOn && (
-          <button onClick={() => setIsOn(!isOn)} className="close_btn"><i className="fa fa-times"></i>
-          </button>
-        )}  
-      </div> */}
-      <div></div>
-      {/* <div className="search_area">
-        <input className="search_Bar" type="type" placeholder="어디로 갈까?" />
-        <Link to="/search">
-        <button className="search_btn">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </Link>
-      </div> */}
         <div className="Logo_section">
           <Link to="/">
             <img src={logo} width="60%" height="100%"></img>
@@ -85,14 +57,13 @@ function Header() {
           <img src={search} onClick={display_popLayer('search_place')}></img>
         </button> */}
         </div>
-
         <nav className="Main_nav">
           {login ? (
             <div className="Inner_Div1">
               <div id="MyPage">
                 <div id="LogOut">
                   <span>{login}님 환영합니다.</span>
-                  <span className='LogOutspan2'>
+                  <span className="LogOutspan2">
                     <Link to="/mypage">마이페이지</Link>
                     <a className="aTag_header" href="/seemore">
                       더 보기
@@ -105,15 +76,15 @@ function Header() {
               </div>
             </div>
           ) : (
-            <div className="Inner_Div2">
-              <span id="login">로그인이 필요합니다.</span>
-              <div id="LogIn">
-                <Link to="/login">로그인</Link>
+              <div className="Inner_Div2">
+                <span id="login">로그인이 필요합니다.</span>
+                <div id="LogIn">
+                  <Link to="/login">로그인</Link>
+                </div>
+                <div className="SeeMore">
+                  <a href="/seemore">더 보기</a>
+                </div>
               </div>
-              <div className="SeeMore">
-                <a href="/seemore">더 보기</a>
-              </div>
-            </div>
           )}
         </nav>
       </div>

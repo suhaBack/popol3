@@ -12,6 +12,7 @@ class Booking extends Sequelize.Model {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement:true,
         unique: true,
         comment: "예약(booking) 식별자 ID (기본키)",
       },
@@ -49,8 +50,8 @@ class Booking extends Sequelize.Model {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
         validate: {
-          min: {
-            args: 0.00,
+          len: {
+            args:[0],
             msg: "총 가격은 0 이상이어야 합니다."
           }
         },
@@ -77,6 +78,7 @@ class Booking extends Sequelize.Model {
             msg: "특별 요청은 1000자 이하로 작성해야 합니다."
           }
         },
+        defaultValue:"없음",
         comment: "특별 요청",
       },
     }, {

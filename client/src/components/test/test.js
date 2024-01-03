@@ -48,67 +48,67 @@
 
 //   return(
 //     <div>
-      {/* <form onSubmit={test}>
-      <select id="userType" className="form-control">
-            <option value="0">고객</option>
-            <option value="1">관리자</option>
-          </select>
-          <label>닉네임</label>
-          <input id="Nid" type="text" className="form-control"placeholder="ID"/>
+//       <form onSubmit={test}>
+//       <select id="userType" className="form-control">
+//             <option value="0">고객</option>
+//             <option value="1">관리자</option>
+//           </select>
+//           <label>닉네임</label>
+//           <input id="Nid" type="text" className="form-control"placeholder="ID"/>
 
-          <label>비밀번호</label>
-          <input id="Npwd" type="password"className="form-control"placeholder="Password"
-          />
-          <label>비밀번호 확인</label>
-          <input
-            id="CKpwd"
-            type="password"
-            className="form-control"
-            placeholder="Confirm Password"
-          />
+//           <label>비밀번호</label>
+//           <input id="Npwd" type="password"className="form-control"placeholder="Password"
+//           />
+//           <label>비밀번호 확인</label>
+//           <input
+//             id="CKpwd"
+//             type="password"
+//             className="form-control"
+//             placeholder="Confirm Password"
+//           />
 
-          <label>이름</label>
-          <input
-            id="Nname"
-            type="text"
-            className="form-control"
-            placeholder="Name"
-          />
+//           <label>이름</label>
+//           <input
+//             id="Nname"
+//             type="text"
+//             className="form-control"
+//             placeholder="Name"
+//           />
 
-          <label>이메일</label>
-          <input
-            id="Nemail"
-            type="email"
-            className="form-control"
-            placeholder="Email"
-          />
+//           <label>이메일</label>
+//           <input
+//             id="Nemail"
+//             type="email"
+//             className="form-control"
+//             placeholder="Email"
+//           />
 
-          <label>연락처</label>
-          <input
-            id="Nphone"
-            type="text"
-            className="form-control"
-            placeholder="Phone number"
-          />
-          <button type="submit">등록</button>
-      </form> */}
-      {/* <form onSubmit={getUesr}>
-        <input id="id" placeholder="닉네임"></input>
-        <input id="pwd" placeholder="password"></input>
-        <button type="submit">조회</button>
-      </form>
+//           <label>연락처</label>
+//           <input
+//             id="Nphone"
+//             type="text"
+//             className="form-control"
+//             placeholder="Phone number"
+//           />
+//           <button type="submit">등록</button>
+//       </form>
+//       <form onSubmit={getUesr}>
+//         <input id="id" placeholder="닉네임"></input>
+//         <input id="pwd" placeholder="password"></input>
+//         <button type="submit">조회</button>
+//       </form>
       
-      {userData.map((a) => {
-        return (
-          <div>
-              {a.id}
-              {a.email}
-              {a.password}
-          </div>
-        );
-      })}
-    </div>
-  )
-}
+//       {userData.map((a) => {
+//         return (
+//           <div>
+//               {a.id}
+//               {a.email}
+//               {a.password}
+//           </div>
+//         );
+//       })}
+//     </div>
+//   )
+// }
 
-export default Test; */}
+// export default Test;
