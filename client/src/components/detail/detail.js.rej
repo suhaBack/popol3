@@ -1,0 +1,9 @@
+diff a/client/src/components/detail/detail.js b/client/src/components/detail/detail.js	(rejected hunks)
+@@ -130,7 +130,6 @@
+         <div className="review">
+           {button === "리뷰" && (
+             <div className={"start " + end}>
+-              <Review button={button} lodging={id} setButton={setButton}></Review>
+               <Review button={button} setButton={setButton}></Review>
+             </div>
+           )}
