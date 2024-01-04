@@ -9,11 +9,6 @@ function Review(props) {
     const INITIAL_REVIEW_COUNT = 3;
     const [visibleReviews, setVisibleReviews] = useState(INITIAL_REVIEW_COUNT);
 
-
-    const [review, setReview] = useState([]);
-    const INITIAL_REVIEW_COUNT = 3;
-    const [visibleReviews, setVisibleReviews] = useState(INITIAL_REVIEW_COUNT);
-
     const showMoreReviews = () => {
         setVisibleReviews((prevVisibleReviews) => prevVisibleReviews + 3);
     };

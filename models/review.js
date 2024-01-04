@@ -35,8 +35,8 @@ class Review extends Sequelize.Model {
         allowNull: false,
         validate: {
           len: {
-            args: [3, 1000],
-            msg: "내용은 3자 이상 1000자 이하로 작성하여야 합니다."
+            args: [1, 1000],
+            msg: "내용은 1자 이상 1000자 이하로 작성하여야 합니다."
           }
         },
         comment: "리뷰 내용",

@@ -1,4 +1,6 @@
 const express = require("express");
+const { QueryTypes } = require("sequelize"); 
+const { sequelize } = require("../models/index"); 
 const Booking = require("../models/booking.js");
 const router = express.Router();
 
@@ -25,10 +27,27 @@ router
   })
   .get("/myUse", async (req, res, next) => {
     try {
-      console.log('zxcvasdf',req);
-      const data = await Booking.findAll({
-        where:{user_id:req.query.user_id}
-      });``
+      console.log('zxcvasdf',req.query.user_id);
+      const query = "SELECT b.*, l.name AS hName, l.lodging_id AS Lid FROM innout.bookings AS b, innout.rooms AS r, innout.lodgings AS l WHERE b.room_id = r.room_id AND r.lodging_id = l.lodging_id AND b.user_id = ?"; 
+      const data = await sequelize.query(query, { 
+        type: QueryTypes.SELECT,
+        replacements: [req.query.user_id], 
+      });
+      console.log(data);
+      res.status(201).send(data)
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  })
+  .get("/review", async (req, res, next) => {
+    try {
+      console.log('zxcvasdf',req.query);
+      const query = "SELECT * FROM innout.lodgings WHERE lodging_id = ?"; 
+      const data = await sequelize.query(query, { 
+        type: QueryTypes.SELECT,
+        replacements: [req.query.id], 
+      });
       console.log(data);
       res.status(201).send(data)
     } catch (error) {
