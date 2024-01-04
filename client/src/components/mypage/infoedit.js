@@ -65,9 +65,9 @@ const tlqkf = (event) => {
 
 
 // '출생 연도' 셀렉트 박스 option 목록 동적 생성
-const birthYearEl = document.querySelector('#birth-year')
-const birthMonthEl = document.querySelector('#birth-month')
-const birthDayEl = document.querySelector('#birth-day')
+const birthYearEl = document.querySelector('#birth_year')
+const birthMonthEl = document.querySelector('#birth_month')
+const birthDayEl = document.querySelector('#birth_day')
 // option 목록 생성 여부 확인
 console.log(birthYearEl);
 console.log(birthMonthEl);
@@ -220,15 +220,15 @@ if(!isDayOptionExisted) {
             <td className='td_1'>생년월일</td>
             <td className='td_2'>
               <label className='label_In_td'>
-              <select class="box" id="birth-year" onClick={YearSelect}>
+              <select class="box" id="birth_year" onClick={YearSelect}>
                 <option disabled selected>출생 연도</option>
               </select>
               <span className='span_pad'>년</span>
-              <select class="box" id="birth-month" onClick={MonthSelect}>
+              <select class="box" id="birth_month" onClick={MonthSelect}>
                 <option disabled selected>월</option>
               </select>
               <span className='span_pad'>월</span>
-              <select class="box" id="birth-day" onClick={DaySelect}>
+              <select class="box" id="birth_day" onClick={DaySelect}>
                 <option disabled selected>일</option>
               </select>
               <span className='span_pad'>일</span>
