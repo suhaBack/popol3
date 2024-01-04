@@ -100,4 +100,39 @@
   color: black
 }
 
+.Pushinquiry2_main{
+  border-radius: 0px 0px 5px 5px;
+  border-right: 1px solid rgba(128, 128, 128, 0.34);
+  border-left: 1px solid rgba(128, 128, 128, 0.34);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.34);
+  padding: 1vw;
+}
 
+.CHM_pq1tt{
+  padding: 0.5vw 0;
+  font-size: 1.2vw;
+}
+
+.Pushinquiry2_main input{
+  width: 80%;
+  padding: 0.3vw 0.3vw;
+  margin-bottom: 1vw;
+}
+
+.Pushinquiry2_main select{
+  width: 80%;
+  padding: 0.5vw 0;
+  margin-bottom: 1vw;
+}
+
+.CHM_pq1bt button{
+  padding: 0.5vw;
+  border-radius: 0.5vw;
+  background-color: rgb(94, 94, 253);
+  color: white;
+  border: none;
+}
+
+.CHM_pq1bt{
+  padding: 1vw 0;
+}

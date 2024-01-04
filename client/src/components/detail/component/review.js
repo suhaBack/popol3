@@ -5,110 +5,84 @@ import axios from "axios";
 import { API_URL } from "../../config/contansts";
 
 function Review(props) {
-  const [review, setReview] = useState([]);
-  console.log("props.lodging: ", props.lodging);
-  const fetchReviewData = async () => {
+    const [review, setReview] = useState([]);
+    const INITIAL_REVIEW_COUNT = 3;
+    const [visibleReviews, setVisibleReviews] = useState(INITIAL_REVIEW_COUNT);
+
+    const showMoreReviews = () => {
+        setVisibleReviews((prevVisibleReviews) => prevVisibleReviews + 3);
+    };
+
+    const closeReviews = () => {
+        setVisibleReviews(INITIAL_REVIEW_COUNT);
+    };
+
+    const fetchReviewData = async () => {
     try {
-      const res = await axios.get(`${API_URL}/reviews/detail`, {
-        params: { id: props.lodging },
-      });
-      setReview(res.data);
-      console.log("해당 데이터를 불러왔습니다");
-      console.log("res.data: ", res.data);
+        const res = await axios.get(`${API_URL}/reviews/detail/`,{params:{id:props.lodging}});
+        setReview(res.data);
+        console.log('해당 데이터를 불러왔습니다')
+        console.log(res.data);
+
     } catch (err) {
       console.error("해당 공지사항 데이터를 가져오지 못하였습니다");
       console.error(err);
     }
-  };
-  useEffect(() => {
+    };
+    useEffect(() => {
     fetchReviewData();
+
   }, []);
 
-  const ratingToPercent = (a) => {
-    const restaurant = { averageScore: a };
 
-    const score = +restaurant.averageScore * 20;
-    return score + 1.5;
-  };
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // getMonth()는 0부터 시작
+        const day = date.getDate();
+    
+        return `${year}년 ${month.toString().padStart(2, '0')}월 ${day.toString().padStart(2, '0')}일`;
+    }
+    
+    function renderStars(rating) {
+        let stars = '';
+        for (let i = 0; i < rating; i++) {
+            stars += '⭐';
+        }
+        return stars;
+    }    
 
-  return (
-    <div className="reviewpage">
-      <div className="reviewpageMain">
-        <div className="reviewpageMainTitle">최고예요</div>
-        <div className="reviewpagerating">
-          <div class="star-ratings">
-            <div
-              className="star-ratings-fill space-x-2 text-lg"
-              style={{ width: ratingToPercent(4.8) + "%" }}
-            >
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
+
+    return (
+        <>
+            <div className='KJH_rv_container'>
+                
+                <div className='KJH_rv_title'>
+                    전체 리뷰 : {review.length}
+                </div>
+                {review.slice(0, visibleReviews).map((item, index) => (
+                    <div key={index} className="KJH_rv_info_map">
+                        <div className="KJH_rv_image">
+                            <img src={프로필} alt="profile" />
+                        </div>
+                        <div className="KJH_rv_content_section">
+                            <div>유저번호 : {item.user_id}</div>
+                            <div>{renderStars(item.rating)} | ( {item.rating} )</div>
+                            <div className="KJH_rv_content_create">등록일 : {formatDate(item.createdAt)}</div>
+                            <div className="KJH_rv_content_review">{item.content}</div>
+                        </div>
+                    </div>
+                ))}
+                {review.length > visibleReviews && (
+                    <button onClick={showMoreReviews} className="KJH_rv_btn">더보기</button>
+                )}
+                {visibleReviews > INITIAL_REVIEW_COUNT && (
+                    <button onClick={closeReviews} className="KJH_rv_btn">닫기</button>
+                )}
             </div>
-            <div class="star-ratings-base space-x-2 text-lg">
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-            </div>
-          </div>
-          <span className="rating">4.8</span>
-        </div>
+        </>
+    );
 
-        <div className="reviewpagecount">
-          <div>전체 리뷰 32</div>
-          <div>제휴점 답변 3</div>
-        </div>
-      </div>
-
-      <div className="reveiwBox">
-        <div className="img1">
-          <img src={프로필}></img>
-        </div>
-        <div>
-          <div className="Title1">
-            <h2>여기 너무 좋아요</h2>
-          </div>
-          <div className="starBox">
-            <div class="star-ratings">
-              <div
-                className="star-ratings-fill space-x-2 text-lg"
-                style={{ width: ratingToPercent(5) + "%" }}
-              >
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-              </div>
-              <div class="star-ratings-base space-x-2 text-lg">
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-              </div>
-            </div>
-            <span className="rating">5.0</span>
-          </div>
-
-          <div className="name1">
-            <b>풀빌라 (201호) 객실이요 / 시고르자브종 </b>
-          </div>
-
-          <div className="txt1">
-            <div>
-              "너무 조용하고 좋은 여행였지만 폰 충전기를 깜박하고 못챙겨가서
-              추가비용 온수+숯불 5만원문자를 늦게 확인되서 입금이 늦었네요"
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 }
 
 export default Review;
