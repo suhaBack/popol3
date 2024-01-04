@@ -1,0 +1,51 @@
+#jsw_all_container {
+  margin: 0 auto;
+}
+
+.jsw_newroom_container {
+  width: 900px;
+  height: 100%;
+  margin: 0 auto;
+
+}
+
+.jsw_newroom_container2 {
+  margin: 0 auto;
+  padding: 2vw;
+  border: 0.2vw solid rgb(66, 66, 255);
+  border-radius: 0.3vw;
+  
+}
+
+.jsw_btn-upload {
+  width: 250px;
+  height: 80px;
+  background: #fff;
+  border: 2px solid rgb(77,77,77);
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+  
+}
+
+.jsw_btn-upload:hover {
+  background: rgb(77,77,77);
+  color: #fff;
+  
+}
+
+#jsw_file {
+  display: none;
+}
+
+.jsw_container3 {
+  width: 900px;
+  margin-top: 30px;
+
+  text-align: center;
+}

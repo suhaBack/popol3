@@ -20,6 +20,7 @@ import Search from "./components/search/search";
 import ReviewWrite from "./components/review/reviewwrite";
 import ScrollToTopButton from './topbtn.js'
 import Test from "./components/test/test";
+import Newroom from "./components/newroom/newroom.js"
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path="/search" element={<Search />}></Route>
         <Route path="/reviewwrite" element={<ReviewWrite />}></Route>
         <Route path="/test" element={<Test />}></Route>
+        <Route path="/newroom" element={<Newroom />}></Route>
       </Routes>
       <Footer></Footer>
     </div>
