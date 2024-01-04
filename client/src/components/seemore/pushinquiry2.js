@@ -1,3 +1,4 @@
+import "./pushinquiry2.css"
 
 function Pushinquiry1(props) {
   return (

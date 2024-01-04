@@ -1,3 +1,5 @@
+import "./pushinquiry1.css"
+
 function Pushinquiry2(props) {
   return (
     <div className="Pushinquiry2_main">
@@ -38,10 +40,11 @@ function Pushinquiry2(props) {
           <input type="text" placeholder="선택사항입니다." />
         </div>
         <div>
-          <div className='CHM_pq1tt'>문의 내용</div>
+          <div className='CHM_pq1tt custom-input'>문의 내용</div>
           <input
             type="text"
             placeholder="문의하실 내용을 10자 이상 입력해 주세요."
+            style={{height: "10vw"}}
           />
         </div>
         <div className='CHM_pq1ct'>

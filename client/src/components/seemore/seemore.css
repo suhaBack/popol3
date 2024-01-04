@@ -111,18 +111,21 @@
 .CHM_pq1tt{
   padding: 0.5vw 0;
   font-size: 1.2vw;
+  font-size: 1.2vw;
 }
 
 .Pushinquiry2_main input{
   width: 80%;
   padding: 0.3vw 0.3vw;
   margin-bottom: 1vw;
+  font-size: 1.2vw;
 }
 
 .Pushinquiry2_main select{
   width: 80%;
   padding: 0.5vw 0;
   margin-bottom: 1vw;
+  font-size: 1.2vw;
 }
 
 .CHM_pq1bt button{
@@ -131,8 +134,16 @@
   background-color: rgb(94, 94, 253);
   color: white;
   border: none;
+  font-size: 1.2vw;
 }
 
 .CHM_pq1bt{
   padding: 1vw 0;
+}
+
+.CHM_pq1ct{
+  font-size: 1vw;
+}
+.custom-input {
+  position: relative;
 }
