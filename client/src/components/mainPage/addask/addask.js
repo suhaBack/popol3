@@ -18,6 +18,7 @@ function Addask() {
           <img src={광고} width="100%" height="100%"></img>
         </div>
       </div>
+        <a id="jswjsw" href="/newroom">
       <div className="addAskGridBox2">
         <div className="addAskContentBox">
           <div className='addAskTitle'>게스트하우스<br/>숙소 등록하기</div>
@@ -27,6 +28,7 @@ function Addask() {
         <img src={숙소등록} width="100%" height="100%"></img>
         </div>
       </div>
+        </a>
     </div>
   );
 }

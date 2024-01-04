@@ -30,6 +30,8 @@
   padding: 2vw;
   cursor: pointer;
   border: 1px solid rgb(202, 202, 202);
+
+  
 }
 
 .addAskGridBox2:hover .addAskImgBox{
@@ -49,4 +51,9 @@
 .addAskContent{
   font-size: 1.2vw;
   color: rgb(92, 92, 92);
+}
+
+#jswjsw {
+  text-decoration: none;
+  color: black;
 }
