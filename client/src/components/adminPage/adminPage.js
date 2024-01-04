@@ -33,8 +33,6 @@ function AdminPage() {
     getList();
   }, []);
 
-  
-
 
 
 
@@ -43,7 +41,7 @@ function AdminPage() {
       <div className="managergirdbox container">
         <div className="managermenu">
           <div>
-            <Link to="/">왔다가</Link>
+            <Link to="/" id="MainHome">왔다가</Link>
           </div>
           <button onClick={() => MenuClick("유저목록")}   className="Side_Btn">유저목록</button>
           {/* <button onClick={() => MenuClick("카테고리")}   className="Side_Btn">카테고리</button> */}

@@ -1,3 +1,8 @@
+#MainHome{
+  font-size: 50px;
+  text-decoration: none;
+}
+
 .managercontainer {
   position: absolute;
   top: 0;
@@ -22,6 +27,7 @@
 }
 
 .Side_Btn{
+  margin-top: 3px;
   font-size: 17px;
   outline: none;
   height: 50px;
