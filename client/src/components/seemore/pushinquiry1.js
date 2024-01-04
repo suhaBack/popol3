@@ -3,9 +3,11 @@ import "./pushinquiry1.css"
 function Pushinquiry2(props) {
   return (
     <div className="Pushinquiry2_main">
+
       <div>
         <div>
           <div className='CHM_pq1tt'>카테고리유형</div>
+
           <select name="language" id="language">
             <option value="main">카테고리유형을 선택하세요</option>
             <option value="1">모텔</option>
@@ -18,8 +20,10 @@ function Pushinquiry2(props) {
             <option value="8">현금성(유상)포인트</option>
           </select>
         </div>
+
         <div>
           <div className='CHM_pq1tt'>문의유형</div>
+
           <select name="language" id="language">
             <option value="main">문의유형을 선택하세요</option>
             <option value="1">이벤트</option>
@@ -31,6 +35,7 @@ function Pushinquiry2(props) {
             <option value="7">환불신청</option>
           </select>
         </div>
+
         <div>
           <div className='CHM_pq1tt'>휴대폰 번호</div>
           <input type="text" placeholder="선택사항입니다." />
@@ -46,6 +51,7 @@ function Pushinquiry2(props) {
             placeholder="문의하실 내용을 10자 이상 입력해 주세요."
             style={{height: "10vw"}}
           />
+
         </div>
         <div className='CHM_pq1ct'>
         * 여기어때 이용 중 불편하신 점을 문의주시면 최대한 빠른 시일 내에 답변

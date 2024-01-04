@@ -10,10 +10,13 @@ function Review(props) {
     const [visibleReviews, setVisibleReviews] = useState(INITIAL_REVIEW_COUNT);
 
 
+    const [review, setReview] = useState([]);
+    const INITIAL_REVIEW_COUNT = 3;
+    const [visibleReviews, setVisibleReviews] = useState(INITIAL_REVIEW_COUNT);
+
     const showMoreReviews = () => {
         setVisibleReviews((prevVisibleReviews) => prevVisibleReviews + 3);
     };
-
 
     const closeReviews = () => {
         setVisibleReviews(INITIAL_REVIEW_COUNT);
@@ -33,9 +36,7 @@ function Review(props) {
     };
     useEffect(() => {
     fetchReviewData();
-
   }, []);
-
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -53,7 +54,6 @@ function Review(props) {
         }
         return stars;
     }    
-
 
     return (
         <>
