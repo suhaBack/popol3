@@ -1,4 +1,5 @@
 /* global kakao */
+import './map.css';
 import React, { useEffect, useState } from 'react';
 
 const { kakao } = window;
@@ -20,7 +21,7 @@ const Location = (props) => {
 
         const kakaoMap = new kakao.maps.Map(container, options);
         setmap(kakaoMap);
-        }, 1200); // 1.2초 후 로딩
+        });
     }, []);
     
     // 마커 표시
@@ -48,7 +49,7 @@ const Location = (props) => {
             {/* 맵 크기 */}
             <div id="map"style={{
                 width: '100%', height: '400px'
-                }}>
+                }} className='KJH_kakao_map_section'>
             </div>
             <div>
                 <button onClick={panTo}>지도 원위치</button>
