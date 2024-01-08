@@ -1,29 +1,90 @@
 import "./adminPage.css";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import EditModal from './Modal/EditModal.js';
+// import Modal from "react-modal";
+import React, { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import { API_URL } from "../config/contansts";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import { error } from "jquery";
 
 function AdminPage() {
+  const [currentPage, setCurrentPage] = useState(1);
   const [managermenu, setManagermenu] = useState("유저목록");
   const [userList, setUserList] = useState([]);
-  const [lodgingList, setLodgingList] = useState([]);
   const [bookingList, setBookingList] = useState([]);
+  const [loging, setLoging] = useState([]);
+  const [roomInfo, setRoomInfo] = useState([]);
+  const [equalRoom, setEqualRoom] = useState();
+  const [selectedLodging, setSelectedLodging] = useState('');
+  const roomLoading_Id = 0;
   
+  
+  // 모달창을 위한 공간이야
+  
+  let [isModalOpen, setIsModalOpen] = useState(false);
+  let [zIndex, setZindex] = useState(1);
+  let [end, setEnd] = useState("");
+
+  const open_modal = (id) => {
+    console.log("id: ", id);
+    setIsModalOpen(true);
+    setZindex(0); 
+  }
+  const close_modal = () => {
+    setIsModalOpen(false);
+    setZindex(1);
+  } 
+  
+
+// Modal 활성화로 인한 Class Change Function
+const [modalClassChange, setModalClassChange] = useState(false);
+
+
+ //
+
   const MenuClick = (selectMenu) => {
     setManagermenu(selectMenu);
   };
 
+
+  const getFacility = async () => {
+    await axios.get(`${API_URL}/lodging/all`)
+    .then((res) => {
+      setLoging(res.data);
+      console.log("res.data: ", res.data);
+    })
+    .catch(console.log("loading실패"));
+  }
+
+  const getRooms = (alodging_id) => {
+    console.log("alodging_id: ", alodging_id);  
+    axios.get(`${API_URL}/rooms/detail`, { params: { lodging_id: alodging_id } })
+    .then((res) => {
+      // roomLoading_Id = alodging_id;
+      setRoomInfo(res.data);
+      console.log("res.data: ", res.data);
+      // console.log("roomLoading_Id: ", roomLoading_Id);
+    })
+    .catch(console.log("방 정보 로딩 실패"));
+  }
+
+
   useEffect(() => {
+    setTimeout(() => {
+      setEnd("end");
+    }, 100);
+    return setEnd("");
+  }, [isModalOpen]);
+
+  useEffect(() => {
+    getFacility();
+    // getRooms();
     const getList = async () => {
       await axios.get(`${API_URL}/user/admin`)
       .then((result) => {
         const items = result.data;
         setUserList(items);
-      });
-      await axios.get(`${API_URL}/lodging/admin`).then((result) => {
-        const items = result.data;
-        setLodgingList(items);
       });
       await axios.get(`${API_URL}/bookings/admin`).then((result) => {
         const items = result.data;
@@ -31,10 +92,32 @@ function AdminPage() {
       });
     };
     getList();
-  }, []);
 
-  
+  },[]);
 
+  const itemsPerPage = 20; // 한 페이지당 표시할 항목 수
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = loging.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(loging.length / itemsPerPage);
+  const maxVisiblePages = 10; // 보이는 페이지 숫자의 최대 개수
+  let startPage = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
+  let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+
+  if (endPage - startPage < maxVisiblePages - 1) {
+    startPage = Math.max(endPage - maxVisiblePages + 1, 1);
+  }
+
+  const pageNumbers = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
 
 
 
@@ -43,12 +126,11 @@ function AdminPage() {
       <div className="managergirdbox container">
         <div className="managermenu">
           <div>
-            <Link to="/">왔다가</Link>
+            <Link to="/" id="MainHome">왔다가</Link>
           </div>
           <button onClick={() => MenuClick("유저목록")}   className="Side_Btn">유저목록</button>
-          {/* <button onClick={() => MenuClick("카테고리")}   className="Side_Btn">카테고리</button> */}
           <button onClick={() => MenuClick("예약내역")}   className="Side_Btn">예약내역</button>
-          <button onClick={() => MenuClick("설정")}       className="Side_Btn">설정</button>
+          <button onClick={() => MenuClick("시설정보")}   className="Side_Btn">시설정보</button>
         </div>
         <div className="board">
           {managermenu === "유저목록" && (
@@ -84,27 +166,6 @@ function AdminPage() {
             </div>
           )}
 
-          {/* {managermenu === "카테고리" && (
-            <div className="Table_Div">
-              <h3>카테고리</h3>
-              <table className="User_Table">
-                <tr className="Table_Title">
-                  <td className="">숙소명</td>
-                  <td className="Location">위치</td>
-                  <td className="Description">설명</td>
-                </tr>
-              {lodgingList.map((a) => {
-                return (
-                  <tr key={a.lodging_id}>
-                    <td className="User_Name">{a.name}</td>
-                    <td className="Location">{a.location}</td>
-                    <td className="Description">{a.description}</td>
-                  </tr>
-                );
-              })}
-              </table>
-            </div>
-          )} */}
           {managermenu === "예약내역" && (
             <div className="Table_Div">
               <h3>예약내역</h3>              
@@ -149,12 +210,9 @@ function AdminPage() {
                   <tr key={a.user_id}>
                       <td className="User_Name">{a.user_id}</td>
                       <td className="Facility">{a.room_id}</td>
-                      {/* <td className="C_IN">{a.start_date}</td> */}
                       <td className="C_IN">{indate}</td>
-                      {/* <td className="C_OUT">{a.end_date}</td> */}
                       <td className="C_OUT">{outdate}</td>
                       <td className="Price">{price}원</td>
-                      {/* <td className="Price">{a.total_price}원</td> */}
                       <td className="Status">{a.status}</td>
                     </tr>
                   );
@@ -162,14 +220,116 @@ function AdminPage() {
                 </table>
             </div>
           )}
-          {managermenu === "설정" && <div className="Table_Div"> <h3>설정</h3>
-            <table>
-              <tr>
-                <td>
-                  페이지 삭제
-                </td>
+          {managermenu === "시설정보" && <div className="Table_Div"> <h3>시설정보</h3>
+            <table className="User_Table">
+              <tr className="Table_Title">
+                <td className="fac_no">등록번호</td>
+                <td className="fac_name">시설이름</td>
+                <td className="fac_type">유형</td>
               </tr>
+              {currentItems.map((a) => {
+                
+                return(
+                  <tr>
+                    <td>{a.lodging_id}</td>
+                    <td>
+                      <span
+                        onClick={
+                          () => {
+                            getRooms(a.lodging_id);
+                            // filtering(a.lodging_id);
+                            // setEqualRoom(a.lodging_id);
+                            // console.log("roomInfo: ", roomInfo);
+                            setSelectedLodging(a);
+                            open_modal(a.lodging_id);
+                          }
+                        }
+                      >
+                        {a.name}
+                      </span>
+                    </td>
+                    <td>
+                      {
+                        a.type == 0 ? "모텔" : a.type === 1 ? "호텔/리조트" : a.type === 2 ? "펜션" : a.type === 3 ? "게스트하우스" : a.type === 4 ? "캠핑장" : ""
+                      } 
+                    </td>
+                  </tr>
+                  
+                );
+              })
+              }
             </table>
+            
+            {isModalOpen && <EditModal setIsModalOpen={setIsModalOpen}close_modal ={close_modal}  roomInfo={roomInfo} selectedLodging={selectedLodging} modalClassChange={modalClassChange}/>}
+            {/* <Modal
+              isOpen={isModalOpen}
+              bodyOpenClassName="modal-open"
+              onRequestClose={() => {
+                setIsModalOpen(false);
+                setZindex(1);
+              }}
+            >
+              <div>   
+                <h3>{}</h3>
+                <form>
+                  <table>
+                    <tr>
+                      <td>이름</td>
+                      <td>
+                        <input type="text" placeholder="" />  
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>주소</td>
+                      <td>
+                        <input type="text" placeholder="" />  
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>한마디</td>
+                      <td>
+                        <input type="text" placeholder="" />  
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>이미지</td>
+                      <td>
+                        <input type="file" />  
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2}>방 정보</td>
+                    </tr>
+                    {
+                      roomInfo.map((b) => {
+                        return(
+                          <tr>
+                            <td>{b.type}</td>
+                            <td>1박 당 가격 
+                              <input type="text" placeholder={b.price} />
+                            </td>
+                            
+                          </tr>
+                        );
+                      })
+                    }
+                  </table>
+                </form>
+              </div>
+              <div className="modal_btn_section">
+                <button className="modal_close" onClick={close_modal}>Close</button>
+                <button className="modal_save" onClick={save_modal}> Save </button>
+              </div>
+            </Modal> */}
+
+            <Pagination 
+              itemsPerPage={itemsPerPage}
+              totalItems={loging.length}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              totalPages={totalPages}
+              pageNumbers={pageNumbers}
+            />{" "}
           </div>}
         </div>
       </div>
@@ -177,4 +337,34 @@ function AdminPage() {
   );
 }
 
+function Pagination({
+  itemsPerPage,
+  totalItems,
+  currentPage,
+  onPageChange,
+  totalPages,
+  pageNumbers,
+}) {
+  return (
+    <div className="pagination">
+      {" "}
+      {/* 현재 페이지의 위치를 알려주는 컴포넌트 */}
+      {currentPage > 1 && (
+        <span onClick={() => onPageChange(currentPage - 1)}>&laquo;</span>
+      )}
+      {pageNumbers.map((number) => (
+        <span
+          key={number}
+          onClick={() => onPageChange(number)}
+          className={currentPage === number ? "active" : ""}
+        >
+          {number}
+        </span>
+      ))}
+      {currentPage < totalPages && (
+        <span onClick={() => onPageChange(currentPage + 1)}>&raquo;</span>
+      )}
+    </div>
+  );
+}
 export default AdminPage;

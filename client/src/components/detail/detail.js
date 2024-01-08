@@ -16,6 +16,7 @@ import axios from "axios";
 
 function Detail() {
   const { id } = useParams();
+  console.log("id =" + id);
   // console.log(id); // 21
   const [button, setButton] = useState("객실안내/예약");
   const [lodginData, setLodgingData] = useState([]);

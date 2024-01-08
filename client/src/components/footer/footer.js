@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./footer.css";
 
 const footer = () => {
@@ -8,8 +9,11 @@ const footer = () => {
           <ul>
             <li id="li1">회사소개 |</li>
             <li id="li2">이용약관 |</li>
-            <li id="li3">개인정보처리방침 |</li>
-            <li id="li4">사업자 정보확인</li>
+            <li id="li3">개인정보처리방침</li>
+            <li id="li4">| 사업자 정보확인 |</li>
+            <li>
+              <Link to="/admin" id="li5">관리자 페이지</Link>
+            </li>
           </ul>
           <br/>
           <br/>
