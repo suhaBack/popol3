@@ -11,9 +11,11 @@ const EditModal = ({ setIsModalOpen, close_modal,  roomInfo, selectedLodging, mo
   const [address, setAddress] = useState(selectedLodging.location);
   const [description, setDescription] = useState(selectedLodging.description);
   const [image, setImage] = useState(selectedLodging.image);
+  const Lid = selectedLodging.lodging_id;
 
   const save_modal = async (e) => {
     e.preventDefault();
+
     console.log("e.target : ", e.target);
     const fc1 = e.target.edit_name.value;
     const fc2 = e.target.edit_address.value;
@@ -31,19 +33,26 @@ const EditModal = ({ setIsModalOpen, close_modal,  roomInfo, selectedLodging, mo
 
       const r = "e.target.r" + i + ".value";
       const cake = "roomInfo["+ i + "].room_id";
-      eval(cake);
-
-      console.log("r eval: ", eval(r));
+      
       console.log("r: ", r);
-      console.log("cake eval: ", eval(cake));
+      console.log("r eval: ", eval(r));
+      eval(cake);
       console.log("cake: ", cake);
+      console.log("cake eval: ", eval(cake));
+      // object = eval(r);
       object[`variable${i}`] = eval(r);
-      await axios.patch(`${API_URL}/rooms/detail`,{object, })
+      
+
+
+
+      // console.log("object: ", object);
+      // console.log("object[i]:", object[i]);
+      await axios.patch(`${API_URL}/rooms/detail`,{object: object[`variable${i}`], room_id: eval(cake)})
     }
     console.log("object: ", object);
     
     
-    await axios.patch(`${API_URL}/lodging/detail`, {fc1, fc2, fc3, fc4})
+    await axios.patch(`${API_URL}/lodging/detail`, {fc1, fc2, fc3, fc4, Lid})
 
   }
   return (    
