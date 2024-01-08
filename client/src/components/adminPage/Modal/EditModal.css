@@ -1,0 +1,61 @@
+.modal_Container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: #ccc;
+  /* top: -600px; */
+  left: -73px;
+}
+.modal_content{
+  position: absolute;
+  background-color: #fff;
+  width: 900px;
+  height: 500px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  filter: none !important; 
+}
+
+.modal_content > h3 {
+  text-align: center;
+  margin-top: 50px;
+}
+.edit_modal_form{
+  display: block;
+  justify-content: center;
+}
+.edit_table{
+  margin: 50px auto;
+}
+.edit_table td{
+}
+.edit_front_td{
+  width: 30%;
+}
+.edit_input{
+  width: 500px;
+}
+.price_input{
+  margin-left: 20px;
+  width: 150px;
+}
+.room_info_txt{
+  text-align: center;
+}
+.modal_btn_section {
+  padding-top: 30px;
+}
+.modal_btn_section button{
+  margin-right: 5px;
+  float: right;
+  border-radius: 5px;
+  outline: none;
+}
+.modal_close{
+  color: white;
+  background-color: crimson;
+}
+.modal_save{
+  color: white;
+  background-color: #5252FE;
+}
