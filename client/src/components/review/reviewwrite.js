@@ -3,18 +3,34 @@ import reviewImg from "./../detail/image/detailslide1.jpg";
 import axios from "axios";
 import { API_URL } from "../config/contansts";
 import { getCookie } from "../../useCookies";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function ReviewWrite() {
+  const id = useLocation().state;
+  console.log('test',id);
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
+
+  const getData =  async()=>{
+    await axios.get(`${API_URL}/bookings/review`, {
+      params: { id: id },
+    }).then((response)=>{
+      console.log(response.data[0]);
+      setData(response.data[0])
+    })
+  }
+  useEffect(()=>{
+    getData();
+  },[])
+
   const writepost = async (e) => {
     e.preventDefault();
     const star = e.target.rating.value;
     const reviewcontent = e.target.reviewWritecontent.value;
     console.log(reviewcontent);
-    await axios
-      .post(`${API_URL}/reviews`, {
-        rooms_id: "방 아이디",
+    await axios.post(`${API_URL}/reviews`, {
+        rooms_id: id,
         user_id: getCookie("user_Code"),
         rating: star,
         content: reviewcontent,
@@ -39,14 +55,14 @@ function ReviewWrite() {
       <div className="reviewWritebackGround">
         <div className="reviewWriteGridBox container">
           <div className="reviewWriteImg">
-            <img src={reviewImg}></img>
+            <img src={data.image_u_r_l}></img>
           </div>
 
           <div className="reviewWriteinputBox">
             <div className="reviewWriteinput">
               <form onSubmit={writepost}>
                 <div className="reviewWriteinputGridBox">
-                  <div className="reviewproductTtile">호텔이름</div>
+                  <div className="reviewproductTtile">{data.name}</div>
                   <div className="reviewFormrating">
                     <div class="star-rating space-x-4 mx-auto">
                       <input

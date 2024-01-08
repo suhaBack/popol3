@@ -80,7 +80,7 @@ function Reservation(props) {
                 return (
                   <div className="historyList" key={a.id}>
                     <div className="historyid">{a.room_id}</div>
-                    <div className="historytitle">호텔이름</div>
+                    <div className="historytitle">{a.hName}</div>
                     <div className="historydate">
                     {new Date(a.start_date).toISOString().split("T")[0]} ~<br/> {new Date(a.end_date).toISOString().split("T")[0]}
                     </div>

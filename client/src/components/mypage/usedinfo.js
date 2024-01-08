@@ -5,6 +5,7 @@ import 체크 from "./../image/체크.png";
 import axios from "axios";
 import { getCookie } from "../../useCookies";
 import { API_URL } from "../config/contansts";
+import { Link } from "react-router-dom";
 
 function UsedInfo() {
   let [usedata, setUsedata] = useState([]);
@@ -19,7 +20,7 @@ function UsedInfo() {
           setUsedata(res.data);
         })
         .catch((err) => {
-          console.error(err);
+          console.error(err); 
           console.log("에러남");
         });
     };
@@ -51,7 +52,6 @@ function UsedInfo() {
     pageNumbers.push(i);
   }
 
-  const handleReviewClick = (a) => {};
   return (
     <div id="jsw_maincontainer">
       <div id="jsw_subcontainer">
@@ -81,21 +81,20 @@ function UsedInfo() {
                 return (
                   <div className="usedList" key={a.id}>
                     <div className="usedid">{a.room_id}</div>
-                    <div className="usedtitle">호텔 이름</div>
+                    <div className="usedtitle">{a.hName}</div>
                     <div className="useddate">
                       {new Date(a.start_date).toISOString().split("T")[0]}
                     </div>
                     {a.status === "예약완료" ? (
                       <>
                         <div className="usedstatus">이용 완료</div>
-                        <a href="/reviewwrite">
+                        <Link to="/reviewwrite" state={a.Lid}>
                           <button
                             className="reviewWriteBtn"
-                            onClick={() => handleReviewClick(a.id)}
                           >
                             리뷰 작성
                           </button>
-                        </a>
+                        </Link>
                       </>
                     ) : (
                       <div className="usedstatus">{a.status}</div>
