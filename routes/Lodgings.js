@@ -67,6 +67,11 @@ router
     next(error);
   }
 })
+.get('/all',async(req,res,next)=>{
+  Lodging.findAll().then((response)=>{
+    res.status(201).send(response)
+  })
+})
 .get("/add", async (req, res, next) => {
   try {
     //0모텔 1호텔 2펜션 3게스트 4글램핑
@@ -105,6 +110,30 @@ router
     console.error(error);
     res.status(500).end();
   }
-});
+})
+.patch('/detail',async(req,res,next)=>{
+  console.log('lod',req.body);
+  const eName = req.body.fc1
+  const eAdress = req.body.fc2
+  const eDescription = req.body.fc3
+  const eFile = req.body.fc4
+  const lodID = req.body.Lid
+  await Lodging.update({
+    name:eName,
+    location:eAdress,
+    description:eDescription,
+    updated_at:new Date(),
+  },{
+    where:{lodging_id:lodID}
+  })
+  .then(()=>{
+      res.status(201).end();
+    })
+  .catch ((error)=>{
+    console.log(error);
+    res.status(501).end();
+  })
+  } 
+)
 
 module.exports = router;
