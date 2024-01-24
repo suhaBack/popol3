@@ -9,13 +9,13 @@
 # 개요
 
 - ## 프로젝트 소개
-  ### 사용자가 쉽게 숙박을 찾고 예약할 수 있도록 숙박업소 사이트 제작
+  ### 사용자가 쉽게 숙소를 찾고 예약할 수 있도록 숙박업소 사이트 제작
   ### 사용자가 편리하게 사용할 수 있는 디자인과 기능을 개발하는데 중점
 
 <br />
 
 - ## 개발일정 : 14일
-  ### 32년 11월 15일 (수) ~ 23년 11월 29일 (수)
+  ### 23년 11월 15일 (수) ~ 23년 11월 29일 (수)
 
 <br>
 
@@ -36,18 +36,6 @@
 - ## DB
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white">
-
-<br>
-
-# 구현 기능
-
-## 기능 1
-
-## 기능 2
-
-## 기능 3
-
-## 기능 4
 
 <br>
 
